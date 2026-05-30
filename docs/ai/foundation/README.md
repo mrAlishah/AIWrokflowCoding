@@ -2,9 +2,18 @@
 
 Foundation documents define the approved operating rules for the AI Multi-Agent Coding Operating System.
 
-## Approved Baseline
+## Active Governance
 
 - [v2-approved-baseline.md](v2-approved-baseline.md)
+
+## Current Validation
+
+- [v2-validation-checklist.md](v2-validation-checklist.md)
+
+## Audit / History
+
+- [v2-governance-corrections.md](v2-governance-corrections.md)
+- [v2-file-naming-update.md](v2-file-naming-update.md)
 
 ## Scope
 
