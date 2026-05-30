@@ -1,5 +1,9 @@
 # review-followup Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Check whether planned review comments were addressed after a branch changes.

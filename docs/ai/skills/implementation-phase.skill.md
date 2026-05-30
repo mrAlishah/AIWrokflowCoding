@@ -1,5 +1,9 @@
 # implementation-phase Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Execute one planned PBI phase with the smallest practical change.

@@ -1,5 +1,9 @@
 # review-phase Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Review implemented PBI work before fixes.

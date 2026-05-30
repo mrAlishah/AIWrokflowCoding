@@ -1,5 +1,9 @@
 # review-comments-create Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Create review comments from local diff analysis.

@@ -1,5 +1,9 @@
 # review-diff-analysis Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Analyze a coworker's branch diff for changed files, behavior, and review risks.

@@ -1,5 +1,9 @@
 # pbi-plan-create Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Create a scoped implementation plan for an existing PBI workspace.

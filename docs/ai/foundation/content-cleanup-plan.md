@@ -11,6 +11,7 @@ Primary cleanup direction:
 - Preserve audit/history unless it becomes clearly redundant.
 - Prefer archive or merge before delete.
 - Do not treat repo-context placeholders as daily runtime files.
+- Do not delete repo-context placeholder files during cleanup.
 
 ## Classification Rules
 
@@ -39,7 +40,7 @@ Primary cleanup direction:
 | `docs/ai/repo-context/module_map.md` | Reference | Sometimes | No | No | No | Medium: routing value for low token cost. | Keep; populate via `repo-context-update`. |
 | `docs/ai/repo-context/file_index.md` | Reference | Sometimes | No | No | No | Medium: routing value for low token cost. | Keep; populate via `repo-context-update`. |
 | `docs/ai/repo-context/codebase-index.md` | Reference | Sometimes | Yes | No | No | Medium: overlaps conceptually with `file_index.md` and `module_map.md`. | Keep for now; later evaluate merge boundaries after real repo-context population. |
-| `docs/ai/repo-context/domain_glossary.md` | Candidate For Merge | No | Yes | Yes | No | Low: likely empty or low value until domain terms exist. | Keep as optional; consider merging into `README.md` if it remains unused. |
+| `docs/ai/repo-context/domain_glossary.md` | Reference | No | Yes | Yes | No | Low: currently optional placeholder until real domain terms exist. | Keep as optional; do not delete immediately. Consider merge only after repo-context is populated and validated. |
 | `docs/ai/repo-context/coding_standards.md` | Reference | Sometimes | No | No | No | Medium: important for code quality. | Keep; populate via `repo-context-update`. |
 | `docs/ai/repo-context/context_budget.md` | Reference | Sometimes | No | No | No | Medium: important for low token cost. | Keep. |
 | `docs/ai/repo-context/test_strategy.md` | Reference | Sometimes | No | No | No | Medium: important for validation. | Keep; populate via `repo-context-update`. |
@@ -64,7 +65,7 @@ Primary cleanup direction:
 - `docs/ai/foundation/v2-governance-corrections.md`: archive later after baseline is stable.
 - `docs/ai/foundation/v2-file-naming-update.md`: archive later after naming is fully accepted.
 - `docs/ai/foundation/content-cleanup-plan.md`: archive after cleanup execution is complete.
-- `docs/ai/repo-context/domain_glossary.md`: merge or keep optional after real repo-context population.
+- `docs/ai/repo-context/domain_glossary.md`: keep optional if empty; do not delete immediately.
 - `docs/ai/repo-context/codebase-index.md`: review overlap with `module_map.md` and `file_index.md` after repo-context contains real data.
 - `docs/ai/repo-context/workflow.md`: keep only repository-specific workflow details.
 
@@ -75,6 +76,14 @@ Primary cleanup direction:
 - `docs/ai/skills/common-skill-rules.md`
 - all official `docs/ai/skills/*.skill.md` files
 - `docs/ai/repo-context/README.md`
+- `docs/ai/repo-context/architecture.md`
+- `docs/ai/repo-context/module_map.md`
+- `docs/ai/repo-context/file_index.md`
+- `docs/ai/repo-context/codebase-index.md`
+- `docs/ai/repo-context/coding_standards.md`
+- `docs/ai/repo-context/context_budget.md`
+- `docs/ai/repo-context/test_strategy.md`
+- `docs/ai/repo-context/workflow.md`
 - `docs/ai/pbi/README.md`
 - `docs/ai/reviews/README.md`
 
@@ -90,4 +99,3 @@ Primary cleanup direction:
 4. Use `docs/ai/skills/common-skill-rules.md` to reduce duplicated skill rules later.
 5. Populate repo-context with real repository knowledge before merging repo-context files.
 6. Archive history files only after validation confirms the active baseline covers their decisions.
-

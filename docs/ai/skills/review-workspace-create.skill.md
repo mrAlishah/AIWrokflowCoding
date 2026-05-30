@@ -1,5 +1,9 @@
 # review-workspace-create Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Create the standard documentation workspace for reviewing a coworker's branch.

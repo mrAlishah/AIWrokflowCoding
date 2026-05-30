@@ -1,5 +1,9 @@
 # repo-context-update Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 `repo-context-update` refreshes reusable repository knowledge in `docs/ai/repo-context/`.

@@ -1,5 +1,9 @@
 # review-final-handoff Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Summarize the final review decision for a coworker's branch.

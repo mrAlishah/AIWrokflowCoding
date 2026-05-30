@@ -1,5 +1,9 @@
 # fix-phase Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Apply targeted fixes for review findings.
