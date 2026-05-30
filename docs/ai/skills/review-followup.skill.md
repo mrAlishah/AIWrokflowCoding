@@ -1,5 +1,9 @@
 # review-followup Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Check whether planned review comments were addressed after a branch changes.
@@ -81,17 +85,3 @@ This skill may update only:
 5. Add `PR-001.1` style follow-up comments when needed.
 6. Update `06-followup-log.md`.
 7. Report all changed markdown files under `Markdown Files Changed`.
-
-## Markdown Change Reporting Rule
-
-Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
-
-## Markdown Files Changed
-
-For each file:
-
-- File path
-- Action: Created / Updated / Renamed / Deleted
-- Reason
-- Summary of changes
-- Whether the change affects future AI context

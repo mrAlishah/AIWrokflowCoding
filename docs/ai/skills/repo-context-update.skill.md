@@ -1,5 +1,9 @@
 # repo-context-update Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 `repo-context-update` refreshes reusable repository knowledge in `docs/ai/repo-context/`.
@@ -57,17 +61,3 @@ When invoked, this skill should capture:
 4. Update the relevant repo-context markdown files.
 5. Keep all updates concise and operational.
 6. Report every changed markdown file under `Markdown Files Changed`.
-
-## Markdown Change Reporting Rule
-
-Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
-
-## Markdown Files Changed
-
-For each file:
-
-- File path
-- Action: Created / Updated / Renamed / Deleted
-- Reason
-- Summary of changes
-- Whether the change affects future AI context

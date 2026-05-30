@@ -218,6 +218,7 @@ docs/ai/pbi/STP-XXXX/
 Official files:
 
 ```text
+00-approved-pbi.md
 01-context.md
 02-implementation-plan.md
 03-codebase-index.md

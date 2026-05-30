@@ -1,5 +1,9 @@
 # review-comments-create Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Create review comments from local diff analysis.
@@ -90,17 +94,3 @@ Each Persian suggestion must include:
 3. Create Persian deep suggestions linked by `PR.No`.
 4. Use only `Planned`, `Done`, or `Ignore` statuses.
 5. Report all changed markdown files under `Markdown Files Changed`.
-
-## Markdown Change Reporting Rule
-
-Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
-
-## Markdown Files Changed
-
-For each file:
-
-- File path
-- Action: Created / Updated / Renamed / Deleted
-- Reason
-- Summary of changes
-- Whether the change affects future AI context

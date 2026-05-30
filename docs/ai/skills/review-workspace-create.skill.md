@@ -1,5 +1,9 @@
 # review-workspace-create Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Create the standard documentation workspace for reviewing a coworker's branch.
@@ -62,17 +66,3 @@ docs/ai/reviews/STP-XXXX/
 3. Record base branch, head branch, and review scope.
 4. Add placeholders only.
 5. Report all changed markdown files under `Markdown Files Changed`.
-
-## Markdown Change Reporting Rule
-
-Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
-
-## Markdown Files Changed
-
-For each file:
-
-- File path
-- Action: Created / Updated / Renamed / Deleted
-- Reason
-- Summary of changes
-- Whether the change affects future AI context

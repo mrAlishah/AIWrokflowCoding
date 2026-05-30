@@ -1,5 +1,9 @@
 # review-final-handoff Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Summarize the final review decision for a coworker's branch.
@@ -59,17 +63,3 @@ Update `07-handoff.md` with:
 3. State the final review decision clearly.
 4. Update `07-handoff.md`.
 5. Report all changed markdown files under `Markdown Files Changed`.
-
-## Markdown Change Reporting Rule
-
-Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
-
-## Markdown Files Changed
-
-For each file:
-
-- File path
-- Action: Created / Updated / Renamed / Deleted
-- Reason
-- Summary of changes
-- Whether the change affects future AI context

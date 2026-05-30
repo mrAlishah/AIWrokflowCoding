@@ -1,5 +1,9 @@
 # pbi-plan-create Skill
 
+This skill follows `common-skill-rules.md`.
+
+Skill-specific rules are listed below.
+
 ## Purpose
 
 Create a scoped implementation plan for an existing PBI workspace.
@@ -176,17 +180,3 @@ Use only for architecture, domain, and design decisions. Do not use for phase ex
 6. Create phase files as plan plus execution memory.
 7. Record decisions only when decisions exist.
 8. Report all changed markdown files under `Markdown Files Changed`.
-
-## Markdown Change Reporting Rule
-
-Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
-
-## Markdown Files Changed
-
-For each file:
-
-- File path
-- Action: Created / Updated / Renamed / Deleted
-- Reason
-- Summary of changes
-- Whether the change affects future AI context

@@ -16,7 +16,7 @@
 - [module_map.md](module_map.md): important modules and responsibilities
 - [file_index.md](file_index.md): curated index of important files
 - [codebase-index.md](codebase-index.md): compact codebase navigation guide
-- [domain_glossary.md](domain_glossary.md): project terms and domain language
+- [domain_glossary.md](domain_glossary.md): optional project terms and domain language; keep if empty until real domain terms exist
 - [coding_standards.md](coding_standards.md): naming, style, and implementation conventions
 - [context_budget.md](context_budget.md): context loading and optimization rules
 - [test_strategy.md](test_strategy.md): verification and test strategy
