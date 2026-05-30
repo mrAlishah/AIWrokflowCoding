@@ -26,13 +26,13 @@ docs/ai/skills/review-final-handoff.skill.md
 review-workspace-create creates:
 
 docs/ai/reviews/STP-XXXX/
-review-brief.md
-context.md
-diff-analysis.md
-en_pr_comments.md
-fa_pr_suggestions.md
-followup-log.md
-handoff.md
+01-review-brief.md
+02-context.md
+03-diff-analysis.md
+04-en-pr-comments.md
+05-fa-pr-suggestions.md
+06-followup-log.md
+07-handoff.md
 
 review-diff-analysis:
 
@@ -42,11 +42,11 @@ review-diff-analysis:
 
 review-comments-create:
 
-- creates English PR comments in en_pr_comments.md
-- creates Persian deep suggestions in fa_pr_suggestions.md
+- creates English PR comments in en-pr-comments.md
+- creates Persian deep suggestions in fa-pr-suggestions.md
 - links both by PR.No
 
-Status values in en_pr_comments.md:
+Status values in en-pr-comments.md:
 
 - Planned
 - Done

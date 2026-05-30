@@ -46,8 +46,8 @@ Before reading any extra file, state:
 
 This skill may update only:
 
-- `docs/ai/reviews/STP-XXXX/diff-analysis.md`
-- `docs/ai/reviews/STP-XXXX/context.md` if needed for assumptions or local diff context
+- `docs/ai/reviews/STP-XXXX/03-diff-analysis.md`
+- `docs/ai/reviews/STP-XXXX/02-context.md` if needed for assumptions or local diff context
 
 ## Analysis Checklist
 
@@ -84,7 +84,7 @@ Analyze:
 1. Confirm the review workspace exists.
 2. Run or inspect `git diff BASE_BRANCH...HEAD` locally.
 3. Summarize changed files and key risks.
-4. Update `diff-analysis.md`.
+4. Update `03-diff-analysis.md`.
 5. Report all changed markdown files under `Markdown Files Changed`.
 
 ## Markdown Change Reporting Rule

@@ -40,5 +40,5 @@ fix-phase must:
 
 pbi-final-handoff must:
 
-- update 06_handoff.md
+- update 06-handoff.md
 - summarize changed files, validation, risks, PR summary, review focus

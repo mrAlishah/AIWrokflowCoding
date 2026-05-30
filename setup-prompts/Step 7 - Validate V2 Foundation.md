@@ -19,13 +19,13 @@ Check:
 6. phase files are defined as Plan + Execution Memory.
 7. review workflow uses docs/ai/reviews/STP-XXXX.
 8. review workflow files use these exact names:
-   - review-brief.md
-   - context.md
-   - diff-analysis.md
-   - en_pr_comments.md
-   - fa_pr_suggestions.md
-   - followup-log.md
-   - handoff.md
+   - 01-review-brief.md
+   - 02-context.md
+   - 03-diff-analysis.md
+   - 04-en-pr-comments.md
+   - 05-fa-pr-suggestions.md
+   - 06-followup-log.md
+   - 07-handoff.md
 9. review workflow forbids source code modification.
 10. markdown change reporting rule exists in all relevant skills.
 

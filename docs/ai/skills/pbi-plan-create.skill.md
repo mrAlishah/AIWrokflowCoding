@@ -56,11 +56,11 @@ Before reading any extra file, state:
 This skill may update only:
 
 - `docs/ai/pbi/STP-XXXX/01-context.md`
-- `docs/ai/pbi/STP-XXXX/implementation-plan.md`
-- `docs/ai/pbi/STP-XXXX/codebase-index.md`
+- `docs/ai/pbi/STP-XXXX/02-implementation-plan.md`
+- `docs/ai/pbi/STP-XXXX/03-codebase-index.md`
 - `docs/ai/pbi/STP-XXXX/phases/*.md`
 - `docs/ai/pbi/STP-XXXX/knowledge/*` only if needed
-- `docs/ai/pbi/STP-XXXX/04_decision_log.md` only if decisions exist
+- `docs/ai/pbi/STP-XXXX/04-decision_log.md` only if decisions exist
 
 ## Repo Context Rule
 
@@ -106,7 +106,7 @@ Update with:
 
 `01-context.md` must not be a copy of repo-context. Include only excerpts, files, risks, constraints, and validation notes relevant to the active PBI.
 
-### `implementation-plan.md`
+### `02-implementation-plan.md`
 
 Update with:
 
@@ -119,7 +119,7 @@ Update with:
 
 Keep this file as a short roadmap with phase names, goals, status, and high-level sequencing only. Detailed technical implementation plans belong in `phases/*.md`.
 
-### `codebase-index.md`
+### `03-codebase-index.md`
 
 Update with:
 
@@ -151,7 +151,7 @@ Add only when the PBI needs extra task-specific durable knowledge that does not 
 
 `knowledge/` is optional. Create knowledge files only when the PBI has reusable PBI-level technical knowledge, overlapping use cases, contracts, mappings, flows, validation rules, or multi-phase concepts. Do not create unnecessary knowledge files for simple PBIs.
 
-### `04_decision_log.md`
+### `04-decision_log.md`
 
 Update only when actual planning decisions exist.
 

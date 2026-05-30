@@ -36,12 +36,12 @@ Before reading any extra file, state:
 
 This skill may update only:
 
-- `docs/ai/reviews/STP-XXXX/en_pr_comments.md`
-- `docs/ai/reviews/STP-XXXX/fa_pr_suggestions.md`
+- `docs/ai/reviews/STP-XXXX/04-en-pr-comments.md`
+- `docs/ai/reviews/STP-XXXX/05-fa-pr-suggestions.md`
 
 ## English PR Comments
 
-Create English PR comments in `en_pr_comments.md`.
+Create English PR comments in `04-en-pr-comments.md`.
 
 Each comment must have:
 
@@ -59,7 +59,7 @@ Allowed status values:
 
 ## Persian Deep Suggestions
 
-Create Persian deep suggestions in `fa_pr_suggestions.md`.
+Create Persian deep suggestions in `05-fa-pr-suggestions.md`.
 
 Each Persian suggestion must link to the English comment by `PR.No`.
 
@@ -85,7 +85,7 @@ Each Persian suggestion must include:
 
 ## Execution Protocol
 
-1. Read `diff-analysis.md`.
+1. Read `03-diff-analysis.md`.
 2. Create concise English PR comments.
 3. Create Persian deep suggestions linked by `PR.No`.
 4. Use only `Planned`, `Done`, or `Ignore` statuses.

@@ -20,7 +20,7 @@ Use when `pbi-plan-create` has produced an implementation plan and a selected ph
 
 Read only:
 
-- `docs/ai/pbi/STP-XXXX/implementation-plan.md`
+- `docs/ai/pbi/STP-XXXX/02-implementation-plan.md`
 - the selected `docs/ai/pbi/STP-XXXX/phases/*.md`
 - source files explicitly listed in the selected phase
 
@@ -93,7 +93,7 @@ After execution, update the selected phase file with:
 ## Execution Protocol
 
 1. Confirm the PBI workspace and selected phase exist.
-2. Read `implementation-plan.md`.
+2. Read `02-implementation-plan.md`.
 3. Read only the selected phase file.
 4. Read only source files listed in the phase.
 5. Implement the phase with minimal files and lines.

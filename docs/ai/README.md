@@ -27,7 +27,7 @@ Repository Knowledge != PBI Knowledge != Review Knowledge != Execution Memory !=
 - PBI Knowledge = task-specific implementation knowledge under `docs/ai/pbi/STP-XXXX/`.
 - Review Knowledge = PR/code review knowledge under `docs/ai/reviews/STP-XXXX/`.
 - Execution Memory = phase files and follow-up logs that record what agents actually did.
-- Architecture Decisions = design, domain, and architecture decisions recorded in `04_decision_log.md`.
+- Architecture Decisions = design, domain, and architecture decisions recorded in `04-decision_log.md`.
 
 ## Markdown Change Reporting Rule
 

@@ -30,7 +30,7 @@ Applied the required governance corrections from the latest V2 validation checkl
 - Added the explicit V2 knowledge separation rule:
   `Repository Knowledge != PBI Knowledge != Review Knowledge != Execution Memory != Architecture Decisions`.
 - Defined Repository Knowledge, PBI Knowledge, Review Knowledge, Execution Memory, and Architecture Decisions.
-- Strengthened PBI workspace rules for `01-context.md`, `implementation-plan.md`, `codebase-index.md`, `knowledge/`, and `04_decision_log.md`.
+- Strengthened PBI workspace rules for `01-context.md`, `02-implementation-plan.md`, `03-codebase-index.md`, `knowledge/`, and `04-decision_log.md`.
 - Added the exact markdown change reporting template to all official skills and central docs.
 - Added common skill rules in `docs/ai/skills/common-skill-rules.md` and referenced them from the skills index.
 - Added context read order and extra file justification rules to central docs and relevant skills.
@@ -51,4 +51,3 @@ No
 ## Ready For Re-validation
 
 Yes
-

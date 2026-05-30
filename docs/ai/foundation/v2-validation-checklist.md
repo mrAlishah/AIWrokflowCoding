@@ -8,11 +8,12 @@ Ready
 
 The V2 AI Operating System foundation matches the approved baseline and the user's confirmed requirements. The current `docs/ai` structure defines shared markdown memory, stateless agents, execution-protocol skills, repository context ownership, PBI workflow, review workflow, quality rules, context cost rules, and markdown change reporting.
 
-The latest governance corrections have been applied. No source code inspection or source code modification was needed.
+The latest governance corrections and numeric-prefix workspace naming update have been applied. No source code inspection or source code modification was needed.
 
 ## Checked Files
 
 - `docs/ai/foundation/v2-approved-baseline.md`
+- `docs/ai/foundation/v2-file-naming-update.md`
 - `docs/ai/README.md`
 - `docs/ai/skills/README.md`
 - `docs/ai/skills/common-skill-rules.md`
@@ -64,9 +65,10 @@ The latest governance corrections have been applied. No source code inspection o
 - `docs/ai/skills/README.md` lists all official Repository, PBI Workflow, and Review Workflow skills.
 - `docs/ai/skills/README.md` is useful for routing and references common skill rules.
 - PBI workspace structure is documented with the expected V2 names.
+- PBI numeric-prefix naming is consistent across baseline, PBI guide, validation report, naming update report, and PBI skills.
 - `00-approved-pbi.md` is documented as the source of truth.
 - `01-context.md` is documented as PBI-specific and not a repo-context copy.
-- `implementation-plan.md` is documented as a short roadmap, not detailed implementation.
+- `02-implementation-plan.md` is documented as a short roadmap, not detailed implementation.
 - Phase files are documented as plan plus execution memory.
 - Phase statuses are exactly:
   - `Planned Only`
@@ -74,10 +76,11 @@ The latest governance corrections have been applied. No source code inspection o
   - `In Progress`
   - `Done`
 - `knowledge/` is documented as optional and only for reusable PBI-level knowledge.
-- `04_decision_log.md` is documented as architecture, domain, and design decisions only.
-- `codebase-index.md` routes phases, source files, knowledge files, functions, purpose, usage, validation focus, and review focus.
+- `04-decision_log.md` is documented as architecture, domain, and design decisions only.
+- `03-codebase-index.md` routes phases, source files, knowledge files, functions, purpose, usage, validation focus, and review focus.
 - PBI skills enforce the expected workspace, planning, implementation, review, fix, and handoff boundaries.
 - Review workspace structure is documented with the expected V2 names.
+- Review numeric-prefix naming is consistent across baseline, Review guide, validation report, naming update report, and Review skills.
 - Review workflow uses local git diff only and `git diff BASE_BRANCH...HEAD`.
 - Review branch checkout is documented as a manual user action.
 - Review skills forbid external PR APIs, PR creation, pushes, and source code modification.
@@ -102,24 +105,27 @@ Expected PBI names are used:
 
 - `00-approved-pbi.md`
 - `01-context.md`
-- `implementation-plan.md`
-- `codebase-index.md`
-- `04_decision_log.md`
-- `06_handoff.md`
+- `02-implementation-plan.md`
+- `03-codebase-index.md`
+- `04-decision_log.md`
+- `05` reserved unused
+- `06-handoff.md`
 - `phases/`
 - `knowledge/`
 
 Expected review names are used:
 
-- `review-brief.md`
-- `context.md`
-- `diff-analysis.md`
-- `en_pr_comments.md`
-- `fa_pr_suggestions.md`
-- `followup-log.md`
-- `handoff.md`
+- `01-review-brief.md`
+- `02-context.md`
+- `03-diff-analysis.md`
+- `04-en-pr-comments.md`
+- `05-fa-pr-suggestions.md`
+- `06-followup-log.md`
+- `07-handoff.md`
 
-Older review names such as `00_review_brief.md`, `04_pr_comments.md`, and `05_suggestions.md` are not used as official structure.
+Older PBI names such as `implementation-plan.md`, `codebase-index.md`, `04_decision_log.md`, and `06_handoff.md` are not used as official PBI workspace structure.
+
+Older Review names such as `review-brief.md`, `context.md`, `diff-analysis.md`, `en-pr-comments.md`, `fa-pr-suggestions.md`, `followup-log.md`, `handoff.md`, `00_review_brief.md`, `04-pr_comments.md`, and `05_suggestions.md` are not used as official Review workspace structure.
 
 ## Missing Files
 
@@ -147,10 +153,9 @@ None.
 
 ## Optional Improvements
 
-- Add short examples for phase file layout, `PR.No` comment format, and `06_handoff.md` output.
+- Add short examples for phase file layout, `PR.No` comment format, and `06-handoff.md` output.
 - Add a future validation checklist that can be reused after every governance update.
 
 ## Final Recommendation
 
 V2 foundation is ready. Proceed to the next approved V2 implementation step or begin using the operating system with the documented skills and governance rules.
-

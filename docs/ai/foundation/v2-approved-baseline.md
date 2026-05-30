@@ -54,7 +54,7 @@ Repository Knowledge != PBI Knowledge != Review Knowledge != Execution Memory !=
 - PBI Knowledge = task-specific implementation knowledge under `docs/ai/pbi/STP-XXXX/`.
 - Review Knowledge = PR/code review knowledge under `docs/ai/reviews/STP-XXXX/`.
 - Execution Memory = phase files and follow-up logs that record what agents actually did.
-- Architecture Decisions = design, domain, and architecture decisions recorded in `04_decision_log.md`.
+- Architecture Decisions = design, domain, and architecture decisions recorded in `04-decision_log.md`.
 
 ## PBI Workflow
 
@@ -69,6 +69,24 @@ PBI work follows an implementation workflow from understanding to verification.
 7. Verify the change with the appropriate project checks when requested or required.
 8. Report changed markdown files under `Markdown Files Changed`.
 
+### PBI Workspace File Naming
+
+Official PBI workspace files under `docs/ai/pbi/STP-XXXX/` are:
+
+```text
+00-approved-pbi.md
+01-context.md
+02-implementation-plan.md
+03-codebase-index.md
+04-decision_log.md
+05 reserved unused
+06-handoff.md
+phases/
+knowledge/
+```
+
+The `05` slot is intentionally reserved and unused.
+
 ## PR Review Workflow
 
 PR review work focuses on correctness, risk, and missing verification.
@@ -80,6 +98,20 @@ PR review work focuses on correctness, risk, and missing verification.
 5. Avoid broad refactors unless they are required to address review feedback.
 6. If implementing fixes, keep changes targeted and consistent with existing patterns.
 7. Report changed markdown files under `Markdown Files Changed`.
+
+### Review Workspace File Naming
+
+Official Review workspace files under `docs/ai/reviews/STP-XXXX/` are:
+
+```text
+01-review-brief.md
+02-context.md
+03-diff-analysis.md
+04-en-pr-comments.md
+05-fa-pr-suggestions.md
+06-followup-log.md
+07-handoff.md
+```
 
 ## Quality Rules
 

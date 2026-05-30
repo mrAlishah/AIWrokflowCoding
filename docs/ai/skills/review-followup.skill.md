@@ -13,7 +13,7 @@ Use after new local changes are available for a reviewed branch.
 - review id in `STP-XXXX` format
 - base branch
 - current head
-- existing `en_pr_comments.md`
+- existing `04-en-pr-comments.md`
 - follow-up diff
 
 ## Required Command
@@ -45,10 +45,10 @@ Before reading any extra file, state:
 
 This skill may update only:
 
-- `docs/ai/reviews/STP-XXXX/en_pr_comments.md`
-- `docs/ai/reviews/STP-XXXX/fa_pr_suggestions.md`
-- `docs/ai/reviews/STP-XXXX/followup-log.md`
-- `docs/ai/reviews/STP-XXXX/diff-analysis.md` if follow-up analysis must be recorded
+- `docs/ai/reviews/STP-XXXX/04-en-pr-comments.md`
+- `docs/ai/reviews/STP-XXXX/05-fa-pr-suggestions.md`
+- `docs/ai/reviews/STP-XXXX/06-followup-log.md`
+- `docs/ai/reviews/STP-XXXX/03-diff-analysis.md` if follow-up analysis must be recorded
 
 ## Follow-Up Rules
 
@@ -74,12 +74,12 @@ This skill may update only:
 
 ## Execution Protocol
 
-1. Read existing `en_pr_comments.md`.
+1. Read existing `04-en-pr-comments.md`.
 2. Identify only `Planned` comments.
 3. Inspect the local follow-up diff.
 4. Mark fixed comments as `Done`.
 5. Add `PR-001.1` style follow-up comments when needed.
-6. Update `followup-log.md`.
+6. Update `06-followup-log.md`.
 7. Report all changed markdown files under `Markdown Files Changed`.
 
 ## Markdown Change Reporting Rule

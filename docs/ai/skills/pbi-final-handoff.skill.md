@@ -22,7 +22,7 @@ Use at the end of the PBI workflow when work is ready for user handoff or PR pre
 Read:
 
 - `docs/ai/pbi/STP-XXXX/00-approved-pbi.md`
-- `docs/ai/pbi/STP-XXXX/implementation-plan.md`
+- `docs/ai/pbi/STP-XXXX/02-implementation-plan.md`
 - relevant phase files
 - verification results
 - final diff summary
@@ -31,13 +31,13 @@ Read:
 
 This skill may update only:
 
-- `docs/ai/pbi/STP-XXXX/06_handoff.md`
+- `docs/ai/pbi/STP-XXXX/06-handoff.md`
 
 It must not update `docs/ai/repo-context/*`.
 
 ## Handoff Content
 
-Update `06_handoff.md` with:
+Update `06-handoff.md` with:
 
 - PBI summary
 - changed files
@@ -70,7 +70,7 @@ Update `06_handoff.md` with:
 2. Read PBI summary, plan, phases, and verification notes.
 3. Summarize changed files and validation.
 4. Record risks and review focus.
-5. Update `06_handoff.md`.
+5. Update `06-handoff.md`.
 6. Report all changed markdown files under `Markdown Files Changed`.
 
 ## Markdown Change Reporting Rule

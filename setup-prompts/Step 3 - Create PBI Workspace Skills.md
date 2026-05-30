@@ -25,21 +25,21 @@ pbi-workspace-create must create:
 docs/ai/pbi/STP-XXXX/
 00-approved-pbi.md
 01-context.md
-implementation-plan.md
-codebase-index.md
-04_decision_log.md
-06_handoff.md
+02-implementation-plan.md
+03-codebase-index.md
+04-decision-log.md
+06-handoff.md
 phases/
 knowledge/
 
 pbi-plan-create must update:
 
 - 01-context.md
-- implementation-plan.md
-- codebase-index.md
+- 02-implementation-plan.md
+- 03-codebase-index.md
 - phases/\*.md
 - knowledge/\* only if needed
-- 04_decision_log.md only if decisions exist
+- 04-decision_log.md only if decisions exist
 
 Phase statuses:
 

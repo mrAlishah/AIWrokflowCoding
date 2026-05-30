@@ -74,7 +74,7 @@ Repository Knowledge = reusable codebase knowledge under docs/ai/repo-context/
 PBI Knowledge = task-specific implementation knowledge under docs/ai/pbi/STP-XXXX/
 Review Knowledge = PR/code review knowledge under docs/ai/reviews/STP-XXXX/
 Execution Memory = phase files and follow-up logs that record what agents actually did
-Architecture Decisions = design/domain/architecture decisions recorded in 04_decision_log.md
+Architecture Decisions = design/domain/architecture decisions recorded in 04-decision_log.md
 ```
 
 Make sure this separation is treated as a core V2 rule.
@@ -110,10 +110,10 @@ Create it only when the PBI has reusable PBI-level technical knowledge, overlapp
 Do not create unnecessary knowledge files for simple PBIs.
 ```
 
-### `04_decision_log.md`
+### `04-decision_log.md`
 
 ```text
-04_decision_log.md is only for architecture, domain, and design decisions.
+04-decision_log.md is only for architecture, domain, and design decisions.
 It must not be used for phase execution notes, review comments, todos, or temporary planning notes.
 ```
 
@@ -276,11 +276,11 @@ Files safe to ignore
 Must explicitly create/update both:
 
 ```text
-en_pr_comments.md
-fa_pr_suggestions.md
+en-pr-comments.md
+fa-pr-suggestions.md
 ```
 
-`en_pr_comments.md` must include:
+`04-en-pr-comments.md` must include:
 
 ```text
 PR.No
@@ -290,7 +290,7 @@ English PR-ready comment
 Suggested fix summary
 ```
 
-`fa_pr_suggestions.md` must include:
+`05-fa-pr-suggestions.md` must include:
 
 ```text
 PR.No

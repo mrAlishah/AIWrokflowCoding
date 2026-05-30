@@ -20,11 +20,11 @@ Use after review comments and follow-up checks are complete.
 
 This skill may update only:
 
-- `docs/ai/reviews/STP-XXXX/handoff.md`
+- `docs/ai/reviews/STP-XXXX/07-handoff.md`
 
 ## Handoff Content
 
-Update `handoff.md` with:
+Update `07-handoff.md` with:
 
 - review summary
 - final review decision
@@ -57,7 +57,7 @@ Update `handoff.md` with:
 1. Read review comments, suggestions, follow-up log, and diff analysis.
 2. Summarize the final state.
 3. State the final review decision clearly.
-4. Update `handoff.md`.
+4. Update `07-handoff.md`.
 5. Report all changed markdown files under `Markdown Files Changed`.
 
 ## Markdown Change Reporting Rule

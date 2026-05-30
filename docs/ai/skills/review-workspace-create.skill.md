@@ -27,13 +27,13 @@ Create:
 
 ```text
 docs/ai/reviews/STP-XXXX/
-  review-brief.md
-  context.md
-  diff-analysis.md
-  en_pr_comments.md
-  fa_pr_suggestions.md
-  followup-log.md
-  handoff.md
+  01-review-brief.md
+  02-context.md
+  03-diff-analysis.md
+  04-en-pr-comments.md
+  05-fa-pr-suggestions.md
+  06-followup-log.md
+  07-handoff.md
 ```
 
 ## Required Rules
@@ -47,13 +47,13 @@ docs/ai/reviews/STP-XXXX/
 
 ## File Templates
 
-- `review-brief.md`: review id, branches, request summary, scope
-- `context.md`: local context and assumptions
-- `diff-analysis.md`: placeholder for diff findings
-- `en_pr_comments.md`: English PR comments with status values
-- `fa_pr_suggestions.md`: Persian deep suggestions linked by PR.No
-- `followup-log.md`: follow-up checks and comment history
-- `handoff.md`: final review decision placeholder
+- `01-review-brief.md`: review contract, branch, base, scope, title, and description
+- `02-context.md`: review-specific context
+- `03-diff-analysis.md`: local diff analysis
+- `04-en-pr-comments.md`: English PR-ready comments only
+- `05-fa-pr-suggestions.md`: Persian reasoning, suggested fixes, pseudo-code, alternatives, and personal notes
+- `06-followup-log.md`: follow-up status tracking
+- `07-handoff.md`: final review summary and decision
 
 ## Execution Protocol
 

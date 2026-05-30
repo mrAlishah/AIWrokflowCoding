@@ -130,10 +130,10 @@ docs/ai/pbi/STP-XXXX/
 
 00-approved-pbi.md
 01-context.md
-implementation-plan.md
-codebase-index.md
-04_decision_log.md
-06_handoff.md
+02-implementation-plan.md
+03-codebase-index.md
+04-decision_log.md
+06-handoff.md
 
 phases/
 knowledge/
@@ -143,7 +143,7 @@ Verify:
 
 - `00-approved-pbi.md` is the source of truth.
 - `01-context.md` is PBI-specific and not a repo-context copy.
-- `implementation-plan.md` is a short roadmap, not detailed implementation.
+- `02-implementation-plan.md` is a short roadmap, not detailed implementation.
 - `phases/` files are Plan + Execution Memory.
 - phase statuses are exactly:
   - Planned Only
@@ -152,8 +152,8 @@ Verify:
   - Done
 
 - `knowledge/` is optional and only for reusable PBI knowledge.
-- `04_decision_log.md` is for architecture/domain/design decisions only.
-- `codebase-index.md` routes phases, source files, knowledge files, functions, purpose, usage, validation focus, and review focus.
+- `04-decision_log.md` is for architecture/domain/design decisions only.
+- `03-codebase-index.md` routes phases, source files, knowledge files, functions, purpose, usage, validation focus, and review focus.
 
 ### 5. PBI Skills
 
@@ -173,11 +173,11 @@ Verify:
 - does not update repo-context.
 - creates/updates:
   - `01-context.md`
-  - `implementation-plan.md`
-  - `codebase-index.md`
+  - `02-implementation-plan.md`
+  - `03-codebase-index.md`
   - `phases/*.md`
   - `knowledge/*` only if needed
-  - `04_decision_log.md` only if decisions exist.
+  - `04-decision_log.md` only if decisions exist.
 
 #### implementation-phase
 
@@ -198,7 +198,7 @@ Verify:
 
 #### pbi-final-handoff
 
-- updates `06_handoff.md`.
+- updates `06-handoff.md`.
 - includes PR-ready summary, risks, validation, changed files, review focus.
 
 ### 6. PR / Code Review Workflow
@@ -208,18 +208,18 @@ Verify Review workspace is documented as:
 ```text
 docs/ai/reviews/STP-XXXX/
 
-review-brief.md
-context.md
-diff-analysis.md
-en_pr_comments.md
-fa_pr_suggestions.md
-followup-log.md
-handoff.md
+01-review-brief.md
+02-context.md
+03-diff-analysis.md
+04-en-pr-comments.md
+05-fa-pr-suggestions.md
+06-followup-log.md
+07-handoff.md
 ```
 
 Important:
 These exact file names must be used.
-Old names such as `00_review_brief.md`, `04_pr_comments.md`, or `05_suggestions.md` should be reported as outdated if they remain as the official structure.
+Old names such as `00_review_brief.md`, `04-pr_comments.md`, or `05_suggestions.md` should be reported as outdated if they remain as the official structure.
 
 Verify:
 
@@ -250,8 +250,8 @@ Verify:
 #### review-comments-create
 
 - creates both:
-  - `en_pr_comments.md`
-  - `fa_pr_suggestions.md`
+  - `04-en-pr-comments.md`
+  - `05-fa-pr-suggestions.md`
 
 - English comments are short, actionable, PR-ready.
 - Persian suggestions include deeper reasoning, suggested fixes, pseudo-code, alternatives, personal notes.
@@ -348,10 +348,10 @@ PBI:
 ```text
 00-approved-pbi.md
 01-context.md
-implementation-plan.md
-codebase-index.md
-04_decision_log.md
-06_handoff.md
+02-implementation-plan.md
+03-codebase-index.md
+04-decision_log.md
+06-handoff.md
 phases/
 knowledge/
 ```
@@ -359,13 +359,13 @@ knowledge/
 Review:
 
 ```text
-review-brief.md
-context.md
-diff-analysis.md
-en_pr_comments.md
-fa_pr_suggestions.md
-followup-log.md
-handoff.md
+01-review-brief.md
+02-context.md
+03-diff-analysis.md
+04-en-pr-comments.md
+05-fa-pr-suggestions.md
+06-followup-log.md
+07-handoff.md
 ```
 
 Report any older names still used as official names.

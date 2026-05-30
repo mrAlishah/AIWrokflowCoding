@@ -33,12 +33,13 @@ Create:
 docs/ai/pbi/STP-XXXX/
   00-approved-pbi.md
   01-context.md
-  implementation-plan.md
-  codebase-index.md
-  04_decision_log.md
-  06_handoff.md
+  02-implementation-plan.md
+  03-codebase-index.md
+  04-decision_log.md
+  05 reserved unused
+  06-handoff.md
   phases/
-  knowledge/ only if needed
+  knowledge/
 ```
 
 ## File Templates
@@ -67,11 +68,11 @@ Recommended sections:
 - Task Context
 - Open Questions
 
-### `implementation-plan.md`
+### `02-implementation-plan.md`
 
 Create as a planning placeholder only.
 
-`implementation-plan.md` is a short roadmap. It must contain phase names, goals, status, and high-level sequencing only. It must not contain detailed technical implementation plans.
+`02-implementation-plan.md` is a short roadmap. It must contain phase names, goals, status, and high-level sequencing only. It must not contain detailed technical implementation plans.
 
 Recommended sections:
 
@@ -80,7 +81,7 @@ Recommended sections:
 - Phases
 - Verification Plan
 
-### `codebase-index.md`
+### `03-codebase-index.md`
 
 Create as a placeholder for task-specific navigation.
 
@@ -96,7 +97,7 @@ Recommended sections:
 - Phase To Created Or Updated Functions
 - Function Purpose, Usage, Related Flow, Validation Focus, and Review Focus
 
-### `04_decision_log.md`
+### `04-decision_log.md`
 
 Create as an empty decision log.
 
@@ -104,13 +105,13 @@ Use only for architecture, domain, and design decisions. Do not use for phase ex
 
 ### `knowledge/`
 
-`knowledge/` is optional. Create it only when the PBI has reusable PBI-level technical knowledge, overlapping use cases, contracts, mappings, flows, validation rules, or multi-phase concepts. Do not create unnecessary knowledge files for simple PBIs.
+`knowledge/` is the official folder name for reusable PBI-level knowledge. It is optional for simple PBIs. Create it only when the PBI has reusable PBI-level technical knowledge, overlapping use cases, contracts, mappings, flows, validation rules, or multi-phase concepts. Do not create unnecessary knowledge files for simple PBIs.
 
 Recommended sections:
 
 - Decisions
 
-### `06_handoff.md`
+### `06-handoff.md`
 
 Create as an empty handoff placeholder.
 
