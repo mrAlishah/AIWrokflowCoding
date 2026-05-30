@@ -1,27 +1,12 @@
-# V2 File Naming Update
+# V2 Workspace Naming
 
 ## Summary
 
-Updated V2 documentation and skill instructions so PBI and Review workspace files use the approved numeric-prefix naming. The update preserves file responsibilities and workflow semantics.
+This document records the current official V2 workspace names.
 
-## Old Names Replaced
+Use only the names listed here for active PBI and review workflow files.
 
-PBI workspace references:
-
-- `implementation-plan.md` -> `02-implementation-plan.md`
-- `codebase-index.md` -> `03-codebase-index.md`
-
-Review workspace references:
-
-- `review-brief.md` -> `01-review-brief.md`
-- `context.md` -> `02-context.md`
-- `diff-analysis.md` -> `03-diff-analysis.md`
-- `en-pr-comments.md` -> `04-en-pr-comments.md`
-- `fa-pr-suggestions.md` -> `05-fa-pr-suggestions.md`
-- `followup-log.md` -> `06-followup-log.md`
-- `handoff.md` -> `07-handoff.md`
-
-## New Official PBI Names
+## Official PBI Names
 
 ```text
 docs/ai/pbi/STP-XXXX/
@@ -36,7 +21,7 @@ docs/ai/pbi/STP-XXXX/
   knowledge/
 ```
 
-## New Official Review Names
+## Official Review Names
 
 ```text
 docs/ai/reviews/STP-XXXX/
@@ -49,7 +34,7 @@ docs/ai/reviews/STP-XXXX/
   07-handoff.md
 ```
 
-## Files Updated
+## Runtime Files That Must Match This Naming
 
 - `docs/ai/foundation/v2-approved-baseline.md`
 - `docs/ai/foundation/v2-validation-checklist.md`
@@ -82,7 +67,7 @@ Passed.
 
 ## Remaining Risks
 
-`docs/ai/repo-context/codebase-index.md` remains unchanged because it is a repo-context file, not a PBI workspace file.
+`docs/ai/repo-context/codebase-index.md` remains valid because it is a repo-context file, not a PBI workspace file.
 
 ## Source Code Modified
 

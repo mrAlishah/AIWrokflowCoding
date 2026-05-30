@@ -5,6 +5,7 @@ Foundation documents define the approved operating rules for the AI Multi-Agent 
 ## Active Governance
 
 - [v2-approved-baseline.md](v2-approved-baseline.md)
+- [v2-workspace-naming.md](v2-workspace-naming.md)
 
 ## Current Validation
 
@@ -13,7 +14,6 @@ Foundation documents define the approved operating rules for the AI Multi-Agent 
 ## Audit / History
 
 - [v2-governance-corrections.md](v2-governance-corrections.md)
-- [v2-file-naming-update.md](v2-file-naming-update.md)
 
 ## Scope
 

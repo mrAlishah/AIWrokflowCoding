@@ -31,7 +31,7 @@ Primary cleanup direction:
 | `docs/ai/foundation/v2-approved-baseline.md` | Active Governance | Yes | No | No | No | High: source of approved V2 rules. | Keep as primary governance source. |
 | `docs/ai/foundation/v2-validation-checklist.md` | Active Governance | No | No | Yes | No | Medium: current validation status is useful but not daily runtime. | Keep as current validation status; do not read during normal PBI/review work. |
 | `docs/ai/foundation/v2-governance-corrections.md` | Audit / History | No | Yes | Yes | No | Low: historical correction record. | Keep for audit or later move to archive. |
-| `docs/ai/foundation/v2-file-naming-update.md` | Audit / History | No | Yes | Yes | No | Low: naming history; useful for traceability. | Keep for audit or later move to archive. |
+| `docs/ai/foundation/v2-workspace-naming.md` | Active Governance | No | Yes | No | No | Medium: official workspace naming must stay aligned with skills. | Keep as the current naming reference. |
 | `docs/ai/foundation/content-cleanup-plan.md` | Audit / History | No | Yes | Yes | No | Low: planning artifact for cleanup. | Keep until cleanup is complete; archive later. |
 | `docs/ai/pbi/README.md` | Reference | Sometimes | Yes | No | No | Medium: explains PBI workflow and file meanings. | Keep; daily routing should point here only when PBI workflow context is needed. |
 | `docs/ai/reviews/README.md` | Reference | Sometimes | Yes | No | No | Medium: explains coworker review workflow and file meanings. | Keep; daily routing should point here only when review workflow context is needed. |
@@ -63,7 +63,7 @@ Primary cleanup direction:
 ## Key Cleanup Candidates
 
 - `docs/ai/foundation/v2-governance-corrections.md`: archive later after baseline is stable.
-- `docs/ai/foundation/v2-file-naming-update.md`: archive later after naming is fully accepted.
+- `docs/ai/foundation/v2-workspace-naming.md`: keep as the current official naming reference.
 - `docs/ai/foundation/content-cleanup-plan.md`: archive after cleanup execution is complete.
 - `docs/ai/repo-context/domain_glossary.md`: keep optional if empty; do not delete immediately.
 - `docs/ai/repo-context/codebase-index.md`: review overlap with `module_map.md` and `file_index.md` after repo-context contains real data.
