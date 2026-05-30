@@ -2,7 +2,7 @@
 
 This index routes work to the official V2 skills.
 
-Common rules for all skills are defined in [common-skill-rules.md](common-skill-rules.md).
+All skills follow `docs/ai/skills/common-skill-rules.md`.
 
 ## Repository
 
@@ -30,38 +30,3 @@ Common rules for all skills are defined in [common-skill-rules.md](common-skill-
 | `review-comments-create` | Produce actionable review comments. | After diff analysis. | review id, findings, severity | review workspace under `docs/ai/` | modifying source code; inventing findings; updating repo-context |
 | `review-followup` | Re-check changes after review feedback is addressed. | When a review receives updates or responses. | review id, previous findings, new diff | review workspace under `docs/ai/` | unrelated implementation; updating repo-context |
 | `review-final-handoff` | Summarize review outcome and residual risk. | At the end of a review workflow. | review id, final findings, verification notes | review workspace under `docs/ai/` | modifying source code; updating repo-context |
-
-## Markdown Change Reporting Rule
-
-Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
-
-## Markdown Files Changed
-
-For each file:
-
-- File path
-- Action: Created / Updated / Renamed / Deleted
-- Reason
-- Summary of changes
-- Whether the change affects future AI context
-
-## Context Read Order
-
-1. `docs/ai/skills/README.md`
-2. Selected skill file
-3. Active workspace:
-   - `docs/ai/pbi/STP-XXXX/*`
-   - or `docs/ai/reviews/STP-XXXX/*`
-4. repo-context routing docs:
-   - `docs/ai/repo-context/module_map.md`
-   - `docs/ai/repo-context/file_index.md`
-   - `docs/ai/repo-context/context_budget.md`
-5. Exact source files listed in phase, context, or diff
-
-Do not read the entire repository, all `docs/ai`, all skills, or the whole codebase unless explicitly required.
-
-Before reading any extra file, state:
-
-- file path
-- why it is needed
-- what decision, risk, or validation it helps evaluate

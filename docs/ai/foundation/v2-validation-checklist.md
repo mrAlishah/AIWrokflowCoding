@@ -2,13 +2,13 @@
 
 ## Status
 
-Needs Correction
+Ready
 
 ## Summary
 
-The V2 AI Operating System foundation mostly matches the approved baseline and the user's confirmed requirements. The current `docs/ai` structure defines shared markdown memory, stateless agents, execution-protocol skills, repository context ownership, PBI workflow, review workflow, quality rules, context cost rules, and markdown change reporting.
+The V2 AI Operating System foundation matches the approved baseline and the user's confirmed requirements. The current `docs/ai` structure defines shared markdown memory, stateless agents, execution-protocol skills, repository context ownership, PBI workflow, review workflow, quality rules, context cost rules, and markdown change reporting.
 
-The latest governance corrections and official workspace naming have been applied. Naming cleanup passed, but skill rule deduplication drift was found during re-validation. No source code inspection or source code modification was needed.
+The latest governance corrections, official workspace naming, conservative skill deduplication updates, and runtime simplification cleanup have been applied. No source code inspection or source code modification was needed.
 
 ## Checked Files
 
@@ -66,8 +66,11 @@ The latest governance corrections and official workspace naming have been applie
 - Other skills treat repo-context as read-only by explicit rule or by scoped write boundaries.
 - `pbi-plan-create` reads repo-context first and does not update repo-context.
 - `docs/ai/skills/README.md` lists all official Repository, PBI Workflow, and Review Workflow skills.
-- `docs/ai/skills/README.md` is useful for routing and references common skill rules.
+- `docs/ai/skills/README.md` is a short routing index and references common skill rules.
+- `docs/ai/skills/README.md` does not duplicate the full markdown change reporting rule or common context read order.
 - `docs/ai/START_HERE.md` provides the daily operational entry point and prevents broad documentation reads.
+- `docs/ai/START_HERE.md` defines the runtime path as `START_HERE.md -> skills/README.md -> selected skill -> active workspace -> repo-context only if needed`.
+- `docs/ai/START_HERE.md` forbids daily agents from reading foundation docs, setup prompts, or validation reports unless the task requires them.
 - PBI workspace structure is documented with the expected V2 names.
 - PBI workspace naming is consistent across baseline, PBI guide, validation report, workspace naming report, and PBI skills.
 - `00-approved-pbi.md` is documented as the source of truth.
@@ -96,15 +99,17 @@ The latest governance corrections and official workspace naming have been applie
 - Context read order is documented.
 - Extra file read justification is documented.
 - All official skills reference `common-skill-rules.md`.
+- Duplicated markdown change reporting sections were removed from official skill files because the rule is covered by `common-skill-rules.md`.
+- Skill-specific context read order sections were retained where they define execution sequencing and file boundaries.
 - `setup-prompts/` is separated from runtime usage and points agents back to `docs/ai/START_HERE.md`.
 - Retired naming migration prompts were removed from active and legacy setup prompts.
 - No references to retired naming migration documents remain in active docs or setup prompts.
+- `docs/ai/foundation/content-cleanup-plan.md` is marked as audit and cleanup planning, not daily runtime context.
+- Foundation governance now requires re-running this checklist after governance edits involving skills, naming, workflow, foundation, `START_HERE.md`, or common rules.
 
 ## Failed Checks
 
-- Phase 4 deduplication drift: official skill files still contain duplicated shared sections already defined in `docs/ai/skills/common-skill-rules.md`.
-- Duplicated sections found in skill files include `Context Read Order` and `Markdown Change Reporting Rule`.
-- Some skill files also repeat shared simplicity and comment-quality rules that should live in `common-skill-rules.md` unless they are scope-specific.
+None.
 
 ## Naming Drift
 
@@ -138,8 +143,7 @@ None.
 
 ## Inconsistent Rules
 
-- `docs/ai/skills/common-skill-rules.md` is referenced by every official skill, but duplicated common-rule sections still exist inside the skill files.
-- This does not break workflow semantics, but it increases token cost and creates future drift risk.
+None found.
 
 ## Source Code Modification Risk
 
@@ -155,10 +159,7 @@ The foundation, skills index, and common skill rules document the approved read 
 
 ## Required Corrections
 
-- Re-apply Phase 4 cleanup conservatively:
-  - Keep `This skill follows common-skill-rules.md.` in each skill.
-  - Remove duplicated `Context Read Order` and `Markdown Change Reporting Rule` sections from skill files.
-  - Keep all scope-specific rules, allowed file scopes, forbidden actions, workspace names, and workflow-specific protocols.
+None.
 
 ## Optional Improvements
 
@@ -167,4 +168,4 @@ The foundation, skills index, and common skill rules document the approved read 
 
 ## Final Recommendation
 
-Correct the Phase 4 skill deduplication drift, then re-run this validation checklist. Naming cleanup itself is valid and should not be reverted.
+V2 foundation is ready. Proceed with active workflow usage through `docs/ai/START_HERE.md`, or continue with the next approved governance improvement.
