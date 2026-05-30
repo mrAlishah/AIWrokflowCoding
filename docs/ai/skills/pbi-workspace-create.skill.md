@@ -142,17 +142,3 @@ Recommended sections:
 4. Add only placeholders to the remaining files.
 5. Create empty `phases/` and create `knowledge/` only if needed.
 6. Report all changed markdown files under `Markdown Files Changed`.
-
-## Markdown Change Reporting Rule
-
-Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
-
-## Markdown Files Changed
-
-For each file:
-
-- File path
-- Action: Created / Updated / Renamed / Deleted
-- Reason
-- Summary of changes
-- Whether the change affects future AI context
