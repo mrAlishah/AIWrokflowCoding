@@ -18,22 +18,25 @@ Use this workflow to review a coworker's branch with local git only.
 
 2. Run `review-diff-analysis`.
    - Uses `git diff BASE_BRANCH...HEAD`.
-   - Analyzes changed files, behavior, risks, scope, standards, comments, and test gaps.
+   - Analyzes changed files, affected modules, affected layers, behavior changes, risk areas, test impact, missing tests, files requiring deeper review, and files safe to ignore.
    - Updates `diff-analysis.md`.
 
 3. Run `review-comments-create`.
    - Creates English PR comments in `en_pr_comments.md`.
    - Creates Persian deep suggestions in `fa_pr_suggestions.md`.
    - Links both by `PR.No`.
+   - English comments include `PR.No`, status, severity, PR-ready comment, and suggested fix summary.
+   - Persian suggestions include deep reasoning, suggested fixes, pseudo-code, alternatives, personal notes, and whether to post or keep internal.
 
 4. Run `review-followup`.
    - Checks only comments with status `Planned`.
    - Marks comments `Done` only when fixed in the local diff.
    - Creates follow-up comments like `PR-001.1` when needed.
+   - Does not recheck `Done` or `Ignore` items unless explicitly requested.
 
 5. Run `review-final-handoff`.
    - Updates `handoff.md`.
-   - Summarizes the final review decision, remaining risks, and reviewer focus.
+   - Summarizes final review decision, blocking issues, non-blocking issues, resolved issues, ignored issues, remaining risks, next action, and ready-to-merge status.
 
 ## Rules
 
@@ -43,4 +46,3 @@ Use this workflow to review a coworker's branch with local git only.
 - Do not create PRs.
 - Do not push commits.
 - Report markdown changes under `Markdown Files Changed`.
-

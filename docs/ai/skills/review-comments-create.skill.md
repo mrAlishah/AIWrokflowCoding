@@ -15,6 +15,23 @@ Use after `review-diff-analysis` has identified findings and risks.
 - findings to convert into comments
 - severity or priority for each finding
 
+## Context Read Order
+
+1. `docs/ai/skills/README.md`
+2. `docs/ai/skills/review-comments-create.skill.md`
+3. Active workspace: `docs/ai/reviews/STP-XXXX/*`
+4. repo-context routing docs only if needed:
+   - `docs/ai/repo-context/module_map.md`
+   - `docs/ai/repo-context/file_index.md`
+   - `docs/ai/repo-context/context_budget.md`
+5. Exact source files referenced by diff-analysis findings, only if needed
+
+Before reading any extra file, state:
+
+- file path
+- why it is needed
+- what decision, risk, or validation it helps evaluate
+
 ## Allowed File Scope
 
 This skill may update only:
@@ -30,10 +47,9 @@ Each comment must have:
 
 - PR.No, such as `PR-001`
 - Status
-- File or area
-- Finding
-- Suggested change
-- Reason
+- Severity
+- English PR-ready comment
+- Suggested fix summary
 
 Allowed status values:
 
@@ -46,6 +62,16 @@ Allowed status values:
 Create Persian deep suggestions in `fa_pr_suggestions.md`.
 
 Each Persian suggestion must link to the English comment by `PR.No`.
+
+Each Persian suggestion must include:
+
+- PR.No
+- Deep Persian reasoning
+- Suggested fixes
+- Pseudo-code
+- Alternative solutions
+- Personal notes
+- Whether to post or keep internal
 
 ## Required Rules
 
@@ -65,3 +91,16 @@ Each Persian suggestion must link to the English comment by `PR.No`.
 4. Use only `Planned`, `Done`, or `Ignore` statuses.
 5. Report all changed markdown files under `Markdown Files Changed`.
 
+## Markdown Change Reporting Rule
+
+Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
+
+## Markdown Files Changed
+
+For each file:
+
+- File path
+- Action: Created / Updated / Renamed / Deleted
+- Reason
+- Summary of changes
+- Whether the change affects future AI context

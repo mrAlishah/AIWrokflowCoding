@@ -38,7 +38,7 @@ docs/ai/pbi/STP-XXXX/
   04_decision_log.md
   06_handoff.md
   phases/
-  knowledge/
+  knowledge/ only if needed
 ```
 
 ## File Templates
@@ -57,7 +57,9 @@ Recommended sections:
 
 ### `01-context.md`
 
-Create as an empty context placeholder.
+Create as an empty PBI-specific context placeholder.
+
+`01-context.md` must not be a copy of repo-context. It should contain only the repo-context excerpts, files, risks, constraints, and validation notes relevant to the active PBI when later updated by planning.
 
 Recommended sections:
 
@@ -68,6 +70,8 @@ Recommended sections:
 ### `implementation-plan.md`
 
 Create as a planning placeholder only.
+
+`implementation-plan.md` is a short roadmap. It must contain phase names, goals, status, and high-level sequencing only. It must not contain detailed technical implementation plans.
 
 Recommended sections:
 
@@ -85,10 +89,22 @@ Recommended sections:
 - Relevant Areas
 - Files To Inspect
 - Files Expected To Change
+- Phase To Source Files
+- Phase To Knowledge Files
+- Phase To Relevant Modules
+- Phase To Created Or Updated Files
+- Phase To Created Or Updated Functions
+- Function Purpose, Usage, Related Flow, Validation Focus, and Review Focus
 
 ### `04_decision_log.md`
 
 Create as an empty decision log.
+
+Use only for architecture, domain, and design decisions. Do not use for phase execution notes, review comments, todos, or temporary planning notes.
+
+### `knowledge/`
+
+`knowledge/` is optional. Create it only when the PBI has reusable PBI-level technical knowledge, overlapping use cases, contracts, mappings, flows, validation rules, or multi-phase concepts. Do not create unnecessary knowledge files for simple PBIs.
 
 Recommended sections:
 
@@ -119,6 +135,19 @@ Recommended sections:
 2. Create the workspace directory and required files.
 3. Record the approved PBI in `00-approved-pbi.md`.
 4. Add only placeholders to the remaining files.
-5. Create empty `phases/` and `knowledge/` directories.
+5. Create empty `phases/` and create `knowledge/` only if needed.
 6. Report all changed markdown files under `Markdown Files Changed`.
 
+## Markdown Change Reporting Rule
+
+Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
+
+## Markdown Files Changed
+
+For each file:
+
+- File path
+- Action: Created / Updated / Renamed / Deleted
+- Reason
+- Summary of changes
+- Whether the change affects future AI context

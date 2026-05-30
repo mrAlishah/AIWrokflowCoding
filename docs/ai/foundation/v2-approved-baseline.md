@@ -42,6 +42,20 @@ Skills are execution protocols.
 - It must be updated when stable repository knowledge changes.
 - It must not replace reading the current source before making code changes.
 
+### Knowledge Separation Rule
+
+Core V2 rule:
+
+```text
+Repository Knowledge != PBI Knowledge != Review Knowledge != Execution Memory != Architecture Decisions
+```
+
+- Repository Knowledge = reusable codebase knowledge under `docs/ai/repo-context/`.
+- PBI Knowledge = task-specific implementation knowledge under `docs/ai/pbi/STP-XXXX/`.
+- Review Knowledge = PR/code review knowledge under `docs/ai/reviews/STP-XXXX/`.
+- Execution Memory = phase files and follow-up logs that record what agents actually did.
+- Architecture Decisions = design, domain, and architecture decisions recorded in `04_decision_log.md`.
+
 ## PBI Workflow
 
 PBI work follows an implementation workflow from understanding to verification.
@@ -86,11 +100,46 @@ PR review work focuses on correctness, risk, and missing verification.
 - Keep new documentation concise and structured.
 - Move stable repeated knowledge into shared markdown instead of relying on conversation history.
 
+### Context Read Order
+
+Agents should read context in this order:
+
+1. `docs/ai/skills/README.md`
+2. Selected skill file
+3. Active workspace:
+   - `docs/ai/pbi/STP-XXXX/*`
+   - or `docs/ai/reviews/STP-XXXX/*`
+4. repo-context routing docs:
+   - `docs/ai/repo-context/module_map.md`
+   - `docs/ai/repo-context/file_index.md`
+   - `docs/ai/repo-context/context_budget.md`
+5. Exact source files listed in phase, context, or diff
+
+Agents must not read the entire repository, all `docs/ai`, all skills, or the whole codebase unless explicitly required.
+
+Before reading any extra file, the agent must state:
+
+- file path
+- why it is needed
+- what decision, risk, or validation it helps evaluate
+
 ## Markdown Change Reporting Rule
 
 Every response that creates or updates markdown must include a `Markdown Files Changed` section.
 
 The section must list every markdown file changed in the task.
+
+Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
+
+## Markdown Files Changed
+
+For each file:
+
+- File path
+- Action: Created / Updated / Renamed / Deleted
+- Reason
+- Summary of changes
+- Whether the change affects future AI context
 
 ## Official Skill List
 
@@ -106,4 +155,3 @@ Initial approved skill categories:
 - `markdown-change-reporting`: report all markdown documentation changes.
 
 No skill files are created in this baseline step.
-

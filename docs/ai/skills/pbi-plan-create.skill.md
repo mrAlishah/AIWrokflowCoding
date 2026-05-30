@@ -34,6 +34,23 @@ This skill may inspect source code only when repo-context is missing, incomplete
 
 If source inspection is needed, keep it targeted to the PBI and summarize findings in the PBI workspace.
 
+## Context Read Order
+
+1. `docs/ai/skills/README.md`
+2. `docs/ai/skills/pbi-plan-create.skill.md`
+3. Active workspace: `docs/ai/pbi/STP-XXXX/*`
+4. repo-context routing docs:
+   - `docs/ai/repo-context/module_map.md`
+   - `docs/ai/repo-context/file_index.md`
+   - `docs/ai/repo-context/context_budget.md`
+5. Exact source files listed in phase, context, or repo-context gaps
+
+Before reading any extra file, state:
+
+- file path
+- why it is needed
+- what decision, risk, or validation it helps evaluate
+
 ## Allowed File Scope
 
 This skill may update only:
@@ -87,6 +104,8 @@ Update with:
 - source inspection notes, only if inspection was needed
 - open questions or risks
 
+`01-context.md` must not be a copy of repo-context. Include only excerpts, files, risks, constraints, and validation notes relevant to the active PBI.
+
 ### `implementation-plan.md`
 
 Update with:
@@ -98,6 +117,8 @@ Update with:
 - verification plan
 - handoff expectations
 
+Keep this file as a short roadmap with phase names, goals, status, and high-level sequencing only. Detailed technical implementation plans belong in `phases/*.md`.
+
 ### `codebase-index.md`
 
 Update with:
@@ -107,6 +128,16 @@ Update with:
 - files expected to change
 - files expected to stay unchanged
 - search hints
+- Phase to Source Files
+- Phase to Knowledge Files
+- Phase to Relevant Modules
+- Phase to Created or Updated Files
+- Phase to Created or Updated Functions
+- Function to Purpose
+- Function to Usage
+- Function to Related Flow
+- Function to Validation Focus
+- Function to Review Focus
 
 ### `phases/*.md`
 
@@ -118,9 +149,13 @@ Each phase starts as `Planned` unless it is a placeholder for later planning, in
 
 Add only when the PBI needs extra task-specific durable knowledge that does not belong in repo-context.
 
+`knowledge/` is optional. Create knowledge files only when the PBI has reusable PBI-level technical knowledge, overlapping use cases, contracts, mappings, flows, validation rules, or multi-phase concepts. Do not create unnecessary knowledge files for simple PBIs.
+
 ### `04_decision_log.md`
 
 Update only when actual planning decisions exist.
+
+Use only for architecture, domain, and design decisions. Do not use for phase execution notes, review comments, todos, or temporary planning notes.
 
 ## Forbidden Actions
 
@@ -142,3 +177,16 @@ Update only when actual planning decisions exist.
 7. Record decisions only when decisions exist.
 8. Report all changed markdown files under `Markdown Files Changed`.
 
+## Markdown Change Reporting Rule
+
+Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
+
+## Markdown Files Changed
+
+For each file:
+
+- File path
+- Action: Created / Updated / Renamed / Deleted
+- Reason
+- Summary of changes
+- Whether the change affects future AI context

@@ -25,6 +25,23 @@ git diff BASE_BRANCH...HEAD
 
 `BASE_BRANCH` must be replaced with the requested base branch. `HEAD` represents the branch being reviewed.
 
+## Context Read Order
+
+1. `docs/ai/skills/README.md`
+2. `docs/ai/skills/review-diff-analysis.skill.md`
+3. Active workspace: `docs/ai/reviews/STP-XXXX/*`
+4. repo-context routing docs only if needed:
+   - `docs/ai/repo-context/module_map.md`
+   - `docs/ai/repo-context/file_index.md`
+   - `docs/ai/repo-context/context_budget.md`
+5. Exact source files listed in the local diff
+
+Before reading any extra file, state:
+
+- file path
+- why it is needed
+- what decision, risk, or validation it helps evaluate
+
 ## Allowed File Scope
 
 This skill may update only:
@@ -37,12 +54,19 @@ This skill may update only:
 Analyze:
 
 - changed files
+- affected modules
+- affected layers
+- risk areas
 - behavior changes
 - correctness risks
 - scope risks
 - architecture boundary concerns
 - repository convention issues
 - comment quality
+- test impact
+- missing tests
+- files requiring deeper review
+- files safe to ignore
 - test and validation gaps
 
 ## Required Rules
@@ -63,3 +87,16 @@ Analyze:
 4. Update `diff-analysis.md`.
 5. Report all changed markdown files under `Markdown Files Changed`.
 
+## Markdown Change Reporting Rule
+
+Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
+
+## Markdown Files Changed
+
+For each file:
+
+- File path
+- Action: Created / Updated / Renamed / Deleted
+- Reason
+- Summary of changes
+- Whether the change affects future AI context

@@ -27,12 +27,19 @@ This skill may update only:
 Update `handoff.md` with:
 
 - review summary
-- final decision
+- final review decision
+- blocking issues
+- non-blocking issues
+- resolved issues
+- ignored issues
 - comment status summary
 - remaining planned comments, if any
 - ignored comments and reasons, if any
 - validation performed
 - residual risks
+- remaining risks
+- next action
+- ready to merge: Yes/No
 - recommended reviewer focus
 
 ## Required Rules
@@ -53,3 +60,16 @@ Update `handoff.md` with:
 4. Update `handoff.md`.
 5. Report all changed markdown files under `Markdown Files Changed`.
 
+## Markdown Change Reporting Rule
+
+Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
+
+## Markdown Files Changed
+
+For each file:
+
+- File path
+- Action: Created / Updated / Renamed / Deleted
+- Reason
+- Summary of changes
+- Whether the change affects future AI context

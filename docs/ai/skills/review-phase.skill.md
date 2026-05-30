@@ -24,6 +24,23 @@ Read:
 - implementation diff
 - changed files needed to understand the diff
 
+## Context Read Order
+
+1. `docs/ai/skills/README.md`
+2. `docs/ai/skills/review-phase.skill.md`
+3. Active workspace: `docs/ai/pbi/STP-XXXX/*`
+4. repo-context routing docs only if needed:
+   - `docs/ai/repo-context/module_map.md`
+   - `docs/ai/repo-context/file_index.md`
+   - `docs/ai/repo-context/context_budget.md`
+5. Exact source files listed in the phase, context, or diff
+
+Before reading any extra file, state:
+
+- file path
+- why it is needed
+- what decision, risk, or validation it helps evaluate
+
 ## Allowed File Scope
 
 This skill may update review notes in the PBI workspace if the workflow requires durable review memory.
@@ -40,6 +57,9 @@ Check:
 - repository standards and naming conventions
 - simplicity, minimal files, and minimal lines
 - comment quality
+- important intent, business logic, validation rules, technical decisions, and compatibility comments
+- obvious, noisy, or line-by-line comments
+- over-engineering and broad refactoring
 - test coverage or verification gaps
 - regressions, edge cases, and maintainability risks
 
@@ -68,3 +88,16 @@ Check:
 5. If no issues are found, state that clearly.
 6. Report all changed markdown files under `Markdown Files Changed`.
 
+## Markdown Change Reporting Rule
+
+Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
+
+## Markdown Files Changed
+
+For each file:
+
+- File path
+- Action: Created / Updated / Renamed / Deleted
+- Reason
+- Summary of changes
+- Whether the change affects future AI context
