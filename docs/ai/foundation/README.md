@@ -15,6 +15,14 @@ Foundation documents define the approved operating rules for the AI Multi-Agent 
 
 - [v2-governance-corrections.md](v2-governance-corrections.md)
 
+## Audit / Cleanup Planning
+
+- [content-cleanup-plan.md](content-cleanup-plan.md): not part of daily runtime context
+
+## Governance Maintenance Rule
+
+After any governance edit involving skills, naming, workflow, foundation, `START_HERE.md`, or common rules, re-run the V2 validation checklist.
+
 ## Scope
 
 Foundation documentation covers:

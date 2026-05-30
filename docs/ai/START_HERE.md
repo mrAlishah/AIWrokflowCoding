@@ -10,6 +10,12 @@ Daily agent usage starts here.
 
 Do not read all docs, all skills, or the whole repository by default.
 
+Daily runtime path:
+
+```text
+START_HERE.md -> skills/README.md -> selected skill -> active workspace -> repo-context only if needed
+```
+
 ## Routing
 
 | Task | Route |
@@ -24,4 +30,7 @@ Do not read all docs, all skills, or the whole repository by default.
 - Use one selected skill at a time.
 - Read active workspace files only when the selected skill requires them.
 - Read repo-context or source files only when the selected skill allows it.
+- Do not read `docs/ai/foundation/*` unless the task is AI OS maintenance.
+- Do not read `setup-prompts/*` unless the task is setup or prompt maintenance.
+- Do not read validation reports unless the task is validation.
 - Keep changes minimal and report markdown changes.
