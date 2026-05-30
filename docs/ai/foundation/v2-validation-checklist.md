@@ -2,19 +2,20 @@
 
 ## Status
 
-Ready With Corrections
+Ready
 
 ## Summary
 
-The V2 foundation is structurally present and the main workflow boundaries are documented. The repository knowledge layer, skills index, PBI workflow, and review workflow files exist with the expected naming and broad scope rules.
+The V2 AI Operating System foundation matches the approved baseline and the user's confirmed requirements. The current `docs/ai` structure defines shared markdown memory, stateless agents, execution-protocol skills, repository context ownership, PBI workflow, review workflow, quality rules, context cost rules, and markdown change reporting.
 
-Corrections are still needed for stricter checklist compliance around knowledge separation terminology, markdown reporting format, context/token-cost rules, detailed comment standards, and a few workflow-specific details.
+The latest governance corrections have been applied. No source code inspection or source code modification was needed.
 
 ## Checked Files
 
 - `docs/ai/foundation/v2-approved-baseline.md`
 - `docs/ai/README.md`
 - `docs/ai/skills/README.md`
+- `docs/ai/skills/common-skill-rules.md`
 - `docs/ai/repo-context/README.md`
 - `docs/ai/pbi/README.md`
 - `docs/ai/reviews/README.md`
@@ -33,35 +34,65 @@ Corrections are still needed for stricter checklist compliance around knowledge 
 
 ## Passed Checks
 
-- Required top-level folders exist under `docs/ai/`.
-- `v2-approved-baseline.md` exists and defines Markdown files as shared memory, agents as stateless workers, skills as execution protocols, and repo-context as reusable repository knowledge.
-- `docs/ai/repo-context/` contains the expected repo-context files.
-- `repo-context-update` is documented as the only skill allowed to update `docs/ai/repo-context/*`.
-- Other current skills either explicitly forbid repo-context updates or are scoped away from repo-context.
+- Required top-level folders exist:
+  - `docs/ai/`
+  - `docs/ai/foundation/`
+  - `docs/ai/repo-context/`
+  - `docs/ai/skills/`
+  - `docs/ai/pbi/`
+  - `docs/ai/reviews/`
+- The system clearly defines:
+  - Markdown Files = Shared Memory
+  - Agents = Stateless Workers
+  - Skills = Execution Protocols
+  - `Repository Knowledge != PBI Knowledge != Review Knowledge != Execution Memory != Architecture Decisions`
+- `docs/ai/repo-context/` contains the expected files:
+  - `README.md`
+  - `architecture.md`
+  - `module_map.md`
+  - `file_index.md`
+  - `codebase-index.md`
+  - `domain_glossary.md`
+  - `coding_standards.md`
+  - `context_budget.md`
+  - `test_strategy.md`
+  - `workflow.md`
+- repo-context is defined as reusable repository knowledge.
+- `repo-context-update` is documented as the only skill allowed to update repo-context.
+- Other skills treat repo-context as read-only by explicit rule or by scoped write boundaries.
 - `pbi-plan-create` reads repo-context first and does not update repo-context.
 - `docs/ai/skills/README.md` lists all official Repository, PBI Workflow, and Review Workflow skills.
-- PBI workspace structure uses the expected V2 file and folder names.
-- `pbi-workspace-create` creates a skeleton only and forbids planning, source inspection, and source modification.
-- Phase files are defined as plan plus execution memory.
-- Phase statuses are limited to `Planned Only`, `Planned`, `In Progress`, and `Done`.
-- Review workspace structure uses `docs/ai/reviews/STP-XXXX/`.
-- Review workflow file names match the requested V2 names.
-- Review workflow uses local git diff and `git diff BASE_BRANCH...HEAD`.
-- Review workflow forbids PR APIs, PR creation, pushes, and source code modification.
-- No outdated official review names such as `00_review_brief.md`, `04_pr_comments.md`, or `05_suggestions.md` were found.
+- `docs/ai/skills/README.md` is useful for routing and references common skill rules.
+- PBI workspace structure is documented with the expected V2 names.
+- `00-approved-pbi.md` is documented as the source of truth.
+- `01-context.md` is documented as PBI-specific and not a repo-context copy.
+- `implementation-plan.md` is documented as a short roadmap, not detailed implementation.
+- Phase files are documented as plan plus execution memory.
+- Phase statuses are exactly:
+  - `Planned Only`
+  - `Planned`
+  - `In Progress`
+  - `Done`
+- `knowledge/` is documented as optional and only for reusable PBI-level knowledge.
+- `04_decision_log.md` is documented as architecture, domain, and design decisions only.
+- `codebase-index.md` routes phases, source files, knowledge files, functions, purpose, usage, validation focus, and review focus.
+- PBI skills enforce the expected workspace, planning, implementation, review, fix, and handoff boundaries.
+- Review workspace structure is documented with the expected V2 names.
+- Review workflow uses local git diff only and `git diff BASE_BRANCH...HEAD`.
+- Review branch checkout is documented as a manual user action.
+- Review skills forbid external PR APIs, PR creation, pushes, and source code modification.
+- Review skills write only under `docs/ai/reviews/STP-XXXX/*`.
+- Review skills define English PR comments, Persian suggestions, follow-up status handling, and final handoff requirements.
+- Implementation and review skills enforce repository conventions, coding standards, architecture boundaries, comment standards, simple code, minimal files, minimal lines, no over-engineering, and no broad refactoring.
+- Comment rules cover important intent, business logic, validation rules, technical decisions, and avoiding obvious or noisy comments.
+- Context and token-cost rules forbid reading the entire repository, all `docs/ai`, all skills, or the whole codebase unless explicitly required.
+- Context read order is documented.
+- Extra file read justification is documented.
+- All official skills include the markdown change reporting template.
 
 ## Failed Checks
 
-- The baseline does not explicitly define the separation statement: `Repository Knowledge != PBI Knowledge != Review Knowledge != Execution Memory != Architecture Decisions`.
-- `01-context.md` is not explicitly described as PBI-specific and not a repo-context copy.
-- `implementation-plan.md` is not explicitly constrained to be a short roadmap rather than detailed implementation.
-- `knowledge/` is not explicitly described as optional and only for reusable PBI knowledge.
-- `04_decision_log.md` is not explicitly limited to architecture, domain, and design decisions.
-- `codebase-index.md` does not yet explicitly route phases, source files, knowledge files, functions, purpose, usage, validation focus, and review focus.
-- `review-diff-analysis` does not explicitly mention affected modules or test impact, although it covers changed files and validation gaps.
-- `review-comments-create` does not explicitly require Persian suggestions to include suggested fixes, pseudo-code, alternatives, and personal notes.
-- `review-final-handoff` does not explicitly require blocking issues, non-blocking issues, resolved issues, and next action.
-- Relevant skills report markdown changes, but they do not include the exact required `## Markdown Files Changed` template with action, reason, summary, and future-context impact.
+None.
 
 ## Naming Drift
 
@@ -88,52 +119,38 @@ Expected review names are used:
 - `followup-log.md`
 - `handoff.md`
 
+Older review names such as `00_review_brief.md`, `04_pr_comments.md`, and `05_suggestions.md` are not used as official structure.
+
 ## Missing Files
 
 None.
 
 ## Inconsistent Rules
 
-- The broad markdown reporting rule exists, but the stricter required reporting block is not consistently defined in each relevant skill.
-- Comment quality rules exist in implementation and fix skills, but the full checklist language is not present: comment important intent, business logic, validation rules, and technical decisions; avoid obvious or noisy comments.
-- Context optimization exists broadly, but the selected-skill read order is not explicitly documented across skills.
+None found.
 
 ## Source Code Modification Risk
 
 Low.
 
-The review workflow forbids source modification. PBI implementation and fix skills may modify source files only within selected phase or review-finding scope. Documentation-only and planning skills forbid source modification.
+Documentation-only, planning, and review workflow skills forbid source code modification. Implementation and fix skills allow source changes only within selected phase or review-finding scope.
 
 ## Token Cost / Context Risk
 
-Medium.
+Low.
 
-The foundation and repo-context rules discourage broad reads, full repository trees, and unrelated source inspection. However, the checklist-required read order is not fully documented:
-
-1. `skills/README.md`
-2. selected skill
-3. active workspace
-4. repo-context routing docs
-5. exact source files listed in phase, context, or diff
-
-Skills also do not explicitly require agents to justify extra file reads by stating file path, why it is needed, and what decision it helps make.
+The foundation, skills index, and common skill rules document the approved read order and forbid broad repository or documentation reads unless explicitly required. Relevant skills also require agents to justify extra file reads.
 
 ## Required Corrections
 
-- Add the explicit knowledge separation statement to the foundation baseline.
-- Strengthen PBI workspace rules for `01-context.md`, `implementation-plan.md`, `knowledge/`, `04_decision_log.md`, and `codebase-index.md`.
-- Add the exact `## Markdown Files Changed` reporting template to all relevant skills.
-- Add explicit context read-order and extra-file-read justification rules.
-- Expand comment quality rules to cover intent, business logic, validation rules, technical decisions, and noisy comments.
-- Expand review skill details for affected modules, test impact, Persian suggestions, and final handoff categories.
+None.
 
 ## Optional Improvements
 
-- Add a short common skill footer template to reduce drift across future skills.
-- Add a central context-budget rule reference from each workflow guide.
-- Add examples for `PR.No`, phase file layout, and final handoff format.
+- Add short examples for phase file layout, `PR.No` comment format, and `06_handoff.md` output.
+- Add a future validation checklist that can be reused after every governance update.
 
 ## Final Recommendation
 
-Proceed to a correction step before using V2 as the final approved operating baseline. The current foundation is usable for routing and workflow structure, but it is not fully compliant with the stricter validation checklist.
+V2 foundation is ready. Proceed to the next approved V2 implementation step or begin using the operating system with the documented skills and governance rules.
 
