@@ -1,4 +1,4 @@
-# Step 0 — Create Foundation Baseline
+# Step 0 - Create Foundation Baseline
 
 You are implementing the AI Multi-Agent Coding Operating System V2.
 

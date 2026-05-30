@@ -1,4 +1,4 @@
-# Step 1 — Create Repository Knowledge Layer
+# Step 1 - Create Repository Knowledge Layer
 
 Implement Step 1 of V2.
 
