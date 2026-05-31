@@ -9,6 +9,7 @@ All skills follow `docs/ai/skills/common-skill-rules.md`.
 | Skill | Purpose | When To Use | Required Parameters | Allowed File Scope | Forbidden Actions |
 | --- | --- | --- | --- | --- | --- |
 | `repo-context-update` | Refresh reusable repository knowledge. | Use only when explicitly invoked to update repo-context. | update reason, repository areas to inspect | `docs/ai/repo-context/*` | modifying source code; updating non repo-context files; dumping full repository trees |
+| `docs-ai-cleanup-audit` | Audit `docs/ai` for cleanup, stale content, duplicated governance, and token-cost risk. | Monthly/quarterly cleanup review, after governance changes, or when docs context bloat is suspected. | `CLEANUP_SCOPE`, `CLEANUP_MODE`, `TARGET_AREA` | cleanup plan or cleanup run report under `docs/ai/foundation/`; skill index only when registering | modifying source code; deleting, archiving, renaming, or rewriting governance |
 
 ## PBI Workflow
 
@@ -30,3 +31,18 @@ All skills follow `docs/ai/skills/common-skill-rules.md`.
 | `review-comments-create` | Produce actionable review comments. | After diff analysis. | review id, findings, severity | review workspace under `docs/ai/` | modifying source code; inventing findings; updating repo-context |
 | `review-followup` | Re-check changes after review feedback is addressed. | When a review receives updates or responses. | review id, previous findings, new diff | review workspace under `docs/ai/` | unrelated implementation; updating repo-context |
 | `review-final-handoff` | Summarize review outcome and residual risk. | At the end of a review workflow. | review id, final findings, verification notes | review workspace under `docs/ai/` | modifying source code; updating repo-context |
+
+## Cleanup Audit Example
+
+```text
+Use skill: docs-ai-cleanup-audit
+
+Parameters:
+CLEANUP_SCOPE: full-docs-ai
+CLEANUP_MODE: audit-only
+TARGET_AREA: docs/ai
+MAX_INSPECTION_DEPTH: normal
+INCLUDE_DONE_WORKSPACES: no
+OUTPUT_MODE: append-to-cleanup-plan
+ALLOW_MARKDOWN_UPDATES: yes
+```
