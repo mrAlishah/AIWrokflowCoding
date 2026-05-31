@@ -8,7 +8,7 @@ Ready
 
 The V2 AI Operating System foundation matches the approved baseline and the user's confirmed requirements. The current `docs/ai` structure defines shared markdown memory, stateless agents, execution-protocol skills, repository context ownership, PBI workflow, review workflow, quality rules, context cost rules, and markdown change reporting.
 
-The latest governance corrections, official workspace naming, conservative skill deduplication updates, and runtime simplification cleanup have been applied. No source code inspection or source code modification was needed.
+The latest governance corrections, official workspace naming, conservative skill deduplication updates, runtime simplification cleanup, and `docs-ai-cleanup-audit` skill registration have been applied. No source code inspection or source code modification was needed.
 
 ## Checked Files
 
@@ -18,6 +18,7 @@ The latest governance corrections, official workspace naming, conservative skill
 - `docs/ai/README.md`
 - `docs/ai/skills/README.md`
 - `docs/ai/skills/common-skill-rules.md`
+- `docs/ai/skills/docs-ai-cleanup-audit.skill.md`
 - `docs/ai/repo-context/README.md`
 - `docs/ai/pbi/README.md`
 - `docs/ai/reviews/README.md`
@@ -63,6 +64,11 @@ The latest governance corrections, official workspace naming, conservative skill
   - `workflow.md`
 - repo-context is defined as reusable repository knowledge.
 - `repo-context-update` is documented as the only skill allowed to update repo-context.
+- `docs-ai-cleanup-audit` is documented as audit/planning only for long-term `docs/ai` cleanup.
+- `docs-ai-cleanup-audit` is registered in `docs/ai/skills/README.md`.
+- `docs-ai-cleanup-audit` is routed from `docs/ai/START_HERE.md` only for long-term docs cleanup or context-cost audit.
+- `docs-ai-cleanup-audit` recommends merge, archive, or delete actions only and does not execute them.
+- `docs-ai-cleanup-audit` forbids source code modification, markdown deletion, archiving, renaming, active governance rewriting, repo-context content updates, and PBI/Review workspace creation.
 - Other skills treat repo-context as read-only by explicit rule or by scoped write boundaries.
 - `pbi-plan-create` reads repo-context first and does not update repo-context.
 - `docs/ai/skills/README.md` lists all official Repository, PBI Workflow, and Review Workflow skills.
@@ -105,6 +111,7 @@ The latest governance corrections, official workspace naming, conservative skill
 - Retired naming migration prompts were removed from active and legacy setup prompts.
 - No references to retired naming migration documents remain in active docs or setup prompts.
 - `docs/ai/foundation/content-cleanup-plan.md` is marked as audit and cleanup planning, not daily runtime context.
+- `docs/ai/foundation/content-cleanup-plan.md` references `docs-ai-cleanup-audit` as the future cleanup audit path.
 - Foundation governance now requires re-running this checklist after governance edits involving skills, naming, workflow, foundation, `START_HERE.md`, or common rules.
 
 ## Failed Checks

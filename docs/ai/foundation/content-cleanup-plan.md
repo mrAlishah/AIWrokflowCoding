@@ -4,6 +4,8 @@
 
 This plan classifies current `docs/ai/` files by operational role so future cleanup can reduce daily context cost without losing governance, shared memory, or audit value.
 
+Use `docs-ai-cleanup-audit` for future cleanup audits. The skill recommends merge, archive, or delete actions only; it does not execute them.
+
 Primary cleanup direction:
 
 - Keep daily agent routing small.
@@ -48,6 +50,7 @@ Primary cleanup direction:
 | `docs/ai/skills/README.md` | Active Runtime | Yes | No | No | No | High: central routing index. | Keep and keep short. |
 | `docs/ai/skills/common-skill-rules.md` | Active Runtime | Yes | No | No | No | High: shared execution constraints. | Keep; use to reduce duplicated skill text later. |
 | `docs/ai/skills/repo-context-update.skill.md` | Active Runtime | Sometimes | No | No | No | High: only repo-context writer. | Keep. |
+| `docs/ai/skills/docs-ai-cleanup-audit.skill.md` | Active Runtime | Sometimes | No | No | No | Medium: official audit-only cleanup skill. | Keep; use only for long-term `docs/ai` cleanup auditing, not daily PBI/review work. |
 | `docs/ai/skills/pbi-workspace-create.skill.md` | Active Runtime | Sometimes | No | No | No | High: creates PBI workspace. | Keep. |
 | `docs/ai/skills/pbi-plan-create.skill.md` | Active Runtime | Sometimes | No | No | No | High: creates PBI plan and context. | Keep. |
 | `docs/ai/skills/implementation-phase.skill.md` | Active Runtime | Sometimes | No | No | No | High: controls scoped implementation. | Keep. |
@@ -87,15 +90,14 @@ Primary cleanup direction:
 - `docs/ai/pbi/README.md`
 - `docs/ai/reviews/README.md`
 
-## Noted Gap
+## Resolved Entry Point
 
-`docs/ai/START_HERE.md` is not present in the current file inventory. If daily workflow simplicity remains the top priority, create or restore it as the first runtime entry point.
+`docs/ai/START_HERE.md` is present and is the first runtime entry point.
 
 ## Recommended Cleanup Order
 
-1. Create or restore `docs/ai/START_HERE.md`.
-2. Update `docs/ai/foundation/README.md` to label active governance vs audit/history.
-3. Keep `docs/ai/skills/README.md` focused on routing only.
-4. Use `docs/ai/skills/common-skill-rules.md` to reduce duplicated skill rules later.
-5. Populate repo-context with real repository knowledge before merging repo-context files.
-6. Archive history files only after validation confirms the active baseline covers their decisions.
+1. Keep `docs/ai/START_HERE.md` as the first runtime entry point.
+2. Keep `docs/ai/skills/README.md` focused on routing only.
+3. Use `docs-ai-cleanup-audit` for future cleanup audits.
+4. Populate repo-context with real repository knowledge before merging repo-context files.
+5. Archive history files only after validation confirms the active baseline covers their decisions.
