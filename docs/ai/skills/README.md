@@ -17,6 +17,7 @@ All skills follow `docs/ai/skills/common-skill-rules.md`.
 | --- | --- | --- | --- | --- | --- |
 | `pbi-workspace-create` | Create the working documentation space for a PBI. | Start of a PBI workflow. | PBI id, title, source request | PBI workspace under `docs/ai/` | modifying source code; updating repo-context |
 | `pbi-plan-create` | Turn a PBI into a scoped implementation plan. | After PBI workspace creation and before implementation. | PBI id, acceptance criteria, constraints | PBI workspace under `docs/ai/` | modifying source code; updating repo-context |
+| `policy-plan-update` | Sync tagged user answers or policy changes into related planning files. | After a user answers an open question or changes PBI/review policy before implementation continues. | `SCOPE`, `STP_ID`, `INPUT_TAG`, `INPUT_SOURCE`, `UPDATE_MODE`, `USER_INPUT` | active workspace files related to selected scope | modifying source code; running implementation or review; updating repo-context unless allowed by scope |
 | `implementation-phase` | Implement the approved PBI plan. | When the plan is ready for code or documentation changes. | PBI id, approved plan, target files | files allowed by the PBI plan | unrelated refactors; updating repo-context; changing scope without approval |
 | `review-phase` | Review implemented PBI work before fixes. | After implementation and before final fixes. | PBI id, changed files, acceptance criteria | PBI workspace and changed files | broad rewrites; updating repo-context |
 | `fix-phase` | Apply targeted fixes from review findings. | When review-phase identifies required fixes. | PBI id, review findings, target fixes | files required for approved fixes | unrelated cleanup; updating repo-context |
@@ -45,4 +46,18 @@ MAX_INSPECTION_DEPTH: normal
 INCLUDE_DONE_WORKSPACES: no
 OUTPUT_MODE: append-to-cleanup-plan
 ALLOW_MARKDOWN_UPDATES: yes
+```
+
+## Policy / Plan Update Example
+
+```text
+Use skill: policy-plan-update
+
+Parameters:
+SCOPE: pbi
+STP_ID: STP-XXXX
+INPUT_TAG: USER_ANSWER
+INPUT_SOURCE: docs/ai/pbi/STP-XXXX/01-context.md
+UPDATE_MODE: sync-related-files
+USER_INPUT: [The user answered an open question or added a new rule/policy.]
 ```
