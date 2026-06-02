@@ -22,6 +22,7 @@ START_HERE.md -> skills/README.md -> selected skill -> active workspace -> repo-
 | --- | --- |
 | PBI task | `docs/ai/skills/README.md` -> selected PBI skill |
 | Review task | `docs/ai/skills/README.md` -> selected review skill |
+| User answer or policy update | `policy-plan-update` |
 | Repo knowledge update | `repo-context-update` |
 | Long-term docs cleanup audit | `docs-ai-cleanup-audit` |
 | AI OS maintenance | `docs/ai/foundation/v2-approved-baseline.md` and relevant foundation docs |
@@ -34,6 +35,7 @@ START_HERE.md -> skills/README.md -> selected skill -> active workspace -> repo-
 - Do not read `docs/ai/foundation/*` unless the task is AI OS maintenance.
 - Do not read `setup-prompts/*` unless the task is setup or prompt maintenance.
 - Do not read validation reports unless the task is validation.
+- For tagged user answers or policy changes that must sync into planning files, use `policy-plan-update`.
 - For long-term `docs/ai` cleanup or context-cost audit, use `docs-ai-cleanup-audit`.
 - Do not use cleanup audits during normal PBI implementation or PR review.
 - Keep changes minimal and report markdown changes.
