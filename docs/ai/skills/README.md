@@ -17,10 +17,11 @@ All skills follow `docs/ai/skills/common-skill-rules.md`.
 | --- | --- | --- | --- | --- | --- |
 | `pbi-workspace-create` | Create the working documentation space for a PBI. | Start of a PBI workflow. | PBI id, title, source request | PBI workspace under `docs/ai/` | modifying source code; updating repo-context |
 | `pbi-plan-create` | Turn a PBI into a scoped implementation plan. | After PBI workspace creation and before implementation. | PBI id, acceptance criteria, constraints | PBI workspace under `docs/ai/` | modifying source code; updating repo-context |
-| `policy-plan-update` | Sync tagged user answers or policy changes into related planning files. | After a user answers an open question or changes PBI/review policy before implementation continues. | `SCOPE`, `STP_ID`, `INPUT_TAG`, `INPUT_SOURCE`, `UPDATE_MODE`, `USER_INPUT` | active workspace files related to selected scope | modifying source code; running implementation or review; updating repo-context unless allowed by scope |
+| `policy-plan-update` | Sync tagged user answers or policy changes into related planning files. | After a user answers an open question, changes policy, or updates RF statuses. | `SCOPE`, `STP_ID`, `INPUT_TAG`; extra inputs only when the tag requires them | active workspace files related to selected scope | modifying source code; running implementation or review; updating repo-context unless allowed by scope |
 | `implementation-phase` | Implement the approved PBI plan. | When the plan is ready for code or documentation changes. | PBI id, approved plan, target files | files allowed by the PBI plan | unrelated refactors; updating repo-context; changing scope without approval |
 | `review-phase` | Review implemented PBI work before fixes. | After implementation and before final fixes. | PBI id, changed files, acceptance criteria | PBI workspace and changed files | broad rewrites; updating repo-context |
 | `fix-phase` | Apply targeted fixes from review findings. | When review-phase identifies required fixes. | PBI id, review findings, target fixes | files required for approved fixes | unrelated cleanup; updating repo-context |
+| `review-feedback-analysis` | Analyze human PR comments after a PBI PR exists. | After post-PR human review feedback is received and before RF fixes are planned. | `PBI_ID`; optional feedback input | PBI workspace review-feedback and RF phase files | modifying source code; executing fixes; creating PBI workspaces |
 | `pbi-final-handoff` | Summarize completion and verification. | At the end of a PBI workflow. | PBI id, summary, verification results | PBI workspace under `docs/ai/` | modifying source code; updating repo-context |
 
 ## Review Workflow
@@ -61,3 +62,10 @@ INPUT_SOURCE: docs/ai/pbi/STP-XXXX/01-context.md
 UPDATE_MODE: sync-related-files
 USER_INPUT: [The user answered an open question or added a new rule/policy.]
 ```
+
+## Review Feedback Shortcuts
+
+- `review-feedback-analysis` analyzes human PR comments after a PBI PR exists.
+- `policy-plan-update` with `INPUT_TAG: USER_REVIEW_FEEDBACK` syncs `Required`, `Ignored`, `Done`, and `Blocked` RF statuses into plan and routing files.
+- `fix-phase` with `RF_ID` applies one approved RF fix.
+- `review-phase` with `RF_ID` verifies one RF fix.

@@ -30,9 +30,9 @@ This skill keeps workspace memory consistent after the user answers an open ques
 - `SCOPE`
 - `STP_ID`
 - `INPUT_TAG`
-- `INPUT_SOURCE`
-- `UPDATE_MODE`
-- `USER_INPUT`
+- `INPUT_SOURCE`, except when `SCOPE: pbi` and `INPUT_TAG: USER_REVIEW_FEEDBACK`
+- `UPDATE_MODE`, except when `SCOPE: pbi` and `INPUT_TAG: USER_REVIEW_FEEDBACK`
+- `USER_INPUT`, except when the selected `INPUT_TAG` is fully represented in resolved workspace files
 
 Allowed `SCOPE` values:
 
@@ -47,6 +47,42 @@ Allowed `UPDATE_MODE` values:
 - `context-only`
 - `plan-only`
 - `conflict-check-only`
+
+## Supported Input Tags
+
+- `USER_ANSWER`
+- `USER_REVIEW_FEEDBACK`
+
+## USER_REVIEW_FEEDBACK Invocation
+
+Preferred minimal invocation:
+
+```text
+Use skill: policy-plan-update
+
+Parameters:
+
+SCOPE:
+pbi
+
+STP_ID:
+STP-8019
+
+INPUT_TAG:
+USER_REVIEW_FEEDBACK
+```
+
+When `SCOPE: pbi` and `INPUT_TAG: USER_REVIEW_FEEDBACK`, do not ask the user for `INPUT_SOURCE`, `UPDATE_MODE`, `review-feedback.md` path, or RF file paths.
+
+Resolve automatically:
+
+```text
+docs/ai/pbi/{STP_ID}/phases/review-feedback.md
+docs/ai/pbi/{STP_ID}/phases/RF-*.md
+docs/ai/pbi/{STP_ID}/02-implementation-plan.md
+docs/ai/pbi/{STP_ID}/03-codebase-index.md
+docs/ai/pbi/{STP_ID}/04-decision_log.md
+```
 
 ## Read Order
 
@@ -71,6 +107,14 @@ For `SCOPE: pbi`, this skill may update only when relevant:
 - `docs/ai/pbi/STP-XXXX/phases/*.md`
 - `docs/ai/pbi/STP-XXXX/knowledge/*`
 
+For `SCOPE: pbi` and `INPUT_TAG: USER_REVIEW_FEEDBACK`, this skill may update only when relevant:
+
+- `docs/ai/pbi/STP-XXXX/phases/review-feedback.md`
+- `docs/ai/pbi/STP-XXXX/phases/RF-*.md`
+- `docs/ai/pbi/STP-XXXX/02-implementation-plan.md`
+- `docs/ai/pbi/STP-XXXX/03-codebase-index.md`
+- `docs/ai/pbi/STP-XXXX/04-decision_log.md`
+
 For `SCOPE: review`, this skill may update only the active review workspace files related to the tagged user input.
 
 For `SCOPE: repo-context` or `SCOPE: global`, update repo-context only when the policy affects reusable repository knowledge.
@@ -93,6 +137,38 @@ If a conflict exists between files:
 - Update stale references.
 - Do not silently ignore inconsistencies.
 
+For `USER_REVIEW_FEEDBACK`, report conflicts if:
+
+- `review-feedback.md` says `Required` but the RF file says `Ignored`.
+- RF file status differs from the RF index.
+- The implementation plan references an old RF status.
+- The RF file is missing for an RF ID.
+
+## USER_REVIEW_FEEDBACK Sync Rules
+
+When `SCOPE: pbi` and `INPUT_TAG: USER_REVIEW_FEEDBACK`:
+
+1. Read `review-feedback.md`.
+2. Detect RF items with statuses `Required`, `Ignored`, `Blocked`, and `Done`.
+3. Read related `RF-*.md` files.
+4. Add or update `Post-PR Review Feedback Plan` in `02-implementation-plan.md`.
+5. Ensure `Required` RF items are visible as planned fix work.
+6. Ensure `Ignored` RF items are recorded as intentionally skipped.
+7. Ensure `Done` RF items are marked complete and do not get re-planned.
+8. Ensure `Blocked` RF items show required user input.
+9. Update `03-codebase-index.md` only when RF routing, affected files, modules, functions, validation focus, or review focus are known.
+10. Update `04-decision_log.md` only if the RF decision creates an architecture, domain, or design decision.
+
+Use this plan format in `02-implementation-plan.md`:
+
+```md
+## Post-PR Review Feedback Plan
+
+| RF ID | Title | Status | Action | RF File | Related Files | Validation |
+|---|---|---|---|---|---|---|
+| RF-001 | Null validation | Required | Fix | RF-001-null-validation.md | ... | ... |
+```
+
 ## Forbidden Actions
 
 - Do not modify source code.
@@ -107,17 +183,18 @@ If a conflict exists between files:
 
 1. Confirm required parameters are present.
 2. Confirm the selected skill and active workspace exist.
-3. Find the tagged user input in `INPUT_SOURCE`.
-4. Compare related files for stale or conflicting references.
-5. Update only files whose owner rules require synchronization.
-6. Record decisions only when the input creates architecture, domain, or design decisions.
-7. Report conflicts found and resolved.
-8. Recommend the next skill based on the updated workflow state.
+3. Resolve workspace paths from stable identifiers.
+4. Find the tagged user input in `INPUT_SOURCE`, unless `INPUT_TAG` is resolved from workspace files.
+5. Compare related files for stale or conflicting references.
+6. Update only files whose owner rules require synchronization.
+7. Record decisions only when the input creates architecture, domain, or design decisions.
+8. Report conflicts found and resolved.
+9. Recommend the next skill based on the updated workflow state.
 
 ## Expected Output
 
 1. Summary
-2. User input detected
+2. User input or review feedback status detected
 3. Files inspected
 4. Files updated
 5. Conflicts found and resolved

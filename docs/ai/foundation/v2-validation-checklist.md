@@ -8,7 +8,7 @@ Ready
 
 The V2 AI Operating System foundation matches the approved baseline and the user's confirmed requirements. The current `docs/ai` structure defines shared markdown memory, stateless agents, execution-protocol skills, repository context ownership, PBI workflow, review workflow, quality rules, context cost rules, and markdown change reporting.
 
-The latest governance corrections, official workspace naming, conservative skill deduplication updates, runtime simplification cleanup, and `docs-ai-cleanup-audit` skill registration have been applied. No source code inspection or source code modification was needed.
+The latest governance corrections, official workspace naming, conservative skill deduplication updates, runtime simplification cleanup, `docs-ai-cleanup-audit` skill registration, `policy-plan-update` skill registration, and post-PR review feedback workflow support have been applied. No source code inspection or source code modification was needed.
 
 ## Checked Files
 
@@ -19,6 +19,8 @@ The latest governance corrections, official workspace naming, conservative skill
 - `docs/ai/skills/README.md`
 - `docs/ai/skills/common-skill-rules.md`
 - `docs/ai/skills/docs-ai-cleanup-audit.skill.md`
+- `docs/ai/skills/policy-plan-update.skill.md`
+- `docs/ai/skills/review-feedback-analysis.skill.md`
 - `docs/ai/repo-context/README.md`
 - `docs/ai/pbi/README.md`
 - `docs/ai/reviews/README.md`
@@ -36,6 +38,7 @@ The latest governance corrections, official workspace naming, conservative skill
 - `docs/ai/skills/review-final-handoff.skill.md`
 - `setup-prompts/README.md`
 - `setup-prompts/legacy/README.md`
+- `docs/ai/foundation/review-feedback-workflow-validation.md`
 
 ## Passed Checks
 
@@ -69,6 +72,28 @@ The latest governance corrections, official workspace naming, conservative skill
 - `docs-ai-cleanup-audit` is routed from `docs/ai/START_HERE.md` only for long-term docs cleanup or context-cost audit.
 - `docs-ai-cleanup-audit` recommends merge, archive, or delete actions only and does not execute them.
 - `docs-ai-cleanup-audit` forbids source code modification, markdown deletion, archiving, renaming, active governance rewriting, repo-context content updates, and PBI/Review workspace creation.
+- `policy-plan-update` is documented as the official skill for syncing tagged user answers or policy changes into related planning files.
+- `policy-plan-update` is registered in `docs/ai/skills/README.md`.
+- `policy-plan-update` is routed from `docs/ai/START_HERE.md` for user answers or policy updates.
+- `policy-plan-update` forbids source code modification, implementation, review, PBI/Review workspace creation, broad scope changes, and repo-context updates unless explicitly allowed by `SCOPE`.
+- `policy-plan-update` preserves PBI ownership rules for `01-context.md`, `02-implementation-plan.md`, `03-codebase-index.md`, `04-decision_log.md`, `phases/*.md`, and `knowledge/*`.
+- `review-feedback-analysis` is documented as the official documentation-only skill for converting human post-PR feedback into RF items inside an existing PBI workspace.
+- `review-feedback-analysis` is registered in `docs/ai/skills/README.md`.
+- `review-feedback-analysis` resolves workspace files from `PBI_ID` and does not require repeated file paths in user prompts.
+- `review-feedback-analysis` creates or updates only PBI review feedback markdown files and does not modify source code.
+- RF status values are exactly:
+  - `Proposed`
+  - `Required`
+  - `Ignored`
+  - `Done`
+  - `Blocked`
+- `policy-plan-update` supports `INPUT_TAG: USER_REVIEW_FEEDBACK`.
+- `policy-plan-update` can sync RF statuses without requiring `INPUT_SOURCE`, `UPDATE_MODE`, review-feedback path, or RF file paths.
+- `policy-plan-update` detects `Required`, `Ignored`, `Blocked`, and `Done` RF items and syncs them into the post-PR review feedback plan.
+- `fix-phase` supports `PBI_ID` plus `RF_ID` and only applies RF fixes when the RF status is `Required`.
+- `review-phase` supports `PBI_ID`, `RF_ID`, and `REVIEW_MODE` for verifying one RF fix.
+- `common-skill-rules.md` defines the workspace resolution rule for stable identifiers such as `PBI_ID`, `RF_ID`, and `TAG`.
+- `docs/ai/foundation/review-feedback-workflow-validation.md` reports the review feedback workflow as ready for pilot.
 - Other skills treat repo-context as read-only by explicit rule or by scoped write boundaries.
 - `pbi-plan-create` reads repo-context first and does not update repo-context.
 - `docs/ai/skills/README.md` lists all official Repository, PBI Workflow, and Review Workflow skills.
@@ -171,7 +196,7 @@ None.
 ## Optional Improvements
 
 - Add short examples for phase file layout, `PR.No` comment format, and `06-handoff.md` output.
-- Add a future validation checklist that can be reused after every governance update.
+- Pilot `review-feedback-analysis` with one real completed PBI before tightening RF parsing rules further.
 
 ## Final Recommendation
 
