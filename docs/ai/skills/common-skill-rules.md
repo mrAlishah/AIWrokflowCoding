@@ -51,6 +51,30 @@ Do not modify source code unless the selected skill explicitly allows it and the
 
 Only `repo-context-update` may update `docs/ai/repo-context/*`. All other skills must treat repo-context as read-only.
 
+## Workspace Resolution Rule
+
+Users should provide stable identifiers, not repeated file paths.
+
+Skills must resolve workspace files from identifiers.
+
+Examples:
+
+```text
+PBI_ID -> docs/ai/pbi/{PBI_ID}/
+RF_ID -> docs/ai/pbi/{PBI_ID}/phases/review-feedback.md and matching RF file
+PHASE -> docs/ai/pbi/{PBI_ID}/phases/{PHASE}.md
+```
+
+User prompts should prefer:
+
+```text
+PBI_ID
+RF_ID
+TAG
+```
+
+over hardcoded file paths.
+
 ## Comment Quality Rule
 
 - Comment important intent.
