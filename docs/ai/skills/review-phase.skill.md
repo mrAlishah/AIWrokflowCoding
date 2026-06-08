@@ -72,6 +72,7 @@ Check:
 - scope control and unrelated changes
 - architecture boundaries
 - repository standards and naming conventions
+- applicable active code policies from `docs/ai/repo-context/code-policies.md`
 - simplicity, minimal files, and minimal lines
 - comment quality
 - important intent, business logic, validation rules, technical decisions, and compatibility comments

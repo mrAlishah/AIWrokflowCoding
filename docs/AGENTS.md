@@ -199,6 +199,20 @@ may update:
 docs/ai/repo-context/*
 ```
 
+Exception:
+
+```text
+policy-plan-update
+```
+
+may update reusable repository policy files under `docs/ai/repo-context/` only when:
+
+```text
+SCOPE: global
+INPUT_TAG: USER_CODE_POLICY
+UPDATE_MODE: apply-global-rule
+```
+
 All other skills:
 
 ```text
@@ -293,6 +307,7 @@ Naming conventions
 Architecture boundaries
 Coding standards
 Comment standards
+Active code policies
 ```
 
 Prefer:
@@ -309,6 +324,12 @@ Avoid:
 Over-engineering
 Broad refactoring
 Unnecessary abstractions
+```
+
+Active code policies are defined in:
+
+```text
+docs/ai/repo-context/code-policies.md
 ```
 
 ---

@@ -75,6 +75,7 @@ It must not update `docs/ai/repo-context/*`.
 - Touch the fewest files possible.
 - Change the fewest lines possible.
 - Follow repository conventions.
+- Follow active code policies from `docs/ai/repo-context/code-policies.md` when they apply to touched code.
 - Preserve the original implementation plan unless a finding requires a scoped adjustment.
 - Code should remain simple, readable, and aligned with repo conventions.
 - Avoid over-engineering.

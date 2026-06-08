@@ -18,6 +18,7 @@
 - [codebase-index.md](codebase-index.md): compact codebase navigation guide
 - [domain_glossary.md](domain_glossary.md): optional project terms and domain language; keep if empty until real domain terms exist
 - [coding_standards.md](coding_standards.md): naming, style, and implementation conventions
+- [code-policies.md](code-policies.md): approved global code policies
 - [context_budget.md](context_budget.md): context loading and optimization rules
 - [test_strategy.md](test_strategy.md): verification and test strategy
 - [workflow.md](workflow.md): repository-specific working workflow

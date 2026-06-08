@@ -51,6 +51,8 @@ Do not modify source code unless the selected skill explicitly allows it and the
 
 Only `repo-context-update` may update `docs/ai/repo-context/*`. All other skills must treat repo-context as read-only.
 
+Exception: `policy-plan-update` may update reusable repository policy files under `docs/ai/repo-context/` only when `SCOPE: global`, `INPUT_TAG: USER_CODE_POLICY`, and `UPDATE_MODE: apply-global-rule`.
+
 ## Workspace Resolution Rule
 
 Users should provide stable identifiers, not repeated file paths.
@@ -92,3 +94,9 @@ over hardcoded file paths.
 - Avoid over-engineering.
 - Avoid broad refactoring unless explicitly requested.
 - Prefer minimal files and minimal lines.
+
+## Active Code Policies
+
+Active code policies are defined in `docs/ai/repo-context/code-policies.md`.
+
+Implementation, fix, and review skills must apply active code policies when they touch or inspect affected code.
