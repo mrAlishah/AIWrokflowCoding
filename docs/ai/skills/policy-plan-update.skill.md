@@ -47,11 +47,13 @@ Allowed `UPDATE_MODE` values:
 - `context-only`
 - `plan-only`
 - `conflict-check-only`
+- `apply-global-rule`
 
 ## Supported Input Tags
 
 - `USER_ANSWER`
 - `USER_REVIEW_FEEDBACK`
+- `USER_CODE_POLICY`
 
 ## USER_REVIEW_FEEDBACK Invocation
 
@@ -119,6 +121,14 @@ For `SCOPE: review`, this skill may update only the active review workspace file
 
 For `SCOPE: repo-context` or `SCOPE: global`, update repo-context only when the policy affects reusable repository knowledge.
 
+For `SCOPE: global`, `INPUT_TAG: USER_CODE_POLICY`, and `UPDATE_MODE: apply-global-rule`, this skill may update only relevant governance and reusable coding-standard markdown files, including:
+
+- `docs/AGENTS.md`
+- `docs/ai/skills/common-skill-rules.md`
+- `docs/ai/repo-context/code-policies.md`
+- `docs/ai/repo-context/coding_standards.md`
+- skill files that explicitly reference repository coding conventions
+
 ## PBI Update Rules
 
 - `01-context.md` owns open questions, answers, assumptions, constraints, and user answers.
@@ -136,6 +146,8 @@ If a conflict exists between files:
 - Report the conflict.
 - Update stale references.
 - Do not silently ignore inconsistencies.
+
+For `USER_CODE_POLICY`, report conflicts if an existing governance or coding-standard file allows, recommends, or silently permits the disallowed pattern.
 
 For `USER_REVIEW_FEEDBACK`, report conflicts if:
 
@@ -168,6 +180,19 @@ Use this plan format in `02-implementation-plan.md`:
 |---|---|---|---|---|---|---|
 | RF-001 | Null validation | Required | Fix | RF-001-null-validation.md | ... | ... |
 ```
+
+## USER_CODE_POLICY Sync Rules
+
+When `SCOPE: global`, `INPUT_TAG: USER_CODE_POLICY`, and `UPDATE_MODE: apply-global-rule`:
+
+1. Treat the user input as approved active governance.
+2. Register the canonical policy in `docs/ai/repo-context/code-policies.md`.
+3. Link shared governance rules to the canonical policy file.
+4. Sync reusable repository coding standards with concise pointers, not duplicated policy text.
+5. Update skill guidance that references repository coding conventions to apply active code policies.
+6. Report any conflicting policies.
+7. Do not modify source code.
+8. Do not create implementation tasks or PBI workspaces.
 
 ## Forbidden Actions
 

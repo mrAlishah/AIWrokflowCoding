@@ -14,6 +14,16 @@ Capture important file organization patterns.
 
 List patterns that should be followed for common changes.
 
+## Active Code Policies
+
+Canonical policy source:
+
+```text
+docs/ai/repo-context/code-policies.md
+```
+
+Use this file for approved global code policies such as CP-001. Keep `coding_standards.md` focused on repository conventions and concise pointers.
+
 ## Documentation Standards
 
 - Keep markdown simple and readable.

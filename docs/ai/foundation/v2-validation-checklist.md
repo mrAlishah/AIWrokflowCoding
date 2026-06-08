@@ -8,12 +8,13 @@ Ready
 
 The V2 AI Operating System foundation matches the approved baseline and the user's confirmed requirements. The current `docs/ai` structure defines shared markdown memory, stateless agents, execution-protocol skills, repository context ownership, PBI workflow, review workflow, quality rules, context cost rules, and markdown change reporting.
 
-The latest governance corrections, official workspace naming, conservative skill deduplication updates, runtime simplification cleanup, `docs-ai-cleanup-audit` skill registration, `policy-plan-update` skill registration, and post-PR review feedback workflow support have been applied. No source code inspection or source code modification was needed.
+The latest governance corrections, official workspace naming, conservative skill deduplication updates, runtime simplification cleanup, `docs-ai-cleanup-audit` skill registration, `policy-plan-update` skill registration, post-PR review feedback workflow support, and global frontend code policy CP-001 have been applied. No source code inspection or source code modification was needed.
 
 ## Checked Files
 
 - `docs/ai/foundation/v2-approved-baseline.md`
 - `docs/ai/foundation/v2-workspace-naming.md`
+- `docs/AGENTS.md`
 - `docs/ai/START_HERE.md`
 - `docs/ai/README.md`
 - `docs/ai/skills/README.md`
@@ -22,6 +23,8 @@ The latest governance corrections, official workspace naming, conservative skill
 - `docs/ai/skills/policy-plan-update.skill.md`
 - `docs/ai/skills/review-feedback-analysis.skill.md`
 - `docs/ai/repo-context/README.md`
+- `docs/ai/repo-context/code-policies.md`
+- `docs/ai/repo-context/coding_standards.md`
 - `docs/ai/pbi/README.md`
 - `docs/ai/reviews/README.md`
 - `docs/ai/skills/repo-context-update.skill.md`
@@ -62,6 +65,7 @@ The latest governance corrections, official workspace naming, conservative skill
   - `codebase-index.md`
   - `domain_glossary.md`
   - `coding_standards.md`
+  - `code-policies.md`
   - `context_budget.md`
   - `test_strategy.md`
   - `workflow.md`
@@ -90,6 +94,15 @@ The latest governance corrections, official workspace naming, conservative skill
 - `policy-plan-update` supports `INPUT_TAG: USER_REVIEW_FEEDBACK`.
 - `policy-plan-update` can sync RF statuses without requiring `INPUT_SOURCE`, `UPDATE_MODE`, review-feedback path, or RF file paths.
 - `policy-plan-update` detects `Required`, `Ignored`, `Blocked`, and `Done` RF items and syncs them into the post-PR review feedback plan.
+- `policy-plan-update` supports `INPUT_TAG: USER_CODE_POLICY` with `UPDATE_MODE: apply-global-rule`.
+- `policy-plan-update` may update reusable repository policy files under `docs/ai/repo-context/` only for approved global code policy synchronization.
+- CP-001 is registered canonically in `docs/ai/repo-context/code-policies.md`.
+- `docs/ai/repo-context/code-policies.md` is organized by policy segments: Frontend, Backend, Tests, and Review.
+- `docs/AGENTS.md` references `docs/ai/repo-context/code-policies.md` as the active code policy source.
+- `docs/ai/skills/common-skill-rules.md` references `docs/ai/repo-context/code-policies.md` as the active code policy source.
+- `docs/ai/repo-context/coding_standards.md` points to `docs/ai/repo-context/code-policies.md` and does not duplicate full policy text.
+- CP-001 requires frontend JavaScript and TypeScript to use `const` by default, `let` only when reassignment is required, and no `var`.
+- `implementation-phase`, `fix-phase`, and `review-phase` reference active code policies where they enforce repository coding conventions.
 - `fix-phase` supports `PBI_ID` plus `RF_ID` and only applies RF fixes when the RF status is `Required`.
 - `review-phase` supports `PBI_ID`, `RF_ID`, and `REVIEW_MODE` for verifying one RF fix.
 - `common-skill-rules.md` defines the workspace resolution rule for stable identifiers such as `PBI_ID`, `RF_ID`, and `TAG`.
