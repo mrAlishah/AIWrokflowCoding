@@ -8,13 +8,14 @@ Ready
 
 The V2 AI Operating System foundation matches the approved baseline and the user's confirmed requirements. The current `docs/ai` structure defines shared markdown memory, stateless agents, execution-protocol skills, repository context ownership, PBI workflow, review workflow, quality rules, context cost rules, and markdown change reporting.
 
-The latest governance corrections, official workspace naming, conservative skill deduplication updates, runtime simplification cleanup, `docs-ai-cleanup-audit` skill registration, `policy-plan-update` skill registration, post-PR review feedback workflow support, and global frontend code policy CP-001 have been applied. No source code inspection or source code modification was needed.
+The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.md` exist and align with the Claude compatibility contract. No source code inspection or source code modification was needed.
 
 ## Checked Files
 
 - `docs/ai/foundation/v2-approved-baseline.md`
 - `docs/ai/foundation/v2-workspace-naming.md`
-- `docs/AGENTS.md`
+- `AGENTS.md`
+- `CLAUDE.md`
 - `docs/ai/START_HERE.md`
 - `docs/ai/README.md`
 - `docs/ai/skills/README.md`
@@ -42,6 +43,7 @@ The latest governance corrections, official workspace naming, conservative skill
 - `setup-prompts/README.md`
 - `setup-prompts/legacy/README.md`
 - `docs/ai/foundation/review-feedback-workflow-validation.md`
+- `docs/ai/foundation/claude-compatibility-validation.md`
 
 ## Passed Checks
 
@@ -57,6 +59,13 @@ The latest governance corrections, official workspace naming, conservative skill
   - Agents = Stateless Workers
   - Skills = Execution Protocols
   - `Repository Knowledge != PBI Knowledge != Review Knowledge != Execution Memory != Architecture Decisions`
+- `AGENTS.md` is the shared agent entry contract.
+- `CLAUDE.md` is the Claude-specific adapter.
+- Claude compatibility requires `AGENTS.md`, `CLAUDE.md`, `docs/ai/START_HERE.md`, and `docs/ai/skills/README.md` as the cold-start entry set.
+- `docs/ai/START_HERE.md` distinguishes cold-start agent entry from daily runtime routing.
+- Claude must select one approved skill and execute one skill at a time.
+- Claude has explicit stop conditions for unclear scope, missing workspaces, disallowed updates, source code safety, and insufficient tool access.
+- `docs/ai/foundation/claude-compatibility-validation.md` reports Claude compatibility as ready for pilot.
 - `docs/ai/repo-context/` contains the expected files:
   - `README.md`
   - `architecture.md`
@@ -98,7 +107,11 @@ The latest governance corrections, official workspace naming, conservative skill
 - `policy-plan-update` may update reusable repository policy files under `docs/ai/repo-context/` only for approved global code policy synchronization.
 - CP-001 is registered canonically in `docs/ai/repo-context/code-policies.md`.
 - `docs/ai/repo-context/code-policies.md` is organized by policy segments: Frontend, Backend, Tests, and Review.
-- `docs/AGENTS.md` references `docs/ai/repo-context/code-policies.md` as the active code policy source.
+- `AGENTS.md` references `docs/ai/repo-context/code-policies.md` as the active code policy source.
+- `CLAUDE.md` extends `AGENTS.md` instead of duplicating it.
+- `CLAUDE.md` allows Claude to orchestrate PBI and review workflows only when explicitly asked.
+- `CLAUDE.md` requires Claude to execute one approved skill at a time during orchestration.
+- `CLAUDE.md` preserves phase boundaries, markdown memory updates, repo-context ownership, and review workflow source-code safety.
 - `docs/ai/skills/common-skill-rules.md` references `docs/ai/repo-context/code-policies.md` as the active code policy source.
 - `docs/ai/repo-context/coding_standards.md` points to `docs/ai/repo-context/code-policies.md` and does not duplicate full policy text.
 - CP-001 requires frontend JavaScript and TypeScript to use `const` by default, `let` only when reassignment is required, and no `var`.
@@ -113,7 +126,7 @@ The latest governance corrections, official workspace naming, conservative skill
 - `docs/ai/skills/README.md` is a short routing index and references common skill rules.
 - `docs/ai/skills/README.md` does not duplicate the full markdown change reporting rule or common context read order.
 - `docs/ai/START_HERE.md` provides the daily operational entry point and prevents broad documentation reads.
-- `docs/ai/START_HERE.md` defines the runtime path as `START_HERE.md -> skills/README.md -> selected skill -> active workspace -> repo-context only if needed`.
+- `docs/ai/START_HERE.md` defines the runtime path as `AGENTS.md -> optional agent-specific file -> START_HERE.md -> skills/README.md -> selected skill -> active workspace -> repo-context only if needed`.
 - `docs/ai/START_HERE.md` forbids daily agents from reading foundation docs, setup prompts, or validation reports unless the task requires them.
 - PBI workspace structure is documented with the expected V2 names.
 - PBI workspace naming is consistent across baseline, PBI guide, validation report, workspace naming report, and PBI skills.
@@ -213,4 +226,4 @@ None.
 
 ## Final Recommendation
 
-V2 foundation is ready. Proceed with active workflow usage through `docs/ai/START_HERE.md`, or continue with the next approved governance improvement.
+V2 foundation is ready. Proceed with active workflow usage through `AGENTS.md`, `CLAUDE.md`, and `docs/ai/START_HERE.md`, or continue with the next approved governance improvement.

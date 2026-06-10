@@ -119,17 +119,38 @@ Design and architecture decisions.
 
 ---
 
-# Required Read Order
+# Agent Entry Contract
 
-Before any implementation or review:
+For every task, agents must enter through repository-defined rules, not chat history.
 
-1. AGENTS.md
-2. Agent-specific file (if exists)
-3. docs/ai/skills/README.md
-4. Selected skill
-5. Active workspace
-6. repo-context routing files
-7. Required source files only
+Read in this order:
+
+1. `AGENTS.md`
+2. Agent-specific file if it exists, for example `CLAUDE.md`
+3. `docs/ai/START_HERE.md`
+4. `docs/ai/skills/README.md`
+5. Selected skill only
+6. Active workspace only when the selected skill requires it
+7. repo-context routing files only when the selected skill allows it
+8. Required source files only when the selected skill allows source inspection
+
+Agents must select one approved skill before execution.
+
+Do not read all docs, all skills, or the whole repository by default.
+
+---
+
+# Skill Execution Contract
+
+Every task must be routed through:
+
+```text
+Use skill + parameters
+```
+
+Agents may orchestrate multi-step work, but must execute one approved skill at a time.
+
+Orchestration is not permission to skip workspace creation, planning, review, validation, handoff, or markdown memory updates.
 
 ---
 
@@ -383,6 +404,40 @@ Review skills never modify source code.
 When in doubt:
 
 Stop and document the uncertainty.
+
+---
+
+# Stop Conditions
+
+Stop before changing files when:
+
+```text
+No approved skill matches the task
+The selected skill does not allow the needed file update
+The task requires source code modification but the selected skill forbids it
+The workspace id or required workspace file is missing
+Scope, risk, or validation expectations are unclear
+Tool access is insufficient to verify the required files
+```
+
+When stopping, report:
+
+```text
+Reason
+Files inspected
+Decision needed from user
+Recommended next skill or prompt
+```
+
+---
+
+# Governance Validation Rule
+
+After changing skills, naming, workflow, foundation, `START_HERE.md`, common rules, or agent files:
+
+```text
+Re-run V2 validation checklist
+```
 
 ```
 

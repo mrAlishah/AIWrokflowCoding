@@ -1,19 +1,29 @@
 # Start Here
 
-Daily agent usage starts here.
+Daily runtime usage starts here after the agent entry contract.
+
+Cold-start agents must first read:
+
+```text
+AGENTS.md
+agent-specific file if it exists, for example CLAUDE.md
+```
+
+Then continue with this file.
 
 ## Read Order
 
 1. Read `docs/ai/START_HERE.md`.
 2. Read `docs/ai/skills/README.md`.
-3. Read the selected skill file only.
+3. Select one approved skill.
+4. Read the selected skill file only.
 
 Do not read all docs, all skills, or the whole repository by default.
 
 Daily runtime path:
 
 ```text
-START_HERE.md -> skills/README.md -> selected skill -> active workspace -> repo-context only if needed
+AGENTS.md -> optional agent-specific file -> START_HERE.md -> skills/README.md -> selected skill -> active workspace -> repo-context only if needed
 ```
 
 ## Routing
