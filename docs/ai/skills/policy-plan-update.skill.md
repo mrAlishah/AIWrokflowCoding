@@ -90,7 +90,7 @@ docs/ai/pbi/{STP_ID}/04-decision_log.md
 
 Read:
 
-1. `docs/AGENTS.md` or `AGENTS.md`, whichever exists.
+1. `AGENTS.md`.
 2. `docs/ai/START_HERE.md`
 3. `docs/ai/skills/README.md`
 4. `docs/ai/skills/policy-plan-update.skill.md`
@@ -123,7 +123,7 @@ For `SCOPE: repo-context` or `SCOPE: global`, update repo-context only when the 
 
 For `SCOPE: global`, `INPUT_TAG: USER_CODE_POLICY`, and `UPDATE_MODE: apply-global-rule`, this skill may update only relevant governance and reusable coding-standard markdown files, including:
 
-- `docs/AGENTS.md`
+- `AGENTS.md`
 - `docs/ai/skills/common-skill-rules.md`
 - `docs/ai/repo-context/code-policies.md`
 - `docs/ai/repo-context/coding_standards.md`

@@ -47,6 +47,26 @@ If the reason cannot be stated clearly, do not read the extra file.
 
 Do not modify source code unless the selected skill explicitly allows it and the current task scope requires it.
 
+## Skill Selection Rule
+
+Use one approved skill at a time.
+
+If a task could match multiple skills, choose the least invasive skill that can safely handle the current step.
+
+If no approved skill matches the task, stop and ask for a workflow decision instead of inventing a custom workflow.
+
+## Stop Condition Rule
+
+Stop before changing files when:
+
+- the selected skill does not allow the needed update
+- source code modification would be required but the selected skill forbids it
+- the required workspace or stable identifier is missing
+- scope, risk, or validation expectations are unclear
+- required file or tool access is unavailable
+
+When stopping, report the blocker, inspected files, and recommended next skill or prompt.
+
 ## repo-context Ownership Rule
 
 Only `repo-context-update` may update `docs/ai/repo-context/*`. All other skills must treat repo-context as read-only.
