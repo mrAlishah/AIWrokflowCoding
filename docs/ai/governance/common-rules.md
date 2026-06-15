@@ -1,44 +1,15 @@
-# Common Rules
+# Compatibility Pointer
 
-Canonical shared rules for the AI Multi-Agent Coding Operating System.
+Canonical new path:
 
-## Core Rules
+```text
+docs/ai/skills/governance/common-rules.md
+```
 
-- Markdown files are shared memory.
-- Agents are stateless workers.
-- Use skill + parameters.
-- Quality first.
-- Simplicity over flexibility.
-- Minimal prompts over rich workflow.
-- Preserve backward compatibility.
-- Do not duplicate global rules inside skills, README files, or workspace templates. Reference the canonical governance file instead.
+Reason for compatibility:
 
-## Safety Rules
+Existing V2 prompts and older documentation may still reference this path.
 
-- Do not modify source code unless the selected skill explicitly allows it and the task requires it.
-- Review-only work must not modify source code.
-- Do not perform broad refactors unless explicitly requested.
-- Do not introduce new workflow semantics from documentation cleanup.
-- Do not introduce V3 Harness Engineering features.
+Migration note:
 
-## Ownership Rules
-
-- `docs/ai/repo-context/*` is reusable repository knowledge.
-- Only `repo-context-update` may update repo-context files.
-- Exception: `policy-plan-update` may update reusable repository policy files only when its approved global policy parameters allow it.
-- All other skills treat repo-context as read-only.
-
-## PBI Rules
-
-- PBI workspaces live under `docs/ai/pbi/STP-XXXX/`.
-- PBI workflow semantics, validation behavior, phase status model, `pbi-clarification`, and workspace metrics behavior must remain unchanged.
-- Phase statuses remain exactly: `Planned Only`, `Planned`, `In Progress`, `Done`.
-- `02-implementation-plan.md` phase tables use `Phase | Status | Step | Goal`.
-- `Step` is independent from `Status`.
-
-## Review Rules
-
-- Review workspaces live under `docs/ai/reviews/STP-XXXX/`.
-- Reviews are local git diff driven.
-- Do not call PR APIs, create pull requests, push commits, or modify source code during review-only work.
-- Preserve separation between English PR-ready comments and Persian/internal suggestions.
+Use the canonical new path for future updates. Do not duplicate full governance content here.

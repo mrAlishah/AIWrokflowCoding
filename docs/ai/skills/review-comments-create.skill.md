@@ -46,7 +46,7 @@ Create English PR-ready comments and Persian/internal suggestions from local dif
 ## References
 
 Follow:
-- `docs/ai/governance/common-rules.md`
-- `docs/ai/governance/context-efficiency.md`
-- `docs/ai/governance/markdown-reporting.md`
-- `docs/ai/governance/observability.md`
+- `docs/ai/skills/governance/common-rules.md`
+- `docs/ai/skills/governance/read-order.md`
+- `docs/ai/skills/governance/markdown-change-reporting.md`
+- `docs/ai/skills/governance/observability.md`

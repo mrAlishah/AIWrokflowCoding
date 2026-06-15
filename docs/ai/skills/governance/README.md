@@ -1,15 +1,19 @@
-# Governance Skills Area
+# Governance
 
-Canonical new path:
+Canonical path:
 
 ```text
 docs/ai/skills/governance/
 ```
 
-Reason for compatibility:
+## Files
 
-Existing V2 governance files still live in `docs/ai/governance/` until a later migration step.
+- [common-rules.md](common-rules.md)
+- [markdown-change-reporting.md](markdown-change-reporting.md)
+- [read-order.md](read-order.md)
+- [skill-template.md](skill-template.md)
+- [observability.md](observability.md)
 
-Migration note:
+## Compatibility
 
-Use this folder as the future home for AI behavior governance. Do not duplicate full governance text here during the compatibility phase.
+Legacy V2 governance paths remain usable through minimal pointers in `docs/ai/governance/`.

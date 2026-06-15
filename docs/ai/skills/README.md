@@ -4,7 +4,7 @@ Routing index for approved execution protocols.
 
 Read this file to select one skill. Then read only the selected skill file.
 
-Global rules currently live in `docs/ai/governance/`.
+Global rules live in `docs/ai/skills/governance/`.
 
 Future target structure:
 

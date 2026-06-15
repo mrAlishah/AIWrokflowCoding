@@ -10,7 +10,7 @@ Read this file only for top-level orientation. Daily agents should continue to `
 
 - Runtime entry: [START_HERE.md](START_HERE.md)
 - Skill routing: [skills/README.md](skills/README.md)
-- Governance: [governance/](governance/)
+- Governance: [skills/governance/](skills/governance/)
 - PBI work: [pbi/README.md](pbi/README.md)
 - Review work: [reviews/README.md](reviews/README.md)
 - Repository knowledge: [repo-context/README.md](repo-context/README.md)

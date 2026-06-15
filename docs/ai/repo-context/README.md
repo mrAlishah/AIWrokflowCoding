@@ -43,5 +43,5 @@ Do not read every repo-context file. Start with the routing file that matches th
 
 ## Governance
 
-Repo-context ownership rules are in [../governance/common-rules.md](../governance/common-rules.md).
+Repo-context ownership rules are in [../skills/governance/common-rules.md](../skills/governance/common-rules.md).
 

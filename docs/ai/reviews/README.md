@@ -35,7 +35,7 @@ Do not read all review workspaces. Read only the active `STP-XXXX` workspace req
 
 ## Governance
 
-- Common rules: [../governance/common-rules.md](../governance/common-rules.md)
-- Context efficiency: [../governance/context-efficiency.md](../governance/context-efficiency.md)
-- Markdown reporting: [../governance/markdown-reporting.md](../governance/markdown-reporting.md)
-- Observability: [../governance/observability.md](../governance/observability.md)
+- Common rules: [../skills/governance/common-rules.md](../skills/governance/common-rules.md)
+- Context efficiency: [../skills/governance/read-order.md](../skills/governance/read-order.md)
+- Markdown reporting: [../skills/governance/markdown-change-reporting.md](../skills/governance/markdown-change-reporting.md)
+- Observability: [../skills/governance/observability.md](../skills/governance/observability.md)

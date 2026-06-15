@@ -1,16 +1,15 @@
-# Markdown Reporting
+# Compatibility Pointer
 
-Canonical markdown change reporting rule.
+Canonical new path:
 
-Whenever markdown files are created, updated, renamed, or deleted, report:
-
-```markdown
-## Markdown Files Changed
-
-| File Path | Action | Reason | Summary | Future AI Context Impact |
-| --- | --- | --- | --- | --- |
+```text
+docs/ai/skills/governance/markdown-change-reporting.md
 ```
 
-Use `Created`, `Updated`, `Renamed`, or `Deleted` for the action.
+Reason for compatibility:
 
-If no markdown files changed, state that directly.
+Existing V2 prompts and older documentation may still reference this path.
+
+Migration note:
+
+Use the canonical new path for future updates. Do not duplicate full governance content here.
