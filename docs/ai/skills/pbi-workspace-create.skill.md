@@ -12,7 +12,7 @@ This skill creates structure only. It must not plan implementation work.
 
 ## When To Use
 
-Use at the start of a PBI workflow when a PBI has been approved for analysis and future planning.
+Use after `pbi-clarification` has produced an approved PBI and the PBI is ready for analysis and future planning.
 
 ## Required Parameters
 
@@ -20,6 +20,20 @@ Use at the start of a PBI workflow when a PBI has been approved for analysis and
 - PBI title
 - approved PBI text or source request
 - requester or source, if known
+
+## Required Inputs
+
+Read first:
+
+- `docs/ai/pbi/STP-XXXX/00-approved-pbi.md`, if already created by `pbi-clarification`
+
+If `00-approved-pbi.md` contains:
+
+```text
+STATUS: BLOCKED_FOR_CLARIFICATION
+```
+
+stop. Do not create a workspace beyond the clarification file.
 
 ## Allowed File Scope
 
@@ -40,7 +54,7 @@ docs/ai/pbi/STP-XXXX/
   02-implementation-plan.md
   03-codebase-index.md
   04-decision_log.md
-  05 reserved unused
+  05-validation.md
   06-handoff.md
   phases/
   knowledge/
@@ -106,6 +120,20 @@ Recommended sections:
 Create as an empty decision log.
 
 Use only for architecture, domain, and design decisions. Do not use for phase execution notes, review comments, todos, or temporary planning notes.
+
+### `05-validation.md`
+
+Create as the explicit validation requirements file.
+
+Required sections:
+
+- Build Verification
+- Manual Test Scenarios
+- Regression Checklist
+- Known Risks
+- Sign-off Criteria
+
+No automated tests does not mean no validation.
 
 ### `knowledge/`
 

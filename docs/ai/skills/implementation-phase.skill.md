@@ -25,6 +25,7 @@ Use when `pbi-plan-create` has produced an implementation plan and a selected ph
 Read only:
 
 - `docs/ai/pbi/STP-XXXX/02-implementation-plan.md`
+- `docs/ai/pbi/STP-XXXX/05-validation.md`
 - the selected `docs/ai/pbi/STP-XXXX/phases/*.md`
 - source files explicitly listed in the selected phase
 
@@ -51,6 +52,7 @@ This skill may update:
 
 - source or documentation files explicitly listed in the selected phase
 - the selected phase file after execution
+- `docs/ai/pbi/STP-XXXX/05-validation.md` when implementation changes validation needs, risks, or sign-off criteria
 
 It must not update `docs/ai/repo-context/*`.
 
@@ -75,6 +77,8 @@ It must not update `docs/ai/repo-context/*`.
 - Avoid noisy comments.
 - Avoid commenting every line.
 - Do not perform unrelated cleanup or refactors.
+- Preserve implementation quality over numeric context limits.
+- Stop and request approval before reading files outside the approved phase scope unless they are required for correctness or validation.
 
 ## Phase File Update
 
@@ -85,6 +89,7 @@ After execution, update the selected phase file with:
 - execution memory
 - verification performed
 - known risks or follow-up
+- validation updates that belong in `05-validation.md`
 
 ## Forbidden Actions
 
@@ -104,4 +109,5 @@ After execution, update the selected phase file with:
 5. Implement the phase with minimal files and lines.
 6. Run only requested or necessary verification.
 7. Update the selected phase file.
-8. Report all changed markdown files under `Markdown Files Changed`.
+8. Update `05-validation.md` if validation requirements, known risks, or sign-off criteria changed.
+9. Report all changed markdown files under `Markdown Files Changed`.

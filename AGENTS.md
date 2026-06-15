@@ -258,8 +258,17 @@ Official files:
 02-implementation-plan.md
 03-codebase-index.md
 04-decision_log.md
+05-validation.md
 06-handoff.md
 ```
+
+Every PBI must define explicit validation requirements in:
+
+```text
+docs/ai/pbi/STP-XXXX/05-validation.md
+```
+
+No automated tests does not mean no validation.
 
 Phase files:
 

@@ -15,7 +15,7 @@ docs/ai/pbi/STP-XXXX/
   02-implementation-plan.md
   03-codebase-index.md
   04-decision_log.md
-  05 reserved unused
+  05-validation.md
   06-handoff.md
   phases/
   knowledge/
@@ -56,9 +56,13 @@ docs/ai/reviews/STP-XXXX/
 Passed.
 
 - `pbi-workspace-create` creates the new PBI file names.
-- `pbi-plan-create` updates `01-context.md`, `02-implementation-plan.md`, `03-codebase-index.md`, `phases/*.md`, `knowledge/*` if needed, and `04-decision_log.md` if needed.
-- `implementation-phase` reads `02-implementation-plan.md`.
-- `pbi-final-handoff` updates `06-handoff.md`.
+- `pbi-clarification` creates or updates `00-approved-pbi.md`.
+- `pbi-workspace-create` creates `05-validation.md`.
+- `pbi-plan-create` updates `01-context.md`, `02-implementation-plan.md`, `03-codebase-index.md`, `05-validation.md`, `phases/*.md`, `knowledge/*` if needed, and `04-decision_log.md` if needed.
+- `implementation-phase` reads and updates `05-validation.md` as validation knowledge changes.
+- `review-phase` reads and updates `05-validation.md` with review validation gaps.
+- `fix-phase` reads and updates `05-validation.md` when fixes change validation needs.
+- `pbi-final-handoff` reads `05-validation.md` and updates `06-handoff.md`.
 - `review-workspace-create` creates the new Review file names.
 - `review-diff-analysis` updates `03-diff-analysis.md`.
 - `review-comments-create` updates `04-en-pr-comments.md` and `05-fa-pr-suggestions.md`.

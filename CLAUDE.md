@@ -85,6 +85,7 @@ If orchestration is requested, Claude must report the selected current skill and
 When managing a PBI end-to-end, use this sequence:
 
 ```text
+pbi-clarification
 pbi-workspace-create
 pbi-plan-create
 implementation-phase
@@ -97,8 +98,10 @@ pbi-final-handoff
 Rules:
 
 - Execute only one implementation phase at a time.
+- Do not skip PBI clarification.
 - Do not skip workspace creation.
 - Do not skip implementation planning.
+- Do not skip `05-validation.md`.
 - Do not skip phase files.
 - Do not skip markdown memory updates.
 - Do not rely on chat history.
@@ -159,6 +162,7 @@ Read only:
 
 ```text
 02-implementation-plan.md
+05-validation.md
 Selected phase file
 Required source files
 ```

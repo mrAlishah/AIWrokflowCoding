@@ -8,6 +8,14 @@ The approved V2 foundation baseline is defined in:
 
 - [foundation/v2-approved-baseline.md](foundation/v2-approved-baseline.md)
 
+## V2.1 Essential Additions
+
+V2.1 preserves the V2 principles and adds three operational improvements:
+
+- Raw PBIs must pass through `pbi-clarification` before `pbi-workspace-create`.
+- PBI workspaces use `05-validation.md` for explicit validation requirements.
+- Context efficiency is quality-preserving and must not rely on hard numeric quotas.
+
 ## Documentation Rules
 
 - Markdown files are shared memory.

@@ -15,6 +15,7 @@ All skills follow `docs/ai/skills/common-skill-rules.md`.
 
 | Skill | Purpose | When To Use | Required Parameters | Allowed File Scope | Forbidden Actions |
 | --- | --- | --- | --- | --- | --- |
+| `pbi-clarification` | Convert a raw PBI into an implementation-ready approved PBI. | Before `pbi-workspace-create`, when a PBI is raw or may be ambiguous. | PBI id if known, raw PBI text, requester/source if known | `docs/ai/pbi/STP-XXXX/00-approved-pbi.md` | modifying source code; creating implementation tasks; creating phase files; updating repo-context |
 | `pbi-workspace-create` | Create the working documentation space for a PBI. | Start of a PBI workflow. | PBI id, title, source request | PBI workspace under `docs/ai/` | modifying source code; updating repo-context |
 | `pbi-plan-create` | Turn a PBI into a scoped implementation plan. | After PBI workspace creation and before implementation. | PBI id, acceptance criteria, constraints | PBI workspace under `docs/ai/` | modifying source code; updating repo-context |
 | `policy-plan-update` | Sync tagged user answers or policy changes into related planning files. | After a user answers an open question, changes policy, or updates RF statuses. | `SCOPE`, `STP_ID`, `INPUT_TAG`; extra inputs only when the tag requires them | active workspace files related to selected scope | modifying source code; running implementation or review; updating repo-context unless allowed by scope |

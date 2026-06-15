@@ -27,6 +27,7 @@ Read:
 
 - `docs/ai/pbi/STP-XXXX/00-approved-pbi.md`
 - `docs/ai/pbi/STP-XXXX/02-implementation-plan.md`
+- `docs/ai/pbi/STP-XXXX/05-validation.md`
 - relevant phase files
 - verification results
 - final diff summary
@@ -47,6 +48,7 @@ Update `06-handoff.md` with:
 - changed files
 - validation performed
 - validation not performed
+- sign-off criteria from `05-validation.md`
 - known risks
 - PR summary
 - recommended review focus
@@ -71,7 +73,7 @@ Update `06-handoff.md` with:
 ## Execution Protocol
 
 1. Confirm implementation and fixes are complete or clearly identify remaining work.
-2. Read PBI summary, plan, phases, and verification notes.
+2. Read PBI summary, plan, phases, `05-validation.md`, and verification notes.
 3. Summarize changed files and validation.
 4. Record risks and review focus.
 5. Update `06-handoff.md`.

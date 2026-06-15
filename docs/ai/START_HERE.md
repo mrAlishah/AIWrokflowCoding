@@ -30,6 +30,7 @@ AGENTS.md -> optional agent-specific file -> START_HERE.md -> skills/README.md -
 
 | Task | Route |
 | --- | --- |
+| Raw or unclear PBI | `pbi-clarification` |
 | PBI task | `docs/ai/skills/README.md` -> selected PBI skill |
 | Review task | `docs/ai/skills/README.md` -> selected review skill |
 | User answer or policy update | `policy-plan-update` |

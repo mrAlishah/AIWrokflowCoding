@@ -31,6 +31,7 @@ For post-PR review feedback verification, the minimal required parameters are:
 Read:
 
 - relevant PBI workspace files
+- `docs/ai/pbi/STP-XXXX/05-validation.md`
 - implementation diff
 - changed files needed to understand the diff
 
@@ -62,6 +63,8 @@ Before reading any extra file, state:
 
 This skill may update review notes in the PBI workspace if the workflow requires durable review memory.
 
+This skill may update `docs/ai/pbi/STP-XXXX/05-validation.md` when review discovers validation gaps, risks, or changed sign-off criteria.
+
 It must not modify source code unless the user explicitly requests fixes in the same turn.
 
 ## Review Checklist
@@ -80,6 +83,7 @@ Check:
 - over-engineering and broad refactoring
 - test coverage or verification gaps
 - regressions, edge cases, and maintainability risks
+- validation requirements in `05-validation.md`
 
 For `RF_ID` verification, check only the selected RF fix, its validation plan, and necessary surrounding context.
 
@@ -106,5 +110,6 @@ For `RF_ID` verification, check only the selected RF fix, its validation plan, a
 3. Inspect the implementation diff.
 4. Review only the changed behavior and necessary surrounding context.
 5. Record findings, risks, and verification gaps.
-6. If no issues are found, state that clearly.
-7. Report all changed markdown files under `Markdown Files Changed`.
+6. Update `05-validation.md` if review changes validation requirements or known risks.
+7. If no issues are found, state that clearly.
+8. Report all changed markdown files under `Markdown Files Changed`.

@@ -33,15 +33,33 @@ Read context in this order:
 
 Do not read the entire repository, all `docs/ai`, all skills, or the whole codebase unless a later explicit instruction requires it.
 
+Context efficiency must preserve implementation quality, validation quality, and review quality. Do not use hard token limits, maximum file limits, or strict context quotas as a reason to skip required understanding.
+
 ## Extra File Justification Rule
 
 Before reading any extra file, state:
 
-- file path
-- why it is needed
-- what decision, risk, or validation it helps evaluate
+```text
+Requested File:
+
+Reason:
+
+Expected Decision Impact:
+```
 
 If the reason cannot be stated clearly, do not read the extra file.
+
+## PBI Validation Rule
+
+PBI workflows must read and maintain:
+
+```text
+docs/ai/pbi/STP-XXXX/05-validation.md
+```
+
+No automated tests does not mean no validation.
+
+Implementation, review, fix, planning, and final handoff skills must keep validation requirements, known risks, and sign-off criteria aligned with the PBI state.
 
 ## Source Code Modification Rule
 

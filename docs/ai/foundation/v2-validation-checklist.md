@@ -6,7 +6,9 @@ Ready
 
 ## Summary
 
-The V2 AI Operating System foundation matches the approved baseline and the user's confirmed requirements. The current `docs/ai` structure defines shared markdown memory, stateless agents, execution-protocol skills, repository context ownership, PBI workflow, review workflow, quality rules, context cost rules, and markdown change reporting.
+The V2 AI Operating System foundation matches the approved baseline and the user's confirmed requirements. The current `docs/ai` structure defines shared markdown memory, stateless agents, execution-protocol skills, repository context ownership, PBI workflow, review workflow, quality rules, context efficiency rules, validation rules, and markdown change reporting.
+
+The V2.1 Essential update is included: mandatory PBI clarification, explicit `05-validation.md`, and quality-preserving context efficiency without hard numeric quotas.
 
 The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.md` exist and align with the Claude compatibility contract. No source code inspection or source code modification was needed.
 
@@ -29,6 +31,7 @@ The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.m
 - `docs/ai/pbi/README.md`
 - `docs/ai/reviews/README.md`
 - `docs/ai/skills/repo-context-update.skill.md`
+- `docs/ai/skills/pbi-clarification.skill.md`
 - `docs/ai/skills/pbi-workspace-create.skill.md`
 - `docs/ai/skills/pbi-plan-create.skill.md`
 - `docs/ai/skills/implementation-phase.skill.md`
@@ -122,6 +125,11 @@ The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.m
 - `docs/ai/foundation/review-feedback-workflow-validation.md` reports the review feedback workflow as ready for pilot.
 - Other skills treat repo-context as read-only by explicit rule or by scoped write boundaries.
 - `pbi-plan-create` reads repo-context first and does not update repo-context.
+- `pbi-clarification` is registered as the mandatory pre-workspace skill for raw PBIs.
+- `pbi-clarification` writes `00-approved-pbi.md` and blocks downstream planning with `STATUS: BLOCKED_FOR_CLARIFICATION` when critical information is missing.
+- PBI workspace structure includes `05-validation.md`.
+- `05-validation.md` contains build verification, manual test scenarios, regression checklist, known risks, and sign-off criteria.
+- `pbi-workspace-create`, `pbi-plan-create`, `implementation-phase`, `review-phase`, `fix-phase`, and `pbi-final-handoff` read or maintain `05-validation.md` according to their workflow role.
 - `docs/ai/skills/README.md` lists all official Repository, PBI Workflow, and Review Workflow skills.
 - `docs/ai/skills/README.md` is a short routing index and references common skill rules.
 - `docs/ai/skills/README.md` does not duplicate the full markdown change reporting rule or common context read order.
@@ -153,6 +161,7 @@ The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.m
 - Implementation and review skills enforce repository conventions, coding standards, architecture boundaries, comment standards, simple code, minimal files, minimal lines, no over-engineering, and no broad refactoring.
 - Comment rules cover important intent, business logic, validation rules, technical decisions, and avoiding obvious or noisy comments.
 - Context and token-cost rules forbid reading the entire repository, all `docs/ai`, all skills, or the whole codebase unless explicitly required.
+- Context efficiency rules preserve quality and explicitly avoid hard token quotas, maximum file limits, and strict context quotas.
 - Context read order is documented.
 - Extra file read justification is documented.
 - All official skills reference `common-skill-rules.md`.
@@ -180,7 +189,7 @@ Expected PBI names are used:
 - `02-implementation-plan.md`
 - `03-codebase-index.md`
 - `04-decision_log.md`
-- `05` reserved unused
+- `05-validation.md`
 - `06-handoff.md`
 - `phases/`
 - `knowledge/`
@@ -213,7 +222,7 @@ Documentation-only, planning, and review workflow skills forbid source code modi
 
 Low.
 
-The foundation, skills index, and common skill rules document the approved read order and forbid broad repository or documentation reads unless explicitly required. Relevant skills also require agents to justify extra file reads.
+The foundation, skills index, and common skill rules document the approved read order and forbid broad repository or documentation reads unless explicitly required. Relevant skills also require agents to justify extra file reads. Context efficiency is quality-preserving and avoids hard token quotas or maximum file counts.
 
 ## Required Corrections
 
@@ -221,7 +230,7 @@ None.
 
 ## Optional Improvements
 
-- Add short examples for phase file layout, `PR.No` comment format, and `06-handoff.md` output.
+- Add short examples for phase file layout, `PR.No` comment format, `05-validation.md`, and `06-handoff.md` output.
 - Pilot `review-feedback-analysis` with one real completed PBI before tightening RF parsing rules further.
 
 ## Final Recommendation

@@ -27,8 +27,11 @@ Use after `pbi-workspace-create` has created the PBI workspace and before implem
 Read first:
 
 - `docs/ai/pbi/STP-XXXX/00-approved-pbi.md`
+- `docs/ai/pbi/STP-XXXX/05-validation.md`
 - `docs/ai/repo-context/README.md`
 - relevant files under `docs/ai/repo-context/*`
+
+If `00-approved-pbi.md` contains `STATUS: BLOCKED_FOR_CLARIFICATION`, stop and ask for clarification before planning.
 
 ## Source Inspection Rule
 
@@ -62,6 +65,7 @@ This skill may update only:
 - `docs/ai/pbi/STP-XXXX/01-context.md`
 - `docs/ai/pbi/STP-XXXX/02-implementation-plan.md`
 - `docs/ai/pbi/STP-XXXX/03-codebase-index.md`
+- `docs/ai/pbi/STP-XXXX/05-validation.md`
 - `docs/ai/pbi/STP-XXXX/phases/*.md`
 - `docs/ai/pbi/STP-XXXX/knowledge/*` only if needed
 - `docs/ai/pbi/STP-XXXX/04-decision_log.md` only if decisions exist
@@ -161,6 +165,22 @@ Update only when actual planning decisions exist.
 
 Use only for architecture, domain, and design decisions. Do not use for phase execution notes, review comments, todos, or temporary planning notes.
 
+### `05-validation.md`
+
+Update with validation requirements for the PBI.
+
+Required sections:
+
+- Build Verification
+- Manual Test Scenarios
+- Regression Checklist
+- Known Risks
+- Sign-off Criteria
+
+Validation may include build checks, lint checks when explicitly requested or required, manual smoke tests, manual regression tests, and sign-off criteria.
+
+No automated tests does not mean no validation.
+
 ## Forbidden Actions
 
 - Do not modify source code.
@@ -178,5 +198,6 @@ Use only for architecture, domain, and design decisions. Do not use for phase ex
 4. Inspect source code only if repo-context is missing or insufficient.
 5. Build a concise implementation plan.
 6. Create phase files as plan plus execution memory.
-7. Record decisions only when decisions exist.
-8. Report all changed markdown files under `Markdown Files Changed`.
+7. Define validation requirements in `05-validation.md`.
+8. Record decisions only when decisions exist.
+9. Report all changed markdown files under `Markdown Files Changed`.

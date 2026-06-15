@@ -60,14 +60,26 @@ Repository Knowledge != PBI Knowledge != Review Knowledge != Execution Memory !=
 
 PBI work follows an implementation workflow from understanding to verification.
 
-1. Read the PBI and identify the requested outcome.
-2. Read relevant shared memory under `docs/ai/`.
-3. Inspect the current repository files before deciding on an implementation.
-4. Follow existing project patterns, naming, and coding standards.
-5. Keep changes scoped to the PBI.
-6. Update markdown shared memory only when the PBI changes durable operating knowledge.
-7. Verify the change with the appropriate project checks when requested or required.
-8. Report changed markdown files under `Markdown Files Changed`.
+```text
+Raw PBI
+↓
+PBI Clarification
+↓
+Approved PBI
+↓
+pbi-workspace-create
+```
+
+1. Clarify the raw PBI before workspace creation.
+2. Stop when critical information is missing and mark `STATUS: BLOCKED_FOR_CLARIFICATION`.
+3. Read relevant shared memory under `docs/ai/`.
+4. Inspect the current repository files before deciding on an implementation.
+5. Follow existing project patterns, naming, and coding standards.
+6. Keep changes scoped to the PBI.
+7. Define explicit validation requirements.
+8. Update markdown shared memory only when the PBI changes durable operating knowledge.
+9. Verify the change with the appropriate project checks when requested or required.
+10. Report changed markdown files under `Markdown Files Changed`.
 
 ### PBI Workspace File Naming
 
@@ -79,13 +91,29 @@ Official PBI workspace files under `docs/ai/pbi/STP-XXXX/` are:
 02-implementation-plan.md
 03-codebase-index.md
 04-decision_log.md
-05 reserved unused
+05-validation.md
 06-handoff.md
 phases/
 knowledge/
 ```
 
-The `05` slot is intentionally reserved and unused.
+`05-validation.md` stores repeatable validation requirements for the PBI.
+
+Required sections:
+
+```markdown
+# Build Verification
+
+# Manual Test Scenarios
+
+# Regression Checklist
+
+# Known Risks
+
+# Sign-off Criteria
+```
+
+No automated tests does not mean no validation.
 
 ## PR Review Workflow
 
@@ -131,6 +159,9 @@ Official Review workspace files under `docs/ai/reviews/STP-XXXX/` are:
 - Avoid rediscovering facts already captured in approved shared memory.
 - Keep new documentation concise and structured.
 - Move stable repeated knowledge into shared markdown instead of relying on conversation history.
+- Preserve quality over numeric context limits.
+- Do not use hard token quotas or maximum file counts as a reason to skip necessary context.
+- Stop and request approval when extra files, extra phases, or scope expansion are required.
 
 ### Context Read Order
 
@@ -151,9 +182,13 @@ Agents must not read the entire repository, all `docs/ai`, all skills, or the wh
 
 Before reading any extra file, the agent must state:
 
-- file path
-- why it is needed
-- what decision, risk, or validation it helps evaluate
+```text
+Requested File:
+
+Reason:
+
+Expected Decision Impact:
+```
 
 ## Markdown Change Reporting Rule
 
@@ -177,13 +212,14 @@ For each file:
 
 The official V2 skill list is a governed list of approved execution protocols.
 
-Initial approved skill categories:
+Approved skill categories:
 
 - `repo-context`: capture and maintain reusable repository knowledge.
+- `pbi-clarification`: convert raw PBIs into structured approved PBIs.
 - `pbi-workflow`: execute Product Backlog Item implementation work.
 - `pr-review-workflow`: review pull requests and address review feedback.
 - `quality-rules`: apply repository quality expectations and verification discipline.
 - `context-optimization`: reduce repeated discovery and manage useful context.
 - `markdown-change-reporting`: report all markdown documentation changes.
 
-No skill files are created in this baseline step.
+Approved skill files are registered through `docs/ai/skills/README.md`.

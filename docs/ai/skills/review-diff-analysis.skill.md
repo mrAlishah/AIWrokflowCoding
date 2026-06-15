@@ -82,6 +82,8 @@ Analyze:
 - Do not modify source code.
 - Do not update files outside `docs/ai/reviews/STP-XXXX/`.
 - Keep analysis concise and actionable.
+- Preserve review quality over numeric context limits.
+- Stop and request approval before broad repository analysis or files outside the diff unless they are required to understand correctness, risk, or validation impact.
 
 ## Execution Protocol
 
