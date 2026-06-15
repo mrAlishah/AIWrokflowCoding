@@ -25,7 +25,7 @@ Refresh reusable repository knowledge under `docs/ai/repo-context/`.
 
 ## Update
 
-- Relevant files under `docs/ai/repo-context/*`
+- Relevant files under `docs/ai/repo-context/*`, including `docs/ai/repo-context/policy/*`
 
 ## Stop Conditions
 

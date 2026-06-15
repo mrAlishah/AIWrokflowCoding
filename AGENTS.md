@@ -226,7 +226,7 @@ Exception:
 policy-plan-update
 ```
 
-may update reusable repository policy files under `docs/ai/repo-context/` only when:
+may update reusable repository policy files under `docs/ai/repo-context/policy/` only when:
 
 ```text
 SCOPE: global
@@ -390,7 +390,7 @@ Unnecessary abstractions
 Active code policies are defined in:
 
 ```text
-docs/ai/repo-context/code-policies.md
+docs/ai/repo-context/policy/code-policies.md
 ```
 
 ---

@@ -32,8 +32,8 @@ Depending on scope:
 
 - PBI planning files
 - Review feedback files
-- `docs/ai/repo-context/code-policies.md`
-- `docs/ai/repo-context/coding_standards.md`
+- `docs/ai/repo-context/policy/code-policies.md`
+- `docs/ai/repo-context/policy/coding_standards.md`
 - Related skill guidance only when the policy affects coding conventions
 
 ## Stop Conditions

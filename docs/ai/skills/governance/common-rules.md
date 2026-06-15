@@ -24,6 +24,7 @@ Canonical shared rules for the AI Multi-Agent Coding Operating System.
 ## Ownership Rules
 
 - `docs/ai/repo-context/*` is reusable repository knowledge.
+- Repository policy files live under `docs/ai/repo-context/policy/`.
 - Only `repo-context-update` may update repo-context files.
 - Exception: `policy-plan-update` may update reusable repository policy files only when its approved global policy parameters allow it.
 - All other skills treat repo-context as read-only.

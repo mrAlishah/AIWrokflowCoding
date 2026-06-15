@@ -1,15 +1,19 @@
-# Repo Context Policy Area
+# Repo Context Policy
 
-Canonical new path:
+Canonical path:
 
 ```text
 docs/ai/repo-context/policy/
 ```
 
-Reason for compatibility:
+## Files
 
-Policy move candidates still live in `docs/ai/repo-context/` until a later migration step.
+- [code-policies.md](code-policies.md): approved global code policies
+- [coding_standards.md](coding_standards.md): naming, style, and implementation conventions
+- [context_budget.md](context_budget.md): context loading and optimization rules
 
-Migration note:
+## Compatibility
 
-Current policy move candidates are `code-policies.md`, `coding_standards.md`, and `context_budget.md`. Keep `test_strategy.md` and `workflow.md` in `docs/ai/repo-context/`.
+Legacy paths in `docs/ai/repo-context/` remain usable through minimal pointers.
+
+Keep `test_strategy.md` and `workflow.md` in `docs/ai/repo-context/`.

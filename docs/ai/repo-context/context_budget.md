@@ -1,12 +1,15 @@
-# Context Efficiency
+# Compatibility Pointer
 
-Compatibility pointer.
-
-Canonical context rules live in:
+Canonical new path:
 
 ```text
-docs/ai/skills/governance/read-order.md
+docs/ai/repo-context/policy/context_budget.md
 ```
 
-Keep this file only for older repo-context routing references.
+Reason for compatibility:
 
+Existing V2 prompts, validation history, and older documentation may still reference this path.
+
+Migration note:
+
+Use the canonical new path for future updates. Do not duplicate full policy content here.
