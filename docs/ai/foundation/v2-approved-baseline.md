@@ -33,6 +33,28 @@ Skills are execution protocols.
 - A skill should be explicit, repeatable, and scoped to one operational responsibility.
 - Skills may reference shared markdown memory when they need repository or workflow context.
 
+### Governance = Canonical Shared Rules
+
+Global rules are centralized under `docs/ai/governance/`.
+
+Skills, README files, and workspace templates should reference governance files instead of duplicating global rules.
+
+Canonical governance files:
+
+```text
+docs/ai/governance/common-rules.md
+docs/ai/governance/context-efficiency.md
+docs/ai/governance/markdown-reporting.md
+docs/ai/governance/observability.md
+```
+
+Anti-duplication rule:
+
+```text
+Do not duplicate global rules inside skills, README files, or workspace templates.
+Reference the canonical governance file instead.
+```
+
 ### repo-context = Reusable Repository Knowledge
 
 `repo-context` is reusable repository knowledge.

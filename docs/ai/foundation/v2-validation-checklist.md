@@ -12,6 +12,8 @@ The V2.1 Essential update is included: mandatory PBI clarification, explicit `05
 
 ObsV1.1 Lightweight Workspace Observability is included: local `99-metrics.md` files, central markdown dashboards, estimated metrics, and context efficiency ratios without exact token tracking or external telemetry.
 
+V2.3 Docs/AI Context Optimization is included: global rules are centralized in `docs/ai/governance/`, skill files use the compact V2.3 section model, and README files are routing-focused.
+
 The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.md` exist and align with the Claude compatibility contract. No source code inspection or source code modification was needed.
 
 ## Checked Files
@@ -22,6 +24,10 @@ The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.m
 - `CLAUDE.md`
 - `docs/ai/START_HERE.md`
 - `docs/ai/README.md`
+- `docs/ai/governance/common-rules.md`
+- `docs/ai/governance/context-efficiency.md`
+- `docs/ai/governance/markdown-reporting.md`
+- `docs/ai/governance/observability.md`
 - `docs/ai/skills/README.md`
 - `docs/ai/skills/common-skill-rules.md`
 - `docs/ai/skills/docs-ai-cleanup-audit.skill.md`
@@ -145,6 +151,13 @@ The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.m
 - Review context efficiency ratio is `Source Files Reviewed / Files Read`.
 - Phase information is kept only in `99-metrics.md` and not in central dashboards.
 - Metrics use estimates and do not require exact token tracking, API-based cost calculations, external telemetry, or non-markdown dashboards.
+- Global common rules are centralized in `docs/ai/governance/common-rules.md`.
+- Context reading rules are centralized in `docs/ai/governance/context-efficiency.md`.
+- Markdown change reporting rules are centralized in `docs/ai/governance/markdown-reporting.md`.
+- ObsV1.1 rules are centralized in `docs/ai/governance/observability.md`.
+- Skill files use the V2.3 section model: Purpose, Parameters, Read, Steps, Update, Stop Conditions, Final Output, References.
+- README files act as routing/index files and avoid long duplicated policy text.
+- `docs/ai/skills/common-skill-rules.md` remains only as a compatibility pointer to governance files.
 - `docs/ai/skills/README.md` lists all official Repository, PBI Workflow, and Review Workflow skills.
 - `docs/ai/skills/README.md` is a short routing index and references common skill rules.
 - `docs/ai/skills/README.md` does not duplicate the full markdown change reporting rule or common context read order.

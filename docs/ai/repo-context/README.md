@@ -1,16 +1,12 @@
 # Repo Context
 
-`repo-context` is reusable repository knowledge for the AI Multi-Agent Coding Operating System.
+Reusable repository knowledge.
 
-## Rules
+## When To Read
 
-- `repo-context` is read-only for all skills except `repo-context-update`.
-- `repo-context-update` is the only skill allowed to update files in this directory.
-- Repository inspection happens only when `repo-context-update` is explicitly invoked.
-- Keep entries concise, stable, and useful for future work.
-- Do not dump full repository trees or large source excerpts.
+Read repo-context when the selected skill needs stable repository knowledge before source inspection.
 
-## Files
+## Read Next
 
 - [architecture.md](architecture.md): architecture boundaries and system shape
 - [module_map.md](module_map.md): important modules and responsibilities
@@ -22,4 +18,12 @@
 - [context_budget.md](context_budget.md): context loading and optimization rules
 - [test_strategy.md](test_strategy.md): verification and test strategy
 - [workflow.md](workflow.md): repository-specific working workflow
+
+## Do Not Read By Default
+
+Do not read every repo-context file. Start with the routing file that matches the selected skill.
+
+## Governance
+
+Repo-context ownership rules are in [../governance/common-rules.md](../governance/common-rules.md).
 

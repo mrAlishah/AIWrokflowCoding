@@ -1,100 +1,52 @@
-# review-comments-create Skill
-
-This skill follows `common-skill-rules.md`.
-
-Skill-specific rules are listed below.
+# Skill: review-comments-create
 
 ## Purpose
 
-Create review comments from local diff analysis.
+Create English PR-ready comments and Persian/internal suggestions from local diff analysis.
 
-## When To Use
+## Parameters
 
-Use after `review-diff-analysis` has identified findings and risks.
+- `STP_ID`: required
+- `FINDINGS`: required or read from `03-diff-analysis.md`
+- `SEVERITY`: optional per finding
 
-## Required Parameters
+## Read
 
-- review id in `STP-XXXX` format
-- diff-analysis path
-- findings to convert into comments
-- severity or priority for each finding
+- `03-diff-analysis.md`
+- Source snippets referenced by findings only when needed
 
-## Context Read Order
+## Steps
 
-1. `docs/ai/skills/README.md`
-2. `docs/ai/skills/review-comments-create.skill.md`
-3. Active workspace: `docs/ai/reviews/STP-XXXX/*`
-4. repo-context routing docs only if needed:
-   - `docs/ai/repo-context/module_map.md`
-   - `docs/ai/repo-context/file_index.md`
-   - `docs/ai/repo-context/context_budget.md`
-5. Exact source files referenced by diff-analysis findings, only if needed
+1. Convert supported findings into concise English PR-ready comments.
+2. Create Persian/internal suggestions with deeper reasoning.
+3. Link English and Persian items by `PR.No`.
+4. Use only supported findings; do not invent findings.
 
-Before reading any extra file, state:
+## Update
 
-- file path
-- why it is needed
-- what decision, risk, or validation it helps evaluate
-
-## Allowed File Scope
-
-This skill may update only:
-
-- `docs/ai/reviews/STP-XXXX/04-en-pr-comments.md`
-- `docs/ai/reviews/STP-XXXX/05-fa-pr-suggestions.md`
-- `docs/ai/reviews/STP-XXXX/99-metrics.md`
+- `04-en-pr-comments.md`
+- `05-fa-pr-suggestions.md`
+- `99-metrics.md`
 - `docs/ai/reviews/metrics.md`
 
-## English PR Comments
+## Stop Conditions
 
-Create English PR comments in `04-en-pr-comments.md`.
+- Diff analysis is missing.
+- Findings are unsupported by the diff.
+- The task requires source modification, PR API calls, PR creation, or pushing commits.
 
-Each comment must have:
+## Final Output
 
-- PR.No, such as `PR-001`
-- Status
-- Severity
-- English PR-ready comment
-- Suggested fix summary
+- Summary
+- PR comments location
+- Internal suggestions location
+- Markdown Files Changed
+- Recommended next skill
 
-Allowed status values:
+## References
 
-- `Planned`
-- `Done`
-- `Ignore`
-
-## Persian Deep Suggestions
-
-Create Persian deep suggestions in `05-fa-pr-suggestions.md`.
-
-Each Persian suggestion must link to the English comment by `PR.No`.
-
-Each Persian suggestion must include:
-
-- PR.No
-- Deep Persian reasoning
-- Suggested fixes
-- Pseudo-code
-- Alternative solutions
-- Personal notes
-- Whether to post or keep internal
-
-## Required Rules
-
-- Use local git diff analysis only.
-- Do not call PR APIs.
-- Do not create PRs.
-- Do not push commits.
-- Do not modify source code.
-- Do not update files outside `docs/ai/reviews/STP-XXXX/` except `docs/ai/reviews/metrics.md`.
-- Do not invent findings that are not supported by the diff.
-
-## Execution Protocol
-
-1. Read `03-diff-analysis.md`.
-2. Create concise English PR comments.
-3. Create Persian deep suggestions linked by `PR.No`.
-4. Use only `Planned`, `Done`, or `Ignore` statuses.
-5. Append execution metrics to `99-metrics.md`.
-6. Update `docs/ai/reviews/metrics.md`.
-7. Report all changed markdown files under `Markdown Files Changed`.
+Follow:
+- `docs/ai/governance/common-rules.md`
+- `docs/ai/governance/context-efficiency.md`
+- `docs/ai/governance/markdown-reporting.md`
+- `docs/ai/governance/observability.md`

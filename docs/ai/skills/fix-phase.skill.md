@@ -1,129 +1,62 @@
-# fix-phase Skill
-
-This skill follows `common-skill-rules.md`.
-
-Skill-specific rules are listed below.
+# Skill: fix-phase
 
 ## Purpose
 
-Apply targeted fixes for review findings.
+Apply targeted fixes for approved review findings or Required RF items.
 
-## When To Use
+## Parameters
 
-Use after `review-phase` identifies concrete findings that must be fixed.
+- `STP_ID` or `PBI_ID`: required
+- `FINDINGS` or `RF_ID`: required
+- `TARGET_FILES`: required unless resolved from RF
+- `VERIFICATION`: required
 
-## Required Parameters
+## Read
 
-- PBI id in `STP-XXXX` format
-- review findings to fix
-- target files for each finding
-- relevant phase file
-- verification requested for the fixes
+- Review findings or RF file
+- Relevant phase file
+- `05-validation.md`
+- `99-metrics.md`
+- Only files needed to fix approved findings
 
-For post-PR review feedback, the minimal required parameters are:
+## Steps
 
-- `PBI_ID`
-- `RF_ID`
+1. Confirm findings are approved for fixing.
+2. For `RF_ID`, proceed only when status is `Required`.
+3. Apply minimal targeted fixes.
+4. Run requested or necessary verification.
+5. Update phase or review memory.
+6. Update the fixed phase `Step` in `02-implementation-plan.md`.
 
-## Required Inputs
+## Update
 
-Read:
-
-- review findings
-- relevant phase file
-- `docs/ai/pbi/STP-XXXX/05-validation.md`
-- `docs/ai/pbi/STP-XXXX/99-metrics.md`
-- only source files needed to fix the findings
-
-For `RF_ID`, resolve and read:
-
-```text
-docs/ai/pbi/{PBI_ID}/phases/review-feedback.md
-docs/ai/pbi/{PBI_ID}/phases/RF-*.md matching {RF_ID}
-```
-
-## Context Read Order
-
-1. `docs/ai/skills/README.md`
-2. `docs/ai/skills/fix-phase.skill.md`
-3. Active workspace: `docs/ai/pbi/STP-XXXX/*`
-4. repo-context routing docs only if needed:
-   - `docs/ai/repo-context/module_map.md`
-   - `docs/ai/repo-context/file_index.md`
-   - `docs/ai/repo-context/context_budget.md`
-5. Exact source files needed for the review findings
-
-Before reading any extra file, state:
-
-- file path
-- why it is needed
-- what decision, risk, or validation it helps evaluate
-
-## Allowed File Scope
-
-This skill may update:
-
-- files directly required to fix review findings
-- `docs/ai/pbi/STP-XXXX/02-implementation-plan.md` to set the phase `Step` value
-- relevant phase file or PBI review notes, if needed
-- `docs/ai/pbi/STP-XXXX/05-validation.md` when fixes change validation requirements, risks, or sign-off criteria
-- `docs/ai/pbi/STP-XXXX/99-metrics.md`
+- Files directly required for approved fixes
+- Relevant phase or RF file
+- `02-implementation-plan.md` with `Step: fix` or a versioned fix step
+- `05-validation.md` when validation requirements, risks, or sign-off criteria change
+- `99-metrics.md`
 - `docs/ai/pbi/metrics.md`
 
-It must not update `docs/ai/repo-context/*`.
+## Stop Conditions
 
-## Fix Rules
+- RF status is not `Required`.
+- Fix target is unclear.
+- The fix would add unrelated behavior or cleanup.
+- Scope expansion is required without approval.
 
-- Apply only review findings.
-- For `RF_ID` work, apply only RF items with status `Required`.
-- Do not apply `Proposed`, `Ignored`, `Done`, or `Blocked` RF items.
-- Keep fixes minimal and local.
-- Touch the fewest files possible.
-- Change the fewest lines possible.
-- Follow repository conventions.
-- Follow active code policies from `docs/ai/repo-context/code-policies.md` when they apply to touched code.
-- Preserve the original implementation plan unless a finding requires a scoped adjustment.
-- Code should remain simple, readable, and aligned with repo conventions.
-- Avoid over-engineering.
-- Avoid broad refactoring unless explicitly requested.
-- Comment important intent.
-- Comment important business logic.
-- Comment important validation rules.
-- Comment important technical decisions.
-- Comment compatibility rules or behavior copied from existing codebase patterns.
-- Avoid obvious comments.
-- Avoid noisy comments.
-- Avoid commenting every line.
-- Preserve fix quality over numeric context limits.
-- Stop and request approval before reading files outside the approved fix scope unless they are required for correctness or validation.
+## Final Output
 
-## Forbidden Actions
+- Summary
+- Fixes applied
+- Verification performed
+- Remaining risks
+- Markdown Files Changed
+- Recommended next skill
 
-- Do not perform extra cleanup.
-- Do not refactor unrelated code.
-- Do not add new behavior outside the review findings.
-- Do not update repo-context.
-- Do not reopen planning unless the review finding requires it and the user approves.
+## References
 
-## Implementation Plan Step Update
-
-Update the fixed phase row in `02-implementation-plan.md`:
-
-- set `Step` to `fix` by default
-- use a versioned value such as `fix-1.2` only when sub-iterations exist
-- keep `Step` independent from `Status`
-
-## Execution Protocol
-
-1. Confirm the findings to fix.
-2. If `RF_ID` is provided, resolve the RF file from `PBI_ID` and confirm its status is `Required`.
-3. Read the relevant phase and review notes.
-4. Read only files needed for the fixes.
-5. Apply targeted fixes.
-6. Run only requested or necessary verification.
-7. Update phase or review memory if needed.
-8. Update the fixed phase row in `02-implementation-plan.md` with `Step: fix` or a versioned fix step.
-9. Update `05-validation.md` if validation requirements, known risks, or sign-off criteria changed.
-10. Append execution metrics to `99-metrics.md`.
-11. Update `docs/ai/pbi/metrics.md`.
-12. Report all changed markdown files under `Markdown Files Changed`.
+Follow:
+- `docs/ai/governance/common-rules.md`
+- `docs/ai/governance/context-efficiency.md`
+- `docs/ai/governance/markdown-reporting.md`
+- `docs/ai/governance/observability.md`

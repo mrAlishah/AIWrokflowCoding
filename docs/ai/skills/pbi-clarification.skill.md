@@ -1,112 +1,52 @@
-# pbi-clarification Skill
-
-This skill follows `common-skill-rules.md`.
-
-Skill-specific rules are listed below.
+# Skill: pbi-clarification
 
 ## Purpose
 
-Transform a raw PBI into an implementation-ready approved PBI.
+Transform a raw PBI into an implementation-ready approved PBI and block downstream work when critical information is missing.
 
-This skill is mandatory before `pbi-workspace-create`.
+## Parameters
 
-## When To Use
+- `STP_ID`: optional when derivable, otherwise required
+- `RAW_PBI`: required
+- `REQUESTER`: optional
 
-Use when a PBI is raw, newly provided, ambiguous, incomplete, or not yet structured for implementation.
+## Read
 
-## Required Parameters
+- Raw PBI input
+- Minimal repo-context only when needed to understand the problem
 
-- PBI id in `STP-XXXX` format, if known
-- raw PBI text or source request
-- requester or source, if known
+## Steps
 
-## Allowed File Scope
+1. Confirm or derive `STP_ID`.
+2. Identify ambiguities, missing information, assumptions, risks, and acceptance criteria gaps.
+3. Ask focused Persian questions when the user communicates in Persian.
+4. Write required approved PBI sections to `00-approved-pbi.md`.
+5. If critical information is missing, write `STATUS: BLOCKED_FOR_CLARIFICATION`.
 
-This skill may create or update only:
+## Update
 
-- `docs/ai/pbi/STP-XXXX/00-approved-pbi.md`
-- `docs/ai/pbi/STP-XXXX/99-metrics.md`
+- `docs/ai/pbi/{STP_ID}/00-approved-pbi.md`
+- `docs/ai/pbi/{STP_ID}/99-metrics.md`
 - `docs/ai/pbi/metrics.md`
 
-It must not modify source code.
-It must not create implementation tasks.
-It must not create phase files.
-It must not update repo-context.
+## Stop Conditions
 
-## Required Output File
+- `STP_ID` cannot be derived.
+- Critical implementation information is missing.
+- The requested update would create implementation tasks, phase files, source changes, or repo-context changes.
 
-Create or update:
+## Final Output
 
-```text
-docs/ai/pbi/STP-XXXX/00-approved-pbi.md
-```
+- Summary
+- Clarification status
+- Open questions, if any
+- Markdown Files Changed
+- Recommended next skill
 
-## Required Sections
+## References
 
-`00-approved-pbi.md` must contain:
-
-```markdown
-# Business Goal
-
-# Current Behavior
-
-# Expected Behavior
-
-# In Scope
-
-# Out Of Scope
-
-# Acceptance Criteria
-
-# Assumptions
-
-# Open Questions
-
-# Risks
-```
-
-## Clarification Rules
-
-Identify and document:
-
-- ambiguities
-- missing information
-- assumptions
-- risks
-- questions for Product Managers or the requester
-
-If critical implementation information is missing, write:
-
-```text
-STATUS: BLOCKED_FOR_CLARIFICATION
-```
-
-When this status exists, planning and implementation skills must not continue.
-
-## Quality Rules
-
-- Preserve the user's intent.
-- Do not invent acceptance criteria.
-- Do not convert assumptions into facts.
-- Ask focused questions in Persian when the user communicates in Persian.
-- Keep the approved PBI concise and implementation-ready.
-
-## Forbidden Actions
-
-- Do not modify source code.
-- Do not create implementation phases.
-- Do not run planning, implementation, review, fix, or handoff workflows.
-- Do not update repo-context.
-- Do not create broad repository indexes.
-
-## Execution Protocol
-
-1. Confirm or derive the PBI id.
-2. Read the raw PBI.
-3. Read only the repo-context needed to understand the problem.
-4. Identify ambiguities, assumptions, missing information, risks, and acceptance criteria gaps.
-5. If critical information is missing, update `00-approved-pbi.md` with `STATUS: BLOCKED_FOR_CLARIFICATION` and focused questions.
-6. If the PBI is clear, update `00-approved-pbi.md` with the required sections.
-7. Append execution metrics to `99-metrics.md` with phase `N/A`.
-8. Update `docs/ai/pbi/metrics.md`.
-9. Report all changed markdown files under `Markdown Files Changed`.
+Follow:
+- `docs/ai/governance/common-rules.md`
+- `docs/ai/governance/context-efficiency.md`
+- `docs/ai/governance/markdown-reporting.md`
+- `docs/ai/governance/observability.md`
