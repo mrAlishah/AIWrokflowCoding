@@ -45,9 +45,14 @@ AGENTS.md -> optional agent-specific file -> START_HERE.md -> skills/README.md -
 - Read active workspace files only when the selected skill requires them.
 - Read repo-context or source files only when the selected skill allows it.
 - Do not read `docs/ai/foundation/*` unless the task is AI OS maintenance.
+- `docs/ai/foundation/**` is not daily runtime context and remains unchanged in the V2 compatibility structure step.
 - Do not read `setup-prompts/*` unless the task is setup or prompt maintenance.
 - Do not read validation reports unless the task is validation.
 - For tagged user answers or policy changes that must sync into planning files, use `policy-plan-update`.
 - For long-term `docs/ai` cleanup or context-cost audit, use `docs-ai-cleanup-audit`.
 - Do not use cleanup audits during normal PBI implementation or PR review.
 - Keep changes minimal and report markdown changes.
+
+## Migration Compatibility
+
+Target skill folders may exist under `docs/ai/skills/`, but existing flat skill files and existing skill names remain callable until a later approved migration step.

@@ -19,6 +19,24 @@ Read repo-context when the selected skill needs stable repository knowledge befo
 - [test_strategy.md](test_strategy.md): verification and test strategy
 - [workflow.md](workflow.md): repository-specific working workflow
 
+## Policy Migration Compatibility
+
+Future policy target:
+
+```text
+docs/ai/repo-context/policy/
+```
+
+Current policy move candidates are:
+
+```text
+code-policies.md
+coding_standards.md
+context_budget.md
+```
+
+Keep `test_strategy.md` and `workflow.md` in `docs/ai/repo-context/`.
+
 ## Do Not Read By Default
 
 Do not read every repo-context file. Start with the routing file that matches the selected skill.

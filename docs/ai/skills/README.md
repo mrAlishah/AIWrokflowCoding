@@ -4,7 +4,21 @@ Routing index for approved execution protocols.
 
 Read this file to select one skill. Then read only the selected skill file.
 
-Global rules live in `docs/ai/governance/`.
+Global rules currently live in `docs/ai/governance/`.
+
+Future target structure:
+
+```text
+docs/ai/skills/governance/
+docs/ai/skills/pbi/
+docs/ai/skills/review/
+docs/ai/skills/pr/
+docs/ai/skills/tools/
+```
+
+Compatibility note:
+
+Existing flat skill files and existing skill names remain callable during this migration phase. Do not read the target folders by default.
 
 ## Repository
 
@@ -43,3 +57,5 @@ Use `pr-review-workflow` for daily end-to-end local PR/code review.
 ## Do Not Read By Default
 
 Do not read all skills. Read only the selected skill file.
+
+Do not read `docs/ai/foundation/**` as daily runtime context.
