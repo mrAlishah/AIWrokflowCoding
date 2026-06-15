@@ -28,6 +28,7 @@ Read:
 - `docs/ai/pbi/STP-XXXX/00-approved-pbi.md`
 - `docs/ai/pbi/STP-XXXX/02-implementation-plan.md`
 - `docs/ai/pbi/STP-XXXX/05-validation.md`
+- `docs/ai/pbi/STP-XXXX/99-metrics.md`
 - relevant phase files
 - verification results
 - final diff summary
@@ -37,6 +38,8 @@ Read:
 This skill may update only:
 
 - `docs/ai/pbi/STP-XXXX/06-handoff.md`
+- `docs/ai/pbi/STP-XXXX/99-metrics.md`
+- `docs/ai/pbi/metrics.md`
 
 It must not update `docs/ai/repo-context/*`.
 
@@ -77,4 +80,6 @@ Update `06-handoff.md` with:
 3. Summarize changed files and validation.
 4. Record risks and review focus.
 5. Update `06-handoff.md`.
-6. Report all changed markdown files under `Markdown Files Changed`.
+6. Append execution metrics to `99-metrics.md` with phase `N/A`.
+7. Update `docs/ai/pbi/metrics.md`.
+8. Report all changed markdown files under `Markdown Files Changed`.

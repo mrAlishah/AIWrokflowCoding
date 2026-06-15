@@ -10,6 +10,8 @@ The V2 AI Operating System foundation matches the approved baseline and the user
 
 The V2.1 Essential update is included: mandatory PBI clarification, explicit `05-validation.md`, and quality-preserving context efficiency without hard numeric quotas.
 
+ObsV1.1 Lightweight Workspace Observability is included: local `99-metrics.md` files, central markdown dashboards, estimated metrics, and context efficiency ratios without exact token tracking or external telemetry.
+
 The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.md` exist and align with the Claude compatibility contract. No source code inspection or source code modification was needed.
 
 ## Checked Files
@@ -29,7 +31,9 @@ The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.m
 - `docs/ai/repo-context/code-policies.md`
 - `docs/ai/repo-context/coding_standards.md`
 - `docs/ai/pbi/README.md`
+- `docs/ai/pbi/metrics.md`
 - `docs/ai/reviews/README.md`
+- `docs/ai/reviews/metrics.md`
 - `docs/ai/skills/repo-context-update.skill.md`
 - `docs/ai/skills/pbi-clarification.skill.md`
 - `docs/ai/skills/pbi-workspace-create.skill.md`
@@ -130,6 +134,16 @@ The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.m
 - PBI workspace structure includes `05-validation.md`.
 - `05-validation.md` contains build verification, manual test scenarios, regression checklist, known risks, and sign-off criteria.
 - `pbi-workspace-create`, `pbi-plan-create`, `implementation-phase`, `review-phase`, `fix-phase`, and `pbi-final-handoff` read or maintain `05-validation.md` according to their workflow role.
+- PBI workspace structure includes `99-metrics.md`.
+- Review workspace structure includes `99-metrics.md`.
+- `docs/ai/pbi/metrics.md` provides the aggregate PBI metrics dashboard.
+- `docs/ai/reviews/metrics.md` provides the aggregate Review metrics dashboard.
+- Operational PBI skills append execution records to `docs/ai/pbi/STP-XXXX/99-metrics.md` and update `docs/ai/pbi/metrics.md`.
+- Operational review skills append execution records to `docs/ai/reviews/STP-XXXX/99-metrics.md` and update `docs/ai/reviews/metrics.md`.
+- PBI context efficiency ratio is `Files Changed / Files Read`.
+- Review context efficiency ratio is `Source Files Reviewed / Files Read`.
+- Phase information is kept only in `99-metrics.md` and not in central dashboards.
+- Metrics use estimates and do not require exact token tracking, API-based cost calculations, external telemetry, or non-markdown dashboards.
 - `docs/ai/skills/README.md` lists all official Repository, PBI Workflow, and Review Workflow skills.
 - `docs/ai/skills/README.md` is a short routing index and references common skill rules.
 - `docs/ai/skills/README.md` does not duplicate the full markdown change reporting rule or common context read order.
@@ -156,7 +170,7 @@ The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.m
 - Review workflow uses local git diff only and `git diff BASE_BRANCH...HEAD`.
 - Review branch checkout is documented as a manual user action.
 - Review skills forbid external PR APIs, PR creation, pushes, and source code modification.
-- Review skills write only under `docs/ai/reviews/STP-XXXX/*`.
+- Review skills write only under `docs/ai/reviews/STP-XXXX/*` plus the aggregate dashboard `docs/ai/reviews/metrics.md`.
 - Review skills define English PR comments, Persian suggestions, follow-up status handling, and final handoff requirements.
 - Implementation and review skills enforce repository conventions, coding standards, architecture boundaries, comment standards, simple code, minimal files, minimal lines, no over-engineering, and no broad refactoring.
 - Comment rules cover important intent, business logic, validation rules, technical decisions, and avoiding obvious or noisy comments.
@@ -191,6 +205,7 @@ Expected PBI names are used:
 - `04-decision_log.md`
 - `05-validation.md`
 - `06-handoff.md`
+- `99-metrics.md`
 - `phases/`
 - `knowledge/`
 
@@ -203,6 +218,7 @@ Expected review names are used:
 - `05-fa-pr-suggestions.md`
 - `06-followup-log.md`
 - `07-handoff.md`
+- `99-metrics.md`
 
 ## Missing Files
 
@@ -222,7 +238,7 @@ Documentation-only, planning, and review workflow skills forbid source code modi
 
 Low.
 
-The foundation, skills index, and common skill rules document the approved read order and forbid broad repository or documentation reads unless explicitly required. Relevant skills also require agents to justify extra file reads. Context efficiency is quality-preserving and avoids hard token quotas or maximum file counts.
+The foundation, skills index, and common skill rules document the approved read order and forbid broad repository or documentation reads unless explicitly required. Relevant skills also require agents to justify extra file reads. Context efficiency is quality-preserving and avoids hard token quotas or maximum file counts. ObsV1.1 captures estimated local metrics for troubleshooting without adding exact token tracking or external telemetry.
 
 ## Required Corrections
 
@@ -230,7 +246,7 @@ None.
 
 ## Optional Improvements
 
-- Add short examples for phase file layout, `PR.No` comment format, `05-validation.md`, and `06-handoff.md` output.
+- Add short examples for phase file layout, `PR.No` comment format, `05-validation.md`, `99-metrics.md`, and `06-handoff.md` output.
 - Pilot `review-feedback-analysis` with one real completed PBI before tightening RF parsing rules further.
 
 ## Final Recommendation

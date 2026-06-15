@@ -25,6 +25,8 @@ Use after review comments and follow-up checks are complete.
 This skill may update only:
 
 - `docs/ai/reviews/STP-XXXX/07-handoff.md`
+- `docs/ai/reviews/STP-XXXX/99-metrics.md`
+- `docs/ai/reviews/metrics.md`
 
 ## Handoff Content
 
@@ -53,7 +55,7 @@ Update `07-handoff.md` with:
 - Do not create PRs.
 - Do not push commits.
 - Do not modify source code.
-- Do not update files outside `docs/ai/reviews/STP-XXXX/`.
+- Do not update files outside `docs/ai/reviews/STP-XXXX/` except `docs/ai/reviews/metrics.md`.
 - Do not mark unresolved planned comments as done.
 
 ## Execution Protocol
@@ -62,4 +64,6 @@ Update `07-handoff.md` with:
 2. Summarize the final state.
 3. State the final review decision clearly.
 4. Update `07-handoff.md`.
-5. Report all changed markdown files under `Markdown Files Changed`.
+5. Append execution metrics to `99-metrics.md` with phase `N/A`.
+6. Update `docs/ai/reviews/metrics.md`.
+7. Report all changed markdown files under `Markdown Files Changed`.

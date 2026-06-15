@@ -52,6 +52,8 @@ This skill may update only:
 
 - `docs/ai/reviews/STP-XXXX/03-diff-analysis.md`
 - `docs/ai/reviews/STP-XXXX/02-context.md` if needed for assumptions or local diff context
+- `docs/ai/reviews/STP-XXXX/99-metrics.md`
+- `docs/ai/reviews/metrics.md`
 
 ## Analysis Checklist
 
@@ -80,7 +82,7 @@ Analyze:
 - Do not create PRs.
 - Do not push commits.
 - Do not modify source code.
-- Do not update files outside `docs/ai/reviews/STP-XXXX/`.
+- Do not update files outside `docs/ai/reviews/STP-XXXX/` except `docs/ai/reviews/metrics.md`.
 - Keep analysis concise and actionable.
 - Preserve review quality over numeric context limits.
 - Stop and request approval before broad repository analysis or files outside the diff unless they are required to understand correctness, risk, or validation impact.
@@ -91,4 +93,6 @@ Analyze:
 2. Run or inspect `git diff BASE_BRANCH...HEAD` locally.
 3. Summarize changed files and key risks.
 4. Update `03-diff-analysis.md`.
-5. Report all changed markdown files under `Markdown Files Changed`.
+5. Append execution metrics to `99-metrics.md`.
+6. Update `docs/ai/reviews/metrics.md`.
+7. Report all changed markdown files under `Markdown Files Changed`.

@@ -42,6 +42,8 @@ This skill may update only:
 
 - `docs/ai/reviews/STP-XXXX/04-en-pr-comments.md`
 - `docs/ai/reviews/STP-XXXX/05-fa-pr-suggestions.md`
+- `docs/ai/reviews/STP-XXXX/99-metrics.md`
+- `docs/ai/reviews/metrics.md`
 
 ## English PR Comments
 
@@ -84,7 +86,7 @@ Each Persian suggestion must include:
 - Do not create PRs.
 - Do not push commits.
 - Do not modify source code.
-- Do not update files outside `docs/ai/reviews/STP-XXXX/`.
+- Do not update files outside `docs/ai/reviews/STP-XXXX/` except `docs/ai/reviews/metrics.md`.
 - Do not invent findings that are not supported by the diff.
 
 ## Execution Protocol
@@ -93,4 +95,6 @@ Each Persian suggestion must include:
 2. Create concise English PR comments.
 3. Create Persian deep suggestions linked by `PR.No`.
 4. Use only `Planned`, `Done`, or `Ignore` statuses.
-5. Report all changed markdown files under `Markdown Files Changed`.
+5. Append execution metrics to `99-metrics.md`.
+6. Update `docs/ai/reviews/metrics.md`.
+7. Report all changed markdown files under `Markdown Files Changed`.

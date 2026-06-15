@@ -53,6 +53,8 @@ This skill may update only:
 - `docs/ai/reviews/STP-XXXX/05-fa-pr-suggestions.md`
 - `docs/ai/reviews/STP-XXXX/06-followup-log.md`
 - `docs/ai/reviews/STP-XXXX/03-diff-analysis.md` if follow-up analysis must be recorded
+- `docs/ai/reviews/STP-XXXX/99-metrics.md`
+- `docs/ai/reviews/metrics.md`
 
 ## Follow-Up Rules
 
@@ -74,7 +76,7 @@ This skill may update only:
 - Do not create PRs.
 - Do not push commits.
 - Do not modify source code.
-- Do not update files outside `docs/ai/reviews/STP-XXXX/`.
+- Do not update files outside `docs/ai/reviews/STP-XXXX/` except `docs/ai/reviews/metrics.md`.
 
 ## Execution Protocol
 
@@ -84,4 +86,6 @@ This skill may update only:
 4. Mark fixed comments as `Done`.
 5. Add `PR-001.1` style follow-up comments when needed.
 6. Update `06-followup-log.md`.
-7. Report all changed markdown files under `Markdown Files Changed`.
+7. Append execution metrics to `99-metrics.md`.
+8. Update `docs/ai/reviews/metrics.md`.
+9. Report all changed markdown files under `Markdown Files Changed`.

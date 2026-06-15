@@ -260,6 +260,7 @@ Official files:
 04-decision_log.md
 05-validation.md
 06-handoff.md
+99-metrics.md
 ```
 
 Every PBI must define explicit validation requirements in:
@@ -307,6 +308,19 @@ Official files:
 05-fa-pr-suggestions.md
 06-followup-log.md
 07-handoff.md
+99-metrics.md
+```
+
+Review aggregate metrics live in:
+
+```text
+docs/ai/reviews/metrics.md
+```
+
+PBI aggregate metrics live in:
+
+```text
+docs/ai/pbi/metrics.md
 ```
 
 Review must use:

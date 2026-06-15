@@ -17,6 +17,7 @@ docs/ai/pbi/STP-XXXX/
   04-decision_log.md
   05-validation.md
   06-handoff.md
+  99-metrics.md
   phases/
   knowledge/
 ```
@@ -32,6 +33,7 @@ docs/ai/reviews/STP-XXXX/
   05-fa-pr-suggestions.md
   06-followup-log.md
   07-handoff.md
+  99-metrics.md
 ```
 
 ## Runtime Files That Must Match This Naming
@@ -58,12 +60,15 @@ Passed.
 - `pbi-workspace-create` creates the new PBI file names.
 - `pbi-clarification` creates or updates `00-approved-pbi.md`.
 - `pbi-workspace-create` creates `05-validation.md`.
+- `pbi-workspace-create` creates `99-metrics.md`.
 - `pbi-plan-create` updates `01-context.md`, `02-implementation-plan.md`, `03-codebase-index.md`, `05-validation.md`, `phases/*.md`, `knowledge/*` if needed, and `04-decision_log.md` if needed.
 - `implementation-phase` reads and updates `05-validation.md` as validation knowledge changes.
 - `review-phase` reads and updates `05-validation.md` with review validation gaps.
 - `fix-phase` reads and updates `05-validation.md` when fixes change validation needs.
 - `pbi-final-handoff` reads `05-validation.md` and updates `06-handoff.md`.
 - `review-workspace-create` creates the new Review file names.
+- Operational PBI skills append to `99-metrics.md` and update `docs/ai/pbi/metrics.md`.
+- Operational review skills append to `99-metrics.md` and update `docs/ai/reviews/metrics.md`.
 - `review-diff-analysis` updates `03-diff-analysis.md`.
 - `review-comments-create` updates `04-en-pr-comments.md` and `05-fa-pr-suggestions.md`.
 - `review-followup` updates `06-followup-log.md`.

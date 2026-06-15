@@ -28,6 +28,7 @@ Read first:
 
 - `docs/ai/pbi/STP-XXXX/00-approved-pbi.md`
 - `docs/ai/pbi/STP-XXXX/05-validation.md`
+- `docs/ai/pbi/STP-XXXX/99-metrics.md`
 - `docs/ai/repo-context/README.md`
 - relevant files under `docs/ai/repo-context/*`
 
@@ -66,6 +67,8 @@ This skill may update only:
 - `docs/ai/pbi/STP-XXXX/02-implementation-plan.md`
 - `docs/ai/pbi/STP-XXXX/03-codebase-index.md`
 - `docs/ai/pbi/STP-XXXX/05-validation.md`
+- `docs/ai/pbi/STP-XXXX/99-metrics.md`
+- `docs/ai/pbi/metrics.md`
 - `docs/ai/pbi/STP-XXXX/phases/*.md`
 - `docs/ai/pbi/STP-XXXX/knowledge/*` only if needed
 - `docs/ai/pbi/STP-XXXX/04-decision_log.md` only if decisions exist
@@ -200,4 +203,6 @@ No automated tests does not mean no validation.
 6. Create phase files as plan plus execution memory.
 7. Define validation requirements in `05-validation.md`.
 8. Record decisions only when decisions exist.
-9. Report all changed markdown files under `Markdown Files Changed`.
+9. Append execution metrics to `99-metrics.md`.
+10. Update `docs/ai/pbi/metrics.md`.
+11. Report all changed markdown files under `Markdown Files Changed`.

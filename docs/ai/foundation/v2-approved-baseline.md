@@ -93,6 +93,7 @@ Official PBI workspace files under `docs/ai/pbi/STP-XXXX/` are:
 04-decision_log.md
 05-validation.md
 06-handoff.md
+99-metrics.md
 phases/
 knowledge/
 ```
@@ -114,6 +115,16 @@ Required sections:
 ```
 
 No automated tests does not mean no validation.
+
+`99-metrics.md` stores lightweight workspace observability records for the PBI.
+
+It tracks estimated execution history, phase-level visibility, context efficiency, context expansions, estimated cost, and scope violations.
+
+PBI aggregate metrics are summarized in:
+
+```text
+docs/ai/pbi/metrics.md
+```
 
 ## PR Review Workflow
 
@@ -139,7 +150,16 @@ Official Review workspace files under `docs/ai/reviews/STP-XXXX/` are:
 05-fa-pr-suggestions.md
 06-followup-log.md
 07-handoff.md
+99-metrics.md
 ```
+
+Review aggregate metrics are summarized in:
+
+```text
+docs/ai/reviews/metrics.md
+```
+
+Review metrics use estimated values only and must not introduce exact token tracking, external telemetry, non-markdown dashboards, confidence scores, trust metrics, self-correction loops, or autonomous optimization.
 
 ## Quality Rules
 

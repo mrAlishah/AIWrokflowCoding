@@ -15,12 +15,14 @@ Use this workflow for clarifying and implementing a Product Backlog Item.
    - Creates placeholders only.
    - Does not plan or inspect source code.
    - Must not continue when `00-approved-pbi.md` contains `STATUS: BLOCKED_FOR_CLARIFICATION`.
+   - Creates `99-metrics.md` for PBI-local execution metrics.
 
 3. Run `pbi-plan-create`.
    - Reads repo-context first.
    - Creates task context, implementation plan, codebase index, validation requirements, and phase files.
    - May inspect source code only when repo-context is missing or insufficient.
    - Does not update repo-context.
+   - Appends execution metrics and updates `docs/ai/pbi/metrics.md`.
 
 4. Run `implementation-phase`.
    - Executes one selected phase.
@@ -48,6 +50,8 @@ Use this workflow for clarifying and implementing a Product Backlog Item.
 - Prefer minimal files and minimal lines.
 - Define explicit validation even when automated tests do not exist.
 - Report markdown changes under `Markdown Files Changed`.
+- Append execution metrics to `99-metrics.md`.
+- Update aggregate PBI metrics in `docs/ai/pbi/metrics.md`.
 
 ## Workspace File Rules
 
@@ -57,5 +61,21 @@ Use this workflow for clarifying and implementing a Product Backlog Item.
 - `03-codebase-index.md` routes phases, source files, knowledge files, relevant modules, created or updated files, created or updated functions, function purpose, usage, related flow, validation focus, and review focus.
 - `04-decision_log.md` is only for architecture, domain, and design decisions. It must not be used for phase execution notes, review comments, todos, or temporary planning notes.
 - `05-validation.md` stores explicit and repeatable validation requirements with build verification, manual test scenarios, regression checklist, known risks, and sign-off criteria.
+- `99-metrics.md` stores PBI-local execution history, phase-level visibility, context efficiency, context expansions, estimated cost, and scope violations.
 - `knowledge/` is the official folder name for reusable PBI-level knowledge. It is optional for simple PBIs. Create it only when the PBI has reusable PBI-level technical knowledge, overlapping use cases, contracts, mappings, flows, validation rules, or multi-phase concepts. Do not create unnecessary knowledge files for simple PBIs.
 - `phases/*.md` files are plan plus execution memory.
+
+## Metrics
+
+PBI metrics are local to the PBI workspace and summarized centrally.
+
+- Local metrics: `docs/ai/pbi/STP-XXXX/99-metrics.md`
+- Dashboard: `docs/ai/pbi/metrics.md`
+
+PBI context efficiency ratio:
+
+```text
+Files Changed / Files Read
+```
+
+Use estimated metrics. Do not track exact tokens or external telemetry.

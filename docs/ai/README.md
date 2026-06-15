@@ -16,6 +16,24 @@ V2.1 preserves the V2 principles and adds three operational improvements:
 - PBI workspaces use `05-validation.md` for explicit validation requirements.
 - Context efficiency is quality-preserving and must not rely on hard numeric quotas.
 
+## ObsV1.1 Lightweight Workspace Observability
+
+ObsV1.1 adds markdown-only execution metrics for local troubleshooting and aggregate workflow visibility.
+
+- PBI local metrics: `docs/ai/pbi/STP-XXXX/99-metrics.md`
+- PBI dashboard: `docs/ai/pbi/metrics.md`
+- Review local metrics: `docs/ai/reviews/STP-XXXX/99-metrics.md`
+- Review dashboard: `docs/ai/reviews/metrics.md`
+
+Metrics are estimated and work-item local. Do not use exact token tracking, external telemetry, API-based cost calculation, or non-markdown dashboards.
+
+Context efficiency formulas:
+
+```text
+PBI = Files Changed / Files Read
+Review = Source Files Reviewed / Files Read
+```
+
 ## Documentation Rules
 
 - Markdown files are shared memory.

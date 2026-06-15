@@ -4,6 +4,14 @@ This index routes work to the official V2 skills.
 
 All skills follow `docs/ai/skills/common-skill-rules.md`.
 
+## Metrics Responsibility
+
+Operational PBI skills append execution records to `docs/ai/pbi/STP-XXXX/99-metrics.md` and update `docs/ai/pbi/metrics.md`.
+
+Operational review skills append execution records to `docs/ai/reviews/STP-XXXX/99-metrics.md` and update `docs/ai/reviews/metrics.md`.
+
+Metrics are estimated. Do not add exact token tracking, external telemetry, or non-markdown dashboards.
+
 ## Repository
 
 | Skill | Purpose | When To Use | Required Parameters | Allowed File Scope | Forbidden Actions |

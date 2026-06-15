@@ -32,6 +32,7 @@ Read:
 - review findings
 - relevant phase file
 - `docs/ai/pbi/STP-XXXX/05-validation.md`
+- `docs/ai/pbi/STP-XXXX/99-metrics.md`
 - only source files needed to fix the findings
 
 For `RF_ID`, resolve and read:
@@ -65,6 +66,8 @@ This skill may update:
 - files directly required to fix review findings
 - relevant phase file or PBI review notes, if needed
 - `docs/ai/pbi/STP-XXXX/05-validation.md` when fixes change validation requirements, risks, or sign-off criteria
+- `docs/ai/pbi/STP-XXXX/99-metrics.md`
+- `docs/ai/pbi/metrics.md`
 
 It must not update `docs/ai/repo-context/*`.
 
@@ -111,4 +114,6 @@ It must not update `docs/ai/repo-context/*`.
 6. Run only requested or necessary verification.
 7. Update phase or review memory if needed.
 8. Update `05-validation.md` if validation requirements, known risks, or sign-off criteria changed.
-9. Report all changed markdown files under `Markdown Files Changed`.
+9. Append execution metrics to `99-metrics.md`.
+10. Update `docs/ai/pbi/metrics.md`.
+11. Report all changed markdown files under `Markdown Files Changed`.

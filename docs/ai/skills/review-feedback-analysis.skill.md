@@ -81,6 +81,7 @@ docs/ai/pbi/{PBI_ID}/
 docs/ai/pbi/{PBI_ID}/phases/review-feedback.md
 docs/ai/pbi/{PBI_ID}/02-implementation-plan.md
 docs/ai/pbi/{PBI_ID}/03-codebase-index.md
+docs/ai/pbi/{PBI_ID}/99-metrics.md
 ```
 
 Do not ask the user for these paths.
@@ -93,6 +94,8 @@ This skill may create or update only:
 - `docs/ai/pbi/{PBI_ID}/phases/RF-*.md`
 - `docs/ai/pbi/{PBI_ID}/02-implementation-plan.md`
 - `docs/ai/pbi/{PBI_ID}/03-codebase-index.md`
+- `docs/ai/pbi/{PBI_ID}/99-metrics.md`
+- `docs/ai/pbi/metrics.md`
 
 Update `03-codebase-index.md` only when RF routing, affected files, modules, functions, validation focus, or review focus are known.
 
@@ -128,6 +131,8 @@ Status definitions:
 8. Add or update `Post-PR Review Feedback Plan` in `02-implementation-plan.md`.
 9. Update `03-codebase-index.md` only when routing details are known.
 10. Leave all initial RF statuses as `Proposed`.
+11. Append execution metrics to `99-metrics.md`.
+12. Update `docs/ai/pbi/metrics.md`.
 
 ## review-feedback.md Required Format
 

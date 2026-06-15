@@ -15,11 +15,13 @@ Use this workflow to review a coworker's branch with local git only.
 1. Run `review-workspace-create`.
    - Creates `docs/ai/reviews/STP-XXXX/`.
    - Records branches, scope, and placeholders.
+   - Creates `99-metrics.md` for review-local execution metrics.
 
 2. Run `review-diff-analysis`.
    - Uses `git diff BASE_BRANCH...HEAD`.
    - Analyzes changed files, affected modules, affected layers, behavior changes, risk areas, test impact, missing tests, files requiring deeper review, and files safe to ignore.
    - Updates `03-diff-analysis.md`.
+   - Appends execution metrics and updates `docs/ai/reviews/metrics.md`.
 
 3. Run `review-comments-create`.
    - Creates English PR comments in `04-en-pr-comments.md`.
@@ -37,6 +39,7 @@ Use this workflow to review a coworker's branch with local git only.
 5. Run `review-final-handoff`.
    - Updates `07-handoff.md`.
    - Summarizes final review decision, blocking issues, non-blocking issues, resolved issues, ignored issues, remaining risks, next action, and ready-to-merge status.
+   - Appends final metrics with phase `N/A`.
 
 ## Rules
 
@@ -46,6 +49,8 @@ Use this workflow to review a coworker's branch with local git only.
 - Do not create PRs.
 - Do not push commits.
 - Report markdown changes under `Markdown Files Changed`.
+- Append execution metrics to `99-metrics.md`.
+- Update aggregate review metrics in `docs/ai/reviews/metrics.md`.
 
 ## Workspace File Rules
 
@@ -56,3 +61,19 @@ Use this workflow to review a coworker's branch with local git only.
 - `05-fa-pr-suggestions.md` = Persian reasoning, suggested fixes, pseudo-code, alternatives, and personal notes.
 - `06-followup-log.md` = follow-up status tracking.
 - `07-handoff.md` = final review summary and decision.
+- `99-metrics.md` = review-local execution history, context efficiency, context expansions, estimated cost, and scope violations.
+
+## Metrics
+
+Review metrics are local to the review workspace and summarized centrally.
+
+- Local metrics: `docs/ai/reviews/STP-XXXX/99-metrics.md`
+- Dashboard: `docs/ai/reviews/metrics.md`
+
+Review context efficiency ratio:
+
+```text
+Source Files Reviewed / Files Read
+```
+
+Use estimated metrics. Do not track exact tokens or external telemetry.

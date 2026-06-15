@@ -25,6 +25,8 @@ Use when a PBI is raw, newly provided, ambiguous, incomplete, or not yet structu
 This skill may create or update only:
 
 - `docs/ai/pbi/STP-XXXX/00-approved-pbi.md`
+- `docs/ai/pbi/STP-XXXX/99-metrics.md`
+- `docs/ai/pbi/metrics.md`
 
 It must not modify source code.
 It must not create implementation tasks.
@@ -105,4 +107,6 @@ When this status exists, planning and implementation skills must not continue.
 4. Identify ambiguities, assumptions, missing information, risks, and acceptance criteria gaps.
 5. If critical information is missing, update `00-approved-pbi.md` with `STATUS: BLOCKED_FOR_CLARIFICATION` and focused questions.
 6. If the PBI is clear, update `00-approved-pbi.md` with the required sections.
-7. Report all changed markdown files under `Markdown Files Changed`.
+7. Append execution metrics to `99-metrics.md` with phase `N/A`.
+8. Update `docs/ai/pbi/metrics.md`.
+9. Report all changed markdown files under `Markdown Files Changed`.

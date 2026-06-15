@@ -102,6 +102,7 @@ Rules:
 - Do not skip workspace creation.
 - Do not skip implementation planning.
 - Do not skip `05-validation.md`.
+- Do not skip `99-metrics.md`.
 - Do not skip phase files.
 - Do not skip markdown memory updates.
 - Do not rely on chat history.
@@ -163,6 +164,7 @@ Read only:
 ```text
 02-implementation-plan.md
 05-validation.md
+99-metrics.md
 Selected phase file
 Required source files
 ```
@@ -176,6 +178,8 @@ Do not execute multiple phases in one run unless explicitly instructed.
 After implementation:
 
 Update the phase file.
+Update `99-metrics.md`.
+Update the matching aggregate metrics dashboard.
 
 Document:
 

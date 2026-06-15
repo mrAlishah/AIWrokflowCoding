@@ -37,9 +37,10 @@ stop. Do not create a workspace beyond the clarification file.
 
 ## Allowed File Scope
 
-This skill may create or update only the PBI workspace:
+This skill may create or update only:
 
 - `docs/ai/pbi/STP-XXXX/*`
+- `docs/ai/pbi/metrics.md`
 
 It must not update `docs/ai/repo-context/*`.
 
@@ -56,6 +57,7 @@ docs/ai/pbi/STP-XXXX/
   04-decision_log.md
   05-validation.md
   06-handoff.md
+  99-metrics.md
   phases/
   knowledge/
 ```
@@ -153,6 +155,45 @@ Recommended sections:
 - Verification
 - Remaining Work
 
+### `99-metrics.md`
+
+Create as the PBI-local execution metrics file.
+
+Required template:
+
+```markdown
+# Execution Metrics
+
+| Timestamp | Agent | Skill | Phase | Duration (min) | Prompts | Files Read | Files Changed | Commands | Context Expansions | Context Size | Context Efficiency Ratio | Cost | Scope Violations |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---|---:|---|---|
+
+## Execution Details
+
+### <Timestamp>
+
+#### Files Read
+
+- ...
+
+#### Files Changed
+
+- ...
+
+#### Extra Files Requested
+
+- ...
+
+Reason:
+
+...
+```
+
+The PBI context efficiency ratio is:
+
+```text
+Files Changed / Files Read
+```
+
 ## Forbidden Actions
 
 - Do not modify source code.
@@ -169,4 +210,6 @@ Recommended sections:
 3. Record the approved PBI in `00-approved-pbi.md`.
 4. Add only placeholders to the remaining files.
 5. Create empty `phases/` and create `knowledge/` only if needed.
-6. Report all changed markdown files under `Markdown Files Changed`.
+6. Append execution metrics to `99-metrics.md` with phase `N/A`.
+7. Update `docs/ai/pbi/metrics.md`.
+8. Report all changed markdown files under `Markdown Files Changed`.

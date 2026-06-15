@@ -61,6 +61,104 @@ No automated tests does not mean no validation.
 
 Implementation, review, fix, planning, and final handoff skills must keep validation requirements, known risks, and sign-off criteria aligned with the PBI state.
 
+## Workspace Metrics Rule
+
+Operational skills must append lightweight execution metrics to the active workspace metrics file:
+
+```text
+docs/ai/pbi/STP-XXXX/99-metrics.md
+docs/ai/reviews/STP-XXXX/99-metrics.md
+```
+
+Operational skills must also update the matching aggregate dashboard:
+
+```text
+docs/ai/pbi/metrics.md
+docs/ai/reviews/metrics.md
+```
+
+Metrics belong to the work item. Use estimated metrics instead of exact token counts.
+
+Do not add external telemetry, exact token tracking, API-based cost calculation, real-time dashboards, confidence scores, trust metrics, self-correction loops, or autonomous optimization.
+
+Context efficiency metrics must never reduce implementation quality, validation quality, or review quality. When additional context is required, read it and record the reason.
+
+PBI context efficiency ratio:
+
+```text
+Files Changed / Files Read
+```
+
+Review context efficiency ratio:
+
+```text
+Source Files Reviewed / Files Read
+```
+
+Use `N/A` for non-phase skills. Phase information belongs only in `99-metrics.md`, not in central dashboards.
+
+PBI `99-metrics.md` schema:
+
+```markdown
+# Execution Metrics
+
+| Timestamp | Agent | Skill | Phase | Duration (min) | Prompts | Files Read | Files Changed | Commands | Context Expansions | Context Size | Context Efficiency Ratio | Cost | Scope Violations |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---|---:|---|---|
+
+## Execution Details
+
+### <Timestamp>
+
+#### Files Read
+
+- ...
+
+#### Files Changed
+
+- ...
+
+#### Extra Files Requested
+
+- ...
+
+Reason:
+
+...
+```
+
+Review `99-metrics.md` schema:
+
+```markdown
+# Execution Metrics
+
+| Timestamp | Agent | Skill | Phase | Duration (min) | Prompts | Files Read | Source Files Reviewed | Markdown Files Changed | Context Expansions | Context Size | Context Efficiency Ratio | Cost | Scope Violations |
+|---|---|---|---:|---:|---:|---:|---:|---:|---:|---|---:|---|---|
+
+## Execution Details
+
+### <Timestamp>
+
+#### Files Read
+
+- ...
+
+#### Source Files Reviewed
+
+- ...
+
+#### Markdown Files Changed
+
+- ...
+
+#### Extra Files Requested
+
+- ...
+
+Reason:
+
+...
+```
+
 ## Source Code Modification Rule
 
 Do not modify source code unless the selected skill explicitly allows it and the current task scope requires it.

@@ -32,6 +32,7 @@ Read:
 
 - relevant PBI workspace files
 - `docs/ai/pbi/STP-XXXX/05-validation.md`
+- `docs/ai/pbi/STP-XXXX/99-metrics.md`
 - implementation diff
 - changed files needed to understand the diff
 
@@ -64,6 +65,11 @@ Before reading any extra file, state:
 This skill may update review notes in the PBI workspace if the workflow requires durable review memory.
 
 This skill may update `docs/ai/pbi/STP-XXXX/05-validation.md` when review discovers validation gaps, risks, or changed sign-off criteria.
+
+This skill may update:
+
+- `docs/ai/pbi/STP-XXXX/99-metrics.md`
+- `docs/ai/pbi/metrics.md`
 
 It must not modify source code unless the user explicitly requests fixes in the same turn.
 
@@ -112,4 +118,6 @@ For `RF_ID` verification, check only the selected RF fix, its validation plan, a
 5. Record findings, risks, and verification gaps.
 6. Update `05-validation.md` if review changes validation requirements or known risks.
 7. If no issues are found, state that clearly.
-8. Report all changed markdown files under `Markdown Files Changed`.
+8. Append execution metrics to `99-metrics.md`.
+9. Update `docs/ai/pbi/metrics.md`.
+10. Report all changed markdown files under `Markdown Files Changed`.
