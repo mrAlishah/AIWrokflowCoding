@@ -1,10 +1,18 @@
 # AI Coding System Documentation
 
-Shared markdown memory for the AI Multi-Agent Coding Operating System.
+Shared markdown memory for the V2 AI Multi-Agent Coding Operating System.
 
-## When To Read
+## Daily Runtime
 
-Read this file only for top-level orientation. Daily agents should continue to `START_HERE.md`.
+Start with:
+
+```text
+AGENTS.md or CLAUDE.md -> START_HERE.md -> skills/README.md -> selected skill
+```
+
+Then read the active workspace, repo-context, and exact source files only when the selected skill requires them.
+
+`docs/ai/foundation/**` is read-only and outside daily runtime context.
 
 ## Read Next
 
@@ -15,28 +23,8 @@ Read this file only for top-level orientation. Daily agents should continue to `
 - Review work: [reviews/README.md](reviews/README.md)
 - Repository knowledge: [repo-context/README.md](repo-context/README.md)
 
-## Migration Compatibility
+## Canonical Policy
 
-The V2 skill and policy structure is:
-
-```text
-docs/ai/skills/governance/
-docs/ai/skills/pbi/
-docs/ai/skills/review/
-docs/ai/skills/pr/
-docs/ai/skills/tools/
-docs/ai/repo-context/policy/
-```
-
-Old skill invocation names are mapped in `docs/ai/skills/README.md`.
-
-## Do Not Read By Default
-
-- `foundation/*`
-- historical validation reports
-- all skills
-- all workspace files
-
-Read those only when the selected skill or task requires them.
-
-`docs/ai/foundation/**` is not daily runtime context and remains unchanged in this compatibility step.
+- Code policies: [repo-context/policy/code-policies.md](repo-context/policy/code-policies.md)
+- Coding standards: [repo-context/policy/coding_standards.md](repo-context/policy/coding_standards.md)
+- Context budget: [repo-context/policy/context_budget.md](repo-context/policy/context_budget.md)
