@@ -292,6 +292,14 @@ Done
 
 # Review Workflow
 
+Recommended daily-use review entrypoint:
+
+```text
+pr-review-workflow
+```
+
+Lower-level review skills remain available for follow-up, debugging, specialized review, or partial re-run.
+
 Workspace:
 
 ```text

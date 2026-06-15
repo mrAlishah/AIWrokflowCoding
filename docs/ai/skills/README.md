@@ -35,8 +35,11 @@ Metrics are estimated. Do not add exact token tracking, external telemetry, or n
 
 ## Review Workflow
 
+`pr-review-workflow` is the recommended daily-use entrypoint for local PR/code review. Lower-level review skills remain available for follow-up, debugging, specialized review, or partial re-run.
+
 | Skill | Purpose | When To Use | Required Parameters | Allowed File Scope | Forbidden Actions |
 | --- | --- | --- | --- | --- | --- |
+| `pr-review-workflow` | Orchestrate the full local PR/code review workflow in one daily-use entrypoint. | Daily end-to-end local review after the user checks out the review branch. | `STP_ID`, `BASE_BRANCH`, `REVIEW_SCOPE`; optional mode/comment/suggestion/final decision parameters | review workspace under `docs/ai/reviews/` and `docs/ai/reviews/metrics.md` | modifying source code; calling PR APIs; creating PRs; pushing commits; removing lower-level review skills |
 | `review-workspace-create` | Create the working documentation space for a review. | Start of a PR or code review workflow. | review id, source branch or PR, target branch | review workspace under `docs/ai/` | modifying source code; updating repo-context |
 | `review-diff-analysis` | Analyze the diff for risk and behavior changes. | After review workspace creation. | review id, diff source, files changed | review workspace under `docs/ai/` | modifying source code; updating repo-context |
 | `review-comments-create` | Produce actionable review comments. | After diff analysis. | review id, findings, severity | review workspace under `docs/ai/` | modifying source code; inventing findings; updating repo-context |

@@ -113,14 +113,18 @@ Rules:
 
 # Review Orchestration
 
+For daily end-to-end local PR/code review, prefer:
+
+```text
+pr-review-workflow
+```
+
+Use lower-level review skills for follow-up, debugging, specialized review, or partial re-run.
+
 When managing a coworker branch review end-to-end, use this sequence:
 
 ```text
-review-workspace-create
-review-diff-analysis
-review-comments-create
-review-followup only after branch changes
-review-final-handoff
+pr-review-workflow
 ```
 
 Rules:

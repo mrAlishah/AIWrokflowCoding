@@ -43,6 +43,7 @@ The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.m
 - `docs/ai/skills/fix-phase.skill.md`
 - `docs/ai/skills/pbi-final-handoff.skill.md`
 - `docs/ai/skills/review-workspace-create.skill.md`
+- `docs/ai/skills/pr-review-workflow.skill.md`
 - `docs/ai/skills/review-diff-analysis.skill.md`
 - `docs/ai/skills/review-comments-create.skill.md`
 - `docs/ai/skills/review-followup.skill.md`
@@ -167,6 +168,9 @@ The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.m
 - PBI skills enforce the expected workspace, planning, implementation, review, fix, and handoff boundaries.
 - Review workspace structure is documented with the expected V2 names.
 - Review workspace naming is consistent across baseline, Review guide, validation report, workspace naming report, and Review skills.
+- `pr-review-workflow` is registered as the recommended daily-use review entrypoint.
+- `pr-review-workflow` maps to existing lower-level review skills without renaming or removing them.
+- Lower-level review skills remain available for follow-up, debugging, specialized review, and partial re-run.
 - Review workflow uses local git diff only and `git diff BASE_BRANCH...HEAD`.
 - Review branch checkout is documented as a manual user action.
 - Review skills forbid external PR APIs, PR creation, pushes, and source code modification.

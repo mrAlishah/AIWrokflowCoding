@@ -130,6 +130,10 @@ docs/ai/pbi/metrics.md
 
 PR review work focuses on correctness, risk, and missing verification.
 
+`pr-review-workflow` is the recommended daily-use entrypoint for local PR/code review.
+
+Lower-level review skills remain available for follow-up, debugging, specialized review, or partial re-run.
+
 1. Read the PR description, diff, and review comments.
 2. Identify behavioral regressions, bugs, security issues, maintainability risks, and missing tests.
 3. Prioritize findings by severity.

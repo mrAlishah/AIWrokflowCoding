@@ -34,6 +34,12 @@ PBI = Files Changed / Files Read
 Review = Source Files Reviewed / Files Read
 ```
 
+## Daily Review Entry Point
+
+Use `pr-review-workflow` as the recommended daily-use entrypoint for local PR/code review.
+
+Lower-level review skills remain available for follow-up, debugging, specialized review, or partial re-run.
+
 ## Documentation Rules
 
 - Markdown files are shared memory.

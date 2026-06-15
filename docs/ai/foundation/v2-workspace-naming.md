@@ -48,6 +48,7 @@ docs/ai/reviews/STP-XXXX/
 - `docs/ai/skills/implementation-phase.skill.md`
 - `docs/ai/skills/pbi-final-handoff.skill.md`
 - `docs/ai/skills/review-workspace-create.skill.md`
+- `docs/ai/skills/pr-review-workflow.skill.md`
 - `docs/ai/skills/review-diff-analysis.skill.md`
 - `docs/ai/skills/review-comments-create.skill.md`
 - `docs/ai/skills/review-followup.skill.md`
@@ -67,6 +68,7 @@ Passed.
 - `fix-phase` reads and updates `05-validation.md` when fixes change validation needs.
 - `pbi-final-handoff` reads `05-validation.md` and updates `06-handoff.md`.
 - `review-workspace-create` creates the new Review file names.
+- `pr-review-workflow` orchestrates the existing Review file names without renaming lower-level review skills.
 - Operational PBI skills append to `99-metrics.md` and update `docs/ai/pbi/metrics.md`.
 - Operational review skills append to `99-metrics.md` and update `docs/ai/reviews/metrics.md`.
 - `review-diff-analysis` updates `03-diff-analysis.md`.

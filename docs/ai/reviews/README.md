@@ -2,6 +2,10 @@
 
 Use this workflow to review a coworker's branch with local git only.
 
+`pr-review-workflow` is the recommended daily-use entrypoint for end-to-end PR/code review.
+
+Lower-level review skills remain available for follow-up, debugging, specialized review, or partial re-run.
+
 ## Before Starting
 
 - The user checks out the coworker's branch manually.
@@ -11,6 +15,16 @@ Use this workflow to review a coworker's branch with local git only.
 - The review workflow does not call PR APIs, create PRs, or push commits.
 
 ## Flow
+
+Daily use:
+
+1. Run `pr-review-workflow`.
+   - Creates or verifies `docs/ai/reviews/STP-XXXX/`.
+   - Uses local git diff only.
+   - Generates diff analysis, English PR-ready comments, Persian/internal suggestions, final handoff, and metrics.
+   - Does not modify source code.
+
+Lower-level use:
 
 1. Run `review-workspace-create`.
    - Creates `docs/ai/reviews/STP-XXXX/`.
@@ -44,6 +58,7 @@ Use this workflow to review a coworker's branch with local git only.
 ## Rules
 
 - Write only under `docs/ai/reviews/STP-XXXX/`.
+- `pr-review-workflow` may also update `docs/ai/reviews/metrics.md`.
 - Do not modify source code.
 - Do not use PR APIs.
 - Do not create PRs.
