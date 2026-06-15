@@ -1,63 +1,50 @@
-# repo-context-update Skill
-
-This skill follows `common-skill-rules.md`.
-
-Skill-specific rules are listed below.
+# Skill: repo-context-update
 
 ## Purpose
 
-`repo-context-update` refreshes reusable repository knowledge in `docs/ai/repo-context/`.
+Refresh reusable repository knowledge under `docs/ai/repo-context/`.
 
-This is the only skill allowed to update repo-context files.
+## Parameters
 
-## Invocation Rule
+- `UPDATE_REASON`: required
+- `REPOSITORY_AREAS`: required
+- `INSPECTION_SCOPE`: optional
 
-Inspect the repository only when this skill is explicitly invoked.
+## Read
 
-Do not perform repository-wide inspection as part of normal task execution unless the user requests `repo-context-update`.
+- Existing relevant repo-context files
+- Targeted repository files needed to refresh stable knowledge
 
-## Write Scope
-
-This skill may update only:
-
-- `docs/ai/repo-context/*`
-
-It must not update source code or other documentation areas unless a later approved instruction changes this scope.
-
-## Read-Only Rule For Other Skills
-
-All other skills must treat `docs/ai/repo-context/*` as read-only shared memory.
-
-Other skills may read repo-context to understand stable repository knowledge, but they must not edit it.
-
-## Update Responsibilities
-
-When invoked, this skill should capture:
-
-- important repository structure
-- architecture boundaries
-- module responsibilities
-- curated important files
-- naming conventions
-- coding standards
-- test strategy
-- workflow notes
-- context loading and optimization guidance
-
-## Context Optimization Rules
-
-- Avoid dumping full repository trees.
-- Avoid copying large code blocks.
-- Prefer summaries of stable patterns.
-- Keep file indexes curated and short.
-- Remove stale, duplicate, or low-value details.
-- Record enough context to reduce future rediscovery.
-
-## Execution Protocol
+## Steps
 
 1. Confirm the user explicitly invoked `repo-context-update`.
-2. Read existing `docs/ai/repo-context/*` files.
-3. Inspect only the repository areas needed to improve reusable knowledge.
-4. Update the relevant repo-context markdown files.
-5. Keep all updates concise and operational.
-6. Report every changed markdown file under `Markdown Files Changed`.
+2. Read current repo-context before source inspection.
+3. Inspect only targeted repository areas.
+4. Update stable reusable knowledge.
+5. Keep entries concise.
+
+## Update
+
+- Relevant files under `docs/ai/repo-context/*`
+
+## Stop Conditions
+
+- The update was not explicitly requested.
+- Required repository area is unclear.
+- The task requires source modification or non repo-context file updates.
+- Broad repository inspection is requested without a concrete update reason.
+
+## Final Output
+
+- Summary
+- Repo-context files updated
+- Source areas inspected
+- Markdown Files Changed
+- Recommended next action
+
+## References
+
+Follow:
+- `docs/ai/governance/common-rules.md`
+- `docs/ai/governance/context-efficiency.md`
+- `docs/ai/governance/markdown-reporting.md`

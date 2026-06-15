@@ -1,65 +1,56 @@
-# review-final-handoff Skill
-
-This skill follows `common-skill-rules.md`.
-
-Skill-specific rules are listed below.
+# Skill: review-final-handoff
 
 ## Purpose
 
-Summarize the final review decision for a coworker's branch.
+Summarize final review outcome, residual risk, and recommended decision.
 
-## When To Use
+## Parameters
 
-Use after review comments and follow-up checks are complete.
+- `STP_ID`: required
+- `FINAL_STATUS`: required
+- `REMAINING_RISKS`: optional
+- `VALIDATION_PERFORMED`: required
+- `RECOMMENDED_DECISION`: required
 
-## Required Parameters
+## Read
 
-- review id in `STP-XXXX` format
-- final status of review comments
-- remaining risks
-- validation performed
-- recommended decision
+- `03-diff-analysis.md`
+- `04-en-pr-comments.md`
+- `05-fa-pr-suggestions.md`
+- `06-followup-log.md`
+- Local review context when needed
 
-## Allowed File Scope
+## Steps
 
-This skill may update only:
+1. Summarize final review state.
+2. Separate blocking, non-blocking, resolved, ignored, and remaining planned items.
+3. State final decision and ready-to-merge status.
+4. Record validation and residual risk.
 
-- `docs/ai/reviews/STP-XXXX/07-handoff.md`
+## Update
 
-## Handoff Content
+- `07-handoff.md`
+- `99-metrics.md`
+- `docs/ai/reviews/metrics.md`
 
-Update `07-handoff.md` with:
+## Stop Conditions
 
-- review summary
-- final review decision
-- blocking issues
-- non-blocking issues
-- resolved issues
-- ignored issues
-- comment status summary
-- remaining planned comments, if any
-- ignored comments and reasons, if any
-- validation performed
-- residual risks
-- remaining risks
-- next action
-- ready to merge: Yes/No
-- recommended reviewer focus
+- Review comments or follow-up state are insufficient.
+- Planned comments are unresolved but requested as done.
+- The task requires source modification, PR API calls, PR creation, or pushing commits.
 
-## Required Rules
+## Final Output
 
-- Use local review documents and local git context only.
-- Do not call PR APIs.
-- Do not create PRs.
-- Do not push commits.
-- Do not modify source code.
-- Do not update files outside `docs/ai/reviews/STP-XXXX/`.
-- Do not mark unresolved planned comments as done.
+- Summary
+- Final decision
+- Blocking and non-blocking issues
+- Residual risks
+- Markdown Files Changed
+- Recommended next action
 
-## Execution Protocol
+## References
 
-1. Read review comments, suggestions, follow-up log, and diff analysis.
-2. Summarize the final state.
-3. State the final review decision clearly.
-4. Update `07-handoff.md`.
-5. Report all changed markdown files under `Markdown Files Changed`.
+Follow:
+- `docs/ai/governance/common-rules.md`
+- `docs/ai/governance/markdown-reporting.md`
+- `docs/ai/governance/observability.md`

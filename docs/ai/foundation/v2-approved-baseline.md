@@ -33,6 +33,28 @@ Skills are execution protocols.
 - A skill should be explicit, repeatable, and scoped to one operational responsibility.
 - Skills may reference shared markdown memory when they need repository or workflow context.
 
+### Governance = Canonical Shared Rules
+
+Global rules are centralized under `docs/ai/governance/`.
+
+Skills, README files, and workspace templates should reference governance files instead of duplicating global rules.
+
+Canonical governance files:
+
+```text
+docs/ai/governance/common-rules.md
+docs/ai/governance/context-efficiency.md
+docs/ai/governance/markdown-reporting.md
+docs/ai/governance/observability.md
+```
+
+Anti-duplication rule:
+
+```text
+Do not duplicate global rules inside skills, README files, or workspace templates.
+Reference the canonical governance file instead.
+```
+
 ### repo-context = Reusable Repository Knowledge
 
 `repo-context` is reusable repository knowledge.
@@ -60,14 +82,26 @@ Repository Knowledge != PBI Knowledge != Review Knowledge != Execution Memory !=
 
 PBI work follows an implementation workflow from understanding to verification.
 
-1. Read the PBI and identify the requested outcome.
-2. Read relevant shared memory under `docs/ai/`.
-3. Inspect the current repository files before deciding on an implementation.
-4. Follow existing project patterns, naming, and coding standards.
-5. Keep changes scoped to the PBI.
-6. Update markdown shared memory only when the PBI changes durable operating knowledge.
-7. Verify the change with the appropriate project checks when requested or required.
-8. Report changed markdown files under `Markdown Files Changed`.
+```text
+Raw PBI
+↓
+PBI Clarification
+↓
+Approved PBI
+↓
+pbi-workspace-create
+```
+
+1. Clarify the raw PBI before workspace creation.
+2. Stop when critical information is missing and mark `STATUS: BLOCKED_FOR_CLARIFICATION`.
+3. Read relevant shared memory under `docs/ai/`.
+4. Inspect the current repository files before deciding on an implementation.
+5. Follow existing project patterns, naming, and coding standards.
+6. Keep changes scoped to the PBI.
+7. Define explicit validation requirements.
+8. Update markdown shared memory only when the PBI changes durable operating knowledge.
+9. Verify the change with the appropriate project checks when requested or required.
+10. Report changed markdown files under `Markdown Files Changed`.
 
 ### PBI Workspace File Naming
 
@@ -79,17 +113,76 @@ Official PBI workspace files under `docs/ai/pbi/STP-XXXX/` are:
 02-implementation-plan.md
 03-codebase-index.md
 04-decision_log.md
-05 reserved unused
+05-validation.md
 06-handoff.md
+99-metrics.md
 phases/
 knowledge/
 ```
 
-The `05` slot is intentionally reserved and unused.
+`05-validation.md` stores repeatable validation requirements for the PBI.
+
+Required sections:
+
+```markdown
+# Build Verification
+
+# Manual Test Scenarios
+
+# Regression Checklist
+
+# Known Risks
+
+# Sign-off Criteria
+```
+
+No automated tests does not mean no validation.
+
+`99-metrics.md` stores lightweight workspace observability records for the PBI.
+
+It tracks estimated execution history, phase-level visibility, context efficiency, context expansions, estimated cost, and scope violations.
+
+PBI aggregate metrics are summarized in:
+
+```text
+docs/ai/pbi/metrics.md
+```
+
+### Implementation Plan Phase Table
+
+`02-implementation-plan.md` must use this phase table format:
+
+```markdown
+| Phase | Status | Step | Goal |
+|---|---|---|---|
+```
+
+`Step` is independent from `Status`.
+
+Each phase must always have exactly one current `Step` value.
+
+Examples:
+
+```text
+planned
+implementation
+implementation-1.1
+review
+fix
+review-followup
+handoff
+done
+```
+
+Skills that execute phase work must update the `Step` column.
 
 ## PR Review Workflow
 
 PR review work focuses on correctness, risk, and missing verification.
+
+`pr-review-workflow` is the recommended daily-use entrypoint for local PR/code review.
+
+Lower-level review skills remain available for follow-up, debugging, specialized review, or partial re-run.
 
 1. Read the PR description, diff, and review comments.
 2. Identify behavioral regressions, bugs, security issues, maintainability risks, and missing tests.
@@ -111,7 +204,16 @@ Official Review workspace files under `docs/ai/reviews/STP-XXXX/` are:
 05-fa-pr-suggestions.md
 06-followup-log.md
 07-handoff.md
+99-metrics.md
 ```
+
+Review aggregate metrics are summarized in:
+
+```text
+docs/ai/reviews/metrics.md
+```
+
+Review metrics use estimated values only and must not introduce exact token tracking, external telemetry, non-markdown dashboards, confidence scores, trust metrics, self-correction loops, or autonomous optimization.
 
 ## Quality Rules
 
@@ -131,6 +233,9 @@ Official Review workspace files under `docs/ai/reviews/STP-XXXX/` are:
 - Avoid rediscovering facts already captured in approved shared memory.
 - Keep new documentation concise and structured.
 - Move stable repeated knowledge into shared markdown instead of relying on conversation history.
+- Preserve quality over numeric context limits.
+- Do not use hard token quotas or maximum file counts as a reason to skip necessary context.
+- Stop and request approval when extra files, extra phases, or scope expansion are required.
 
 ### Context Read Order
 
@@ -151,9 +256,13 @@ Agents must not read the entire repository, all `docs/ai`, all skills, or the wh
 
 Before reading any extra file, the agent must state:
 
-- file path
-- why it is needed
-- what decision, risk, or validation it helps evaluate
+```text
+Requested File:
+
+Reason:
+
+Expected Decision Impact:
+```
 
 ## Markdown Change Reporting Rule
 
@@ -177,13 +286,14 @@ For each file:
 
 The official V2 skill list is a governed list of approved execution protocols.
 
-Initial approved skill categories:
+Approved skill categories:
 
 - `repo-context`: capture and maintain reusable repository knowledge.
+- `pbi-clarification`: convert raw PBIs into structured approved PBIs.
 - `pbi-workflow`: execute Product Backlog Item implementation work.
 - `pr-review-workflow`: review pull requests and address review feedback.
 - `quality-rules`: apply repository quality expectations and verification discipline.
 - `context-optimization`: reduce repeated discovery and manage useful context.
 - `markdown-change-reporting`: report all markdown documentation changes.
 
-No skill files are created in this baseline step.
+Approved skill files are registered through `docs/ai/skills/README.md`.

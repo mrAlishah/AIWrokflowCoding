@@ -1,144 +1,68 @@
-# pbi-workspace-create Skill
-
-This skill follows `common-skill-rules.md`.
-
-Skill-specific rules are listed below.
+# Skill: pbi-workspace-create
 
 ## Purpose
 
-Create the standard documentation workspace for a PBI.
+Create the standard PBI workspace structure after clarification.
 
-This skill creates structure only. It must not plan implementation work.
+## Parameters
 
-## When To Use
+- `STP_ID`: required
+- `TITLE`: required
+- `APPROVED_PBI`: required or already present in `00-approved-pbi.md`
+- `REQUESTER`: optional
 
-Use at the start of a PBI workflow when a PBI has been approved for analysis and future planning.
+## Read
 
-## Required Parameters
+- `docs/ai/pbi/{STP_ID}/00-approved-pbi.md`, if already created
 
-- PBI id in `STP-XXXX` format
-- PBI title
-- approved PBI text or source request
-- requester or source, if known
+## Steps
 
-## Allowed File Scope
+1. Confirm `STP_ID` format.
+2. Stop if `00-approved-pbi.md` contains `STATUS: BLOCKED_FOR_CLARIFICATION`.
+3. Create the PBI workspace files and folders.
+4. Preserve the approved PBI in `00-approved-pbi.md`.
+5. Add placeholders only.
 
-This skill may create or update only the PBI workspace:
+## Update
 
-- `docs/ai/pbi/STP-XXXX/*`
+Create or update:
 
-It must not update `docs/ai/repo-context/*`.
+- `00-approved-pbi.md`
+- `01-context.md`
+- `02-implementation-plan.md`
+- `03-codebase-index.md`
+- `04-decision_log.md`
+- `05-validation.md`
+- `06-handoff.md`
+- `99-metrics.md`
+- `phases/`
+- `knowledge/` only when needed
+- `docs/ai/pbi/metrics.md`
 
-## Required Workspace Structure
+`02-implementation-plan.md` phase table:
 
-Create:
-
-```text
-docs/ai/pbi/STP-XXXX/
-  00-approved-pbi.md
-  01-context.md
-  02-implementation-plan.md
-  03-codebase-index.md
-  04-decision_log.md
-  05 reserved unused
-  06-handoff.md
-  phases/
-  knowledge/
+```markdown
+| Phase | Status | Step | Goal |
+|---|---|---|---|
 ```
 
-## File Templates
+## Stop Conditions
 
-### `00-approved-pbi.md`
+- Invalid `STP_ID`.
+- Clarification is blocked.
+- The request requires planning, source inspection, implementation, or repo-context updates.
 
-Store the approved PBI exactly enough to preserve the requested outcome.
-
-Recommended sections:
-
-- PBI ID
-- Title
-- Approved Request
-- Acceptance Criteria
-- Constraints
-
-### `01-context.md`
-
-Create as an empty PBI-specific context placeholder.
-
-`01-context.md` must not be a copy of repo-context. It should contain only the repo-context excerpts, files, risks, constraints, and validation notes relevant to the active PBI when later updated by planning.
-
-Recommended sections:
-
-- Repo Context Summary
-- Task Context
-- Open Questions
-
-### `02-implementation-plan.md`
-
-Create as a planning placeholder only.
-
-`02-implementation-plan.md` is a short roadmap. It must contain phase names, goals, status, and high-level sequencing only. It must not contain detailed technical implementation plans.
-
-Recommended sections:
-
-- Status: `Planned Only`
-- Scope
-- Phases
-- Verification Plan
-
-### `03-codebase-index.md`
-
-Create as a placeholder for task-specific navigation.
-
-Recommended sections:
-
-- Relevant Areas
-- Files To Inspect
-- Files Expected To Change
-- Phase To Source Files
-- Phase To Knowledge Files
-- Phase To Relevant Modules
-- Phase To Created Or Updated Files
-- Phase To Created Or Updated Functions
-- Function Purpose, Usage, Related Flow, Validation Focus, and Review Focus
-
-### `04-decision_log.md`
-
-Create as an empty decision log.
-
-Use only for architecture, domain, and design decisions. Do not use for phase execution notes, review comments, todos, or temporary planning notes.
-
-### `knowledge/`
-
-`knowledge/` is the official folder name for reusable PBI-level knowledge. It is optional for simple PBIs. Create it only when the PBI has reusable PBI-level technical knowledge, overlapping use cases, contracts, mappings, flows, validation rules, or multi-phase concepts. Do not create unnecessary knowledge files for simple PBIs.
-
-Recommended sections:
-
-- Decisions
-
-### `06-handoff.md`
-
-Create as an empty handoff placeholder.
-
-Recommended sections:
+## Final Output
 
 - Summary
-- Verification
-- Remaining Work
+- Workspace path
+- Files created or updated
+- Markdown Files Changed
+- Recommended next skill
 
-## Forbidden Actions
+## References
 
-- Do not modify source code.
-- Do not inspect source code for planning.
-- Do not create implementation phases beyond placeholders.
-- Do not update repo-context.
-- Do not make technical decisions.
-- Do not run tests or tooling.
-
-## Execution Protocol
-
-1. Confirm the PBI id is in `STP-XXXX` format.
-2. Create the workspace directory and required files.
-3. Record the approved PBI in `00-approved-pbi.md`.
-4. Add only placeholders to the remaining files.
-5. Create empty `phases/` and create `knowledge/` only if needed.
-6. Report all changed markdown files under `Markdown Files Changed`.
+Follow:
+- `docs/ai/governance/common-rules.md`
+- `docs/ai/governance/markdown-reporting.md`
+- `docs/ai/governance/observability.md`

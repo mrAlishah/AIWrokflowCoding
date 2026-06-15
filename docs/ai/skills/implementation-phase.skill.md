@@ -1,107 +1,62 @@
-# implementation-phase Skill
-
-This skill follows `common-skill-rules.md`.
-
-Skill-specific rules are listed below.
+# Skill: implementation-phase
 
 ## Purpose
 
 Execute one planned PBI phase with the smallest practical change.
 
-## When To Use
+## Parameters
 
-Use when `pbi-plan-create` has produced an implementation plan and a selected phase is ready to execute.
+- `STP_ID`: required
+- `PHASE`: required
+- `TARGET_FILES`: required
+- `VERIFICATION`: required
 
-## Required Parameters
+## Read
 
-- PBI id in `STP-XXXX` format
-- selected phase file
-- implementation-plan path
-- target files listed in the selected phase
-- verification requested for the phase
+- `02-implementation-plan.md`
+- `05-validation.md`
+- `99-metrics.md`
+- Selected `phases/*.md`
+- Source or documentation files listed for the selected phase
 
-## Required Inputs
+## Steps
 
-Read only:
+1. Confirm workspace and selected phase exist.
+2. Read only the selected phase and approved target files.
+3. Implement the phase with minimal files and lines.
+4. Run requested or necessary verification.
+5. Update phase execution memory.
+6. Update the selected phase `Step` in `02-implementation-plan.md`.
 
-- `docs/ai/pbi/STP-XXXX/02-implementation-plan.md`
-- the selected `docs/ai/pbi/STP-XXXX/phases/*.md`
-- source files explicitly listed in the selected phase
+## Update
 
-## Context Read Order
+- Approved target files listed in the selected phase
+- Selected `phases/*.md`
+- `02-implementation-plan.md` with `Step: implementation` or a versioned implementation step
+- `05-validation.md` when validation needs, risks, or sign-off criteria change
+- `99-metrics.md`
+- `docs/ai/pbi/metrics.md`
 
-1. `docs/ai/skills/README.md`
-2. `docs/ai/skills/implementation-phase.skill.md`
-3. Active workspace: `docs/ai/pbi/STP-XXXX/*`
-4. repo-context routing docs only if needed:
-   - `docs/ai/repo-context/module_map.md`
-   - `docs/ai/repo-context/file_index.md`
-   - `docs/ai/repo-context/context_budget.md`
-5. Exact source files listed in the selected phase
+## Stop Conditions
 
-Before reading any extra file, state:
+- Missing workspace, plan, validation file, metrics file, or selected phase.
+- Target files are not approved by the phase.
+- More than one phase would be executed.
+- Scope expansion is required without approval.
 
-- file path
-- why it is needed
-- what decision, risk, or validation it helps evaluate
+## Final Output
 
-## Allowed File Scope
+- Summary
+- Files changed
+- Verification performed
+- Risks or follow-up
+- Markdown Files Changed
+- Recommended next skill
 
-This skill may update:
+## References
 
-- source or documentation files explicitly listed in the selected phase
-- the selected phase file after execution
-
-It must not update `docs/ai/repo-context/*`.
-
-## Execution Rules
-
-- Execute only one phase.
-- Keep the change simple and direct.
-- Touch the fewest files possible.
-- Change the fewest lines possible.
-- Follow repository naming, structure, and coding conventions.
-- Follow active code policies from `docs/ai/repo-context/code-policies.md` when they apply to touched code.
-- Prefer existing local patterns over new abstractions.
-- Code should remain simple, readable, and aligned with repo conventions.
-- Avoid over-engineering.
-- Avoid broad refactoring unless explicitly requested.
-- Comment important intent.
-- Comment important business logic.
-- Comment important validation rules.
-- Comment important technical decisions.
-- Comment compatibility rules or behavior copied from existing codebase patterns.
-- Avoid obvious comments.
-- Avoid noisy comments.
-- Avoid commenting every line.
-- Do not perform unrelated cleanup or refactors.
-
-## Phase File Update
-
-After execution, update the selected phase file with:
-
-- status: `Done` if complete, otherwise `In Progress`
-- files changed
-- execution memory
-- verification performed
-- known risks or follow-up
-
-## Forbidden Actions
-
-- Do not execute more than one phase.
-- Do not read unrelated source files.
-- Do not modify files outside the selected phase scope.
-- Do not update repo-context.
-- Do not broaden scope without approval.
-- Do not run review-phase or fix-phase inside this skill.
-
-## Execution Protocol
-
-1. Confirm the PBI workspace and selected phase exist.
-2. Read `02-implementation-plan.md`.
-3. Read only the selected phase file.
-4. Read only source files listed in the phase.
-5. Implement the phase with minimal files and lines.
-6. Run only requested or necessary verification.
-7. Update the selected phase file.
-8. Report all changed markdown files under `Markdown Files Changed`.
+Follow:
+- `docs/ai/governance/common-rules.md`
+- `docs/ai/governance/context-efficiency.md`
+- `docs/ai/governance/markdown-reporting.md`
+- `docs/ai/governance/observability.md`

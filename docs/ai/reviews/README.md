@@ -1,58 +1,41 @@
-# Review Workflow Guide
+# Review Workflow
 
-Use this workflow to review a coworker's branch with local git only.
+Local git diff driven review workspaces.
 
-## Before Starting
+## When To Read
 
-- The user checks out the coworker's branch manually.
-- `BASE_BRANCH` is the target branch, such as `develop` or `main`.
-- Review commands use local git diff only: `git diff BASE_BRANCH...HEAD`.
-- The review workflow never modifies source code.
-- The review workflow does not call PR APIs, create PRs, or push commits.
+Read this file when selecting or entering a PR/code review workflow.
 
-## Flow
+## Read Next
 
-1. Run `review-workspace-create`.
-   - Creates `docs/ai/reviews/STP-XXXX/`.
-   - Records branches, scope, and placeholders.
+- Daily end-to-end review: `pr-review-workflow`
+- Workspace only: `review-workspace-create`
+- Diff analysis: `review-diff-analysis`
+- Comments and suggestions: `review-comments-create`
+- Follow-up review: `review-followup`
+- Final handoff: `review-final-handoff`
 
-2. Run `review-diff-analysis`.
-   - Uses `git diff BASE_BRANCH...HEAD`.
-   - Analyzes changed files, affected modules, affected layers, behavior changes, risk areas, test impact, missing tests, files requiring deeper review, and files safe to ignore.
-   - Updates `03-diff-analysis.md`.
+## Workspace Files
 
-3. Run `review-comments-create`.
-   - Creates English PR comments in `04-en-pr-comments.md`.
-   - Creates Persian deep suggestions in `05-fa-pr-suggestions.md`.
-   - Links both by `PR.No`.
-   - English comments include `PR.No`, status, severity, PR-ready comment, and suggested fix summary.
-   - Persian suggestions include deep reasoning, suggested fixes, pseudo-code, alternatives, personal notes, and whether to post or keep internal.
+```text
+docs/ai/reviews/STP-XXXX/
+  01-review-brief.md
+  02-context.md
+  03-diff-analysis.md
+  04-en-pr-comments.md
+  05-fa-pr-suggestions.md
+  06-followup-log.md
+  07-handoff.md
+  99-metrics.md
+```
 
-4. Run `review-followup`.
-   - Checks only comments with status `Planned`.
-   - Marks comments `Done` only when fixed in the local diff.
-   - Creates follow-up comments like `PR-001.1` when needed.
-   - Does not recheck `Done` or `Ignore` items unless explicitly requested.
+## Do Not Read By Default
 
-5. Run `review-final-handoff`.
-   - Updates `07-handoff.md`.
-   - Summarizes final review decision, blocking issues, non-blocking issues, resolved issues, ignored issues, remaining risks, next action, and ready-to-merge status.
+Do not read all review workspaces. Read only the active `STP-XXXX` workspace required by the selected skill.
 
-## Rules
+## Governance
 
-- Write only under `docs/ai/reviews/STP-XXXX/`.
-- Do not modify source code.
-- Do not use PR APIs.
-- Do not create PRs.
-- Do not push commits.
-- Report markdown changes under `Markdown Files Changed`.
-
-## Workspace File Rules
-
-- `01-review-brief.md` = review contract, branch, base, scope, title, and description.
-- `02-context.md` = review-specific context.
-- `03-diff-analysis.md` = local diff analysis.
-- `04-en-pr-comments.md` = English PR-ready comments only.
-- `05-fa-pr-suggestions.md` = Persian reasoning, suggested fixes, pseudo-code, alternatives, and personal notes.
-- `06-followup-log.md` = follow-up status tracking.
-- `07-handoff.md` = final review summary and decision.
+- Common rules: [../governance/common-rules.md](../governance/common-rules.md)
+- Context efficiency: [../governance/context-efficiency.md](../governance/context-efficiency.md)
+- Markdown reporting: [../governance/markdown-reporting.md](../governance/markdown-reporting.md)
+- Observability: [../governance/observability.md](../governance/observability.md)

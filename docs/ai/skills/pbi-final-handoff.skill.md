@@ -1,78 +1,61 @@
-# pbi-final-handoff Skill
-
-This skill follows `common-skill-rules.md`.
-
-Skill-specific rules are listed below.
+# Skill: pbi-final-handoff
 
 ## Purpose
 
 Create the final PBI handoff after implementation, review, and fixes are complete.
 
-## When To Use
+## Parameters
 
-Use at the end of the PBI workflow when work is ready for user handoff or PR preparation.
+- `STP_ID`: required
+- `CHANGED_FILES`: required
+- `VALIDATION_RESULTS`: required
+- `KNOWN_RISKS`: optional
+- `PR_SUMMARY`: required
+- `REVIEW_FOCUS`: required
 
-## Required Parameters
+## Read
 
-- PBI id in `STP-XXXX` format
-- changed files
-- validation results
-- known risks
+- `00-approved-pbi.md`
+- `02-implementation-plan.md`
+- `05-validation.md`
+- `99-metrics.md`
+- Relevant phase files
+- Verification results
+- Final diff summary
+
+## Steps
+
+1. Confirm implementation and fixes are complete or identify remaining work.
+2. Summarize changed files, validation, risks, PR summary, and review focus.
+3. Update completed phase `Step` values.
+4. Update handoff.
+
+## Update
+
+- `02-implementation-plan.md` with `Step: handoff` or final `Step: done`
+- `06-handoff.md`
+- `99-metrics.md`
+- `docs/ai/pbi/metrics.md`
+
+## Stop Conditions
+
+- Required implementation or fixes are incomplete and not documented.
+- Verification results are missing or unclear.
+- The request asks for new implementation, review, fix work, source changes, or repo-context updates.
+
+## Final Output
+
+- Summary
+- Changed files
+- Validation performed and not performed
+- Known risks
 - PR summary
-- review focus
+- Markdown Files Changed
+- Recommended next action
 
-## Required Inputs
+## References
 
-Read:
-
-- `docs/ai/pbi/STP-XXXX/00-approved-pbi.md`
-- `docs/ai/pbi/STP-XXXX/02-implementation-plan.md`
-- relevant phase files
-- verification results
-- final diff summary
-
-## Allowed File Scope
-
-This skill may update only:
-
-- `docs/ai/pbi/STP-XXXX/06-handoff.md`
-
-It must not update `docs/ai/repo-context/*`.
-
-## Handoff Content
-
-Update `06-handoff.md` with:
-
-- PBI summary
-- changed files
-- validation performed
-- validation not performed
-- known risks
-- PR summary
-- recommended review focus
-- follow-up items, if any
-
-## Handoff Rules
-
-- Keep the handoff concise.
-- Separate facts from risks.
-- Do not claim unperformed validation.
-- Do not hide known limitations.
-- Keep PR summary focused on user-visible and reviewer-relevant changes.
-
-## Forbidden Actions
-
-- Do not modify source code.
-- Do not run implementation, review, or fix work.
-- Do not update repo-context.
-- Do not add new scope.
-- Do not mark incomplete work as complete.
-
-## Execution Protocol
-
-1. Confirm implementation and fixes are complete or clearly identify remaining work.
-2. Read PBI summary, plan, phases, and verification notes.
-3. Summarize changed files and validation.
-4. Record risks and review focus.
-5. Update `06-handoff.md`.
-6. Report all changed markdown files under `Markdown Files Changed`.
+Follow:
+- `docs/ai/governance/common-rules.md`
+- `docs/ai/governance/markdown-reporting.md`
+- `docs/ai/governance/observability.md`
