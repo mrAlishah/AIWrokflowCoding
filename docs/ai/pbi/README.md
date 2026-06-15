@@ -57,7 +57,9 @@ Use this workflow for clarifying and implementing a Product Backlog Item.
 
 - `00-approved-pbi.md` is the source of truth for the approved PBI.
 - `01-context.md` is PBI-specific context. It must not be a copy of repo-context. It should contain only the repo-context excerpts, files, risks, constraints, and validation notes relevant to the active PBI.
-- `02-implementation-plan.md` is a short roadmap. It must contain phase names, goals, status, and high-level sequencing only. It must not contain detailed technical implementation plans. Detailed plans belong in `phases/*.md`.
+- `02-implementation-plan.md` is a short roadmap. It must contain phase names, status, current step, goals, and high-level sequencing only. It must not contain detailed technical implementation plans. Detailed plans belong in `phases/*.md`.
+- The phase table in `02-implementation-plan.md` must use `| Phase | Status | Step | Goal |`.
+- `Step` is independent from `Status` and records the latest completed or active workflow step for the phase, such as `planned`, `implementation`, `review`, `fix`, `review-followup`, `handoff`, or `done`.
 - `03-codebase-index.md` routes phases, source files, knowledge files, relevant modules, created or updated files, created or updated functions, function purpose, usage, related flow, validation focus, and review focus.
 - `04-decision_log.md` is only for architecture, domain, and design decisions. It must not be used for phase execution notes, review comments, todos, or temporary planning notes.
 - `05-validation.md` stores explicit and repeatable validation requirements with build verification, manual test scenarios, regression checklist, known risks, and sign-off criteria.

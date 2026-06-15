@@ -130,6 +130,30 @@ Update with:
 
 Keep this file as a short roadmap with phase names, goals, status, and high-level sequencing only. Detailed technical implementation plans belong in `phases/*.md`.
 
+The phase table must use this format:
+
+```markdown
+| Phase | Status | Step | Goal |
+|---|---|---|---|
+```
+
+Each phase must always have exactly one current `Step` value.
+
+`Step` is independent from `Status` and represents the latest completed or active workflow step for the phase.
+
+Allowed concise examples:
+
+- `planned`
+- `implementation`
+- `implementation-1.1`
+- `review`
+- `review-2.0`
+- `fix`
+- `fix-1.2`
+- `review-followup`
+- `handoff`
+- `done`
+
 ### `03-codebase-index.md`
 
 Update with:
@@ -199,7 +223,7 @@ No automated tests does not mean no validation.
 2. Read the approved PBI.
 3. Read repo-context first.
 4. Inspect source code only if repo-context is missing or insufficient.
-5. Build a concise implementation plan.
+5. Build a concise implementation plan with a `Phase | Status | Step | Goal` table.
 6. Create phase files as plan plus execution memory.
 7. Define validation requirements in `05-validation.md`.
 8. Record decisions only when decisions exist.

@@ -101,6 +101,15 @@ Recommended sections:
 - Phases
 - Verification Plan
 
+Required phase table format:
+
+```markdown
+| Phase | Status | Step | Goal |
+|---|---|---|---|
+```
+
+`Step` is independent from `Status` and represents the latest completed or active workflow step for each phase.
+
 ### `03-codebase-index.md`
 
 Create as a placeholder for task-specific navigation.

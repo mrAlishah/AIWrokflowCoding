@@ -64,6 +64,7 @@ Before reading any extra file, state:
 This skill may update:
 
 - files directly required to fix review findings
+- `docs/ai/pbi/STP-XXXX/02-implementation-plan.md` to set the phase `Step` value
 - relevant phase file or PBI review notes, if needed
 - `docs/ai/pbi/STP-XXXX/05-validation.md` when fixes change validation requirements, risks, or sign-off criteria
 - `docs/ai/pbi/STP-XXXX/99-metrics.md`
@@ -104,6 +105,14 @@ It must not update `docs/ai/repo-context/*`.
 - Do not update repo-context.
 - Do not reopen planning unless the review finding requires it and the user approves.
 
+## Implementation Plan Step Update
+
+Update the fixed phase row in `02-implementation-plan.md`:
+
+- set `Step` to `fix` by default
+- use a versioned value such as `fix-1.2` only when sub-iterations exist
+- keep `Step` independent from `Status`
+
 ## Execution Protocol
 
 1. Confirm the findings to fix.
@@ -113,7 +122,8 @@ It must not update `docs/ai/repo-context/*`.
 5. Apply targeted fixes.
 6. Run only requested or necessary verification.
 7. Update phase or review memory if needed.
-8. Update `05-validation.md` if validation requirements, known risks, or sign-off criteria changed.
-9. Append execution metrics to `99-metrics.md`.
-10. Update `docs/ai/pbi/metrics.md`.
-11. Report all changed markdown files under `Markdown Files Changed`.
+8. Update the fixed phase row in `02-implementation-plan.md` with `Step: fix` or a versioned fix step.
+9. Update `05-validation.md` if validation requirements, known risks, or sign-off criteria changed.
+10. Append execution metrics to `99-metrics.md`.
+11. Update `docs/ai/pbi/metrics.md`.
+12. Report all changed markdown files under `Markdown Files Changed`.

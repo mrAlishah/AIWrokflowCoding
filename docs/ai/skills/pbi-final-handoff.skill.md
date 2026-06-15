@@ -37,6 +37,7 @@ Read:
 
 This skill may update only:
 
+- `docs/ai/pbi/STP-XXXX/02-implementation-plan.md` to set final phase `Step` values
 - `docs/ai/pbi/STP-XXXX/06-handoff.md`
 - `docs/ai/pbi/STP-XXXX/99-metrics.md`
 - `docs/ai/pbi/metrics.md`
@@ -65,6 +66,14 @@ Update `06-handoff.md` with:
 - Do not hide known limitations.
 - Keep PR summary focused on user-visible and reviewer-relevant changes.
 
+## Implementation Plan Step Update
+
+Update completed phase rows in `02-implementation-plan.md`:
+
+- set `Step` to `handoff` when the phase is included in final handoff
+- set `Step` to `done` only when the workflow has fully completed and the phase is already final
+- keep `Step` independent from `Status`
+
 ## Forbidden Actions
 
 - Do not modify source code.
@@ -79,7 +88,8 @@ Update `06-handoff.md` with:
 2. Read PBI summary, plan, phases, `05-validation.md`, and verification notes.
 3. Summarize changed files and validation.
 4. Record risks and review focus.
-5. Update `06-handoff.md`.
-6. Append execution metrics to `99-metrics.md` with phase `N/A`.
-7. Update `docs/ai/pbi/metrics.md`.
-8. Report all changed markdown files under `Markdown Files Changed`.
+5. Update completed phase rows in `02-implementation-plan.md` with `Step: handoff` or `Step: done` as appropriate.
+6. Update `06-handoff.md`.
+7. Append execution metrics to `99-metrics.md` with phase `N/A`.
+8. Update `docs/ai/pbi/metrics.md`.
+9. Report all changed markdown files under `Markdown Files Changed`.

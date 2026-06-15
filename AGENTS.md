@@ -288,6 +288,15 @@ In Progress
 Done
 ```
 
+`02-implementation-plan.md` phase tables must include:
+
+```markdown
+| Phase | Status | Step | Goal |
+|---|---|---|---|
+```
+
+`Step` is independent from `Status` and records the latest completed or active workflow step for the phase.
+
 ---
 
 # Review Workflow

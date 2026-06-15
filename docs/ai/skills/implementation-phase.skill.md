@@ -52,6 +52,7 @@ Before reading any extra file, state:
 This skill may update:
 
 - source or documentation files explicitly listed in the selected phase
+- `docs/ai/pbi/STP-XXXX/02-implementation-plan.md` to set the phase `Step` value
 - the selected phase file after execution
 - `docs/ai/pbi/STP-XXXX/05-validation.md` when implementation changes validation needs, risks, or sign-off criteria
 - `docs/ai/pbi/STP-XXXX/99-metrics.md`
@@ -94,6 +95,14 @@ After execution, update the selected phase file with:
 - known risks or follow-up
 - validation updates that belong in `05-validation.md`
 
+## Implementation Plan Step Update
+
+Update the selected phase row in `02-implementation-plan.md`:
+
+- set `Step` to `implementation` by default
+- use a versioned value such as `implementation-1.1` only when sub-iterations exist
+- keep `Step` independent from `Status`
+
 ## Forbidden Actions
 
 - Do not execute more than one phase.
@@ -112,7 +121,8 @@ After execution, update the selected phase file with:
 5. Implement the phase with minimal files and lines.
 6. Run only requested or necessary verification.
 7. Update the selected phase file.
-8. Update `05-validation.md` if validation requirements, known risks, or sign-off criteria changed.
-9. Append execution metrics to `99-metrics.md`.
-10. Update `docs/ai/pbi/metrics.md`.
-11. Report all changed markdown files under `Markdown Files Changed`.
+8. Update the selected phase row in `02-implementation-plan.md` with `Step: implementation` or a versioned implementation step.
+9. Update `05-validation.md` if validation requirements, known risks, or sign-off criteria changed.
+10. Append execution metrics to `99-metrics.md`.
+11. Update `docs/ai/pbi/metrics.md`.
+12. Report all changed markdown files under `Markdown Files Changed`.

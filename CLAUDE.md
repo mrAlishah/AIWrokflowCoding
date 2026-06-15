@@ -175,6 +175,15 @@ Required source files
 
 Do not execute multiple phases in one run unless explicitly instructed.
 
+When a phase workflow step is executed, update the matching phase row in `02-implementation-plan.md`:
+
+```markdown
+| Phase | Status | Step | Goal |
+|---|---|---|---|
+```
+
+Keep `Step` independent from `Status`.
+
 ---
 
 # Phase Memory Updates

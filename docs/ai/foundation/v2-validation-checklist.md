@@ -156,6 +156,10 @@ The latest validation re-run confirmed that root-level `AGENTS.md` and `CLAUDE.m
 - `00-approved-pbi.md` is documented as the source of truth.
 - `01-context.md` is documented as PBI-specific and not a repo-context copy.
 - `02-implementation-plan.md` is documented as a short roadmap, not detailed implementation.
+- `02-implementation-plan.md` phase tables use `Phase | Status | Step | Goal`.
+- `Step` is independent from `Status` and records the latest completed or active workflow step for each phase.
+- `implementation-phase`, `review-phase`, `fix-phase`, and `pbi-final-handoff` update the relevant phase `Step` value.
+- Phase status values remain unchanged.
 - Phase files are documented as plan plus execution memory.
 - Phase statuses are exactly:
   - `Planned Only`

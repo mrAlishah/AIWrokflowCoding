@@ -126,6 +126,34 @@ PBI aggregate metrics are summarized in:
 docs/ai/pbi/metrics.md
 ```
 
+### Implementation Plan Phase Table
+
+`02-implementation-plan.md` must use this phase table format:
+
+```markdown
+| Phase | Status | Step | Goal |
+|---|---|---|---|
+```
+
+`Step` is independent from `Status`.
+
+Each phase must always have exactly one current `Step` value.
+
+Examples:
+
+```text
+planned
+implementation
+implementation-1.1
+review
+fix
+review-followup
+handoff
+done
+```
+
+Skills that execute phase work must update the `Step` column.
+
 ## PR Review Workflow
 
 PR review work focuses on correctness, risk, and missing verification.

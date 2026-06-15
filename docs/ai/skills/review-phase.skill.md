@@ -64,6 +64,8 @@ Before reading any extra file, state:
 
 This skill may update review notes in the PBI workspace if the workflow requires durable review memory.
 
+This skill may update `docs/ai/pbi/STP-XXXX/02-implementation-plan.md` to set the reviewed phase `Step` value.
+
 This skill may update `docs/ai/pbi/STP-XXXX/05-validation.md` when review discovers validation gaps, risks, or changed sign-off criteria.
 
 This skill may update:
@@ -101,6 +103,14 @@ For `RF_ID` verification, check only the selected RF fix, its validation plan, a
 - Do not invent issues.
 - Clearly state when no issues are found.
 
+## Implementation Plan Step Update
+
+Update the reviewed phase row in `02-implementation-plan.md`:
+
+- set `Step` to `review` by default
+- use a versioned value such as `review-2.0` only when sub-iterations exist
+- keep `Step` independent from `Status`
+
 ## Forbidden Actions
 
 - Do not apply fixes unless explicitly requested.
@@ -116,8 +126,9 @@ For `RF_ID` verification, check only the selected RF fix, its validation plan, a
 3. Inspect the implementation diff.
 4. Review only the changed behavior and necessary surrounding context.
 5. Record findings, risks, and verification gaps.
-6. Update `05-validation.md` if review changes validation requirements or known risks.
-7. If no issues are found, state that clearly.
-8. Append execution metrics to `99-metrics.md`.
-9. Update `docs/ai/pbi/metrics.md`.
-10. Report all changed markdown files under `Markdown Files Changed`.
+6. Update the reviewed phase row in `02-implementation-plan.md` with `Step: review` or a versioned review step.
+7. Update `05-validation.md` if review changes validation requirements or known risks.
+8. If no issues are found, state that clearly.
+9. Append execution metrics to `99-metrics.md`.
+10. Update `docs/ai/pbi/metrics.md`.
+11. Report all changed markdown files under `Markdown Files Changed`.
