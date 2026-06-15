@@ -8,13 +8,13 @@ Read this file when selecting or entering a PBI workflow.
 
 ## Read Next
 
-- Raw PBI: `pbi-clarification`
-- Approved PBI workspace: `pbi-workspace-create`
-- Planning: `pbi-plan-create`
-- Phase execution: `implementation-phase`
-- PBI review: `review-phase`
-- Review fixes: `fix-phase`
-- Final handoff: `pbi-final-handoff`
+- Raw PBI: `pbi_clarification`
+- Approved PBI workspace: `pbi_workspace_create`
+- Planning: `pbi_plan_create`
+- Phase execution: `pbi_implementation_phase`
+- PBI review: `pbi_review_phase`
+- Review fixes: `pbi_fix_phase`
+- Final handoff: `pbi_final_handoff`
 
 ## Workspace Files
 

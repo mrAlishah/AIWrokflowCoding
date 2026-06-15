@@ -211,7 +211,7 @@ Inspect source code only when necessary.
 Only:
 
 ```text
-repo-context-update
+tools_repo_context_update
 ```
 
 may update:
@@ -223,7 +223,7 @@ docs/ai/repo-context/*
 Exception:
 
 ```text
-policy-plan-update
+tools_policy_plan_update
 ```
 
 may update reusable repository policy files under `docs/ai/repo-context/policy/` only when:
@@ -304,7 +304,7 @@ Done
 Recommended daily-use review entrypoint:
 
 ```text
-pr-review-workflow
+pr_review_workflow
 ```
 
 Lower-level review skills remain available for follow-up, debugging, specialized review, or partial re-run.

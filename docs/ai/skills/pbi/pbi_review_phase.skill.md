@@ -1,4 +1,4 @@
-# Skill: review-phase
+# Skill: pbi_review_phase
 
 ## Purpose
 

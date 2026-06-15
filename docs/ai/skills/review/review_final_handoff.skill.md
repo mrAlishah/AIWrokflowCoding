@@ -1,4 +1,4 @@
-# Skill: review-final-handoff
+# Skill: review_final_handoff
 
 ## Purpose
 

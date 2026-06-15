@@ -30,13 +30,13 @@ AGENTS.md -> optional agent-specific file -> START_HERE.md -> skills/README.md -
 
 | Task | Route |
 | --- | --- |
-| Raw or unclear PBI | `pbi-clarification` |
+| Raw or unclear PBI | `pbi_clarification` |
 | PBI task | `docs/ai/skills/README.md` -> selected PBI skill |
-| Daily PR/code review | `pr-review-workflow` |
+| Daily PR/code review | `pr_review_workflow` |
 | Review task | `docs/ai/skills/README.md` -> selected review skill |
-| User answer or policy update | `policy-plan-update` |
-| Repo knowledge update | `repo-context-update` |
-| Long-term docs cleanup audit | `docs-ai-cleanup-audit` |
+| User answer or policy update | `tools_policy_plan_update` |
+| Repo knowledge update | `tools_repo_context_update` |
+| Long-term docs cleanup audit | `tools_docs_ai_cleanup_audit` |
 | AI OS maintenance | `docs/ai/foundation/v2-approved-baseline.md` and relevant foundation docs |
 
 ## Rules
@@ -48,11 +48,11 @@ AGENTS.md -> optional agent-specific file -> START_HERE.md -> skills/README.md -
 - `docs/ai/foundation/**` is not daily runtime context and remains unchanged in the V2 compatibility structure step.
 - Do not read `setup-prompts/*` unless the task is setup or prompt maintenance.
 - Do not read validation reports unless the task is validation.
-- For tagged user answers or policy changes that must sync into planning files, use `policy-plan-update`.
-- For long-term `docs/ai` cleanup or context-cost audit, use `docs-ai-cleanup-audit`.
+- For tagged user answers or policy changes that must sync into planning files, use `tools_policy_plan_update`.
+- For long-term `docs/ai` cleanup or context-cost audit, use `tools_docs_ai_cleanup_audit`.
 - Do not use cleanup audits during normal PBI implementation or PR review.
 - Keep changes minimal and report markdown changes.
 
 ## Migration Compatibility
 
-Target skill folders may exist under `docs/ai/skills/`, but existing flat skill files and existing skill names remain callable until a later approved migration step.
+Categorized skill folders are canonical under `docs/ai/skills/`. Old invocation names are mapped in `docs/ai/skills/README.md`.

@@ -17,7 +17,7 @@ Read this file only for top-level orientation. Daily agents should continue to `
 
 ## Migration Compatibility
 
-The V2 target structure is being prepared under:
+The V2 skill and policy structure is:
 
 ```text
 docs/ai/skills/governance/
@@ -28,7 +28,7 @@ docs/ai/skills/tools/
 docs/ai/repo-context/policy/
 ```
 
-Existing skill files and existing skill names remain callable until an approved migration step moves or renames them.
+Old skill invocation names are mapped in `docs/ai/skills/README.md`.
 
 ## Do Not Read By Default
 

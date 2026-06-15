@@ -1,15 +1,15 @@
-# Review Skills Area
+# Review Skills
 
-Canonical new path:
+Canonical path:
 
 ```text
 docs/ai/skills/review/
 ```
 
-Reason for compatibility:
+## Naming
 
-Existing lower-level review skill files remain in `docs/ai/skills/` and existing skill names remain callable.
+Lower-level review skill files use the `review_*` prefix.
 
-Migration note:
+## Compatibility
 
-Use this folder as the future home for `review_*` skills. Do not move or rename existing skills in this phase.
+Old invocation names are mapped in `docs/ai/skills/README.md`.

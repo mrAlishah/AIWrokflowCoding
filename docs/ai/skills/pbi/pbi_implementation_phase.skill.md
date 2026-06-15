@@ -1,4 +1,4 @@
-# Skill: implementation-phase
+# Skill: pbi_implementation_phase
 
 ## Purpose
 

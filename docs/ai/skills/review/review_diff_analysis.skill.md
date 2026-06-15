@@ -1,4 +1,4 @@
-# Skill: review-diff-analysis
+# Skill: review_diff_analysis
 
 ## Purpose
 

@@ -1,4 +1,4 @@
-# Skill: docs-ai-cleanup-audit
+# Skill: tools_docs_ai_cleanup_audit
 
 ## Purpose
 

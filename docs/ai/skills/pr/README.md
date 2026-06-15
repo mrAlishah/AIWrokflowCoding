@@ -1,15 +1,15 @@
-# PR Skills Area
+# PR Skills
 
-Canonical new path:
+Canonical path:
 
 ```text
 docs/ai/skills/pr/
 ```
 
-Reason for compatibility:
+## Naming
 
-The existing daily PR/code review entrypoint remains `pr-review-workflow`.
+PR review skill files use the `pr_*` prefix.
 
-Migration note:
+## Compatibility
 
-Use this folder as the future home for `pr_*` skills. Do not move or rename existing skills in this phase.
+Old invocation names are mapped in `docs/ai/skills/README.md`.

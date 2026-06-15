@@ -1,4 +1,4 @@
-# Skill: policy-plan-update
+# Skill: tools_policy_plan_update
 
 ## Purpose
 

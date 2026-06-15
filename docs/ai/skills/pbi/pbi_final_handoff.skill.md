@@ -1,4 +1,4 @@
-# Skill: pbi-final-handoff
+# Skill: pbi_final_handoff
 
 ## Purpose
 

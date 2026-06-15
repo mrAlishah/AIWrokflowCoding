@@ -1,4 +1,4 @@
-# Skill: review-comments-create
+# Skill: review_comments_create
 
 ## Purpose
 

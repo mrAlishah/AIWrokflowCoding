@@ -25,14 +25,14 @@ Canonical shared rules for the AI Multi-Agent Coding Operating System.
 
 - `docs/ai/repo-context/*` is reusable repository knowledge.
 - Repository policy files live under `docs/ai/repo-context/policy/`.
-- Only `repo-context-update` may update repo-context files.
-- Exception: `policy-plan-update` may update reusable repository policy files only when its approved global policy parameters allow it.
+- Only `tools_repo_context_update` may update repo-context files.
+- Exception: `tools_policy_plan_update` may update reusable repository policy files only when its approved global policy parameters allow it.
 - All other skills treat repo-context as read-only.
 
 ## PBI Rules
 
 - PBI workspaces live under `docs/ai/pbi/STP-XXXX/`.
-- PBI workflow semantics, validation behavior, phase status model, `pbi-clarification`, and workspace metrics behavior must remain unchanged.
+- PBI workflow semantics, validation behavior, phase status model, `pbi_clarification`, and workspace metrics behavior must remain unchanged.
 - Phase statuses remain exactly: `Planned Only`, `Planned`, `In Progress`, `Done`.
 - `02-implementation-plan.md` phase tables use `Phase | Status | Step | Goal`.
 - `Step` is independent from `Status`.

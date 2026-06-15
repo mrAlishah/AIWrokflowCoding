@@ -85,14 +85,14 @@ If orchestration is requested, Claude must report the selected current skill and
 When managing a PBI end-to-end, use this sequence:
 
 ```text
-pbi-clarification
-pbi-workspace-create
-pbi-plan-create
-implementation-phase
-review-phase
-fix-phase only if review findings require fixes
+pbi_clarification
+pbi_workspace_create
+pbi_plan_create
+pbi_implementation_phase
+pbi_review_phase
+pbi_fix_phase only if review findings require fixes
 repeat implementation/review/fix per phase
-pbi-final-handoff
+pbi_final_handoff
 ```
 
 Rules:
@@ -106,7 +106,7 @@ Rules:
 - Do not skip phase files.
 - Do not skip markdown memory updates.
 - Do not rely on chat history.
-- Do not update `docs/ai/repo-context/*` unless explicitly using an approved repo-context update skill.
+- Do not update `docs/ai/repo-context/*` unless explicitly using `tools_repo_context_update`.
 - Stop before continuing if scope, risks, or validation are unclear.
 
 ---
@@ -116,7 +116,7 @@ Rules:
 For daily end-to-end local PR/code review, prefer:
 
 ```text
-pr-review-workflow
+pr_review_workflow
 ```
 
 Use lower-level review skills for follow-up, debugging, specialized review, or partial re-run.
@@ -124,7 +124,7 @@ Use lower-level review skills for follow-up, debugging, specialized review, or p
 When managing a coworker branch review end-to-end, use this sequence:
 
 ```text
-pr-review-workflow
+pr_review_workflow
 ```
 
 Rules:

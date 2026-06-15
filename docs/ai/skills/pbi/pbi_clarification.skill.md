@@ -1,4 +1,4 @@
-# Skill: pbi-clarification
+# Skill: pbi_clarification
 
 ## Purpose
 

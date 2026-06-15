@@ -1,4 +1,4 @@
-# Skill: repo-context-update
+# Skill: tools_repo_context_update
 
 ## Purpose
 
@@ -17,7 +17,7 @@ Refresh reusable repository knowledge under `docs/ai/repo-context/`.
 
 ## Steps
 
-1. Confirm the user explicitly invoked `repo-context-update`.
+1. Confirm the user explicitly invoked `tools_repo_context_update`.
 2. Read current repo-context before source inspection.
 3. Inspect only targeted repository areas.
 4. Update stable reusable knowledge.

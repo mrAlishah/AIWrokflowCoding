@@ -1,4 +1,4 @@
-# Skill: review-feedback-analysis
+# Skill: pbi_review_feedback_analysis
 
 ## Purpose
 

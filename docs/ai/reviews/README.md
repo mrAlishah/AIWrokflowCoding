@@ -8,12 +8,12 @@ Read this file when selecting or entering a PR/code review workflow.
 
 ## Read Next
 
-- Daily end-to-end review: `pr-review-workflow`
-- Workspace only: `review-workspace-create`
-- Diff analysis: `review-diff-analysis`
-- Comments and suggestions: `review-comments-create`
-- Follow-up review: `review-followup`
-- Final handoff: `review-final-handoff`
+- Daily end-to-end review: `pr_review_workflow`
+- Workspace only: `review_workspace_create`
+- Diff analysis: `review_diff_analysis`
+- Comments and suggestions: `review_comments_create`
+- Follow-up review: `review_followup`
+- Final handoff: `review_final_handoff`
 
 ## Workspace Files
 

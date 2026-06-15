@@ -1,4 +1,4 @@
-# Skill: review-followup
+# Skill: review_followup
 
 ## Purpose
 

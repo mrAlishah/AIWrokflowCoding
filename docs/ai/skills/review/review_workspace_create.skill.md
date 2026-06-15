@@ -1,4 +1,4 @@
-# Skill: review-workspace-create
+# Skill: review_workspace_create
 
 ## Purpose
 

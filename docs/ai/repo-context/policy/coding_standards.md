@@ -4,7 +4,7 @@ Reusable coding standards observed in this repository.
 
 ## Naming Conventions
 
-Document stable naming conventions after explicit `repo-context-update` inspection.
+Document stable naming conventions after explicit `tools_repo_context_update` inspection.
 
 ## File Organization
 

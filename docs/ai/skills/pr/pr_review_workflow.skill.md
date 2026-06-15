@@ -1,4 +1,4 @@
-# Skill: pr-review-workflow
+# Skill: pr_review_workflow
 
 ## Purpose
 
@@ -64,7 +64,7 @@ Follow:
 - `docs/ai/skills/governance/observability.md`
 
 Existing skill mapping:
-- workspace: `review-workspace-create`
-- diff and findings: `review-diff-analysis`
-- comments and suggestions: `review-comments-create`
-- handoff: `review-final-handoff`
+- workspace: `review_workspace_create`
+- diff and findings: `review_diff_analysis`
+- comments and suggestions: `review_comments_create`
+- handoff: `review_final_handoff`

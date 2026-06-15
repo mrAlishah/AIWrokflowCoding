@@ -1,4 +1,4 @@
-# Skill: pbi-plan-create
+# Skill: pbi_plan_create
 
 ## Purpose
 

@@ -1,4 +1,4 @@
-# Skill: pbi-workspace-create
+# Skill: pbi_workspace_create
 
 ## Purpose
 
