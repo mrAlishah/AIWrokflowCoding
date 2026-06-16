@@ -15,7 +15,7 @@ ANALYSIS_DEPTH:
 deep
 
 Task:
-Run a full health check for the V2 AI Operating System after the latest docs/ai update or refactor. Validate cohesion, executability, context efficiency, backward compatibility, governance ownership, policy ownership, prompt quality, and improvement opportunities.
+Run a full AI OS health check and write the latest report plus a dated history copy.
 
 Required read path:
 1. AGENTS.md or CLAUDE.md
@@ -42,7 +42,7 @@ Expected updates:
 - docs/ai/reference/system-health/history/YYYY-MM-DD.md
 
 Final response format:
-Return Summary, Report Written, Status, Critical / High Findings, Required Actions, Optional Improvements, Token Cost Suggestions, Markdown Files Changed, and Recommended Next Step.
+Return Summary, Report Written, Status, Critical Findings, Required Actions, Markdown Files Changed, and Recommended Next Step.
 
 Markdown Files Changed rule:
 When markdown files are changed, report each changed markdown file with path, action, reason, summary, and future AI context impact.

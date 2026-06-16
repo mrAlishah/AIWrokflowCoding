@@ -1,27 +1,36 @@
-Use skill: tools_system_health_check
+Use skill: tools_docs_ai_cleanup_audit
 
 Parameters:
 
-CHECK_SCOPE:
-full
+CLEANUP_SCOPE:
+docs/ai/reference
 
-CHECK_COMPATIBILITY:
-true
+CLEANUP_MODE:
+audit-only
 
-REPORT_MODE:
-latest-and-history
+TARGET_AREA:
+prompts
 
-ANALYSIS_DEPTH:
-deep
+MAX_INSPECTION_DEPTH:
+standard
+
+INCLUDE_DONE_WORKSPACES:
+false
+
+OUTPUT_MODE:
+report
+
+ALLOW_MARKDOWN_UPDATES:
+false
 
 Task:
-Run a full health check for the V2 AI Operating System after the latest docs/ai update or refactor. Validate cohesion, executability, context efficiency, backward compatibility, governance ownership, policy ownership, prompt quality, and improvement opportunities.
+Audit the target docs/ai area for cleanup and context-cost risks without changing active workflow behavior.
 
 Required read path:
 1. AGENTS.md or CLAUDE.md
 2. docs/ai/START_HERE.md
 3. docs/ai/skills/README.md
-4. Selected skill only: tools_system_health_check
+4. Selected skill only: tools_docs_ai_cleanup_audit
 5. Active workspace only when required
 6. repo-context only if needed
 7. Exact source files only if needed
@@ -38,11 +47,10 @@ Constraints:
 - Report markdown changes.
 
 Expected updates:
-- docs/ai/reference/system-health/latest.md
-- docs/ai/reference/system-health/history/YYYY-MM-DD.md
+- Cleanup report or cleanup plan under docs/ai/reference/history/foundation/
 
 Final response format:
-Return Summary, Report Written, Status, Critical / High Findings, Required Actions, Optional Improvements, Token Cost Suggestions, Markdown Files Changed, and Recommended Next Step.
+Return Summary, Files audited, Duplications found, Cleanup recommendations, Markdown Files Changed, and Recommended next action.
 
 Markdown Files Changed rule:
 When markdown files are changed, report each changed markdown file with path, action, reason, summary, and future AI context impact.

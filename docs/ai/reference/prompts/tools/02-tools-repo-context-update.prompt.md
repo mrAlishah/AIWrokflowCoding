@@ -1,27 +1,24 @@
-Use skill: tools_system_health_check
+Use skill: tools_repo_context_update
 
 Parameters:
 
-CHECK_SCOPE:
-full
+UPDATE_REASON:
+Document stable routing changes after settings workflow update.
 
-CHECK_COMPATIBILITY:
-true
+REPOSITORY_AREAS:
+settings module and audit-log workflow
 
-REPORT_MODE:
-latest-and-history
-
-ANALYSIS_DEPTH:
-deep
+INSPECTION_SCOPE:
+targeted
 
 Task:
-Run a full health check for the V2 AI Operating System after the latest docs/ai update or refactor. Validate cohesion, executability, context efficiency, backward compatibility, governance ownership, policy ownership, prompt quality, and improvement opportunities.
+Refresh stable reusable repo-context knowledge for listed repository areas only.
 
 Required read path:
 1. AGENTS.md or CLAUDE.md
 2. docs/ai/START_HERE.md
 3. docs/ai/skills/README.md
-4. Selected skill only: tools_system_health_check
+4. Selected skill only: tools_repo_context_update
 5. Active workspace only when required
 6. repo-context only if needed
 7. Exact source files only if needed
@@ -38,11 +35,11 @@ Constraints:
 - Report markdown changes.
 
 Expected updates:
-- docs/ai/reference/system-health/latest.md
-- docs/ai/reference/system-health/history/YYYY-MM-DD.md
+- docs/ai/repo-context/*
+- docs/ai/repo-context/policy/* when relevant
 
 Final response format:
-Return Summary, Report Written, Status, Critical / High Findings, Required Actions, Optional Improvements, Token Cost Suggestions, Markdown Files Changed, and Recommended Next Step.
+Return Summary, Repo-context files updated, Source areas inspected, Markdown Files Changed, and Recommended next action.
 
 Markdown Files Changed rule:
 When markdown files are changed, report each changed markdown file with path, action, reason, summary, and future AI context impact.
