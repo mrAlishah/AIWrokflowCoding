@@ -39,6 +39,10 @@ Any agent following the selected tools skill and its update boundaries.
 - docs/ai/repo-context/*
 - Planning files or docs/ai/repo-context/policy/*
 - Cleanup report or plan under docs/ai/reference/history/foundation/
+- docs/ai/reference/README.md
+- docs/ai/reference/help-index.md
+- docs/ai/reference/guides/
+- docs/ai/reference/prompts/
 
 ## Common Mistakes
 

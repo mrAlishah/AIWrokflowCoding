@@ -10,6 +10,7 @@ Tools work follows one selected skill at a time. Use prompts in numbered order o
 02. `tools_repo_context_update`: Refresh reusable repository knowledge.
 03. `tools_policy_plan_update`: Synchronize tagged user answers or approved policy changes.
 04. `tools_docs_ai_cleanup_audit`: Audit docs/ai cleanup, duplication, stale content, and context cost risk.
+05. `tools_reference_update`: Maintain user-facing reference guides and prompts.
 
 ## Skill Sequence
 
@@ -17,6 +18,7 @@ Tools work follows one selected skill at a time. Use prompts in numbered order o
 - 02: `tools_repo_context_update`
 - 03: `tools_policy_plan_update`
 - 04: `tools_docs_ai_cleanup_audit`
+- 05: `tools_reference_update`
 
 ## Input And Output Per Step
 
@@ -24,6 +26,7 @@ Tools work follows one selected skill at a time. Use prompts in numbered order o
 - `tools_repo_context_update`: inputs: Existing repo-context and targeted repository files. outputs: docs/ai/repo-context/*.
 - `tools_policy_plan_update`: inputs: Active workspace, RF files, or policy files depending on scope. outputs: Planning files or docs/ai/repo-context/policy/*.
 - `tools_docs_ai_cleanup_audit`: inputs: Targeted docs/ai areas only. outputs: Cleanup report or plan under docs/ai/reference/history/foundation/.
+- `tools_reference_update`: inputs: skills index, selected skill files when needed, and affected reference files. outputs: docs/ai/reference/README.md; docs/ai/reference/help-index.md; docs/ai/reference/guides/; docs/ai/reference/prompts/.
 
 ## Stop Conditions
 

@@ -24,6 +24,9 @@ Prompts live in `docs/ai/reference/prompts/tools/`. They are paste-ready templat
 - `04-tools-docs-ai-cleanup-audit.prompt.md`: full prompt for `tools_docs_ai_cleanup_audit`.
 - `04-tools-docs-ai-cleanup-audit-short.prompt.md`: short daily prompt for `tools_docs_ai_cleanup_audit`.
 - `04-tools-docs-ai-cleanup-audit.help.md`: parameter and usage help for `tools_docs_ai_cleanup_audit`.
+- `05-tools-reference-update.prompt.md`: full prompt for `tools_reference_update`.
+- `05-tools-reference-update-short.prompt.md`: short daily prompt for `tools_reference_update`.
+- `05-tools-reference-update.help.md`: parameter and usage help for `tools_reference_update`.
 
 ## Related Skill Names
 
@@ -31,6 +34,7 @@ Prompts live in `docs/ai/reference/prompts/tools/`. They are paste-ready templat
 - `tools_repo_context_update`
 - `tools_policy_plan_update`
 - `tools_docs_ai_cleanup_audit`
+- `tools_reference_update`
 
 ## Expected Output Locations
 
@@ -39,6 +43,10 @@ Prompts live in `docs/ai/reference/prompts/tools/`. They are paste-ready templat
 - docs/ai/repo-context/*
 - Planning files or docs/ai/repo-context/policy/*
 - Cleanup report or plan under docs/ai/reference/history/foundation/
+- docs/ai/reference/README.md
+- docs/ai/reference/help-index.md
+- docs/ai/reference/guides/
+- docs/ai/reference/prompts/
 
 ## Which Prompt To Use In Which Situation
 

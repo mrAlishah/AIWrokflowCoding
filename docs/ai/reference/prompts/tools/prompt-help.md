@@ -17,6 +17,14 @@ This folder contains ready-to-run prompt forms for TOOLS work.
 - `-short.prompt.md`: shorter daily-use prompt with the same parameters.
 - `.help.md`: parameter meanings, allowed values, defaults, examples, rules, mistakes, and token tips.
 
+## Current Prompts
+
+- `01-tools-system-health-check`: run AI OS health reports.
+- `02-tools-repo-context-update`: refresh reusable repo-context knowledge.
+- `03-tools-policy-plan-update`: synchronize approved planning or policy input.
+- `04-tools-docs-ai-cleanup-audit`: audit `docs/ai` cleanup and context-cost risks.
+- `05-tools-reference-update`: maintain user-facing reference guides and prompts.
+
 ## Parameter Rules
 
 Each prompt uses one parameter per field. Do not combine parameter names. If a parameter has fixed options, use one value from the matching help file.
