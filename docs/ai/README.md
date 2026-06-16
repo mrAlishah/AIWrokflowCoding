@@ -22,6 +22,8 @@ Then follow the read order in [START_HERE.md](START_HERE.md).
 - Repository knowledge: [repo-context/README.md](repo-context/README.md)
 - Read order: [skills/governance/read-order.md](skills/governance/read-order.md)
 
+`reference/` contains non-runtime guides, prompts, validation, history, and decisions. Do not read it during normal execution unless explicitly requested.
+
 ## Canonical Policy
 
 - Code policies: [repo-context/policy/code-policies.md](repo-context/policy/code-policies.md)

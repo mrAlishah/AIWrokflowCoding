@@ -24,7 +24,7 @@ Primary goals:
 6. repo-context only if needed
 7. Exact source files only if needed
 
-`docs/ai/archive/foundation/**` is historical material and must not be read during normal execution.
+`docs/ai/reference/**` is non-runtime reference material and must not be read during normal execution unless explicitly requested for guides, prompts, validation, history, decisions, or AI OS maintenance.
 
 ## Canonical Governance
 
@@ -46,7 +46,7 @@ Primary goals:
 - Execute one skill at a time.
 - Do not read all docs, all skills, all workspaces, or the whole repository by default.
 - Do not modify source code unless the selected skill explicitly allows it and the task requires it.
-- Do not modify `docs/ai/archive/foundation/**`.
+- Do not modify `docs/ai/reference/history/foundation/**` unless the user explicitly authorizes archive or history work.
 - Do not introduce V3 concepts.
 - Preserve knowledge separation between repo-context, PBI workspaces, review workspaces, execution memory, and architecture decisions.
 
@@ -80,4 +80,4 @@ docs/ai/skills/governance/markdown-change-reporting.md
 
 ## Validation Note
 
-After changing skills, naming, workflow, archived foundation material, `START_HERE.md`, common rules, or agent files, re-run the V2 validation checklist without editing `docs/ai/archive/foundation/**`.
+After changing skills, naming, workflow, reference material, `START_HERE.md`, common rules, or agent files, re-run the V2 validation checklist without editing `docs/ai/reference/history/foundation/**`.

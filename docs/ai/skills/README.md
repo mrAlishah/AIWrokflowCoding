@@ -6,6 +6,8 @@ Read this file to select one skill. Then read only the selected skill file.
 
 Global rules live in `docs/ai/skills/governance/`.
 
+`docs/ai/reference/` is non-runtime material. Do not read it during normal skill execution unless the user explicitly asks for guides, prompts, validation, history, decisions, or AI OS maintenance.
+
 ## Repository
 
 | Task | Skill | Path |
