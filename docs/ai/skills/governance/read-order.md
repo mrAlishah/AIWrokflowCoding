@@ -22,6 +22,14 @@ Canonical context reading rules.
 - Quality takes priority over context minimization.
 - Do not use hard token limits, maximum file limits, or strict quotas as a reason to skip required understanding.
 
+## Reference Boundary
+
+`docs/ai/reference/**` is non-runtime documentation.
+
+Daily runtime workflows, PR review workflows, and PBI implementation workflows must not read `docs/ai/reference/**`.
+
+Read `docs/ai/reference/**` only when the selected task explicitly requires guides, prompt/help maintenance, validation, history, decisions, system health, or AI OS maintenance.
+
 ## Extra File Rule
 
 Before reading files outside the approved scope, report:
