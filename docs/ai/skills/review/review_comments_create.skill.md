@@ -45,8 +45,10 @@ Create English PR-ready comments and Persian/internal suggestions from local dif
 
 ## References
 
-Follow:
+Follow canonical governance and policy:
+
 - `docs/ai/skills/governance/common-rules.md`
 - `docs/ai/skills/governance/read-order.md`
 - `docs/ai/skills/governance/markdown-change-reporting.md`
-- `docs/ai/skills/governance/observability.md`
+- `docs/ai/skills/governance/skill-template.md`
+- `docs/ai/repo-context/policy/context_budget.md`

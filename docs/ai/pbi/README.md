@@ -31,7 +31,7 @@ phases/
 knowledge/
 ```
 
-Do not read every PBI workspace. Read only the active `STP-XXXX` workspace required by the selected skill.
+Read only the active `STP-XXXX` workspace required by the selected skill.
 
 ## Governance
 

@@ -6,12 +6,17 @@ Read this file to select one skill. Then read only the selected skill file.
 
 Global rules live in `docs/ai/skills/governance/`.
 
+System health policy lives in `docs/ai/skills/governance/system-health-policy.md`.
+
+`docs/ai/reference/` is non-runtime material. Do not read it during normal skill execution unless the user explicitly asks for guides, prompts, validation, history, decisions, or AI OS maintenance.
+
 ## Repository
 
 | Task | Skill | Path |
 | --- | --- | --- |
 | Refresh reusable repo knowledge | `tools_repo_context_update` | `docs/ai/skills/tools/tools_repo_context_update.skill.md` |
 | Audit `docs/ai` cleanup or context cost | `tools_docs_ai_cleanup_audit` | `docs/ai/skills/tools/tools_docs_ai_cleanup_audit.skill.md` |
+| Audit AI Operating System health | `tools_system_health_check` | `docs/ai/skills/tools/tools_system_health_check.skill.md` |
 | Sync user answer or policy | `tools_policy_plan_update` | `docs/ai/skills/tools/tools_policy_plan_update.skill.md` |
 
 ## PBI Workflow
@@ -71,8 +76,6 @@ Existing old invocation names are mapped to the new V2 names. Use new names for 
 | `docs-ai-cleanup-audit` | `tools_docs_ai_cleanup_audit` | `docs/ai/skills/tools/tools_docs_ai_cleanup_audit.skill.md` |
 | `policy-plan-update` | `tools_policy_plan_update` | `docs/ai/skills/tools/tools_policy_plan_update.skill.md` |
 
-## Do Not Read By Default
+## Read Scope
 
-Do not read all skills. Read only the selected skill file.
-
-Do not read `docs/ai/foundation/**` as daily runtime context.
+Read only the selected skill file. Full read-order rules live in `docs/ai/skills/governance/read-order.md`.

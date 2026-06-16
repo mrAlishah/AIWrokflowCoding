@@ -14,7 +14,7 @@ Daily runtime usage starts here after `AGENTS.md` or an agent-specific adapter s
 
 Do not read all docs, all skills, all workspaces, or the whole repository by default.
 
-`docs/ai/foundation/**` is read-only and not daily runtime context.
+`docs/ai/reference/**` is non-runtime reference material and must not be read during normal execution unless explicitly requested for guides, prompts, validation, history, decisions, or AI OS maintenance.
 
 ## Routing
 
@@ -26,8 +26,9 @@ Do not read all docs, all skills, all workspaces, or the whole repository by def
 | Review task | `docs/ai/skills/README.md` -> selected review skill |
 | User answer or policy update | `tools_policy_plan_update` |
 | Repo knowledge update | `tools_repo_context_update` |
+| AI OS health audit | `tools_system_health_check` |
 | Long-term docs cleanup audit | `tools_docs_ai_cleanup_audit` |
-| AI OS maintenance | Explicit maintenance task only; `docs/ai/foundation/**` remains read-only unless the user specifically authorizes foundation work |
+| AI OS maintenance | Explicit maintenance task only; use `docs/ai/reference/` only when guides, prompts, validation, history, decisions, or AI OS maintenance are requested |
 
 ## Canonical Rules
 
@@ -35,3 +36,4 @@ Do not read all docs, all skills, all workspaces, or the whole repository by def
 - Read order: `docs/ai/skills/governance/read-order.md`
 - Markdown reporting: `docs/ai/skills/governance/markdown-change-reporting.md`
 - Skill template: `docs/ai/skills/governance/skill-template.md`
+- System health policy: `docs/ai/skills/governance/system-health-policy.md`

@@ -13,7 +13,7 @@ This file adapts Claude to the V2 AI Multi-Agent Coding Operating System. It ext
 5. Select one approved skill.
 6. Read only the selected skill file.
 
-`docs/ai/foundation/**` is read-only and outside daily runtime context.
+`docs/ai/reference/**` is non-runtime reference material and must not be read during normal execution unless explicitly requested for guides, prompts, validation, history, decisions, or AI OS maintenance.
 
 ## Orchestration
 
@@ -51,3 +51,4 @@ pr_review_workflow
 - Common rules: `docs/ai/skills/governance/common-rules.md`
 - Read order: `docs/ai/skills/governance/read-order.md`
 - Markdown reporting: `docs/ai/skills/governance/markdown-change-reporting.md`
+- System health policy: `docs/ai/skills/governance/system-health-policy.md`
