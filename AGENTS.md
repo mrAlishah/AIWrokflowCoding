@@ -32,6 +32,7 @@ Primary goals:
 - Runtime read order: `docs/ai/skills/governance/read-order.md`
 - Markdown reporting: `docs/ai/skills/governance/markdown-change-reporting.md`
 - Skill structure: `docs/ai/skills/governance/skill-template.md`
+- System health policy: `docs/ai/skills/governance/system-health-policy.md`
 
 ## Canonical Repo Policy
 

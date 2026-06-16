@@ -1,5 +1,9 @@
 # Foundation Archive
 
+> Historical record only.
+> This folder is not runtime authority and must not be used as daily operating instructions.
+> Current runtime instructions live in `docs/ai/START_HERE.md` and `docs/ai/skills/README.md`.
+
 ## Purpose
 
 This folder contains historical records from earlier V2 AI Operating System foundation work.

@@ -51,3 +51,4 @@ pr_review_workflow
 - Common rules: `docs/ai/skills/governance/common-rules.md`
 - Read order: `docs/ai/skills/governance/read-order.md`
 - Markdown reporting: `docs/ai/skills/governance/markdown-change-reporting.md`
+- System health policy: `docs/ai/skills/governance/system-health-policy.md`

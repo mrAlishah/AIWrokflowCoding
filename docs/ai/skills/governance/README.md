@@ -13,6 +13,7 @@ docs/ai/skills/governance/
 - [read-order.md](read-order.md)
 - [skill-template.md](skill-template.md)
 - [observability.md](observability.md)
+- [system-health-policy.md](system-health-policy.md): defines when `tools_system_health_check` must run and when the health-check skill must be reviewed after system changes.
 
 ## Compatibility
 

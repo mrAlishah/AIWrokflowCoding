@@ -15,6 +15,7 @@ Non-runtime AI documentation lives here, including guides, reusable prompts, val
 - `validation/`: validation prompts and validation report templates.
 - `history/`: historical records, migration notes, and archived foundation content.
 - `decisions/`: system-level design decisions and approved baselines.
+- `system-health/`: system health reports and health-check history.
 
 ## When To Read
 
