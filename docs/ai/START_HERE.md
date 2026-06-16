@@ -14,7 +14,7 @@ Daily runtime usage starts here after `AGENTS.md` or an agent-specific adapter s
 
 Do not read all docs, all skills, all workspaces, or the whole repository by default.
 
-`docs/ai/foundation/**` is read-only and not daily runtime context.
+`docs/ai/archive/foundation/**` is historical material and must not be read during normal execution.
 
 ## Routing
 
@@ -27,7 +27,7 @@ Do not read all docs, all skills, all workspaces, or the whole repository by def
 | User answer or policy update | `tools_policy_plan_update` |
 | Repo knowledge update | `tools_repo_context_update` |
 | Long-term docs cleanup audit | `tools_docs_ai_cleanup_audit` |
-| AI OS maintenance | Explicit maintenance task only; `docs/ai/foundation/**` remains read-only unless the user specifically authorizes foundation work |
+| AI OS maintenance | Explicit maintenance task only; `docs/ai/archive/foundation/**` remains historical and read-only unless the user specifically authorizes archive work |
 
 ## Canonical Rules
 

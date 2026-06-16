@@ -10,9 +10,7 @@ Start with:
 AGENTS.md or CLAUDE.md -> START_HERE.md -> skills/README.md -> selected skill
 ```
 
-Then read the active workspace, repo-context, and exact source files only when the selected skill requires them.
-
-`docs/ai/foundation/**` is read-only and outside daily runtime context.
+Then follow the read order in [START_HERE.md](START_HERE.md).
 
 ## Read Next
 
@@ -22,6 +20,7 @@ Then read the active workspace, repo-context, and exact source files only when t
 - PBI work: [pbi/README.md](pbi/README.md)
 - Review work: [reviews/README.md](reviews/README.md)
 - Repository knowledge: [repo-context/README.md](repo-context/README.md)
+- Read order: [skills/governance/read-order.md](skills/governance/read-order.md)
 
 ## Canonical Policy
 

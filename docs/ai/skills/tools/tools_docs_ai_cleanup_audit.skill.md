@@ -28,7 +28,7 @@ Audit `docs/ai` for cleanup, duplicated governance, stale content, context cost 
 
 ## Update
 
-- Cleanup report or cleanup plan under `docs/ai/foundation/`
+- Cleanup report or cleanup plan under `docs/ai/archive/foundation/`
 - `docs/ai/skills/README.md` only when registering or routing the skill itself
 
 ## Stop Conditions
@@ -48,7 +48,10 @@ Audit `docs/ai` for cleanup, duplicated governance, stale content, context cost 
 
 ## References
 
-Follow:
+Follow canonical governance and policy:
+
 - `docs/ai/skills/governance/common-rules.md`
 - `docs/ai/skills/governance/read-order.md`
 - `docs/ai/skills/governance/markdown-change-reporting.md`
+- `docs/ai/skills/governance/skill-template.md`
+- `docs/ai/repo-context/policy/context_budget.md`

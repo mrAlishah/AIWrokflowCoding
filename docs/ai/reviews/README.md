@@ -35,7 +35,7 @@ Lower-level review skills are listed in `docs/ai/skills/README.md`.
 99-metrics.md
 ```
 
-Do not read all review workspaces. Read only the active `STP-XXXX` workspace required by the selected skill.
+Read only the active `STP-XXXX` workspace required by the selected skill.
 
 ## Governance
 

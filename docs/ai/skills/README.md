@@ -71,8 +71,6 @@ Existing old invocation names are mapped to the new V2 names. Use new names for 
 | `docs-ai-cleanup-audit` | `tools_docs_ai_cleanup_audit` | `docs/ai/skills/tools/tools_docs_ai_cleanup_audit.skill.md` |
 | `policy-plan-update` | `tools_policy_plan_update` | `docs/ai/skills/tools/tools_policy_plan_update.skill.md` |
 
-## Do Not Read By Default
+## Read Scope
 
-Do not read all skills. Read only the selected skill file.
-
-Do not read `docs/ai/foundation/**` as daily runtime context.
+Read only the selected skill file. Full read-order rules live in `docs/ai/skills/governance/read-order.md`.
