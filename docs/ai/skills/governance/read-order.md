@@ -30,6 +30,12 @@ Daily runtime workflows, PR review workflows, and PBI implementation workflows m
 
 Read `docs/ai/reference/**` only when the selected task explicitly requires guides, prompt/help maintenance, validation, history, decisions, system health, or AI OS maintenance.
 
+## Runtime Config
+
+If `docs/ai/config/runtime-config.yaml` exists, read it after `docs/ai/skills/README.md` only to apply runtime tool preferences.
+
+Runtime config does not change skill routing, workflow behavior, source-code permissions, review-only guardrails, or the reference boundary.
+
 ## Extra File Rule
 
 Before reading files outside the approved scope, report:
