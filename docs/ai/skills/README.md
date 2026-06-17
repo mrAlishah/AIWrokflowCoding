@@ -17,6 +17,7 @@ System health policy lives in `docs/ai/skills/governance/system-health-policy.md
 | Refresh reusable repo knowledge | `tools_repo_context_update` | `docs/ai/skills/tools/tools_repo_context_update.skill.md` |
 | Audit `docs/ai` cleanup or context cost | `tools_docs_ai_cleanup_audit` | `docs/ai/skills/tools/tools_docs_ai_cleanup_audit.skill.md` |
 | Audit AI Operating System health | `tools_system_health_check` | `docs/ai/skills/tools/tools_system_health_check.skill.md` |
+| Update user-facing AI reference docs | `tools_reference_update` | `docs/ai/skills/tools/tools_reference_update.skill.md` |
 | Sync user answer or policy | `tools_policy_plan_update` | `docs/ai/skills/tools/tools_policy_plan_update.skill.md` |
 
 ## PBI Workflow

@@ -2,12 +2,15 @@
 
 ## Purpose
 
-User-facing and agent-facing guides live here.
+Guides explain how to understand and use the V2 AI Operating System. They are learning material, not runtime instructions.
 
 ## Contents
 
-Place concise guidance documents here when they are useful references but not runtime skills or governance.
+- `pbi/`: PBI workflow guides.
+- `pr/`: daily local PR/code review guides.
+- `review/`: lower-level review guides.
+- `tools/`: maintenance tools guides.
 
 ## Usage Rule
 
-Read this folder only when the user explicitly asks for guides or AI OS maintenance.
+Read guides only when the user explicitly asks for help, learning, prompt selection, or AI OS maintenance.

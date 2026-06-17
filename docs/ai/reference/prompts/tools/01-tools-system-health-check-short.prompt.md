@@ -3,19 +3,19 @@ Use skill: tools_system_health_check
 Parameters:
 
 CHECK_SCOPE:
-runtime-only
+full
 
 CHECK_COMPATIBILITY:
 true
 
 REPORT_MODE:
-latest-only
+latest-and-history
 
 ANALYSIS_DEPTH:
-standard
+deep
 
 Task:
-Run a quick runtime-only health check for the V2 AI Operating System.
+Run a full AI OS health check and write the latest report plus a dated history copy.
 
 Key constraints:
 - Do not modify source code.
@@ -25,5 +25,5 @@ Key constraints:
 
 Expected output:
 - docs/ai/reference/system-health/latest.md
-- Ready / Needs Fix / Blocked status
+- docs/ai/reference/system-health/history/YYYY-MM-DD.md
 - Final response required by tools_system_health_check

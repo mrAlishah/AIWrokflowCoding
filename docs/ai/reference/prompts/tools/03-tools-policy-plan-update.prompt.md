@@ -1,27 +1,30 @@
-Use skill: tools_system_health_check
+Use skill: tools_policy_plan_update
 
 Parameters:
 
-CHECK_SCOPE:
-full
+SCOPE:
+pbi
 
-CHECK_COMPATIBILITY:
-true
+STP_ID:
+STP-123
 
-REPORT_MODE:
-latest-and-history
+INPUT_TAG:
+USER_REVIEW_FEEDBACK
 
-ANALYSIS_DEPTH:
-deep
+UPDATE_MODE:
+apply-workspace-update
+
+USER_INPUT:
+Mark RF-001 as Required and keep RF-002 as Proposed.
 
 Task:
-Run a full health check for the V2 AI Operating System after the latest docs/ai update or refactor. Validate cohesion, executability, context efficiency, backward compatibility, governance ownership, policy ownership, prompt quality, and improvement opportunities.
+Classify tagged user input and update only related planning, RF, or approved policy files.
 
 Required read path:
 1. AGENTS.md or CLAUDE.md
 2. docs/ai/START_HERE.md
 3. docs/ai/skills/README.md
-4. Selected skill only: tools_system_health_check
+4. Selected skill only: tools_policy_plan_update
 5. Active workspace only when required
 6. repo-context only if needed
 7. Exact source files only if needed
@@ -38,11 +41,12 @@ Constraints:
 - Report markdown changes.
 
 Expected updates:
-- docs/ai/reference/system-health/latest.md
-- docs/ai/reference/system-health/history/YYYY-MM-DD.md
+- Related PBI planning files
+- Related review feedback files
+- docs/ai/repo-context/policy/code-policies.md when SCOPE is global
 
 Final response format:
-Return Summary, Report Written, Status, Critical / High Findings, Required Actions, Optional Improvements, Token Cost Suggestions, Markdown Files Changed, and Recommended Next Step.
+Return Summary, Files updated, Conflicts found, Markdown Files Changed, and Recommended next action.
 
 Markdown Files Changed rule:
 When markdown files are changed, report each changed markdown file with path, action, reason, summary, and future AI context impact.

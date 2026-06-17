@@ -12,6 +12,7 @@ Canonical shared rules for the AI Multi-Agent Coding Operating System.
 - Minimal prompts over rich workflow.
 - Preserve backward compatibility.
 - Do not duplicate global rules inside skills, README files, or workspace templates. Reference the canonical governance file instead.
+- Reference boundary and runtime read-order rules live in `docs/ai/skills/governance/read-order.md`.
 
 ## Safety Rules
 
