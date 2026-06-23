@@ -13,6 +13,7 @@ This folder contains ready-to-run prompt forms for PR work.
 
 ## Prompt Types
 
+- `00-pr-review-all-in-one.prompt.md`: supported all-in-one local PR/code review through `pr_review_workflow`.
 - `.prompt.md`: full ready-to-run prompt with read path, constraints, expected updates, and final response format.
 - `-short.prompt.md`: shorter daily-use prompt with the same parameters.
 - `.help.en.md`: English help with parameter meanings, allowed values, defaults, examples, rules, mistakes, and token tips.

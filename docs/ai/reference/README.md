@@ -19,6 +19,8 @@ Guides explain how the V2 AI Operating System works and when to use each workflo
 
 Start with `help-index.md`. For professional multi-model or multi-agent usage, read `guides/professional-end-user-guide.fa.md` for Persian or `guides/professional-end-user-guide.en.md` for English, then copy only the prompt that matches the selected skill.
 
+For workflow launcher or all-in-one prompt usage, read `guides/workflow-automation-guide.fa.md` for Persian or `guides/workflow-automation-guide.en.md` for English.
+
 ## Ready Prompts
 
 Ready prompts live under `prompts/{area}/`. Each skill has a full prompt, a short prompt, and a help file when the skill exists.

@@ -13,6 +13,7 @@ This folder contains ready-to-run prompt forms for REVIEW work.
 
 ## Prompt Types
 
+- `00-review-workflow-launcher.prompt.md`: starts the lower-level review workflow and prepares the next prompt without auto-running all skills.
 - `.prompt.md`: full ready-to-run prompt with read path, constraints, expected updates, and final response format.
 - `-short.prompt.md`: shorter daily-use prompt with the same parameters.
 - `.help.en.md`: English help with parameter meanings, allowed values, defaults, examples, rules, mistakes, and token tips.

@@ -26,6 +26,12 @@ Prompt help is bilingual:
 
 Prompt files list documented fixed options inline when the selected skill or help metadata defines those options.
 
+## Workflow Starters
+
+- `pbi/00-pbi-workflow-launcher.prompt.md`: starts PBI workflow with `pbi_clarification` and prepares the next prompt.
+- `review/00-review-workflow-launcher.prompt.md`: starts lower-level review workflow with `review_workspace_create` and prepares the next prompt.
+- `pr/00-pr-review-all-in-one.prompt.md`: runs the supported all-in-one local PR review through `pr_review_workflow`.
+
 ## Usage Rule
 
 Read this folder only when the user explicitly asks for reusable prompts or AI OS maintenance. Prompts preserve the V2 low-token runtime path and must not make agents read all docs, all skills, or the whole repository.
