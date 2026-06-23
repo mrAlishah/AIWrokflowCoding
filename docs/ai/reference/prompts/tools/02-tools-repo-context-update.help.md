@@ -4,31 +4,31 @@ Refresh stable reusable repo-context knowledge for listed repository areas only.
 
 # Parameters
 
-| Parameter | Required | Description |
-|---|---|---|
-| UPDATE_REASON | Yes | Reason for updating repo-context. Example: Document stable routing changes after settings workflow update.. |
-| REPOSITORY_AREAS | Yes | Repository areas to inspect. Example: settings module and audit-log workflow. |
-| INSPECTION_SCOPE | Optional | Inspection scope. Example: targeted. |
+| Parameter        | Required | Description                                                                                                 |
+| ---------------- | -------- | ----------------------------------------------------------------------------------------------------------- |
+| UPDATE_REASON    | Yes      | Reason for updating repo-context. Example: Document stable routing changes after settings workflow update.. |
+| REPOSITORY_AREAS | Yes      | Repository areas to inspect. Example: settings module and audit-log workflow.                               |
+| INSPECTION_SCOPE | Optional | Inspection scope. Example: targeted.                                                                        |
 
 # Parameter Options
 
 ## UPDATE_REASON
 
-| Option | Description |
-|---|---|
+| Option                      | Description                                                                                             |
+| --------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Options not documented yet. | The selected skill does not document fixed options. Use the example value or update the skill metadata. |
 
 ## REPOSITORY_AREAS
 
-| Option | Description |
-|---|---|
+| Option                      | Description                                                                                             |
+| --------------------------- | ------------------------------------------------------------------------------------------------------- |
 | Options not documented yet. | The selected skill does not document fixed options. Use the example value or update the skill metadata. |
 
 ## INSPECTION_SCOPE
 
-| Option | Description |
-|---|---|
-| targeted | Inspect only listed areas. |
+| Option   | Description                                       |
+| -------- | ------------------------------------------------- |
+| targeted | Inspect only listed areas.                        |
 | standard | Inspect listed areas plus directly related files. |
 
 # Required Inputs
@@ -38,17 +38,17 @@ Refresh stable reusable repo-context knowledge for listed repository areas only.
 
 # Expected Outputs
 
-- docs/ai/repo-context/*
-- docs/ai/repo-context/policy/* when relevant
+- docs/ai/repo-context/\*
+- docs/ai/repo-context/policy/\* when relevant
 
 # Rules
 
-| Rule | Description |
-|---|---|
-| No Source Changes | Source code modification is prohibited. |
-| No Workflow Changes | Runtime workflow behavior must remain unchanged. |
-| Targeted Context | Read only the selected skill and required docs or targeted files. |
-| Markdown Reporting | Report markdown changes with path, action, reason, summary, and future AI context impact. |
+| Rule                | Description                                                                               |
+| ------------------- | ----------------------------------------------------------------------------------------- |
+| No Source Changes   | Source code modification is prohibited.                                                   |
+| No Workflow Changes | Runtime workflow behavior must remain unchanged.                                          |
+| Targeted Context    | Read only the selected skill and required docs or targeted files.                         |
+| Markdown Reporting  | Report markdown changes with path, action, reason, summary, and future AI context impact. |
 
 # Common Mistakes
 
