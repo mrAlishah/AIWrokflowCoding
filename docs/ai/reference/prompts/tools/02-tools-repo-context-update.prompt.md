@@ -3,18 +3,19 @@ Use skill: tools_repo_context_update
 Parameters:
 
 UPDATE_REASON:
-Document stable routing changes after settings workflow update.
+[initial population / architecture changed / test strategy changed / files changed and updated]
 
 REPOSITORY_AREAS:
 settings module and audit-log workflow
 
 INSPECTION_SCOPE:
-targeted
+targeted / standard
 
 Task:
 Refresh stable reusable repo-context knowledge for listed repository areas only.
 
 Required read path:
+
 1. AGENTS.md or CLAUDE.md
 2. docs/ai/START_HERE.md
 3. docs/ai/skills/README.md
@@ -24,6 +25,7 @@ Required read path:
 7. Exact source files only if needed
 
 Constraints:
+
 - Do not read all docs/ai.
 - Do not read all skills.
 - Do not read the entire repository.
@@ -35,8 +37,9 @@ Constraints:
 - Report markdown changes.
 
 Expected updates:
-- docs/ai/repo-context/*
-- docs/ai/repo-context/policy/* when relevant
+
+- docs/ai/repo-context/\*
+- docs/ai/repo-context/policy/\* when relevant
 
 Final response format:
 Return Summary, Repo-context files updated, Source areas inspected, Markdown Files Changed, and Recommended next action.
