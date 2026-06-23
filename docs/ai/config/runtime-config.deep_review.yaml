@@ -4,23 +4,23 @@ runtime:
   rtk: auto
 
 context:
-  mode: conservative
+  mode: deep
   reference_docs: false
   repo_context: on_demand
-  source_reading: exact_only
+  source_reading: expanded_when_needed
   diff_first: true
   prefer_existing_summaries: true
   broad_scan: false
   extra_file_justification: true
   context_expansion_notice: true
-  final_response_detail: concise
+  final_response_detail: detailed
 
 terminal:
   output:
-    prefer_summary: true
+    prefer_summary: false
     raw_output_on_error: true
     raw_output_when_requested: true
-    summarize_success_output: true
+    summarize_success_output: false
 
 observability:
   enabled: true

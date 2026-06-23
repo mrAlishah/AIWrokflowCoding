@@ -51,7 +51,7 @@ Create the final PBI handoff after implementation, review, and fixes are complet
 - Known risks
 - PR summary
 - Markdown Files Changed
-- Metrics Updated: Yes / No / Not Applicable; if No, include reason.
+- Metrics Updated: Yes / No / Not Applicable when enabled by runtime config; if No, include reason.
 - Recommended next action
 
 ## References

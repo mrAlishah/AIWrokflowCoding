@@ -55,7 +55,7 @@ Recommended daily-use entrypoint for end-to-end local PR/code review.
 
 Use the required review workflow sections: Summary, Review Workspace, Diff Analyzed, Findings Summary, PR Comments Location, Internal Suggestions Location, Final Decision, Markdown Files Changed, Metrics Updated, Usage Summary, and Recommended Next Action.
 
-`Metrics Updated` must be `Yes`, `No - <reason>`, or `Not Applicable - <reason>`.
+When enabled by runtime config, `Metrics Updated` must be `Yes`, `No - <reason>`, or `Not Applicable - <reason>`.
 
 ## References
 

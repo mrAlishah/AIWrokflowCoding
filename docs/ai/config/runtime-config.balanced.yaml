@@ -4,16 +4,16 @@ runtime:
   rtk: auto
 
 context:
-  mode: conservative
+  mode: balanced
   reference_docs: false
   repo_context: on_demand
-  source_reading: exact_only
+  source_reading: targeted
   diff_first: true
   prefer_existing_summaries: true
   broad_scan: false
   extra_file_justification: true
   context_expansion_notice: true
-  final_response_detail: concise
+  final_response_detail: standard
 
 terminal:
   output:

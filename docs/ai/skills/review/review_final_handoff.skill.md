@@ -46,7 +46,7 @@ Summarize final review outcome, residual risk, and recommended decision.
 - Blocking and non-blocking issues
 - Residual risks
 - Markdown Files Changed
-- Metrics Updated: Yes / No / Not Applicable; if No, include reason.
+- Metrics Updated: Yes / No / Not Applicable when enabled by runtime config; if No, include reason.
 - Recommended next action
 
 ## References

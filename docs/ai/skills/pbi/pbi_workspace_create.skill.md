@@ -58,7 +58,7 @@ Create or update:
 - Workspace path
 - Files created or updated
 - Markdown Files Changed
-- Metrics Updated: Yes / No / Not Applicable; if No, include reason.
+- Metrics Updated: Yes / No / Not Applicable when enabled by runtime config; if No, include reason.
 - Recommended next skill
 
 ## References

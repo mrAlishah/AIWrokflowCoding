@@ -21,6 +21,7 @@ Always read:
 - `CLAUDE.md`
 - `docs/ai/README.md`
 - `docs/ai/START_HERE.md`
+- `docs/ai/config/runtime-config.yaml` if it exists
 - `docs/ai/skills/README.md`
 - `docs/ai/skills/governance/`
 - `docs/ai/repo-context/README.md`
@@ -49,14 +50,51 @@ Do not read unrelated reference or archive material unless required by the selec
 2. Confirm the requested scope does not require source code inspection.
 3. Validate runtime read path and context expansion risks.
 4. Validate file, skill, and compatibility dependencies.
-5. Analyze cohesion across PBI, review, PR review, tools, repo-context, governance, observability, and historical foundation material.
-6. Validate skill naming, workspace structures, governance ownership, repo policy ownership, output structures, and backward compatibility.
-7. Validate context efficiency metrics for runtime docs and selected skills.
-8. Validate system health policy alignment and trigger coverage.
-9. Audit every selected skill for purpose clarity, parameter quality, output structure, restrictions, workflow alignment, canonical references, duplication level, prompt length, and readability.
-10. Classify findings by type and severity.
-11. Write the latest report.
-12. If `REPORT_MODE: latest-and-history`, also write the dated history report.
+5. Validate runtime config against `docs/ai/skills/governance/runtime-config-schema.md`.
+6. Analyze cohesion across PBI, review, PR review, tools, repo-context, governance, observability, and historical foundation material.
+7. Validate skill naming, workspace structures, governance ownership, repo policy ownership, output structures, and backward compatibility.
+8. Validate context efficiency metrics for runtime docs and selected skills.
+9. Validate context-management, terminal-output, and observability config alignment with canonical governance.
+10. Validate system health policy alignment and trigger coverage.
+11. Audit every selected skill for purpose clarity, parameter quality, output structure, restrictions, workflow alignment, canonical references, duplication level, prompt length, and readability.
+12. Classify findings by type and severity.
+13. Write the latest report.
+14. If `REPORT_MODE: latest-and-history`, also write the dated history report.
+
+## Runtime Config Validation
+
+When `docs/ai/config/runtime-config.yaml` exists, validate:
+
+- Required root keys: `version`, `runtime`, `context`, `terminal`, `observability`
+- `runtime.rtk`: `auto`, `true`, or `false`
+- `context.mode`: `conservative`, `balanced`, or `deep`
+- `context.reference_docs`: `true` or `false`
+- `context.repo_context`: `never`, `on_demand`, or `when_skill_requires`
+- `context.source_reading`: `exact_only`, `targeted`, or `expanded_when_needed`
+- `context.diff_first`: `true` or `false`
+- `context.prefer_existing_summaries`: `true` or `false`
+- `context.broad_scan`: `true` or `false`
+- `context.extra_file_justification`: `true` or `false`
+- `context.context_expansion_notice`: `true` or `false`
+- `context.final_response_detail`: `concise`, `standard`, or `detailed`
+- `terminal.output.prefer_summary`: `true` or `false`
+- `terminal.output.raw_output_on_error`: `true` or `false`
+- `terminal.output.raw_output_when_requested`: `true` or `false`
+- `terminal.output.summarize_success_output`: `true` or `false`
+- `observability.enabled`: `true` or `false`
+- `observability.metrics.enabled`: `true` or `false`
+- `observability.metrics.workspace_records`: `true` or `false`
+- `observability.metrics.central_dashboards`: `true` or `false`
+- `observability.metrics.final_response_status`: `true` or `false`
+- `observability.metrics.tool_reports`: `true` or `false`
+- `observability.metrics.exact_token_tracking`: must be `false`
+- `observability.metrics.external_telemetry`: must be `false`
+
+Missing required keys or invalid values are required findings.
+
+Unknown keys are optional findings unless they conflict with safety, routing, workflow behavior, source-code permissions, review-only guardrails, markdown reporting, or reference boundary rules.
+
+Runtime config must not override canonical safety rules.
 
 ## Context Efficiency Metrics
 
@@ -71,6 +109,7 @@ Definitions:
 - Context Expansion Count: number of times a skill instructs the agent to expand context beyond the initial selected skill and active workspace, such as repo-context, extra source files, foundation/archive/history, all docs, all skills, or all source files.
 - Estimated Read Cost: qualitative value only: `Low`, `Medium`, or `High`.
 - Context Efficiency Status: `Good`, `Acceptable`, `Warning`, or `Poor`.
+- Runtime Config Alignment: whether `context.*`, `terminal.output.*`, and `observability.*` settings preserve low-token execution and safety.
 
 Heuristic rules:
 
@@ -134,7 +173,11 @@ Follow canonical governance and policy:
 
 - `docs/ai/skills/governance/common-rules.md`
 - `docs/ai/skills/governance/read-order.md`
+- `docs/ai/skills/governance/context-management.md`
 - `docs/ai/skills/governance/markdown-change-reporting.md`
+- `docs/ai/skills/governance/observability.md`
+- `docs/ai/skills/governance/runtime-config-schema.md`
 - `docs/ai/skills/governance/skill-template.md`
 - `docs/ai/skills/governance/system-health-policy.md`
+- `docs/ai/skills/governance/terminal-output-optimization.md`
 - `docs/ai/repo-context/policy/context_budget.md`

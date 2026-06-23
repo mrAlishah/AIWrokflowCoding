@@ -41,7 +41,7 @@ Transform a raw PBI into an implementation-ready approved PBI and block downstre
 - Clarification status
 - Open questions, if any
 - Markdown Files Changed
-- Metrics Updated: Yes / No / Not Applicable; if No, include reason.
+- Metrics Updated: Yes / No / Not Applicable when enabled by runtime config; if No, include reason.
 - Recommended next skill
 
 ## References

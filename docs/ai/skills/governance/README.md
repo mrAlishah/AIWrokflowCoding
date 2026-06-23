@@ -9,8 +9,10 @@ docs/ai/skills/governance/
 ## Files
 
 - [common-rules.md](common-rules.md)
+- [context-management.md](context-management.md): defines runtime context-cost preferences controlled by config.
 - [markdown-change-reporting.md](markdown-change-reporting.md)
 - [read-order.md](read-order.md)
+- [runtime-config-schema.md](runtime-config-schema.md): defines allowed values for `docs/ai/config/runtime-config.yaml`.
 - [skill-template.md](skill-template.md)
 - [observability.md](observability.md)
 - [system-health-policy.md](system-health-policy.md): defines when `tools_system_health_check` must run and when the health-check skill must be reviewed after system changes.

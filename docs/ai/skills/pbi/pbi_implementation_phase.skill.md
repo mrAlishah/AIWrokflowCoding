@@ -51,7 +51,7 @@ Execute one planned PBI phase with the smallest practical change.
 - Verification performed
 - Risks or follow-up
 - Markdown Files Changed
-- Metrics Updated: Yes / No / Not Applicable; if No, include reason.
+- Metrics Updated: Yes / No / Not Applicable when enabled by runtime config; if No, include reason.
 - Recommended next skill
 
 ## References

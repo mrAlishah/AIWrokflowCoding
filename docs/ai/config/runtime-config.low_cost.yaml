@@ -6,7 +6,7 @@ runtime:
 context:
   mode: conservative
   reference_docs: false
-  repo_context: on_demand
+  repo_context: when_skill_requires
   source_reading: exact_only
   diff_first: true
   prefer_existing_summaries: true
@@ -23,12 +23,12 @@ terminal:
     summarize_success_output: true
 
 observability:
-  enabled: true
+  enabled: false
   metrics:
-    enabled: true
-    workspace_records: true
-    central_dashboards: true
-    final_response_status: true
-    tool_reports: true
+    enabled: false
+    workspace_records: false
+    central_dashboards: false
+    final_response_status: false
+    tool_reports: false
     exact_token_tracking: false
     external_telemetry: false

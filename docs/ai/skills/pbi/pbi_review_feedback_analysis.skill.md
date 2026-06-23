@@ -53,7 +53,7 @@ RF status values remain exactly: `Proposed`, `Required`, `Ignored`, `Done`, `Blo
 - Recommended user decisions
 - Files updated
 - Markdown Files Changed
-- Metrics Updated: Yes / No / Not Applicable; if No, include reason.
+- Metrics Updated: Yes / No / Not Applicable when enabled by runtime config; if No, include reason.
 - Recommended next prompt
 
 ## References
