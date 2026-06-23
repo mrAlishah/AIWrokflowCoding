@@ -21,7 +21,7 @@ Start with `help-index.md`. For professional multi-model or multi-agent usage, r
 
 For workflow launcher or all-in-one prompt usage, read `guides/workflow-automation-guide.fa.md` for Persian or `guides/workflow-automation-guide.en.md` for English.
 
-For runtime config usage, read `guides/runtime-config-guide.fa.md` for Persian or `guides/runtime-config-guide.en.md` for English.
+For runtime config usage, including `low_cost`, `balanced`, and `deep_review` presets, read `guides/runtime-config-guide.fa.md` for Persian or `guides/runtime-config-guide.en.md` for English.
 
 ## Ready Prompts
 

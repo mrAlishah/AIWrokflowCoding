@@ -284,73 +284,57 @@ For quick execution, copy ready prompts from these folders:
 
 Change only parameter values, then run the prompt.
 
-## Step 12 - Use Runtime Config And RTK
-The optional runtime config lives at:
+## Step 12 - Choose Runtime Config Profile
+
+The active runtime config is:
 
 ```text
 docs/ai/config/runtime-config.yaml
 ```
 
-Agents may read this file after `docs/ai/skills/README.md` only to apply runtime tool preferences. It does not change skill routing, workflow behavior, source-code permissions, review guardrails, or markdown shared memory.
+Agents may read this file after `docs/ai/skills/README.md` only to apply runtime preferences. It does not change skill routing, workflow behavior, source-code permissions, review guardrails, repo-context ownership, markdown shared memory, or the reference boundary.
 
-Current config areas:
+Runtime config now controls four areas:
 
 | Area | Purpose |
 |---|---|
-| `runtime.rtk` | Controls optional RTK terminal-output optimization. |
-| `observability.enabled` | Enables observability configuration for the AI OS. |
-| `observability.metrics.enabled` | Enables markdown-based metrics behavior. |
-| `observability.metrics` | Controls which metric outputs are allowed. |
+| `runtime.rtk` | Optional RTK terminal-output optimization. |
+| `context.*` | Context cost, repo-context reading, source reading, broad scan, and final response detail preferences. |
+| `terminal.output.*` | Terminal output summarization and raw-output behavior. |
+| `observability.*` | Workspace metrics, dashboards, final response status, and tool report summaries. |
 
-RTK values:
+Preset examples live beside the active config:
 
-| Value | Meaning |
-|---|---|
-| `auto` | The agent may use RTK when it is installed and available. |
-| `true` | The agent should prefer RTK-wrapped commands when RTK is available. |
-| `false` | The agent must not use RTK. |
+| Preset | File | Best For |
+|---|---|---|
+| `low_cost` | `docs/ai/config/runtime-config.low_cost.yaml` | Routine or cost-sensitive work. |
+| `balanced` | `docs/ai/config/runtime-config.balanced.yaml` | Normal professional use. |
+| `deep_review` | `docs/ai/config/runtime-config.deep_review.yaml` | Complex review, architecture-sensitive work, or AI OS maintenance. |
 
-Good RTK use cases:
+Only `runtime-config.yaml` is active. To use a preset, copy that preset's contents into `runtime-config.yaml`.
 
-```text
-rtk git status
-rtk git diff BASE_BRANCH...HEAD
-rtk git diff --name-only BASE_BRANCH...HEAD
-rtk git log --oneline -20
-rtk rg "pattern"
-rtk dotnet test
-```
+Professional defaults:
 
-Use raw commands when RTK is disabled, unavailable, incomplete, or exact raw output is required:
+- Use `low_cost` for routine PBI steps, simple review, and fast low-risk work.
+- Use `balanced` when you want better review quality without large context expansion.
+- Use `deep_review` only when the task genuinely needs broader task-relevant context.
+- Keep `context.reference_docs: false` for runtime work.
+- Keep `context.broad_scan: false` unless the user explicitly asks for a full audit or maintenance task.
+- Keep `exact_token_tracking: false` and `external_telemetry: false`.
 
-```text
-git status
-git diff BASE_BRANCH...HEAD
-git diff --name-only BASE_BRANCH...HEAD
-rg "pattern"
-dotnet test
-```
-
-Observability metrics rules:
-
-- Observability is enabled through `observability.enabled: true`.
-- Metrics behavior is enabled through `observability.metrics.enabled: true`.
-- Workspace markdown records may include usage summaries when enabled.
-- Tool reports may include metrics sections when enabled.
-- Final responses may include compact status or usage summaries when `final_response_status` is enabled and the selected skill requires them.
-- Exact token tracking remains disabled.
-- External telemetry remains disabled.
-
-Read the dedicated guide for details:
+Read the dedicated guide for exact settings and examples:
 
 ```text
 docs/ai/reference/guides/runtime-config-guide.en.md
 ```
 
-Canonical RTK governance lives in:
+Canonical governance lives in:
 
 ```text
+docs/ai/skills/governance/runtime-config-schema.md
+docs/ai/skills/governance/context-management.md
 docs/ai/skills/governance/terminal-output-optimization.md
+docs/ai/skills/governance/observability.md
 ```
 
 ## Step 13 - End User Operating Checklist

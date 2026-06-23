@@ -44,6 +44,17 @@ Any agent following the selected tools skill and its update boundaries.
 - docs/ai/reference/guides/
 - docs/ai/reference/prompts/
 
+## Related Runtime Config Reference
+
+Runtime config is documented in:
+
+```text
+docs/ai/reference/guides/runtime-config-guide.en.md
+docs/ai/reference/guides/runtime-config-guide.fa.md
+```
+
+Use that guide when maintaining user-facing instructions for `docs/ai/config/runtime-config.yaml` or its `low_cost`, `balanced`, and `deep_review` presets.
+
 ## Common Mistakes
 
 - Starting from a prompt that does not match the task.

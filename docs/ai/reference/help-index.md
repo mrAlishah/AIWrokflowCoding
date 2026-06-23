@@ -8,8 +8,8 @@ Use this index to find guides and ready prompts without reading all reference ma
 
 - Professional multi-model or multi-agent usage, Persian: `guides/professional-end-user-guide.fa.md`
 - Professional multi-model or multi-agent usage, English: `guides/professional-end-user-guide.en.md`
-- Runtime config, Persian: `guides/runtime-config-guide.fa.md`
-- Runtime config, English: `guides/runtime-config-guide.en.md`
+- Runtime config and presets, Persian: `guides/runtime-config-guide.fa.md`
+- Runtime config and presets, English: `guides/runtime-config-guide.en.md`
 - Workflow automation prompts, Persian: `guides/workflow-automation-guide.fa.md`
 - Workflow automation prompts, English: `guides/workflow-automation-guide.en.md`
 - New to PBI work: `guides/pbi/user-guide.md`
@@ -23,6 +23,7 @@ Use this index to find guides and ready prompts without reading all reference ma
 - `guides/pr/`: daily PR review learning material.
 - `guides/review/`: lower-level review learning material.
 - `guides/tools/`: maintenance tool learning material.
+- `guides/runtime-config-guide.*.md`: runtime config, context-cost, terminal-output, observability, and preset usage.
 
 ## Ready Prompts
 

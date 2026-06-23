@@ -284,73 +284,57 @@ pbi_clarification
 
 فقط parameterها را تغییر بده و prompt را اجرا کن.
 
-## Step 12 - استفاده از Runtime Config و RTK
-فایل اختیاری runtime config اینجاست:
+## Step 12 - انتخاب Runtime Config Profile
+
+فایل فعال runtime config اینجاست:
 
 ```text
 docs/ai/config/runtime-config.yaml
 ```
 
-agent می‌تواند این فایل را بعد از `docs/ai/skills/README.md` فقط برای اعمال runtime tool preferences بخواند. این فایل skill routing، workflow behavior، source-code permissions، review guardrailها یا markdown shared memory را تغییر نمی‌دهد.
+agent می‌تواند این فایل را بعد از `docs/ai/skills/README.md` فقط برای اعمال runtime preferences بخواند. این فایل skill routing، workflow behavior، source-code permissions، review guardrailها، مالکیت repo-context، markdown shared memory یا reference boundary را تغییر نمی‌دهد.
 
-ناحیه‌های فعلی config:
+runtime config حالا چهار ناحیه را کنترل می‌کند:
 
 | ناحیه | هدف |
 |---|---|
-| `runtime.rtk` | بهینه‌سازی اختیاری خروجی terminal با RTK را کنترل می‌کند. |
-| `observability.enabled` | تنظیمات observability مربوط به AI OS را فعال یا غیرفعال می‌کند. |
-| `observability.metrics.enabled` | رفتار metricهای markdown-based را فعال می‌کند. |
-| `observability.metrics` | مشخص می‌کند کدام خروجی‌های metric مجاز هستند. |
+| `runtime.rtk` | بهینه‌سازی اختیاری خروجی terminal با RTK. |
+| `context.*` | preferenceهای context cost، خواندن repo-context، خواندن source، broad scan و final response detail. |
+| `terminal.output.*` | خلاصه‌سازی خروجی terminal و رفتار raw output. |
+| `observability.*` | workspace metrics، dashboardها، final response status و tool report summaries. |
 
-مقدارهای RTK:
+presetهای نمونه کنار config فعال قرار دارند:
 
-| مقدار | معنی |
-|---|---|
-| `auto` | اگر RTK نصب و در دسترس باشد، agent می‌تواند از آن استفاده کند. |
-| `true` | اگر RTK در دسترس باشد، agent ترجیحاً از commandهای RTK-wrapped استفاده کند. |
-| `false` | agent نباید از RTK استفاده کند. |
+| Preset | فایل | مناسب برای |
+|---|---|---|
+| `low_cost` | `docs/ai/config/runtime-config.low_cost.yaml` | کارهای روزمره یا حساس به هزینه. |
+| `balanced` | `docs/ai/config/runtime-config.balanced.yaml` | استفاده حرفه‌ای معمولی. |
+| `deep_review` | `docs/ai/config/runtime-config.deep_review.yaml` | review پیچیده، کار architecture-sensitive یا AI OS maintenance. |
 
-موارد مناسب استفاده از RTK:
+فقط `runtime-config.yaml` فعال است. برای استفاده از یک preset، محتوای همان preset را داخل `runtime-config.yaml` کپی کن.
 
-```text
-rtk git status
-rtk git diff BASE_BRANCH...HEAD
-rtk git diff --name-only BASE_BRANCH...HEAD
-rtk git log --oneline -20
-rtk rg "pattern"
-rtk dotnet test
-```
+پیشنهاد حرفه‌ای:
 
-وقتی RTK غیرفعال، نصب‌نشده، ناقص، یا خروجی raw دقیق لازم است، از command خام استفاده کن:
+- برای PBIهای روتین، review ساده و کار سریع کم‌ریسک از `low_cost` استفاده کن.
+- وقتی کیفیت review بهتر می‌خواهی ولی context expansion زیاد نمی‌خواهی، از `balanced` استفاده کن.
+- فقط وقتی task واقعاً context مرتبط بیشتری لازم دارد، از `deep_review` استفاده کن.
+- برای runtime کارها `context.reference_docs: false` را حفظ کن.
+- مگر برای full audit یا maintenance صریح، `context.broad_scan: false` را حفظ کن.
+- `exact_token_tracking: false` و `external_telemetry: false` باید حفظ شوند.
 
-```text
-git status
-git diff BASE_BRANCH...HEAD
-git diff --name-only BASE_BRANCH...HEAD
-rg "pattern"
-dotnet test
-```
-
-قوانین observability metrics:
-
-- observability از طریق `observability.enabled: true` فعال است.
-- رفتار metrics از طریق `observability.metrics.enabled: true` فعال است.
-- فایل‌های markdown مربوط به workspace می‌توانند usage summary داشته باشند، اگر فعال باشد.
-- tool reportها می‌توانند بخش metrics داشته باشند، اگر فعال باشد.
-- وقتی `final_response_status` فعال است و skill انتخاب‌شده لازم بداند، final response می‌تواند status یا usage summary کوتاه داشته باشد.
-- exact token tracking همچنان غیرفعال است.
-- external telemetry همچنان غیرفعال است.
-
-راهنمای اختصاصی را از اینجا بخوان:
+راهنمای دقیق settingها و مثال‌ها اینجاست:
 
 ```text
 docs/ai/reference/guides/runtime-config-guide.fa.md
 ```
 
-قانون canonical مربوط به RTK اینجاست:
+canonical governance اینجاست:
 
 ```text
+docs/ai/skills/governance/runtime-config-schema.md
+docs/ai/skills/governance/context-management.md
 docs/ai/skills/governance/terminal-output-optimization.md
+docs/ai/skills/governance/observability.md
 ```
 
 ## Step 13 - End User Operating Checklist

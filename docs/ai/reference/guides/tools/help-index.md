@@ -5,6 +5,7 @@
 - `user-guide.md`: explains who should use this area and how to start.
 - `workflow.md`: explains the step sequence and decision rules.
 - `help-index.md`: maps guides, prompts, skills, and outputs.
+- `../runtime-config-guide.en.md` and `../runtime-config-guide.fa.md`: explain runtime config, context-cost settings, terminal-output preferences, observability, and presets.
 
 ## Prompt Folder
 
@@ -51,6 +52,8 @@ Prompts live in `docs/ai/reference/prompts/tools/`. They are paste-ready templat
 ## Which Prompt To Use In Which Situation
 
 Use the full prompt for first-time or careful execution. Use the short prompt for routine execution when parameters are already known.
+
+Use `05-tools-reference-update` when runtime config refactors require user-facing guide or help updates under `docs/ai/reference/`.
 
 ## Not Available / Not Created
 
