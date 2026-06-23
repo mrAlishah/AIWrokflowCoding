@@ -13,6 +13,7 @@ HEAD
 
 REVIEW_SCOPE:
 full
+Options: full / backend-only / frontend-only / tests-only / security-sensitive / architecture-sensitive
 
 Task:
 Inspect local git diff and identify changed files, behavior changes, risks, validation gaps, and files needing deeper review.

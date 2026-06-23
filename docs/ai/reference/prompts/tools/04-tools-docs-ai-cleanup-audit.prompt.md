@@ -7,21 +7,26 @@ docs/ai/reference
 
 CLEANUP_MODE:
 audit-only
+Options: audit-only
 
 TARGET_AREA:
 prompts
 
 MAX_INSPECTION_DEPTH:
 standard
+Options: standard / deep
 
 INCLUDE_DONE_WORKSPACES:
 false
+Options: true / false
 
 OUTPUT_MODE:
 report
+Options: report / plan
 
 ALLOW_MARKDOWN_UPDATES:
 false
+Options: true / false
 
 Task:
 Audit the target docs/ai area for cleanup and context-cost risks without changing active workflow behavior.

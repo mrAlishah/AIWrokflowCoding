@@ -4,15 +4,19 @@ Parameters:
 
 UPDATE_SCOPE:
 all
+Options: all / guides-only / prompts-only / index-only / area-only
 
 AREA:
 all
+Options: pbi / pr / review / tools / all
 
 CHANGE_REASON:
 skill created
+Options: skill created / skill renamed / workflow updated / parameters changed / health check finding / user feedback
 
 SOURCE_OF_TRUTH:
 skills-readme
+Options: skills-readme / skill-files / system-health-report / manual-request
 
 Task:
 Update user-facing reference documentation so guides, prompts, prompt help, and indexes stay aligned with the current V2 AI Operating System.

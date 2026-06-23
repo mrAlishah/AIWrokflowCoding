@@ -4,15 +4,19 @@ Parameters:
 
 CHECK_SCOPE:
 full
+Options: runtime-only / foundation-only / full
 
 CHECK_COMPATIBILITY:
 true
+Options: true / false
 
 REPORT_MODE:
 latest-and-history
+Options: latest-only / latest-and-history
 
 ANALYSIS_DEPTH:
 deep
+Options: standard / deep
 
 Task:
 Run a full AI OS health check and write the latest report plus a dated history copy.

@@ -10,6 +10,7 @@ Use findings from docs/ai/reviews/STP-123/03-diff-analysis.md.
 
 SEVERITY:
 important-only
+Options: important-only / all-supported
 
 Task:
 Convert supported findings into English PR-ready comments and Persian/internal suggestions without inventing findings.

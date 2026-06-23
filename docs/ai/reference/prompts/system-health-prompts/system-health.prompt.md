@@ -4,15 +4,19 @@ Parameters:
 
 CHECK_SCOPE:
 full
+Options: runtime-only / foundation-only / full
 
 CHECK_COMPATIBILITY:
 true
+Options: true / false
 
 REPORT_MODE:
 latest-and-history
+Options: latest-only / latest-and-history
 
 ANALYSIS_DEPTH:
 deep
+Options: standard / deep
 
 Task:
 Run a full health check for the V2 AI Operating System after the latest docs/ai update or refactor. Validate cohesion, executability, context efficiency, backward compatibility, governance ownership, policy ownership, prompt quality, and improvement opportunities.

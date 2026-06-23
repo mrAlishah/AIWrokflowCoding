@@ -10,6 +10,7 @@ settings module and audit-log workflow
 
 INSPECTION_SCOPE:
 targeted
+Options: targeted / standard
 
 Task:
 Refresh stable reusable repo-context knowledge for listed repository areas only.

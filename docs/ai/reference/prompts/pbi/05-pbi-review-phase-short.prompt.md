@@ -13,6 +13,7 @@ src/views/Settings/SettingsOverview.vue
 
 REVIEW_MODE:
 normal
+Options: normal / strict
 
 Task:
 Review implemented PBI work and return findings first without modifying source code.

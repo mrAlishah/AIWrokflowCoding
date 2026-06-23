@@ -13,6 +13,7 @@ Follow existing patterns and avoid unrelated refactors.
 
 PLANNING_SCOPE:
 light
+Options: light / standard / deep
 
 Task:
 Create the implementation plan, phase files, validation plan, and codebase navigation without changing source code.

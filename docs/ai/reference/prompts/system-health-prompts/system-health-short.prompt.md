@@ -4,15 +4,19 @@ Parameters:
 
 CHECK_SCOPE:
 runtime-only
+Options: runtime-only / foundation-only / full
 
 CHECK_COMPATIBILITY:
 true
+Options: true / false
 
 REPORT_MODE:
 latest-only
+Options: latest-only / latest-and-history
 
 ANALYSIS_DEPTH:
 standard
+Options: standard / deep
 
 Task:
 Run a quick runtime-only health check for the V2 AI Operating System.

@@ -7,6 +7,7 @@ STP-123
 
 INPUT_MODE:
 prompt
+Options: prompt / file / existing-review-feedback
 
 REVIEW_FEEDBACK:
 Reviewer asked to extract filter options into a helper.
@@ -16,9 +17,11 @@ PR review
 
 ANALYSIS_DEPTH:
 standard
+Options: standard / deep
 
 DEFAULT_STATUS:
 Proposed
+Options: Proposed / Required / Ignored / Done / Blocked
 
 Task:
 Analyze human feedback, group overlapping comments, and create RF items without fixing code.

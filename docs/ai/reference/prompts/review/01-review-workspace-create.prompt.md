@@ -13,6 +13,7 @@ feature/audit-log-filters
 
 REVIEW_SCOPE:
 full
+Options: full / backend-only / frontend-only / tests-only / security-sensitive / architecture-sensitive
 
 Task:
 Create the standard review workspace placeholders and initialize review metrics.

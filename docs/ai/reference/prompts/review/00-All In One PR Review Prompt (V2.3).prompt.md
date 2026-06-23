@@ -2,46 +2,43 @@
 
 Use skill: pr_review_workflow
 
-Task:
-
-Run the complete V2.3 PR Review workflow end-to-end using local git diff and markdown shared memory.
-
 Parameters:
 
 STP_ID:
 STP-XXXX
 
 BASE_BRANCH:
-develop / main / release/\*
+main
 
 CURRENT_BRANCH:
-auto / branch-name
-
-PR_TITLE:
-[required]
-
-PR_DESCRIPTION:
-[required]
+current branch
 
 REVIEW_SCOPE:
-full / backend-only / frontend-only / tests-only / security-sensitive / architecture-sensitive
-
-RISK_MODE:
-normal / strict
-
-COMMENT_STYLE:
-collaborative / direct / strict
+full
+Options: full / backend-only / frontend-only / tests-only / security-sensitive / architecture-sensitive
 
 REVIEW_MODE:
-standard / deep
+strict
+Options: strict / normal
 
-FOLLOWUP_MODE:
-disabled / enabled
+COMMENT_LEVEL:
+important-only
+Options: important-only / all-supported
 
-STOP_ON_BLOCKER:
-true / false
+COMMENT_STYLE:
+collaborative
+Options: collaborative / direct
 
----
+SUGGESTION_DEPTH:
+normal
+Options: normal / deep
+
+FINAL_DECISION:
+needs-followup
+Options: needs-followup / ready / blocked
+
+Task:
+Run the complete V2.3 local PR/code review workflow using local git diff and markdown shared memory.
 
 Execution Rules:
 
@@ -55,57 +52,31 @@ Execution Rules:
 - Do not read all skills.
 - Do not analyze the whole repository.
 
----
-
 Review Guardrails:
 
 - Use local git diff only.
-
-- Use:
-
-  git diff BASE_BRANCH...HEAD
-
+- Use `git diff BASE_BRANCH...HEAD`.
 - Do not call PR APIs.
-
 - Do not create pull requests.
-
 - Do not push commits.
-
 - Do not modify source code.
-
 - Do not perform fixes automatically.
-
 - Review output must be documentation only.
-
----
-
-Required Workflow:
-
-1. Execute `review_workspace_create`
-2. Execute `review_diff_analysis`
-3. Execute `review_comments_create`
-4. Execute `review_followup` only if FOLLOWUP_MODE=enabled
-5. Execute `review_final_handoff`
-
-Update markdown shared memory after every step.
-
----
 
 Expected Workspace:
 
+```text
 docs/ai/reviews/STP-XXXX/
+```
 
-Required files:
+Expected updates:
 
-- review-brief.md
-- context.md
-- diff-analysis.md
-- en_pr_comments.md
-- fa_pr_suggestions.md
-- followup-log.md
-- handoff.md
-
----
+- docs/ai/reviews/{STP_ID}/01-review-brief.md
+- docs/ai/reviews/{STP_ID}/03-diff-analysis.md
+- docs/ai/reviews/{STP_ID}/04-en-pr-comments.md
+- docs/ai/reviews/{STP_ID}/05-fa-pr-suggestions.md
+- docs/ai/reviews/{STP_ID}/07-handoff.md
+- docs/ai/reviews/{STP_ID}/99-metrics.md
 
 Review Priorities:
 
@@ -120,35 +91,10 @@ Review Priorities:
 9. Code comments quality
 10. Minimal changes
 
----
-
-Expected Output:
-
-- Executed skills
-- Files reviewed
-- Changed files summary
-- Findings by severity
-- Blocking issues
-- PR-ready comments
-- Internal suggestions
-- Markdown Files Changed
-- Final review decision
-- Recommended next action
-
----
-
-Final Decision Values:
-
-- Approved
-- Approved With Minor Comments
-- Changes Required
-- Blocked
-
----
+Final response format:
+Return Summary, Review Workspace, Diff Analyzed, Findings Summary, PR Comments Location, Internal Suggestions Location, Final Decision, Markdown Files Changed, Usage Summary, Recommended Next Action, and Metrics Updated when applicable.
 
 Stop Conditions:
-
-Stop immediately if one of the following occurs:
 
 - Missing STP_ID
 - Missing BASE_BRANCH

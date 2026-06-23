@@ -4,15 +4,19 @@ Parameters:
 
 UPDATE_SCOPE:
 prompts-only
+Options: all / guides-only / prompts-only / index-only / area-only
 
 AREA:
 tools
+Options: pbi / pr / review / tools / all
 
 CHANGE_REASON:
 user feedback
+Options: skill created / skill renamed / workflow updated / parameters changed / health check finding / user feedback
 
 SOURCE_OF_TRUTH:
 skill-files
+Options: skills-readme / skill-files / system-health-report / manual-request
 
 Task:
 Update the selected user-facing reference area so prompts remain executable by changing parameter values only.

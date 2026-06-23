@@ -16,6 +16,16 @@ Guides explain; prompts execute. Read a guide when learning the workflow. Copy a
 - `tools/`: maintenance tools prompts.
 - `system-health-prompts/`: reusable prompts for running full and short system health checks.
 
+## Help Files
+
+Prompt help is bilingual:
+
+- `.help.en.md`: English help.
+- `.help.fa.md`: Persian help.
+- `.help.md`: compatibility help.
+
+Prompt files list documented fixed options inline when the selected skill or help metadata defines those options.
+
 ## Usage Rule
 
 Read this folder only when the user explicitly asks for reusable prompts or AI OS maintenance. Prompts preserve the V2 low-token runtime path and must not make agents read all docs, all skills, or the whole repository.

@@ -7,6 +7,7 @@ STP-123
 
 FINAL_STATUS:
 needs-followup
+Options: ready / needs-followup / blocked
 
 REMAINING_RISKS:
 No known remaining risks.
@@ -16,6 +17,7 @@ Local diff review completed.
 
 RECOMMENDED_DECISION:
 needs-followup
+Options: ready / needs-followup / blocked
 
 Task:
 Summarize final review state, issue categories, final decision, validation, and residual risk.

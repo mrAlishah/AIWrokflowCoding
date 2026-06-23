@@ -4,15 +4,18 @@ Parameters:
 
 SCOPE:
 pbi
+Options: pbi / review / repo-context / global
 
 STP_ID:
 STP-123
 
 INPUT_TAG:
 USER_REVIEW_FEEDBACK
+Options: USER_REVIEW_FEEDBACK / USER_CODE_POLICY
 
 UPDATE_MODE:
 apply-workspace-update
+Options: apply-workspace-update / apply-global-rule
 
 USER_INPUT:
 Mark RF-001 as Required and keep RF-002 as Proposed.

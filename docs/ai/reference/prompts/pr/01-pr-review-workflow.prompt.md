@@ -13,21 +13,27 @@ current branch
 
 REVIEW_SCOPE:
 full
+Options: full / backend-only / frontend-only / tests-only / security-sensitive / architecture-sensitive
 
 REVIEW_MODE:
 strict
+Options: strict / normal
 
 COMMENT_LEVEL:
 important-only
+Options: important-only / all-supported
 
 COMMENT_STYLE:
 collaborative
+Options: collaborative / direct
 
 SUGGESTION_DEPTH:
 normal
+Options: normal / deep
 
 FINAL_DECISION:
 needs-followup
+Options: needs-followup / ready / blocked
 
 Task:
 Run a full local git diff review, create or update the review workspace, generate findings, comments, suggestions, handoff, and metrics.

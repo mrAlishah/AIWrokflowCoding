@@ -15,11 +15,13 @@ This folder contains ready-to-run prompt forms for REVIEW work.
 
 - `.prompt.md`: full ready-to-run prompt with read path, constraints, expected updates, and final response format.
 - `-short.prompt.md`: shorter daily-use prompt with the same parameters.
-- `.help.md`: parameter meanings, allowed values, defaults, examples, rules, mistakes, and token tips.
+- `.help.en.md`: English help with parameter meanings, allowed values, defaults, examples, rules, mistakes, and token tips.
+- `.help.fa.md`: Persian help with the same parameter names and allowed values.
+- `.help.md`: compatibility help file.
 
 ## Parameter Rules
 
-Each prompt uses one parameter per field. Do not combine parameter names. If a parameter has fixed options, use one value from the matching help file.
+Each prompt uses one parameter per field. Do not combine parameter names. If a parameter has fixed options, the prompt lists those options inline and the matching help files explain them.
 
 ## Common Prompt Usage Mistakes
 

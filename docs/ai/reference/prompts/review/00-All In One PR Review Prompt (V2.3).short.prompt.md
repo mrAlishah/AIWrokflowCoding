@@ -1,4 +1,4 @@
-# 00-All In One PR Review Prompt (V2.3).short.prompt.md
+# 00 - All In One PR Review Prompt (V2.3) - Short
 
 Use skill: pr_review_workflow
 
@@ -8,35 +8,37 @@ STP_ID:
 STP-XXXX
 
 BASE_BRANCH:
-develop / main / release/\*
+main
 
 CURRENT_BRANCH:
-auto / branch-name
-
-PR_TITLE:
-[required]
-
-PR_DESCRIPTION:
-[required]
+current branch
 
 REVIEW_SCOPE:
-full / backend-only / frontend-only / tests-only / security-sensitive / architecture-sensitive
-
-RISK_MODE:
-normal / strict
-
-COMMENT_STYLE:
-collaborative / direct / strict
+full
+Options: full / backend-only / frontend-only / tests-only / security-sensitive / architecture-sensitive
 
 REVIEW_MODE:
-standard / deep
+strict
+Options: strict / normal
 
-FOLLOWUP_MODE:
-disabled / enabled
+COMMENT_LEVEL:
+important-only
+Options: important-only / all-supported
+
+COMMENT_STYLE:
+collaborative
+Options: collaborative / direct
+
+SUGGESTION_DEPTH:
+normal
+Options: normal / deep
+
+FINAL_DECISION:
+needs-followup
+Options: needs-followup / ready / blocked
 
 Task:
-
-Run the complete V2.3 PR review workflow using local git diff only.
+Run the complete V2.3 local PR/code review workflow using local git diff only.
 
 Rules:
 
