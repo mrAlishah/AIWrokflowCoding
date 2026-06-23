@@ -17,7 +17,7 @@ Guides explain how the V2 AI Operating System works and when to use each workflo
 
 ## New User Start
 
-Start with `help-index.md`, then read the guide for the area you need. Copy only the prompt that matches the selected skill.
+Start with `help-index.md`. For professional multi-model or multi-agent usage, read `guides/professional-end-user-guide.fa.md` for Persian or `guides/professional-end-user-guide.en.md` for English, then copy only the prompt that matches the selected skill.
 
 ## Ready Prompts
 
