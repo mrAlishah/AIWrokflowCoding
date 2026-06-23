@@ -45,6 +45,7 @@ Analyze a local branch diff for changed files, behavior changes, and review risk
 - Key risks
 - Files needing deeper review
 - Markdown Files Changed
+- Metrics Updated: Yes / No / Not Applicable; if No, include reason.
 - Recommended next skill
 
 ## References

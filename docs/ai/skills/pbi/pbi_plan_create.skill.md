@@ -64,6 +64,7 @@ Initial `Step` values use `planned` unless a later workflow step is already know
 - Phase list
 - Validation summary
 - Markdown Files Changed
+- Metrics Updated: Yes / No / Not Applicable; if No, include reason.
 - Recommended next skill
 
 ## References

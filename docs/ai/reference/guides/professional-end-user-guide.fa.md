@@ -1,7 +1,6 @@
 # Professional End User Guide
 
 ## Purpose
-
 این راهنما برای برنامه‌نویسی است که می‌خواهد از V2.3 AI Operating System روی چند model و چند agent به‌صورت ساده، حرفه‌ای، کم‌هزینه و قابل کنترل استفاده کند.
 
 هدف این راهنما این است که کاربر بداند:
@@ -14,19 +13,15 @@
 - چطور بین چند model یا agent کار را تقسیم کند بدون اینکه workflow خراب شود.
 
 ## Core Mental Model
-
 این سیستم prompt آزاد نیست. این سیستم skill-driven است.
 
 هر اجرا باید این شکل را داشته باشد:
 
 ```text
 Use skill: skill_name
-
 Parameters:
-
 PARAMETER:
 value
-
 Task:
 Concrete task for this run.
 ```
@@ -38,7 +33,6 @@ One request -> one selected skill -> one bounded workflow -> one clear output
 ```
 
 ## Runtime Path
-
 در اجرای عادی، agent باید فقط این مسیر را بخواند:
 
 ```text
@@ -60,7 +54,6 @@ flowchart TD
     A["User request"] --> B["Identify task type"]
     B --> C["Open docs/ai/skills/README.md"]
     C --> D{"Select one skill"}
-
     D -->|Raw or unclear PBI| P1["pbi_clarification"]
     D -->|PBI delivery| P2["PBI workflow"]
     D -->|Daily local review| R1["pr_review_workflow"]
@@ -69,7 +62,6 @@ flowchart TD
     D -->|Policy or governance| T2["tools_policy_plan_update"]
     D -->|Health validation| T3["tools_system_health_check"]
     D -->|Guides or prompts| T4["tools_reference_update"]
-
     P2 --> P2A["pbi_workspace_create"]
     P2A --> P2B["pbi_plan_create"]
     P2B --> P2C["pbi_implementation_phase"]
@@ -78,20 +70,16 @@ flowchart TD
     P2E -->|Yes| P2F["pbi_fix_phase"]
     P2E -->|No| P2G["pbi_final_handoff"]
     P2F --> P2G
-
     R1 --> R1A["Read local git diff"]
     R1A --> R1B["Analyze exact changed files"]
     R1B --> R1C["Return findings and suggestions"]
-
     R2 --> R2A["Create or use review workspace"]
     R2A --> R2B["Analyze diff"]
     R2B --> R2C["Create comments or handoff"]
-
     T1 --> T1A["Update repo-context only"]
     T2 --> T2A["Update approved policy or governance only"]
     T3 --> T3A["Write health report"]
     T4 --> T4A["Update reference docs only"]
-
     P1 --> Z["Final response"]
     P2G --> Z
     R1C --> Z
@@ -103,7 +91,6 @@ flowchart TD
 ```
 
 ## Step 1 - Classify The Request
-
 قبل از نوشتن prompt، نوع کار را مشخص کن.
 
 | User Goal | Use This Area | Best Starting Skill |
@@ -122,7 +109,6 @@ flowchart TD
 | می‌خواهی guide یا prompt template بسازی | Tools | `tools_reference_update` |
 
 ## Step 2 - Choose The Right Agent Or Model
-
 از چند model یا agent می‌توانی استفاده کنی، اما همه باید همین قوانین را رعایت کنند.
 
 | Work Type | Recommended Agent / Model Style | Reason |
@@ -137,20 +123,15 @@ flowchart TD
 قانون مهم: model را عوض کن، ولی workflow را عوض نکن.
 
 ## Step 3 - Prepare The Prompt
-
 یک prompt خوب سه بخش دارد:
 
 ```text
 Use skill: skill_name
-
 Parameters:
-
 PARAMETER_1:
 value
-
 PARAMETER_2:
 value
-
 Task:
 What the agent must do in this run.
 ```
@@ -159,21 +140,16 @@ What the agent must do in this run.
 
 ```text
 Use skill: pbi_plan_create
-
 Parameters:
-
 PBI_ID:
 STP-1234
-
 PLANNING_DEPTH:
 light
-
 Task:
 Create a concise implementation plan for this PBI. Do not modify source code.
 ```
 
 ## Step 4 - Keep Context Small
-
 به agent نگویید کل repository یا کل `docs/ai` را بخواند.
 
 بهتر:
@@ -197,7 +173,6 @@ Read the whole repository and all docs before starting.
 - احتمال کمتر برای تغییر فایل‌های اشتباه.
 
 ## Step 5 - Run One Skill At A Time
-
 هر بار فقط یک skill اجرا کن.
 
 اگر workflow چند مرحله دارد، هر مرحله را جدا اجرا کن.
@@ -216,7 +191,6 @@ Run pbi_final_handoff.
 ```
 
 ## Step 6 - Use Workspaces As Memory
-
 Markdown فایل‌ها shared memory هستند.
 
 | Memory Type | Location | Purpose |
@@ -229,7 +203,6 @@ Markdown فایل‌ها shared memory هستند.
 Agentها stateless هستند. اگر می‌خواهی کار بین چند agent ادامه پیدا کند، خروجی باید در markdown workspace ثبت شود.
 
 ## Step 7 - Professional Multi-Agent Pattern
-
 برای چند agent، نقش‌ها را جدا نگه دار.
 
 | Role | Best Skill Area | Output |
@@ -244,7 +217,6 @@ Agentها stateless هستند. اگر می‌خواهی کار بین چند ag
 قانون: دو agent هم‌زمان نباید یک فایل workspace را بدون هماهنگی به‌روزرسانی کنند.
 
 ## Step 8 - Review Workflow Rules
-
 برای review:
 
 - از `pr_review_workflow` برای daily local review استفاده کن.
@@ -258,24 +230,18 @@ Agentها stateless هستند. اگر می‌خواهی کار بین چند ag
 
 ```text
 Use skill: pr_review_workflow
-
 Parameters:
-
 STP_ID:
 STP-1234
-
 BASE_BRANCH:
 main
-
 REVIEW_MODE:
 normal
-
 Task:
 Review the local git diff and return findings only. Do not modify source code.
 ```
 
 ## Step 9 - PBI Workflow Rules
-
 برای delivery کامل، از PBI workflow استفاده کن.
 
 ترتیب پیشنهادی:
@@ -293,7 +259,6 @@ pbi_clarification
 یک phase را کامل کن، بعد برو سراغ phase بعدی.
 
 ## Step 10 - Tools Workflow Rules
-
 از tools فقط برای maintenance استفاده کن.
 
 | Need | Skill |
@@ -307,7 +272,6 @@ pbi_clarification
 بعد از تغییرات ساختاری در docs, skills, governance, policy, reference یا workflow، health check اجرا کن.
 
 ## Step 11 - Use Ready Prompts
-
 برای اجرای سریع، prompt آماده را از این مسیرها بردار:
 
 | Area | Prompt Folder |
@@ -320,27 +284,33 @@ pbi_clarification
 
 فقط parameterها را تغییر بده و prompt را اجرا کن.
 
-## Step 12 - Use RTK When Available
-
-RTK یک optimization اختیاری برای کم‌کردن خروجی‌های شلوغ terminal است.
-
-RTK dependency اجباری نیست و نباید اجرای workflow را متوقف کند.
-
-تنظیم RTK از این فایل کنترل می‌شود:
+## Step 12 - استفاده از Runtime Config و RTK
+فایل اختیاری runtime config اینجاست:
 
 ```text
 docs/ai/config/runtime-config.yaml
 ```
 
-مقادیر اصلی:
+agent می‌تواند این فایل را بعد از `docs/ai/skills/README.md` فقط برای اعمال runtime tool preferences بخواند. این فایل skill routing، workflow behavior، source-code permissions، review guardrailها یا markdown shared memory را تغییر نمی‌دهد.
 
-| Value | Meaning |
+ناحیه‌های فعلی config:
+
+| ناحیه | هدف |
+|---|---|
+| `runtime.rtk` | بهینه‌سازی اختیاری خروجی terminal با RTK را کنترل می‌کند. |
+| `observability.enabled` | تنظیمات observability مربوط به AI OS را فعال یا غیرفعال می‌کند. |
+| `observability.metrics.enabled` | رفتار metricهای markdown-based را فعال می‌کند. |
+| `observability.metrics` | مشخص می‌کند کدام خروجی‌های metric مجاز هستند. |
+
+مقدارهای RTK:
+
+| مقدار | معنی |
 |---|---|
 | `auto` | اگر RTK نصب و در دسترس باشد، agent می‌تواند از آن استفاده کند. |
 | `true` | اگر RTK در دسترس باشد، agent ترجیحاً از commandهای RTK-wrapped استفاده کند. |
 | `false` | agent نباید از RTK استفاده کند. |
 
-استفاده مناسب:
+موارد مناسب استفاده از RTK:
 
 ```text
 rtk git status
@@ -351,7 +321,7 @@ rtk rg "pattern"
 rtk dotnet test
 ```
 
-وقتی RTK غیرفعال، نصب‌نشده، ناقص، یا خروجی raw دقیق لازم است، از command عادی استفاده کن:
+وقتی RTK غیرفعال، نصب‌نشده، ناقص، یا خروجی raw دقیق لازم است، از command خام استفاده کن:
 
 ```text
 git status
@@ -361,12 +331,29 @@ rg "pattern"
 dotnet test
 ```
 
-RTK فقط شکل خروجی terminal را بهینه می‌کند. RTK اجازه تغییر source code، تغییر review guardrail، تغییر skill workflow، یا جایگزینی markdown shared memory را نمی‌دهد.
+قوانین observability metrics:
 
-قانون کامل RTK در `docs/ai/skills/governance/terminal-output-optimization.md` است.
+- observability از طریق `observability.enabled: true` فعال است.
+- رفتار metrics از طریق `observability.metrics.enabled: true` فعال است.
+- فایل‌های markdown مربوط به workspace می‌توانند usage summary داشته باشند، اگر فعال باشد.
+- tool reportها می‌توانند بخش metrics داشته باشند، اگر فعال باشد.
+- وقتی `final_response_status` فعال است و skill انتخاب‌شده لازم بداند، final response می‌تواند status یا usage summary کوتاه داشته باشد.
+- exact token tracking همچنان غیرفعال است.
+- external telemetry همچنان غیرفعال است.
+
+راهنمای اختصاصی را از اینجا بخوان:
+
+```text
+docs/ai/reference/guides/runtime-config-guide.fa.md
+```
+
+قانون canonical مربوط به RTK اینجاست:
+
+```text
+docs/ai/skills/governance/terminal-output-optimization.md
+```
 
 ## Step 13 - End User Operating Checklist
-
 قبل از اجرا:
 
 - آیا هدف مشخص است؟
@@ -398,7 +385,6 @@ RTK فقط شکل خروجی terminal را بهینه می‌کند. RTK اجا�
 | تغییر workflow با prompt آزاد | workflow باید از skill بیاید. |
 
 ## Daily Usage Recipe
-
 برای استفاده روزانه:
 
 1. هدف را در یک جمله بنویس.
@@ -410,7 +396,6 @@ RTK فقط شکل خروجی terminal را بهینه می‌کند. RTK اجا�
 7. اگر مرحله بعدی لازم است، prompt بعدی را اجرا کن.
 
 ## Weekly Maintenance Recipe
-
 هفته‌ای یا بعد از تغییرات مهم:
 
 1. اگر repo knowledge تغییر کرده، `tools_repo_context_update` اجرا کن.
@@ -419,7 +404,6 @@ RTK فقط شکل خروجی terminal را بهینه می‌کند. RTK اجا�
 4. اگر docs/ai structure یا skills تغییر کرده، `tools_system_health_check` اجرا کن.
 
 ## Final Rule
-
 مدل و agent را آزادانه انتخاب کن، اما مسیر سیستم را ثابت نگه دار:
 
 ```text

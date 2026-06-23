@@ -1,7 +1,6 @@
 # Professional End User Guide
 
 ## Purpose
-
 This guide is for a developer who wants to use the V2.3 AI Operating System professionally across multiple models and agents while keeping the process simple, efficient, low-cost, and controlled.
 
 This guide explains:
@@ -14,19 +13,15 @@ This guide explains:
 - How to split work across multiple models or agents without breaking the workflow.
 
 ## Core Mental Model
-
 This system is not free-form prompting. It is skill-driven.
 
 Every execution should follow this shape:
 
 ```text
 Use skill: skill_name
-
 Parameters:
-
 PARAMETER:
 value
-
 Task:
 Concrete task for this run.
 ```
@@ -38,7 +33,6 @@ One request -> one selected skill -> one bounded workflow -> one clear output
 ```
 
 ## Runtime Path
-
 During normal execution, the agent should read only this path:
 
 ```text
@@ -60,7 +54,6 @@ flowchart TD
     A["User request"] --> B["Identify task type"]
     B --> C["Open docs/ai/skills/README.md"]
     C --> D{"Select one skill"}
-
     D -->|Raw or unclear PBI| P1["pbi_clarification"]
     D -->|PBI delivery| P2["PBI workflow"]
     D -->|Daily local review| R1["pr_review_workflow"]
@@ -69,7 +62,6 @@ flowchart TD
     D -->|Policy or governance| T2["tools_policy_plan_update"]
     D -->|Health validation| T3["tools_system_health_check"]
     D -->|Guides or prompts| T4["tools_reference_update"]
-
     P2 --> P2A["pbi_workspace_create"]
     P2A --> P2B["pbi_plan_create"]
     P2B --> P2C["pbi_implementation_phase"]
@@ -78,20 +70,16 @@ flowchart TD
     P2E -->|Yes| P2F["pbi_fix_phase"]
     P2E -->|No| P2G["pbi_final_handoff"]
     P2F --> P2G
-
     R1 --> R1A["Read local git diff"]
     R1A --> R1B["Analyze exact changed files"]
     R1B --> R1C["Return findings and suggestions"]
-
     R2 --> R2A["Create or use review workspace"]
     R2A --> R2B["Analyze diff"]
     R2B --> R2C["Create comments or handoff"]
-
     T1 --> T1A["Update repo-context only"]
     T2 --> T2A["Update approved policy or governance only"]
     T3 --> T3A["Write health report"]
     T4 --> T4A["Update reference docs only"]
-
     P1 --> Z["Final response"]
     P2G --> Z
     R1C --> Z
@@ -103,7 +91,6 @@ flowchart TD
 ```
 
 ## Step 1 - Classify The Request
-
 Before writing a prompt, classify the work.
 
 | User Goal | Use This Area | Best Starting Skill |
@@ -122,7 +109,6 @@ Before writing a prompt, classify the work.
 | You want to create or update guides or prompt templates | Tools | `tools_reference_update` |
 
 ## Step 2 - Choose The Right Agent Or Model
-
 You can use multiple models or agents, but each one must follow the same operating rules.
 
 | Work Type | Recommended Agent / Model Style | Reason |
@@ -137,20 +123,15 @@ You can use multiple models or agents, but each one must follow the same operati
 Important rule: change the model if useful, but do not change the workflow.
 
 ## Step 3 - Prepare The Prompt
-
 A good prompt has three parts:
 
 ```text
 Use skill: skill_name
-
 Parameters:
-
 PARAMETER_1:
 value
-
 PARAMETER_2:
 value
-
 Task:
 What the agent must do in this run.
 ```
@@ -159,21 +140,16 @@ Example:
 
 ```text
 Use skill: pbi_plan_create
-
 Parameters:
-
 PBI_ID:
 STP-1234
-
 PLANNING_DEPTH:
 light
-
 Task:
 Create a concise implementation plan for this PBI. Do not modify source code.
 ```
 
 ## Step 4 - Keep Context Small
-
 Do not ask the agent to read the whole repository or all of `docs/ai`.
 
 Better:
@@ -197,7 +173,6 @@ For professional use, smaller context means:
 - Lower chance of touching the wrong files.
 
 ## Step 5 - Run One Skill At A Time
-
 Run only one skill per request.
 
 If a workflow has multiple steps, run each step separately.
@@ -216,7 +191,6 @@ Run pbi_final_handoff.
 ```
 
 ## Step 6 - Use Workspaces As Memory
-
 Markdown files are shared memory.
 
 | Memory Type | Location | Purpose |
@@ -229,7 +203,6 @@ Markdown files are shared memory.
 Agents are stateless. If work must continue across multiple agents, the output should be recorded in the relevant markdown workspace.
 
 ## Step 7 - Professional Multi-Agent Pattern
-
 Keep roles separate when using multiple agents.
 
 | Role | Best Skill Area | Output |
@@ -244,7 +217,6 @@ Keep roles separate when using multiple agents.
 Rule: two agents should not update the same workspace file at the same time without coordination.
 
 ## Step 8 - Review Workflow Rules
-
 For review:
 
 - Use `pr_review_workflow` for daily local review.
@@ -258,24 +230,18 @@ Example:
 
 ```text
 Use skill: pr_review_workflow
-
 Parameters:
-
 STP_ID:
 STP-1234
-
 BASE_BRANCH:
 main
-
 REVIEW_MODE:
 normal
-
 Task:
 Review the local git diff and return findings only. Do not modify source code.
 ```
 
 ## Step 9 - PBI Workflow Rules
-
 For full delivery, use the PBI workflow.
 
 Recommended order:
@@ -293,7 +259,6 @@ pbi_clarification
 Complete one phase before moving to the next phase.
 
 ## Step 10 - Tools Workflow Rules
-
 Use tools only for maintenance.
 
 | Need | Skill |
@@ -307,7 +272,6 @@ Use tools only for maintenance.
 After structural changes to docs, skills, governance, policy, reference, or workflow, run a health check.
 
 ## Step 11 - Use Ready Prompts
-
 For quick execution, copy ready prompts from these folders:
 
 | Area | Prompt Folder |
@@ -320,19 +284,25 @@ For quick execution, copy ready prompts from these folders:
 
 Change only parameter values, then run the prompt.
 
-## Step 12 - Use RTK When Available
-
-RTK is an optional optimization for reducing noisy terminal output.
-
-RTK is not a required dependency and must not block workflow execution.
-
-RTK is controlled by:
+## Step 12 - Use Runtime Config And RTK
+The optional runtime config lives at:
 
 ```text
 docs/ai/config/runtime-config.yaml
 ```
 
-Main values:
+Agents may read this file after `docs/ai/skills/README.md` only to apply runtime tool preferences. It does not change skill routing, workflow behavior, source-code permissions, review guardrails, or markdown shared memory.
+
+Current config areas:
+
+| Area | Purpose |
+|---|---|
+| `runtime.rtk` | Controls optional RTK terminal-output optimization. |
+| `observability.enabled` | Enables observability configuration for the AI OS. |
+| `observability.metrics.enabled` | Enables markdown-based metrics behavior. |
+| `observability.metrics` | Controls which metric outputs are allowed. |
+
+RTK values:
 
 | Value | Meaning |
 |---|---|
@@ -340,7 +310,7 @@ Main values:
 | `true` | The agent should prefer RTK-wrapped commands when RTK is available. |
 | `false` | The agent must not use RTK. |
 
-Good use cases:
+Good RTK use cases:
 
 ```text
 rtk git status
@@ -361,12 +331,29 @@ rg "pattern"
 dotnet test
 ```
 
-RTK only optimizes terminal output. It does not grant source-code modification permission, change review guardrails, change skill workflows, or replace markdown shared memory.
+Observability metrics rules:
 
-The canonical RTK rule lives in `docs/ai/skills/governance/terminal-output-optimization.md`.
+- Observability is enabled through `observability.enabled: true`.
+- Metrics behavior is enabled through `observability.metrics.enabled: true`.
+- Workspace markdown records may include usage summaries when enabled.
+- Tool reports may include metrics sections when enabled.
+- Final responses may include compact status or usage summaries when `final_response_status` is enabled and the selected skill requires them.
+- Exact token tracking remains disabled.
+- External telemetry remains disabled.
+
+Read the dedicated guide for details:
+
+```text
+docs/ai/reference/guides/runtime-config-guide.en.md
+```
+
+Canonical RTK governance lives in:
+
+```text
+docs/ai/skills/governance/terminal-output-optimization.md
+```
 
 ## Step 13 - End User Operating Checklist
-
 Before execution:
 
 - Is the goal clear?
@@ -398,7 +385,6 @@ After execution:
 | Changing workflow through a free-form prompt | Workflow must come from the selected skill. |
 
 ## Daily Usage Recipe
-
 For daily use:
 
 1. Write the goal in one sentence.
@@ -410,7 +396,6 @@ For daily use:
 7. If another step is needed, run the next prompt.
 
 ## Weekly Maintenance Recipe
-
 Weekly or after important changes:
 
 1. If repo knowledge changed, run `tools_repo_context_update`.
@@ -419,7 +404,6 @@ Weekly or after important changes:
 4. If `docs/ai` structure or skills changed, run `tools_system_health_check`.
 
 ## Final Rule
-
 Choose the model and agent freely, but keep the system path stable:
 
 ```text

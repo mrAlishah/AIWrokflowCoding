@@ -16,7 +16,7 @@ Do not read all docs, all skills, all workspaces, or the whole repository by def
 
 `docs/ai/reference/**` is non-runtime reference material and must not be read during normal execution unless explicitly requested for guides, prompts, validation, history, decisions, or AI OS maintenance.
 
-If `docs/ai/config/runtime-config.yaml` exists, read it only for runtime tool preferences such as optional terminal-output optimization.
+If `docs/ai/config/runtime-config.yaml` exists, read it only for runtime preferences such as optional terminal-output optimization and observability metrics behavior.
 
 ## Routing
 
@@ -37,6 +37,7 @@ If `docs/ai/config/runtime-config.yaml` exists, read it only for runtime tool pr
 - Common rules: `docs/ai/skills/governance/common-rules.md`
 - Read order: `docs/ai/skills/governance/read-order.md`
 - Markdown reporting: `docs/ai/skills/governance/markdown-change-reporting.md`
+- Observability: `docs/ai/skills/governance/observability.md`
 - Skill template: `docs/ai/skills/governance/skill-template.md`
 - System health policy: `docs/ai/skills/governance/system-health-policy.md`
 - Terminal output optimization: `docs/ai/skills/governance/terminal-output-optimization.md`

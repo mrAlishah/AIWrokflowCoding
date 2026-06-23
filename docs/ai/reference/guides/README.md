@@ -8,6 +8,8 @@ Guides explain how to understand and use the V2 AI Operating System. They are le
 
 - `professional-end-user-guide.fa.md`: Persian guide for professional end users using V2.3 across multiple models and agents.
 - `professional-end-user-guide.en.md`: English guide for professional end users using V2.3 across multiple models and agents.
+- `runtime-config-guide.fa.md`: Persian guide for `docs/ai/config/runtime-config.yaml`.
+- `runtime-config-guide.en.md`: English guide for `docs/ai/config/runtime-config.yaml`.
 - `workflow-automation-guide.fa.md`: Persian guide for supported workflow launcher and all-in-one prompts.
 - `workflow-automation-guide.en.md`: English guide for supported workflow launcher and all-in-one prompts.
 - `pbi/`: PBI workflow guides.

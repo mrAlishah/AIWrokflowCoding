@@ -8,6 +8,8 @@ Use this index to find guides and ready prompts without reading all reference ma
 
 - Professional multi-model or multi-agent usage, Persian: `guides/professional-end-user-guide.fa.md`
 - Professional multi-model or multi-agent usage, English: `guides/professional-end-user-guide.en.md`
+- Runtime config, Persian: `guides/runtime-config-guide.fa.md`
+- Runtime config, English: `guides/runtime-config-guide.en.md`
 - Workflow automation prompts, Persian: `guides/workflow-automation-guide.fa.md`
 - Workflow automation prompts, English: `guides/workflow-automation-guide.en.md`
 - New to PBI work: `guides/pbi/user-guide.md`

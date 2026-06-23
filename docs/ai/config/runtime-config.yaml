@@ -2,3 +2,14 @@ version: 1
 
 runtime:
   rtk: auto
+
+observability:
+  enabled: true
+  metrics:
+    enabled: true
+    workspace_records: true
+    central_dashboards: true
+    final_response_status: true
+    tool_reports: true
+    exact_token_tracking: false
+    external_telemetry: false

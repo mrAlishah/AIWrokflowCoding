@@ -49,6 +49,7 @@ Re-check planned review comments after the reviewed branch changes.
 - Remaining planned items
 - Follow-up comments
 - Markdown Files Changed
+- Metrics Updated: Yes / No / Not Applicable; if No, include reason.
 - Recommended next action
 
 ## References

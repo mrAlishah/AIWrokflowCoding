@@ -41,6 +41,7 @@ Create English PR-ready comments and Persian/internal suggestions from local dif
 - PR comments location
 - Internal suggestions location
 - Markdown Files Changed
+- Metrics Updated: Yes / No / Not Applicable; if No, include reason.
 - Recommended next skill
 
 ## References

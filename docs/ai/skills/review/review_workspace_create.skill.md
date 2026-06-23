@@ -46,6 +46,7 @@ Create the standard review workspace for local PR/code review.
 - Workspace path
 - Files created or updated
 - Markdown Files Changed
+- Metrics Updated: Yes / No / Not Applicable; if No, include reason.
 - Recommended next skill
 
 ## References

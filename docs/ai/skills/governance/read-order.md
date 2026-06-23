@@ -32,7 +32,7 @@ Read `docs/ai/reference/**` only when the selected task explicitly requires guid
 
 ## Runtime Config
 
-If `docs/ai/config/runtime-config.yaml` exists, read it after `docs/ai/skills/README.md` only to apply runtime tool preferences.
+If `docs/ai/config/runtime-config.yaml` exists, read it after `docs/ai/skills/README.md` only to apply runtime preferences such as terminal-output optimization and observability metrics behavior.
 
 Runtime config does not change skill routing, workflow behavior, source-code permissions, review-only guardrails, or the reference boundary.
 

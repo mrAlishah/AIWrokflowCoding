@@ -51,6 +51,7 @@ Apply targeted fixes for approved review findings or Required RF items.
 - Verification performed
 - Remaining risks
 - Markdown Files Changed
+- Metrics Updated: Yes / No / Not Applicable; if No, include reason.
 - Recommended next skill
 
 ## References

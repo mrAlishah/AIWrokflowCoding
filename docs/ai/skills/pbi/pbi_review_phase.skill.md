@@ -48,6 +48,7 @@ Review implemented PBI work before fixes, or verify one post-PR review feedback 
 - No-issues statement when applicable
 - Validation gaps
 - Markdown Files Changed
+- Metrics Updated: Yes / No / Not Applicable; if No, include reason.
 - Recommended next skill
 
 ## References
