@@ -14,6 +14,7 @@ Guides explain how the V2 AI Operating System works and when to use each workflo
 - `pr`: daily local PR/code review workflow.
 - `review`: lower-level local review steps.
 - `tools`: AI OS health, repo-context, policy, and cleanup tools.
+- `guides/ai-engineer/`: developer and AI engineer guides for maintaining and improving the AI OS.
 
 ## New User Start
 
@@ -22,6 +23,8 @@ Start with `help-index.md`. For professional multi-model or multi-agent usage, r
 For workflow launcher or all-in-one prompt usage, read `guides/workflow-automation-guide.fa.md` for Persian or `guides/workflow-automation-guide.en.md` for English.
 
 For runtime config usage, including `low_cost`, `balanced`, and `deep_review` presets, read `guides/runtime-config-guide.fa.md` for Persian or `guides/runtime-config-guide.en.md` for English.
+
+For maintaining or improving the AI OS as a developer or AI engineer, read `guides/ai-engineer/README.md`.
 
 ## Ready Prompts
 
