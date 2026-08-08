@@ -1,44 +1,31 @@
 # AI Coding System Documentation
 
-This directory is the shared documentation memory for the AI Multi-Agent Coding Operating System.
+Shared markdown memory for the V2 AI Multi-Agent Coding Operating System.
 
-## V2 Approved Baseline
+## Daily Runtime
 
-The approved V2 foundation baseline is defined in:
-
-- [foundation/v2-approved-baseline.md](foundation/v2-approved-baseline.md)
-
-## Documentation Rules
-
-- Markdown files are shared memory.
-- Keep documentation simple, readable, and operational.
-- Update documentation when repository knowledge, workflow rules, or approved practices change.
-- Report markdown changes in every response under `Markdown Files Changed`.
-
-## Knowledge Separation
-
-Core V2 rule:
+Start with:
 
 ```text
-Repository Knowledge != PBI Knowledge != Review Knowledge != Execution Memory != Architecture Decisions
+AGENTS.md or CLAUDE.md -> START_HERE.md -> skills/README.md -> selected skill
 ```
 
-- Repository Knowledge = reusable codebase knowledge under `docs/ai/repo-context/`.
-- PBI Knowledge = task-specific implementation knowledge under `docs/ai/pbi/STP-XXXX/`.
-- Review Knowledge = PR/code review knowledge under `docs/ai/reviews/STP-XXXX/`.
-- Execution Memory = phase files and follow-up logs that record what agents actually did.
-- Architecture Decisions = design, domain, and architecture decisions recorded in `04-decision_log.md`.
+Then follow the read order in [START_HERE.md](START_HERE.md).
 
-## Markdown Change Reporting Rule
+## Read Next
 
-Whenever any markdown file is created, updated, renamed, or deleted, the agent must report it under:
+- Runtime entry: [START_HERE.md](START_HERE.md)
+- Skill routing: [skills/README.md](skills/README.md)
+- Governance: [skills/governance/](skills/governance/)
+- PBI work: [pbi/README.md](pbi/README.md)
+- Review work: [reviews/README.md](reviews/README.md)
+- Repository knowledge: [repo-context/README.md](repo-context/README.md)
+- Read order: [skills/governance/read-order.md](skills/governance/read-order.md)
 
-## Markdown Files Changed
+`reference/` contains non-runtime guides, prompts, validation, history, and decisions. Do not read it during normal execution unless explicitly requested.
 
-For each file:
+## Canonical Policy
 
-- File path
-- Action: Created / Updated / Renamed / Deleted
-- Reason
-- Summary of changes
-- Whether the change affects future AI context
+- Code policies: [repo-context/policy/code-policies.md](repo-context/policy/code-policies.md)
+- Coding standards: [repo-context/policy/coding_standards.md](repo-context/policy/coding_standards.md)
+- Context budget: [repo-context/policy/context_budget.md](repo-context/policy/context_budget.md)

@@ -4,7 +4,7 @@ Compact codebase navigation guide.
 
 ## Entry Points
 
-Document key entry points after explicit `repo-context-update` inspection.
+Document key entry points after explicit `tools_repo_context_update` inspection.
 
 ## Common Change Areas
 

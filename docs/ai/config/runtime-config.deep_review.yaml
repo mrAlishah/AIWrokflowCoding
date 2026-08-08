@@ -1,0 +1,34 @@
+version: 1
+
+runtime:
+  rtk: auto
+
+context:
+  mode: deep
+  reference_docs: false
+  repo_context: on_demand
+  source_reading: expanded_when_needed
+  diff_first: true
+  prefer_existing_summaries: true
+  broad_scan: false
+  extra_file_justification: true
+  context_expansion_notice: true
+  final_response_detail: detailed
+
+terminal:
+  output:
+    prefer_summary: false
+    raw_output_on_error: true
+    raw_output_when_requested: true
+    summarize_success_output: false
+
+observability:
+  enabled: true
+  metrics:
+    enabled: true
+    workspace_records: true
+    central_dashboards: true
+    final_response_status: true
+    tool_reports: true
+    exact_token_tracking: false
+    external_telemetry: false

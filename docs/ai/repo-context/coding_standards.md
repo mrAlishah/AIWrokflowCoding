@@ -1,36 +1,15 @@
-# Coding Standards
+# Compatibility Pointer
 
-Reusable coding standards observed in this repository.
-
-## Naming Conventions
-
-Document stable naming conventions after explicit `repo-context-update` inspection.
-
-## File Organization
-
-Capture important file organization patterns.
-
-## Implementation Patterns
-
-List patterns that should be followed for common changes.
-
-## Active Code Policies
-
-Canonical policy source:
+Canonical new path:
 
 ```text
-docs/ai/repo-context/code-policies.md
+docs/ai/repo-context/policy/coding_standards.md
 ```
 
-Use this file for approved global code policies such as CP-001. Keep `coding_standards.md` focused on repository conventions and concise pointers.
+Reason for compatibility:
 
-## Documentation Standards
+Existing V2 prompts, validation history, and older documentation may still reference this path.
 
-- Keep markdown simple and readable.
-- Prefer concise operational notes.
-- Report markdown changes under `Markdown Files Changed`.
+Migration note:
 
-## Tooling Notes
-
-Document required project tooling only when it is confirmed from the repository.
-
+Use the canonical new path for future updates. Do not duplicate full policy content here.
