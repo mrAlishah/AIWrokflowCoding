@@ -11,6 +11,7 @@ Place decision notes and approved baseline references here when they are not run
 - [V3 Policy Resolution and Action Permission Contract](v3_policy_resolution_and_action_permission_contract.md): proposed V3 maintenance specification; non-runtime until explicitly integrated.
 - [V3 Provenance and Freshness Contract](v3_provenance_and_freshness_contract.md): proposed reusable-knowledge metadata specification; non-runtime until explicitly integrated.
 - [V3 Markdown Write Safety and Concurrency Contract](v3_markdown_write_safety_and_concurrency_contract.md): proposed shared-memory concurrency specification; non-runtime until explicitly integrated.
+- [V3 Golden Evaluation Contract](v3_golden_evaluation_contract.md): proposed behavioral regression specification; non-runtime until explicitly integrated.
 
 ## Usage Rule
 
