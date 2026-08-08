@@ -1,23 +1,15 @@
-# Context Budget
+# Compatibility Pointer
 
-Rules for loading repository context efficiently.
+Canonical new path:
 
-## Defaults
+```text
+docs/ai/repo-context/policy/context_budget.md
+```
 
-- Start with the most relevant shared memory file.
-- Read current source files before changing implementation behavior.
-- Prefer targeted search over broad file dumps.
-- Avoid loading full repository trees unless explicitly needed.
+Reason for compatibility:
 
-## Repo Context Usage
+Existing V2 prompts, validation history, and older documentation may still reference this path.
 
-- Treat `docs/ai/repo-context/*` as reusable memory.
-- Other skills may read repo-context but must not update it.
-- Only `repo-context-update` may refresh repo-context files.
+Migration note:
 
-## Update Style
-
-- Keep stable facts.
-- Remove stale or noisy details.
-- Summarize patterns instead of copying source.
-
+Use the canonical new path for future updates. Do not duplicate full policy content here.

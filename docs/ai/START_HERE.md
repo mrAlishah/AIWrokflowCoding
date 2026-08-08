@@ -1,51 +1,44 @@
 # Start Here
 
-Daily runtime usage starts here after the agent entry contract.
+Daily runtime usage starts here after `AGENTS.md` or an agent-specific adapter such as `CLAUDE.md`.
 
-Cold-start agents must first read:
+## Runtime Read Path
 
-```text
-AGENTS.md
-agent-specific file if it exists, for example CLAUDE.md
-```
+1. `AGENTS.md` or `CLAUDE.md`
+2. `docs/ai/START_HERE.md`
+3. `docs/ai/skills/README.md`
+4. Selected skill only
+5. Active workspace
+6. repo-context only if needed
+7. Exact source files only if needed
 
-Then continue with this file.
+Do not read all docs, all skills, all workspaces, or the whole repository by default.
 
-## Read Order
+`docs/ai/reference/**` is non-runtime reference material and must not be read during normal execution unless explicitly requested for guides, prompts, validation, history, decisions, or AI OS maintenance.
 
-1. Read `docs/ai/START_HERE.md`.
-2. Read `docs/ai/skills/README.md`.
-3. Select one approved skill.
-4. Read the selected skill file only.
-
-Do not read all docs, all skills, or the whole repository by default.
-
-Daily runtime path:
-
-```text
-AGENTS.md -> optional agent-specific file -> START_HERE.md -> skills/README.md -> selected skill -> active workspace -> repo-context only if needed
-```
+If `docs/ai/config/runtime-config.yaml` exists, read it only for runtime preferences such as context management, optional terminal-output optimization, and observability metrics behavior.
 
 ## Routing
 
 | Task | Route |
 | --- | --- |
+| Raw or unclear PBI | `pbi_clarification` |
 | PBI task | `docs/ai/skills/README.md` -> selected PBI skill |
+| Daily PR/code review | `pr_review_workflow` |
 | Review task | `docs/ai/skills/README.md` -> selected review skill |
-| User answer or policy update | `policy-plan-update` |
-| Repo knowledge update | `repo-context-update` |
-| Long-term docs cleanup audit | `docs-ai-cleanup-audit` |
-| AI OS maintenance | `docs/ai/foundation/v2-approved-baseline.md` and relevant foundation docs |
+| User answer or policy update | `tools_policy_plan_update` |
+| Repo knowledge update | `tools_repo_context_update` |
+| AI OS health audit | `tools_system_health_check` |
+| Long-term docs cleanup audit | `tools_docs_ai_cleanup_audit` |
+| AI OS maintenance | Explicit maintenance task only; use `docs/ai/reference/` only when guides, prompts, validation, history, decisions, or AI OS maintenance are requested |
 
-## Rules
+## Canonical Rules
 
-- Use one selected skill at a time.
-- Read active workspace files only when the selected skill requires them.
-- Read repo-context or source files only when the selected skill allows it.
-- Do not read `docs/ai/foundation/*` unless the task is AI OS maintenance.
-- Do not read `setup-prompts/*` unless the task is setup or prompt maintenance.
-- Do not read validation reports unless the task is validation.
-- For tagged user answers or policy changes that must sync into planning files, use `policy-plan-update`.
-- For long-term `docs/ai` cleanup or context-cost audit, use `docs-ai-cleanup-audit`.
-- Do not use cleanup audits during normal PBI implementation or PR review.
-- Keep changes minimal and report markdown changes.
+- Common rules: `docs/ai/skills/governance/common-rules.md`
+- Context management: `docs/ai/skills/governance/context-management.md`
+- Read order: `docs/ai/skills/governance/read-order.md`
+- Markdown reporting: `docs/ai/skills/governance/markdown-change-reporting.md`
+- Observability: `docs/ai/skills/governance/observability.md`
+- Skill template: `docs/ai/skills/governance/skill-template.md`
+- System health policy: `docs/ai/skills/governance/system-health-policy.md`
+- Terminal output optimization: `docs/ai/skills/governance/terminal-output-optimization.md`

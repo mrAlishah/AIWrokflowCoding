@@ -1,25 +1,36 @@
 # Repo Context
 
-`repo-context` is reusable repository knowledge for the AI Multi-Agent Coding Operating System.
+Reusable repository knowledge.
 
-## Rules
+Read repo-context only when the selected skill needs stable repository knowledge before source inspection.
 
-- `repo-context` is read-only for all skills except `repo-context-update`.
-- `repo-context-update` is the only skill allowed to update files in this directory.
-- Repository inspection happens only when `repo-context-update` is explicitly invoked.
-- Keep entries concise, stable, and useful for future work.
-- Do not dump full repository trees or large source excerpts.
-
-## Files
+## Read Next
 
 - [architecture.md](architecture.md): architecture boundaries and system shape
 - [module_map.md](module_map.md): important modules and responsibilities
 - [file_index.md](file_index.md): curated index of important files
 - [codebase-index.md](codebase-index.md): compact codebase navigation guide
-- [domain_glossary.md](domain_glossary.md): optional project terms and domain language; keep if empty until real domain terms exist
-- [coding_standards.md](coding_standards.md): naming, style, and implementation conventions
-- [code-policies.md](code-policies.md): approved global code policies
-- [context_budget.md](context_budget.md): context loading and optimization rules
+- [domain_glossary.md](domain_glossary.md): optional project terms and domain language
+- [policy/](policy/): repository policies and standards
 - [test_strategy.md](test_strategy.md): verification and test strategy
 - [workflow.md](workflow.md): repository-specific working workflow
 
+## Ownership
+
+Repo-context ownership rules are defined in:
+
+```text
+docs/ai/skills/governance/common-rules.md
+```
+
+Only `tools_repo_context_update` may update repo-context files, except the approved `tools_policy_plan_update` policy exception.
+
+## Policy
+
+Canonical policy files:
+
+- [policy/code-policies.md](policy/code-policies.md)
+- [policy/coding_standards.md](policy/coding_standards.md)
+- [policy/context_budget.md](policy/context_budget.md)
+
+Legacy root-level policy paths remain compatibility pointers.

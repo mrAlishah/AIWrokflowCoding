@@ -4,7 +4,7 @@ Reusable verification knowledge for this repository.
 
 ## Test Types
 
-Document confirmed test types after explicit `repo-context-update` inspection.
+Document confirmed test types after explicit `tools_repo_context_update` inspection.
 
 | Test Type | Command or Location | Notes |
 | --- | --- | --- |
