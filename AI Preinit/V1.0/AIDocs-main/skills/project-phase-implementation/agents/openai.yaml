@@ -1,0 +1,3 @@
+display_name: Project Phase Implementation
+short_description: Implement project phases with scoped changes, docs, comments, and validation.
+default_prompt: "Use project-phase-implementation for phase <number>: implement the approved scope, update docs, add useful comments, run validation, and report changed files."
