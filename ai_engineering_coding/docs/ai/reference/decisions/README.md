@@ -14,6 +14,7 @@ Place decision notes and approved baseline references here when they are not run
 - [V3 Golden Evaluation Contract](v3_golden_evaluation_contract.md): proposed behavioral regression specification; non-runtime until explicitly integrated.
 - [V3 Deterministic Verification Contract](v3_deterministic_verification_contract.md): proposed evidence-based verification specification; non-runtime until explicitly integrated.
 - [V3 Risk and Capability Resolution Contract](v3_risk_and_capability_resolution_contract.md): proposed risk and provider-selection specification; non-runtime until explicitly integrated.
+- [V3 Runtime Configuration and Capability Registry Contract](v3_runtime_configuration_and_capability_registry_contract.md): proposed configuration and provider-registry specification; non-runtime until explicitly integrated.
 
 ## Usage Rule
 
