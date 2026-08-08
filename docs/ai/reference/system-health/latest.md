@@ -1,16 +1,26 @@
 # System Health Check
 
+## Audit Parameters
+
+```text
+CHECK_SCOPE: full
+CHECK_COMPATIBILITY: true
+REPORT_MODE: latest-only
+ANALYSIS_DEPTH: deep
+AUDIT_DATE: 2026-08-08
+```
+
 ## Status
 
-Ready
+Pilot Ready With Required Hardening
 
 ## Executive Summary
 
-The V2 AI Operating System remains cohesive, executable, low-token, backward-compatible, and aligned with current V2 priorities after the runtime config and context-cost refactor.
+The V2 AI Operating System has a strong documentation architecture: runtime routing is small, knowledge ownership is explicit, PBI and review workspaces are separated, source-changing and review-only skills have useful boundaries, and backward compatibility is intentionally preserved.
 
-No required fixes or high-severity findings were found.
+The system is not yet able to demonstrate its stated outcomes of lower hallucination, lower concept drift, higher accuracy, and lower context cost. Current controls are mainly prompt and documentation conventions. There is no evidence contract for durable memory, no freshness contract for repo-context, no concurrency protocol for multiple agents writing shared Markdown, and no repeatable evaluation suite that compares task outcomes. These are reliability gaps rather than reasons to redesign the system.
 
-Runtime config is now a first-class governance-controlled preference file. It controls context management, terminal-output summarization, optional RTK behavior, and observability/metrics behavior without changing skill routing, source-code permissions, review-only guardrails, markdown reporting, or the reference boundary.
+No critical finding was found. Four high-severity required findings should be addressed before claiming production-grade multi-agent reliability.
 
 ## Current Priorities
 
@@ -20,209 +30,130 @@ Runtime config is now a first-class governance-controlled preference file. It co
 - Low Token Cost
 - Agent Neutral
 
-## Checked Files
+## Scope And Limitation
 
-- `AGENTS.md`
-- `CLAUDE.md`
-- `docs/ai/config/runtime-config.yaml`
-- `docs/ai/config/README.md`
-- `docs/ai/README.md`
-- `docs/ai/START_HERE.md`
-- `docs/ai/skills/README.md`
-- `docs/ai/skills/governance/`
-- `docs/ai/skills/pbi/`
-- `docs/ai/skills/review/`
-- `docs/ai/skills/pr/`
-- `docs/ai/skills/tools/`
-- `docs/ai/repo-context/README.md`
-- `docs/ai/repo-context/policy/`
-- `docs/ai/pbi/README.md`
-- `docs/ai/reviews/README.md`
-- `docs/ai/reference/system-health/README.md`
-- `docs/ai/reference/history/foundation/README.md`
+This audit inspected the AI OS runtime documentation, governance, policies, skills, compatibility mappings, and historical foundation material required by `tools_system_health_check`.
+
+The selected skill explicitly forbids source-code inspection. Therefore this report evaluates the Markdown operating system and its execution contracts, not the correctness of any separate application source code.
+
+## Architecture Assessment
+
+| Area | Status | Evidence | Assessment |
+|---|---|---|---|
+| Runtime routing | Pass | `AGENTS.md -> START_HERE.md -> skills/README.md -> selected skill` | Small cold-start path limits accidental context expansion. |
+| Knowledge separation | Pass | Separate repo-context, PBI, review, execution memory, and decisions | Strong defense against mixing task-local and reusable knowledge. |
+| Skill boundaries | Pass | Purpose, parameters, read, update, and stop conditions are present | Skills are understandable and generally resumable. |
+| Review safety | Pass | Local-diff-only review and explicit prohibition on source modification or publication | Good separation between analysis and mutation. |
+| Backward compatibility | Pass | Old invocation mappings and compatibility pointers remain | Migration risk is controlled. |
+| Runtime configuration | Pass | Required schema keys and allowed values are valid | Conservative defaults support low-context execution. |
+| Evidence traceability | Required | Durable knowledge has no mandatory source reference or verification metadata | A later agent cannot reliably distinguish fact, inference, and stale belief. |
+| Freshness control | Required | Repo-context has no required last-verified commit or invalidation trigger | Shared memory can silently drift from source. |
+| Multi-agent write safety | Required | Shared Markdown has no ownership lease, conflict check, or append protocol | Parallel agents can overwrite or interleave state. |
+| Outcome evaluation | Required | Metrics measure activity and heuristic context efficiency, not correctness | Stated quality and cost benefits cannot yet be demonstrated. |
 
 ## Runtime Config Validation
 
 | Area | Status | Evidence |
 |---|---|---|
-| Config file exists | Pass | `docs/ai/config/runtime-config.yaml` exists. |
-| Config README exists | Pass | `docs/ai/config/README.md` exists. |
-| Schema exists | Pass | `docs/ai/skills/governance/runtime-config-schema.md` exists. |
-| `version` | Pass | `version: 1`. |
-| `runtime.rtk` | Pass | `auto` is allowed. |
-| `context.mode` | Pass | `conservative` is allowed and low-cost by default. |
-| `context.reference_docs` | Pass | `false` preserves non-runtime reference boundary. |
-| `context.repo_context` | Pass | `on_demand` preserves low-token repo-context use. |
-| `context.source_reading` | Pass | `exact_only` minimizes source reads. |
-| `context.diff_first` | Pass | `true` preserves review efficiency. |
-| `context.prefer_existing_summaries` | Pass | `true` favors existing markdown memory before expansion. |
-| `context.broad_scan` | Pass | `false` blocks broad default reads. |
-| `context.extra_file_justification` | Pass | `true` preserves explicit context expansion. |
-| `context.context_expansion_notice` | Pass | `true` supports visible scope changes. |
-| `context.final_response_detail` | Pass | `concise` reduces default response cost. |
-| `terminal.output.*` | Pass | Summary-first settings are enabled while raw output remains available on error or request. |
-| `observability.enabled` | Pass | `true`; can be set to `false` to disable observability. |
-| `observability.metrics.enabled` | Pass | `true`; can be set to `false` to disable metrics only. |
-| `observability.metrics.exact_token_tracking` | Pass | `false`, as required. |
-| `observability.metrics.external_telemetry` | Pass | `false`, as required. |
+| Required root keys | Pass | `version`, `runtime`, `context`, `terminal`, and `observability` exist. |
+| `runtime.rtk` | Pass | `auto` is allowed and non-blocking. |
+| Context values | Pass | Conservative mode, exact source reading, diff-first review, and broad scan disabled. |
+| Terminal values | Pass | Summary-first output with raw output retained for errors and explicit requests. |
+| Observability values | Pass | Required booleans are present. |
+| Forbidden telemetry | Pass | Exact token tracking and external telemetry are both disabled. |
+| Safety precedence | Pass | Config does not override source permissions, review restrictions, or reference boundaries. |
 
-## Dependency Analysis
+## Workflow Cohesion
 
-Runtime dependency flow remains:
+### PBI Workflow
 
-```text
-AGENTS.md or CLAUDE.md
--> docs/ai/START_HERE.md
--> docs/ai/skills/README.md
--> docs/ai/config/runtime-config.yaml when it exists
--> selected skill only
--> active workspace
--> repo-context only if needed
--> exact source files only if needed
-```
+The clarification-to-handoff sequence is coherent and has clear workspace artifacts. Phase boundaries and stop conditions reduce uncontrolled implementation. However, policy loading is not deterministic: implementation and review skills refer broadly to governance or say they check code policy, but their `Read` sections do not require loading the applicable policy index or resolved policy entries. Under conservative context rules, an agent can legally skip CP-001 or future policies.
 
-The config read is limited to runtime preferences and does not authorize broader context loading.
+### Review Workflow
 
-## Runtime Config Ownership
+Diff-first local review is a strong low-cost design. English PR comments and Persian internal reasoning are usefully separated. The workflow would be more reliable if every finding required an evidence locator, observed behavior, expected behavior, and validation state rather than relying only on prose instructions not to invent findings.
 
-| Topic | Canonical File | Status |
-|---|---|---|
-| Allowed config values | `docs/ai/skills/governance/runtime-config-schema.md` | Pass |
-| Context-cost behavior | `docs/ai/skills/governance/context-management.md` | Pass |
-| Terminal output behavior | `docs/ai/skills/governance/terminal-output-optimization.md` | Pass |
-| Observability and metrics behavior | `docs/ai/skills/governance/observability.md` | Pass |
-| Runtime entry pointer | `docs/ai/START_HERE.md` | Pass |
-| Config user guide | `docs/ai/config/README.md` | Pass |
+### Repo Context
+
+Ownership is clear and updates are restricted to a dedicated skill. This prevents casual drift, but the stored knowledge lacks mandatory provenance and freshness metadata. Restricting writers controls who can change memory; it does not prove that the memory is still correct.
+
+### Multi-Agent Collaboration
+
+Markdown is portable and agent-neutral, but shared storage alone is not a collaboration protocol. The system needs a minimal rule for concurrent writers: single-writer ownership per workspace artifact, pre-write change detection, append-only logs where appropriate, and explicit conflict handoff.
 
 ## Context Efficiency Metrics
 
 | Skill / Area | Expected Read Scope | Context Expansion Count | Estimated Read Cost | Efficiency Status | Recommendation |
 |---|---|---:|---|---|---|
-| Daily runtime routing | Agent entry, `START_HERE.md`, `skills/README.md`, config if present, selected skill only | 0 | Low | Good | Keep `context.mode: conservative` for default projects. |
-| PBI workflow | Selected PBI skill, active PBI workspace, repo-context on demand, exact source files only | 2 | Medium | Good | Preserve `source_reading: exact_only` unless planning quality requires targeted reads. |
-| Review workflow | Selected review skill, active review workspace, local git diff, changed files only when needed | 1 | Medium | Good | Keep `diff_first: true`. |
-| PR review workflow | `pr_review_workflow`, local git diff, changed files, review workspace | 1 | Medium | Good | Keep review local and avoid PR API expansion. |
-| Tools workflow | Selected tool skill plus owned target docs | 1 | Medium | Good | Keep tool reports governed by `observability.metrics.tool_reports`. |
-| System health check | Runtime docs, config, schema, governance, policies, selected skills, selected reference health material | 4 | High | Acceptable | Full deep checks are appropriate after governance/config changes. |
-| Reference material | Explicit user request only | 0 | Low | Good | Keep `context.reference_docs: false` for runtime use. |
+| Daily runtime routing | Agent entry, routing files, config, selected skill | 0 | Low | Good | Keep the current cold-start path. |
+| PBI clarification/workspace | User input and active workspace | 0-1 | Low | Good | Preserve narrow reads. |
+| PBI planning | Active workspace, routed repo-context, targeted source | 2 | Medium | Acceptable | Require evidence for facts promoted into durable memory. |
+| PBI implementation/fix | Active phase, target files, validation, applicable policy | 1-2 | Medium | Warning | Resolve and load applicable policies deterministically. |
+| PBI review | Diff, changed files, validation, applicable policy | 1-2 | Medium | Warning | Add evidence locators and policy-resolution output. |
+| Review workflow | Review workspace, local diff, changed files | 1 | Medium | Good | Keep diff-first behavior. |
+| Repo-context update | Existing memory and targeted source | 1 | Medium | Warning | Store verification metadata and source anchors. |
+| System health check | Runtime docs, all skills, governance, policy, foundation history | 4 | High | Acceptable | Appropriate only for explicit system audits. |
 
-## Runtime Config Alignment
-
-| Config Area | Alignment | Notes |
-|---|---|---|
-| `context.*` | Pass | Reduces token cost through conservative mode, exact source reads, no broad scans, and concise final responses. |
-| `terminal.output.*` | Pass | Reduces terminal output cost while preserving raw output on errors or explicit request. |
-| `runtime.rtk` | Pass | RTK remains optional and non-blocking. |
-| `observability.*` | Pass | Metrics and observability can be disabled globally or by sub-feature. |
-| Safety guardrails | Pass | Config does not override source-code permissions, review-only restrictions, markdown reporting, or reference boundary. |
-
-## Skill Output Validation
-
-PBI, Review, and PR workflow skills include `Metrics Updated` in final output guidance when enabled by runtime config.
-
-Checked 14 skill files:
-
-- 8 PBI skills
-- 5 Review skills
-- 1 PR workflow skill
-
-No missing `Metrics Updated` final-output guidance was found.
-
-## Governance Validation
-
-Canonical governance ownership is clear:
-
-- Common rules: `docs/ai/skills/governance/common-rules.md`
-- Read order: `docs/ai/skills/governance/read-order.md`
-- Context management: `docs/ai/skills/governance/context-management.md`
-- Runtime config schema: `docs/ai/skills/governance/runtime-config-schema.md`
-- Markdown reporting: `docs/ai/skills/governance/markdown-change-reporting.md`
-- Observability: `docs/ai/skills/governance/observability.md`
-- Skill template: `docs/ai/skills/governance/skill-template.md`
-- System health policy: `docs/ai/skills/governance/system-health-policy.md`
-- Terminal output optimization: `docs/ai/skills/governance/terminal-output-optimization.md`
-
-Runtime docs contain short pointers only and do not duplicate full governance rules.
-
-## Policy Validation
-
-Canonical repo policy ownership remains unchanged:
-
-- Code policies: `docs/ai/repo-context/policy/code-policies.md`
-- Coding standards: `docs/ai/repo-context/policy/coding_standards.md`
-- Context budget: `docs/ai/repo-context/policy/context_budget.md`
-
-Repo-context ownership remains preserved.
-
-## Backward Compatibility Validation
-
-Backward compatibility is preserved:
-
-- Old skill invocation mappings remain in `docs/ai/skills/README.md`.
-- Legacy governance paths remain compatibility pointers under `docs/ai/governance/`.
-- Legacy repo policy paths remain compatibility pointers under `docs/ai/repo-context/`.
-- No skill was renamed.
-- No workflow behavior was changed.
-
-## Foundation And Reference Status
-
-Foundation history remains non-runtime.
-
-Historical foundation content lives under:
-
-```text
-docs/ai/reference/history/foundation/
-```
-
-`docs/ai/reference/**` remains non-runtime and is not read during normal execution unless explicitly requested for guides, prompts, validation, history, decisions, system health, or AI OS maintenance.
+The current `Files Changed / Files Read` and `Source Files Reviewed / Files Read` ratios are useful workload signals but unsafe as quality goals. Optimizing them can reward under-reading or unnecessary edits. Treat them as descriptive metrics only.
 
 ## Findings
 
-| ID | Area | Type | Severity | Issue | Recommendation |
+| ID | Area | Type | Severity | Issue | Required Action |
 |---|---|---|---|---|---|
-| F-001 | Runtime Config | information | Low | Runtime config is now governed by schema and canonical config behavior docs. | Keep `tools_system_health_check` config-aware after future config keys are added. |
-| F-002 | Token Cost | information | Low | Default config is low-cost: conservative context, no reference docs, exact source reads, no broad scans, summary terminal output. | Use `balanced` or `deep` only for tasks that need broader analysis. |
-| F-003 | Observability | information | Low | Observability can be disabled globally through `observability.enabled: false` or metrics-only through `observability.metrics.enabled: false`. | Keep project-specific config values explicit. |
+| F-001 | Memory reliability | required | High | Durable repo-context and subsystem knowledge do not require provenance, verification date, source revision, or fact/inference classification. | Define a compact evidence and freshness header for reusable knowledge and require it in `tools_repo_context_update`. |
+| F-002 | Policy enforcement | required | High | Implementation and review paths do not deterministically resolve and read applicable code policies under conservative context settings. | Add a small policy index/resolution step and record which policy IDs were applied or found not applicable. |
+| F-003 | Multi-agent safety | required | High | Multiple agents can write the same workspace or aggregate metrics without ownership or conflict detection. | Define single-writer artifact ownership, pre-write change detection, append-only rules, and conflict escalation. |
+| F-004 | Validation | required | High | No repeatable eval demonstrates reduced hallucination, drift, context cost, or defect rate. | Create a small versioned golden-task suite and compare baseline versus AI OS outcomes using qualitative cost levels and correctness checks. |
+| F-005 | Review evidence | optional | Medium | Review findings are instructed to be supported but have no mandatory evidence schema. | Require file/line or diff anchor, observed behavior, expected behavior, severity rationale, and validation state. |
+| F-006 | Metrics | optional | Medium | Activity ratios can be mistaken for optimization objectives and do not measure result quality. | Label ratios descriptive-only and pair them with acceptance-criteria pass rate, escaped-defect count, and rework count. |
+| F-007 | Skill metadata | optional | Medium | Parameter types, allowed values, and conditional requirements are inconsistent across skills and are not machine-validated. | Add a lightweight linter for required sections, parameters, paths, and enum consistency without replacing Markdown as the source of truth. |
+| F-008 | Agent adapters | optional | Low | Claude has an adapter but other agents rely only on the generic contract. | Add adapters only when a real agent-specific incompatibility is observed; avoid speculative duplication. |
 
-## Duplicate Rules
+## Hallucination And Concept Drift Assessment
 
-No harmful duplicated governance blocks were found.
+| Control | Current Strength | Remaining Gap |
+|---|---|---|
+| Minimal read path | Strong | Smaller context reduces noise but does not establish truth. |
+| Clarification before implementation | Strong | Ambiguity is reduced, but assumptions are not uniformly tagged and verified. |
+| Workspace separation | Strong | Prevents category mixing but not stale or unsupported facts within a category. |
+| Canonical ownership | Strong | Prevents uncontrolled writes but not incorrect authorized writes. |
+| Stop conditions | Moderate | Depend on agent compliance and lack automated conformance tests. |
+| Metrics | Weak for quality claims | Current metrics cannot attribute hallucination or drift reduction. |
 
-Runtime docs point to canonical governance instead of repeating full rules.
+## Backward Compatibility
 
-## Stale References
+- Old skill invocation mappings remain registered in `docs/ai/skills/README.md`.
+- Legacy governance and repo-policy paths remain compatibility pointers.
+- Historical foundation files are clearly marked non-runtime.
+- Historical old paths do not override current runtime authority.
 
-No stale active runtime references were found.
+Status: Pass.
 
-Historical references inside preserved history files remain historical records only.
+## Duplicate And Stale Content
 
-## Orphaned Files
+No harmful duplication was found in the active runtime path. Compatibility pointers are short and intentional. Historical foundation files contain old paths and names, but the foundation README correctly classifies them as historical-only.
 
-No active runtime orphan was found.
-
-`docs/ai/config/README.md` and `docs/ai/skills/governance/runtime-config-schema.md` are both indexed or referenced from runtime/governance paths.
-
-## Risk Assessment
-
-| Risk | Severity | Evidence | Recommendation |
-|---|---|---|---|
-| Config Misinterpretation | Low | Schema now defines allowed values. | Validate schema during health checks after config changes. |
-| Over-Minimization | Low | `context-management.md` states quality takes priority over context minimization. | Do not treat config as hard token quotas. |
-| Review Safety Regression | Low | Config explicitly does not override review-only guardrails. | Keep review workflows local-git-only. |
-| Observability Noise | Low | Observability has master disable switches. | Disable per project when metrics are not useful. |
-| Terminal Output Loss | Low | Raw output remains available on error or explicit request. | Keep `raw_output_on_error: true`. |
+The main staleness risk is semantic rather than structural: reusable knowledge has no required freshness marker.
 
 ## Required Actions
 
-None.
+1. Introduce an evidence and freshness contract for reusable knowledge.
+2. Make applicable code-policy loading deterministic in implementation and review skills.
+3. Add a minimal multi-agent write-conflict protocol.
+4. Build a small golden-task evaluation suite before making measurable reliability or cost claims.
 
-## Optional Improvements
+## Recommended Implementation Order
 
-- Add a lightweight example config preset section later if multiple projects need common profiles such as `low_cost`, `balanced`, or `deep_review`.
-- Run short health checks after minor config edits and full health checks after governance/config schema changes.
+```text
+Evidence contract
+-> policy resolution
+-> multi-agent write safety
+-> golden-task evals
+-> optional skill linter
+```
+
+This order hardens truth and execution first, then measures whether the hardening works.
 
 ## Final Recommendation
 
-The V2 AI Operating System is Ready.
-
-Runtime config, context management, terminal output optimization, and observability controls are cohesive, configurable, low-token by default, and compatible with existing V2 workflow guardrails.
+Keep V2 and evolve it incrementally. Do not introduce a new architecture generation. The current design is a good pilot foundation, but it should be described as a disciplined Markdown workflow system until evidence freshness, concurrent writes, and outcome evaluation are implemented.
