@@ -6,6 +6,7 @@ import process from "node:process";
 import { fileURLToPath } from "node:url";
 import Ajv2020 from "ajv/dist/2020.js";
 import { parseDocument } from "yaml";
+import { validatePolicy } from "./policy_validation.mjs";
 
 const toolDirectory = path.dirname(fileURLToPath(import.meta.url));
 const docsDirectory = path.resolve(toolDirectory, "..");
@@ -29,7 +30,7 @@ class ValidatorInvocationError extends Error {
 function usage() {
   return [
     "Usage:",
-    "  node docs/ai/tools/validate_config.mjs <config-path> [--type <document-type>] [--json]",
+    "  node docs/ai/tools/validate_config.mjs <config-path> [--type <document-type>] [--repository <runtime-config-path>] [--json]",
     "  node docs/ai/tools/validate_config.mjs --fixtures [--json]",
     "",
     "Document types: repository_runtime_config, stp_config, capability_registry"
@@ -37,7 +38,7 @@ function usage() {
 }
 
 function parseArguments(argumentsList) {
-  const options = { json: false, fixtures: false, type: undefined, typeProvided: false, file: undefined };
+  const options = { json: false, fixtures: false, type: undefined, typeProvided: false, repository: undefined, repositoryProvided: false, file: undefined };
   for (let index = 0; index < argumentsList.length; index += 1) {
     const argument = argumentsList[index];
     if (argument === "--json") options.json = true;
@@ -47,6 +48,12 @@ function parseArguments(argumentsList) {
       if (!requestedType || requestedType.startsWith("--")) throw new ValidatorInvocationError("--type requires a document type.");
       options.type = requestedType;
       options.typeProvided = true;
+      index += 1;
+    } else if (argument === "--repository") {
+      const repository = argumentsList[index + 1];
+      if (!repository || repository.startsWith("--")) throw new ValidatorInvocationError("--repository requires a runtime configuration path.");
+      options.repository = repository;
+      options.repositoryProvided = true;
       index += 1;
     } else if (argument === "--help" || argument === "-h") options.help = true;
     else if (!options.file) options.file = argument;
@@ -213,7 +220,7 @@ async function parseYaml(filePath) {
   return { data };
 }
 
-async function validateConfig(filePath, requestedType, inferencePath = filePath) {
+async function validateDocument(filePath, requestedType, inferencePath = filePath) {
   let documentType;
   if (requestedType !== undefined) {
     documentType = normalizeDocumentType(requestedType);
@@ -224,7 +231,7 @@ async function validateConfig(filePath, requestedType, inferencePath = filePath)
   }
 
   const parsed = await parseYaml(filePath);
-  if (parsed.errors) return { status: "invalid_config", document_type: documentType, schema_validation: "not_run", validator_validation: "invalid", errors: parsed.errors, warnings: [] };
+  if (parsed.errors) return { data: undefined, result: { status: "invalid_config", document_type: documentType, schema_validation: "not_run", validator_validation: "invalid", errors: parsed.errors, warnings: [] } };
 
   const schema = await loadSchema(documentType);
   const ajv = new Ajv2020({ allErrors: true, strict: true, strictRequired: false, validateFormats: false });
@@ -233,14 +240,40 @@ async function validateConfig(filePath, requestedType, inferencePath = filePath)
   const errors = schemaValid ? [] : (validate.errors ?? []).map((error) => mapSchemaError(documentType, schema, parsed.data, error));
   if (schemaValid && documentType === "capability_registry") errors.push(...duplicateProviderFindings(parsed.data));
 
+  return { data: parsed.data, result: { status: errors.length === 0 ? "valid" : "invalid_config", document_type: documentType, schema_validation: schemaValid ? "valid" : "invalid", validator_validation: errors.length === 0 ? "valid" : "invalid", errors, warnings: [] } };
+}
+
+function policyNotApplicable(result) {
+  return { ...result, policy_validation: "not_applicable", policy_trace: undefined };
+}
+
+async function validateConfig(filePath, requestedType, repositoryPath, inferencePath = filePath) {
+  const target = await validateDocument(filePath, requestedType, inferencePath);
+  if (target.result.status !== "valid") return policyNotApplicable(target.result);
+  if (target.result.document_type === "capability_registry") return policyNotApplicable(target.result);
+
+  let repository;
+  if (repositoryPath) {
+    repository = await validateDocument(repositoryPath, "repository_runtime_config");
+    if (repository.result.status !== "valid") {
+      return policyNotApplicable({
+        ...target.result,
+        status: "invalid_config",
+        errors: repository.result.errors.map((finding) => ({ ...finding, path: `repository.${finding.path}` }))
+      });
+    }
+  }
+
+  const policy = validatePolicy({
+    repositoryConfig: target.result.document_type === "repository_runtime_config" ? target.data : repository?.data,
+    stpConfig: target.result.document_type === "stp_config" ? target.data : undefined
+  });
   return {
-    status: errors.length === 0 ? "valid" : "invalid_config",
-    document_type: documentType,
-    schema_validation: schemaValid ? "valid" : "invalid",
-    validator_validation: errors.length === 0 ? "valid" : "invalid",
-    errors,
-    warnings: documentType === "stp_config" ? [{ code: "POLICY_VALIDATION_DEFERRED", message: "Policy-aware validation is not implemented." }] : [],
-    policy_validation: documentType === "stp_config" ? "deferred" : "not_applicable"
+    ...target.result,
+    status: policy.policy_validation === "passed" ? "valid" : "invalid_config",
+    policy_validation: policy.policy_validation,
+    policy_trace: policy.trace,
+    errors: [...target.result.errors, ...policy.errors]
   };
 }
 
@@ -283,6 +316,7 @@ async function runInvocationCase(invocationCase) {
     result = await validateConfig(
       path.join(fixtureDirectory, invocationCase.fixture),
       invocationCase.requested_type,
+      undefined,
       path.join(docsDirectory, invocationCase.inferred_path)
     );
     exitCode = result.status === "valid" ? 0 : 1;
@@ -310,15 +344,20 @@ async function runFixtures(asJson) {
   const invocationCases = manifest.toJS({ maxAliasCount: 0 }).invocation_cases ?? [];
   const results = [];
   for (const fixtureCase of cases) {
-    const result = await validateConfig(path.join(fixtureDirectory, fixtureCase.fixture), fixtureCase.document_type);
+    const result = await validateConfig(
+      path.join(fixtureDirectory, fixtureCase.fixture),
+      fixtureCase.document_type,
+      fixtureCase.repository_fixture ? path.join(fixtureDirectory, fixtureCase.repository_fixture) : undefined
+    );
     const actualSchemaResult = result.schema_validation;
     const actualValidatorResult = result.validator_validation;
     const expectedCode = fixtureCase.expected_code;
+    const expectedPolicyCode = fixtureCase.expected_policy_code;
     const actualCodes = result.errors.map((error) => error.code);
     const expectedPolicyValidation = fixtureCase.expected_policy_validation;
     const actualPolicyValidation = result.policy_validation;
-    const passed = actualSchemaResult === fixtureCase.expected_schema_result && actualValidatorResult === fixtureCase.expected_validator_result && (!expectedCode || actualCodes.includes(expectedCode)) && (expectedPolicyValidation === undefined || actualPolicyValidation === expectedPolicyValidation);
-    results.push({ fixture: fixtureCase.fixture, passed, expected_schema_result: fixtureCase.expected_schema_result, actual_schema_result: actualSchemaResult, expected_validator_result: fixtureCase.expected_validator_result, actual_validator_result: actualValidatorResult, expected_code: expectedCode, actual_codes: actualCodes, expected_policy_validation: expectedPolicyValidation, actual_policy_validation: actualPolicyValidation });
+    const passed = actualSchemaResult === fixtureCase.expected_schema_result && actualValidatorResult === fixtureCase.expected_validator_result && (!expectedCode || actualCodes.includes(expectedCode)) && (expectedPolicyValidation === undefined || actualPolicyValidation === expectedPolicyValidation) && (!expectedPolicyCode || actualCodes.includes(expectedPolicyCode));
+    results.push({ fixture: fixtureCase.fixture, repository_fixture: fixtureCase.repository_fixture, passed, expected_schema_result: fixtureCase.expected_schema_result, actual_schema_result: actualSchemaResult, expected_validator_result: fixtureCase.expected_validator_result, actual_validator_result: actualValidatorResult, expected_code: expectedCode, expected_policy_code: expectedPolicyCode, actual_codes: actualCodes, expected_policy_validation: expectedPolicyValidation, actual_policy_validation: actualPolicyValidation });
   }
   const invocationResults = [];
   for (const invocationCase of invocationCases) invocationResults.push(await runInvocationCase(invocationCase));
@@ -341,11 +380,12 @@ async function main() {
   }
   if (!options.fixtures && !options.file) throw new ValidatorInvocationError("A configuration path or --fixtures is required.");
   if (options.fixtures) {
-    if (options.file || options.typeProvided) throw new ValidatorInvocationError("--fixtures cannot be combined with a file or --type.");
+    if (options.file || options.typeProvided || options.repositoryProvided) throw new ValidatorInvocationError("--fixtures cannot be combined with a file, --type, or --repository.");
     const summary = await runFixtures(options.json);
     return summary.status === "passed" ? 0 : 2;
   }
-  const result = await validateConfig(path.resolve(options.file), options.type);
+  if (options.repositoryProvided && normalizeDocumentType(options.type) !== "stp_config") throw new ValidatorInvocationError("--repository is only supported when validating an STP configuration with --type stp_config.");
+  const result = await validateConfig(path.resolve(options.file), options.type, options.repository ? path.resolve(options.repository) : undefined);
   printResult(result, options.json);
   return result.status === "valid" ? 0 : 1;
 }
