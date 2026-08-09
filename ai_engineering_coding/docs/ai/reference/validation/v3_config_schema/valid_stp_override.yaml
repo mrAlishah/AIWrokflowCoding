@@ -1,0 +1,20 @@
+version: 3
+profile: critical
+
+workflow:
+  independent_review: strict
+
+research:
+  mode: required_for_currentness
+
+quality:
+  require_acceptance_criteria: true
+
+localization:
+  artifacts:
+    human_decision: fa
+    pr_comment: en
+
+capabilities:
+  preferred:
+    test: repository_tests

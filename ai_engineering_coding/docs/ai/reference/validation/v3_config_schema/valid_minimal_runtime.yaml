@@ -1,0 +1,11 @@
+version: 3
+profile: standard
+
+security:
+  profile: strict
+
+learning:
+  mode: important_only
+
+localization:
+  interaction_language: fa

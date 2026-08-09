@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-engineering-coding.local/docs/ai/config/schema/runtime_config.schema.json",
+  "title": "V3 repository runtime configuration",
+  "description": "Schema for docs/ai/config/runtime_config.yaml. Policy remains external to this document.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version"],
+  "properties": {
+    "version": { "const": 3 },
+    "profile": { "$ref": "#/$defs/profile" },
+    "experience": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": { "proactive_advisor": { "type": "boolean" } }
+    },
+    "workflow": { "$ref": "#/$defs/workflow" },
+    "risk": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": { "unknown_high_impact": { "const": "targeted_clarification" } }
+    },
+    "decision_policy": { "$ref": "#/$defs/reserved_preference_section" },
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "profile": { "enum": ["strict", "standard"] },
+        "preferred_scanners": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/provider_identifier" },
+          "uniqueItems": true
+        },
+        "network_default_posture": { "enum": ["deny", "when_required"] },
+        "dependency_review": { "enum": ["risk_based", "required"] }
+      }
+    },
+    "human_in_loop": { "$ref": "#/$defs/human_in_loop" },
+    "learning": { "$ref": "#/$defs/learning" },
+    "localization": { "$ref": "#/$defs/localization" },
+    "quality": { "$ref": "#/$defs/reserved_preference_section" },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "registry": { "const": "capabilities.yaml" },
+        "preferred": { "$ref": "#/$defs/provider_preferences" },
+        "fallback": { "$ref": "#/$defs/provider_preferences" }
+      }
+    },
+    "observability": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "metrics": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "enabled": { "type": "boolean" },
+            "workspace_records": { "type": "boolean" },
+            "central_dashboards": { "type": "boolean" },
+            "final_response_status": { "type": "boolean" },
+            "tool_reports": { "type": "boolean" },
+            "exact_token_tracking": { "const": false },
+            "external_telemetry": { "const": false }
+          }
+        }
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": { "enum": ["conservative", "balanced", "deep"] },
+        "reference_docs": { "type": "boolean" },
+        "repo_context": { "enum": ["never", "on_demand", "when_skill_requires"] },
+        "source_reading": { "enum": ["exact_only", "targeted", "expanded_when_needed"] },
+        "diff_first": { "type": "boolean" },
+        "prefer_existing_summaries": { "type": "boolean" },
+        "broad_scan": { "type": "boolean" },
+        "extra_file_justification": { "type": "boolean" },
+        "context_expansion_notice": { "type": "boolean" },
+        "final_response_detail": { "enum": ["concise", "standard", "detailed"] }
+      }
+    },
+    "terminal": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "output": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "prefer_summary": { "type": "boolean" },
+            "raw_output_on_error": { "type": "boolean" },
+            "raw_output_when_requested": { "type": "boolean" },
+            "summarize_success_output": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "research": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": { "mode": { "enum": ["off", "when_material", "required_for_currentness"] } }
+    }
+  },
+  "$defs": {
+    "profile": { "enum": ["fast", "standard", "critical"] },
+    "language_code": {
+      "type": "string",
+      "pattern": "^[a-z]{2}$",
+      "description": "Lowercase ISO 639-1-style language code; supported-language checks are policy or doctor work."
+    },
+    "artifact_languages": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "human_decision": { "$ref": "#/$defs/language_code" },
+        "learning": { "$ref": "#/$defs/language_code" },
+        "handoff": { "$ref": "#/$defs/language_code" },
+        "internal_review_suggestion": { "$ref": "#/$defs/language_code" },
+        "implementation_plan": { "$ref": "#/$defs/language_code" },
+        "phase": { "$ref": "#/$defs/language_code" },
+        "pr_comment": { "$ref": "#/$defs/language_code" },
+        "adr": { "$ref": "#/$defs/language_code" }
+      }
+    },
+    "localization": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "interaction_language": { "$ref": "#/$defs/language_code" },
+        "artifacts": { "$ref": "#/$defs/artifact_languages" }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "planning": { "enum": ["auto", "required", "skip_when_low_risk"] },
+        "design_review": { "enum": ["risk_based", "required", "disabled_when_permitted"] },
+        "independent_review": { "enum": ["risk_based", "required", "strict"] },
+        "security_review": { "enum": ["risk_based", "required"] }
+      }
+    },
+    "human_in_loop": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "strategy": { "enum": ["risk_based", "explicit_only", "recommend_then_ask"] },
+        "recommend_before_ask": { "type": "boolean" },
+        "avoid_unnecessary_questions": { "type": "boolean" },
+        "decision_artifact_language": { "$ref": "#/$defs/language_code" }
+      }
+    },
+    "learning": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "mode": { "enum": ["off", "important_only", "detailed"] },
+        "artifact_language": { "$ref": "#/$defs/language_code" },
+        "generate": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "architecture_decisions": { "type": "boolean" },
+            "new_patterns": { "type": "boolean" },
+            "important_commands": { "type": "boolean" },
+            "debugging_notes": { "type": "boolean" }
+          }
+        }
+      }
+    },
+    "provider_identifier": { "type": "string", "pattern": "^[a-z][a-z0-9_]{0,63}$" },
+    "provider_preferences": {
+      "type": "object",
+      "propertyNames": { "pattern": "^[a-z][a-z0-9_]{0,63}$" },
+      "additionalProperties": { "$ref": "#/$defs/provider_identifier" }
+    },
+    "reserved_preference_section": {
+      "type": "object",
+      "description": "This V3 boundary has no approved configurable fields yet.",
+      "additionalProperties": false
+    }
+  }
+}
