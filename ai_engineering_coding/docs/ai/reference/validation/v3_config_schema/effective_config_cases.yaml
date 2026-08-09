@@ -1,0 +1,75 @@
+cases:
+  - id: defaults_only
+    expected_status: resolved
+    expected_value_path: learning.mode
+    expected_value: important_only
+    expected_source_path: learning.mode
+    expected_source: system_default
+  - id: repository_profile_standard
+    repository_fixture: valid_minimal_runtime.yaml
+    expected_status: resolved
+    expected_value_path: profile
+    expected_value: standard
+    expected_source_path: profile
+    expected_source: repository_config
+  - id: repository_explicit_override
+    repository_fixture: valid_advanced_runtime.yaml
+    capabilities_fixture: valid_capabilities.yaml
+    expected_status: resolved
+    expected_value_path: learning.mode
+    expected_value: detailed
+    expected_source_path: learning.mode
+    expected_source: repository_config
+  - id: stp_learning_override
+    repository_fixture: policy_repository_learning_detailed.yaml
+    stp_fixture: policy_valid_stp_override_learning.yaml
+    expected_status: resolved
+    expected_value_path: learning.mode
+    expected_value: off
+    expected_source_path: learning.mode
+    expected_source: stp_config
+  - id: stp_research_override
+    repository_fixture: policy_repository_research_when_material.yaml
+    stp_fixture: policy_valid_stp_override_research.yaml
+    expected_status: resolved
+    expected_value_path: research.mode
+    expected_value: off
+    expected_source_path: research.mode
+    expected_source: stp_config
+  - id: stp_review_strengthening
+    repository_fixture: policy_repository_review_risk_based.yaml
+    stp_fixture: policy_valid_stp_strengthen_review.yaml
+    expected_status: resolved
+    expected_value_path: workflow.independent_review
+    expected_value: required
+    expected_source_path: workflow.independent_review
+    expected_source: stp_config
+  - id: stp_localization_override
+    repository_fixture: valid_advanced_runtime.yaml
+    stp_fixture: valid_stp_override.yaml
+    capabilities_fixture: valid_capabilities.yaml
+    expected_status: resolved
+    expected_value_path: localization.artifacts.human_decision
+    expected_value: fa
+    expected_source_path: localization.artifacts.human_decision
+    expected_source: stp_config
+  - id: provider_preference_override
+    repository_fixture: valid_advanced_runtime.yaml
+    stp_fixture: valid_stp_override.yaml
+    capabilities_fixture: valid_capabilities.yaml
+    expected_status: resolved
+    expected_value_path: capabilities.preferred.test
+    expected_value: repository_tests
+    expected_source_path: capabilities.preferred.test
+    expected_source: stp_config
+  - id: missing_field_inherits
+    repository_fixture: valid_minimal_runtime.yaml
+    expected_status: resolved
+    expected_value_path: context.mode
+    expected_value: conservative
+    expected_source_path: context.mode
+    expected_source: system_default
+  - id: policy_invalid_does_not_resolve
+    repository_fixture: policy_repository_review_required.yaml
+    stp_fixture: policy_invalid_stp_weaken_review.yaml
+    expected_status: blocked
