@@ -1,0 +1,85 @@
+version: 3
+profile: standard
+
+experience:
+  proactive_advisor: true
+
+workflow:
+  planning: auto
+  design_review: risk_based
+  independent_review: strict
+  security_review: risk_based
+
+risk:
+  unknown_high_impact: targeted_clarification
+
+security:
+  profile: strict
+  preferred_scanners:
+    - configured_scanner
+  network_default_posture: when_required
+  dependency_review: required
+
+human_in_loop:
+  strategy: risk_based
+  recommend_before_ask: true
+  avoid_unnecessary_questions: true
+  decision_artifact_language: fa
+
+learning:
+  mode: detailed
+  artifact_language: fa
+  generate:
+    architecture_decisions: true
+    new_patterns: true
+    important_commands: true
+    debugging_notes: true
+
+localization:
+  interaction_language: fa
+  artifacts:
+    human_decision: fa
+    learning: fa
+    pr_comment: en
+    adr: en
+
+capabilities:
+  registry: capabilities.yaml
+  preferred:
+    test: repository_tests
+    security_scan: configured_scanner
+  fallback:
+    test: alternate_tests
+
+observability:
+  enabled: true
+  metrics:
+    enabled: true
+    workspace_records: true
+    central_dashboards: true
+    final_response_status: true
+    tool_reports: true
+    exact_token_tracking: false
+    external_telemetry: false
+
+context:
+  mode: balanced
+  reference_docs: false
+  repo_context: on_demand
+  source_reading: targeted
+  diff_first: true
+  prefer_existing_summaries: true
+  broad_scan: false
+  extra_file_justification: true
+  context_expansion_notice: true
+  final_response_detail: standard
+
+terminal:
+  output:
+    prefer_summary: true
+    raw_output_on_error: true
+    raw_output_when_requested: true
+    summarize_success_output: true
+
+research:
+  mode: when_material

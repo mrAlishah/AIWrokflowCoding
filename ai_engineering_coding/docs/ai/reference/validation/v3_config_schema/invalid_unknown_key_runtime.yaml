@@ -1,0 +1,3 @@
+version: 3
+profile: standard
+unbounded_automation: true
