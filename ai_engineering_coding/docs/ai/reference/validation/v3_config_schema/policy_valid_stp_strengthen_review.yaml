@@ -1,0 +1,3 @@
+version: 3
+workflow:
+  independent_review: required

@@ -1,0 +1,6 @@
+version: 3
+profile: standard
+workflow:
+  design_review: risk_based
+  independent_review: risk_based
+  security_review: risk_based
