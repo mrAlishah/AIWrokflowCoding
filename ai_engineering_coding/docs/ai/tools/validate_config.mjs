@@ -193,16 +193,16 @@ function duplicateProviderFindings(data) {
   return findings;
 }
 
-async function loadSchema(documentType) {
+async function loadSchema(documentType, readFileImpl = readFile) {
   const schemaName = schemas[documentType];
   if (!schemaName) throw new Error(`Unsupported document type: ${documentType}`);
-  return JSON.parse(await readFile(path.join(schemaDirectory, schemaName), "utf8"));
+  return JSON.parse(await readFileImpl(path.join(schemaDirectory, schemaName), "utf8"));
 }
 
-async function parseYaml(filePath) {
+async function parseYaml(filePath, readFileImpl = readFile) {
   let source;
   try {
-    source = await readFile(filePath, "utf8");
+    source = await readFileImpl(filePath, "utf8");
   } catch (error) {
     if (error.code === "ENOENT") throw new ValidatorInvocationError(`Configuration file does not exist: ${filePath}`);
     throw error;
@@ -227,7 +227,7 @@ async function parseYaml(filePath) {
   return { data };
 }
 
-async function validateDocument(filePath, requestedType, inferencePath = filePath) {
+async function validateDocument(filePath, requestedType, inferencePath = filePath, readFileImpl = readFile) {
   let documentType;
   if (requestedType !== undefined) {
     documentType = normalizeDocumentType(requestedType);
@@ -237,10 +237,10 @@ async function validateDocument(filePath, requestedType, inferencePath = filePat
     if (!documentType) throw new ValidatorInvocationError("Document type is required for this path. Pass --type.");
   }
 
-  const parsed = await parseYaml(filePath);
+  const parsed = await parseYaml(filePath, readFileImpl);
   if (parsed.errors) return { data: undefined, result: { status: "invalid_config", document_type: documentType, schema_validation: "not_run", validator_validation: "invalid", errors: parsed.errors, warnings: [] } };
 
-  const schema = await loadSchema(documentType);
+  const schema = await loadSchema(documentType, readFileImpl);
   const ajv = new Ajv2020({ allErrors: true, strict: true, strictRequired: false, validateFormats: false });
   const validate = ajv.compile(schema);
   const schemaValid = validate(parsed.data);
@@ -254,8 +254,17 @@ function laterStagesNotApplicable(result) {
   return { ...result, policy_validation: "not_applicable", policy_trace: undefined, capability_validation: "not_applicable" };
 }
 
-async function validateConfig(filePath, requestedType, repositoryPath, capabilitiesPath, inferencePath = filePath) {
-  const target = await validateDocument(filePath, requestedType, inferencePath);
+function internalValidationResult(result, parsedData, repositoryData, capabilitiesData) {
+  Object.defineProperties(result, {
+    parsed_data: { value: parsedData, enumerable: false },
+    repository_data: { value: repositoryData, enumerable: false },
+    capabilities_data: { value: capabilitiesData, enumerable: false }
+  });
+  return result;
+}
+
+export async function validateConfig(filePath, requestedType, repositoryPath, capabilitiesPath, inferencePath = filePath, readFileImpl = readFile) {
+  const target = await validateDocument(filePath, requestedType, inferencePath, readFileImpl);
   if (target.result.status !== "valid") return laterStagesNotApplicable(target.result);
   if (target.result.document_type === "capability_registry") return laterStagesNotApplicable(target.result);
   if (repositoryPath && target.result.document_type !== "stp_config") throw new ValidatorInvocationError("--repository is only supported when validating an STP configuration.");
@@ -263,7 +272,7 @@ async function validateConfig(filePath, requestedType, repositoryPath, capabilit
 
   let repository;
   if (repositoryPath) {
-    repository = await validateDocument(repositoryPath, "repository_runtime_config");
+    repository = await validateDocument(repositoryPath, "repository_runtime_config", repositoryPath, readFileImpl);
     if (repository.result.status !== "valid") {
       return laterStagesNotApplicable({
         ...target.result,
@@ -288,7 +297,7 @@ async function validateConfig(filePath, requestedType, repositoryPath, capabilit
 
   let capabilitiesRegistry;
   if (capabilitiesPath) {
-    const capabilities = await validateDocument(capabilitiesPath, "capability_registry");
+    const capabilities = await validateDocument(capabilitiesPath, "capability_registry", capabilitiesPath, readFileImpl);
     if (capabilities.result.status !== "valid") {
       return {
         ...policyResult,
@@ -304,12 +313,12 @@ async function validateConfig(filePath, requestedType, repositoryPath, capabilit
     stpConfig: target.result.document_type === "stp_config" ? target.data : undefined,
     capabilitiesRegistry
   });
-  return {
+  return internalValidationResult({
     ...policyResult,
     status: capability.capability_validation === "failed" ? "invalid_config" : policyResult.status,
     capability_validation: capability.capability_validation,
     errors: [...policyResult.errors, ...capability.errors]
-  };
+  }, target.data, repository?.data, capabilitiesRegistry);
 }
 
 function printResult(result, asJson) {
@@ -432,7 +441,7 @@ async function main() {
 
 const jsonRequested = process.argv.slice(2).includes("--json");
 
-main().then((exitCode) => { process.exitCode = exitCode; }).catch((error) => {
+if (process.argv[1] === fileURLToPath(import.meta.url)) main().then((exitCode) => { process.exitCode = exitCode; }).catch((error) => {
   printError(error, jsonRequested);
   process.exitCode = 2;
 });
