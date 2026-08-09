@@ -1,0 +1,4 @@
+version: 3
+capabilities:
+  preferred:
+    test: repository_tests
