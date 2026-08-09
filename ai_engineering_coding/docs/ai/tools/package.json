@@ -1,0 +1,13 @@
+{
+  "name": "ai-os-config-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "validate-config": "node validate_config.mjs",
+    "validate-config-fixtures": "node validate_config.mjs --fixtures"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "yaml": "2.9.0"
+  }
+}

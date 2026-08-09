@@ -2,32 +2,86 @@ cases:
   - fixture: valid_minimal_runtime.yaml
     document_type: repository_runtime_config
     expected_schema_result: valid
+    expected_validator_result: valid
     future_policy_result_if_applicable: valid
   - fixture: valid_advanced_runtime.yaml
     document_type: repository_runtime_config
     expected_schema_result: valid
+    expected_validator_result: valid
     future_policy_result_if_applicable: valid_if_provider_references_and_preferences_are_permitted
   - fixture: invalid_unknown_key_runtime.yaml
     document_type: repository_runtime_config
-    expected_schema_result: invalid_CFG_UNKNOWN_KEY
+    expected_schema_result: invalid
+    expected_validator_result: invalid
+    expected_code: CFG_UNKNOWN_KEY
   - fixture: invalid_enum_runtime.yaml
     document_type: repository_runtime_config
-    expected_schema_result: invalid_CFG_INVALID_VALUE
+    expected_schema_result: invalid
+    expected_validator_result: invalid
+    expected_code: CFG_INVALID_VALUE
+  - fixture: invalid_missing_version_runtime.yaml
+    document_type: repository_runtime_config
+    expected_schema_result: invalid
+    expected_validator_result: invalid
+    expected_code: CFG_MISSING_VERSION
+  - fixture: invalid_unsupported_version_runtime.yaml
+    document_type: repository_runtime_config
+    expected_schema_result: invalid
+    expected_validator_result: invalid
+    expected_code: COMPAT_UNSUPPORTED_VERSION
+  - fixture: invalid_language_runtime.yaml
+    document_type: repository_runtime_config
+    expected_schema_result: invalid
+    expected_validator_result: invalid
+    expected_code: LANG_INVALID
   - fixture: valid_stp_override.yaml
     document_type: stp_config
     expected_schema_result: valid
+    expected_validator_result: valid
     future_policy_result_if_applicable: valid_if_strengthening_is_permitted
   - fixture: invalid_stp_security_weakening_shape.yaml
     document_type: stp_config
-    expected_schema_result: invalid_STP_FORBIDDEN_OVERRIDE
+    expected_schema_result: invalid
+    expected_validator_result: invalid
+    expected_code: STP_UNKNOWN_KEY
   - fixture: policy_only_stp_weakening.yaml
     document_type: stp_config
     expected_schema_result: valid
-    future_policy_result_if_applicable: invalid_POLICY_WEAKENING_if_design_review_is_mandatory
+    expected_validator_result: valid
+    expected_policy_validation: deferred
+    future_policy_result_if_applicable: NOT_IMPLEMENTED
   - fixture: valid_capabilities.yaml
     document_type: capability_registry
     expected_schema_result: valid
+    expected_validator_result: valid
     future_policy_result_if_applicable: valid_if_availability_and_authority_are_verified
   - fixture: invalid_capability_inline_secret.yaml
     document_type: capability_registry
-    expected_schema_result: invalid_CAP_INLINE_SECRET
+    expected_schema_result: invalid
+    expected_validator_result: invalid
+    expected_code: CAP_INLINE_SECRET
+  - fixture: invalid_capability_missing_field.yaml
+    document_type: capability_registry
+    expected_schema_result: invalid
+    expected_validator_result: invalid
+    expected_code: CAP_MISSING_FIELD
+  - fixture: invalid_capability_duplicate_identifier.yaml
+    document_type: capability_registry
+    expected_schema_result: valid
+    expected_validator_result: invalid
+    expected_code: CAP_DUPLICATE_ID
+
+invocation_cases:
+  - id: invalid_explicit_type_on_canonical_runtime_path
+    fixture: valid_minimal_runtime.yaml
+    inferred_path: config/runtime_config.yaml
+    requested_type: unknown_type
+    expected_exit_code: 2
+    expected_code: CFG_INVALID_INVOCATION
+    expect_json: true
+  - id: ambiguous_document_type_json
+    fixture: valid_minimal_runtime.yaml
+    inferred_path: reference/validation/v3_config_schema/valid_minimal_runtime.yaml
+    expected_exit_code: 2
+    expected_code: CFG_INVALID_INVOCATION
+    expect_json: true
