@@ -7,9 +7,11 @@ cases:
     future_policy_result_if_applicable: valid
   - fixture: valid_advanced_runtime.yaml
     document_type: repository_runtime_config
+    capabilities_fixture: valid_capabilities.yaml
     expected_schema_result: valid
     expected_validator_result: valid
     expected_policy_validation: passed
+    expected_capability_validation: passed
     future_policy_result_if_applicable: valid_if_provider_references_and_preferences_are_permitted
   - fixture: invalid_unknown_key_runtime.yaml
     document_type: repository_runtime_config
@@ -44,9 +46,11 @@ cases:
   - fixture: valid_stp_override.yaml
     document_type: stp_config
     repository_fixture: valid_advanced_runtime.yaml
+    capabilities_fixture: valid_capabilities.yaml
     expected_schema_result: valid
     expected_validator_result: valid
     expected_policy_validation: passed
+    expected_capability_validation: passed
     future_policy_result_if_applicable: valid_if_strengthening_is_permitted
   - fixture: invalid_stp_security_weakening_shape.yaml
     document_type: stp_config
@@ -66,6 +70,7 @@ cases:
     expected_schema_result: valid
     expected_validator_result: valid
     expected_policy_validation: not_applicable
+    expected_capability_validation: not_applicable
     future_policy_result_if_applicable: valid_if_availability_and_authority_are_verified
   - fixture: invalid_capability_inline_secret.yaml
     document_type: capability_registry
@@ -122,6 +127,61 @@ cases:
     expected_schema_result: valid
     expected_validator_result: valid
     expected_policy_validation: passed
+  - fixture: capability_valid_runtime_provider.yaml
+    document_type: repository_runtime_config
+    capabilities_fixture: valid_capabilities.yaml
+    expected_schema_result: valid
+    expected_validator_result: valid
+    expected_policy_validation: passed
+    expected_capability_validation: passed
+  - fixture: capability_unknown_runtime_provider.yaml
+    document_type: repository_runtime_config
+    capabilities_fixture: valid_capabilities.yaml
+    expected_schema_result: valid
+    expected_validator_result: valid
+    expected_policy_validation: passed
+    expected_capability_validation: failed
+    expected_capability_code: CAP_UNKNOWN_PROVIDER
+  - fixture: capability_runtime_provider_mismatch.yaml
+    document_type: repository_runtime_config
+    capabilities_fixture: valid_capabilities.yaml
+    expected_schema_result: valid
+    expected_validator_result: valid
+    expected_policy_validation: passed
+    expected_capability_validation: failed
+    expected_capability_code: CAP_PROVIDER_MISMATCH
+  - fixture: capability_runtime_missing_registry.yaml
+    document_type: repository_runtime_config
+    expected_schema_result: valid
+    expected_validator_result: valid
+    expected_policy_validation: passed
+    expected_capability_validation: failed
+    expected_capability_code: CAP_REGISTRY_REQUIRED
+  - fixture: capability_runtime_unavailable_provider.yaml
+    document_type: repository_runtime_config
+    capabilities_fixture: capability_registry_unavailable_provider.yaml
+    expected_schema_result: valid
+    expected_validator_result: valid
+    expected_policy_validation: passed
+    expected_capability_validation: failed
+    expected_capability_code: CAP_PROVIDER_UNAVAILABLE
+  - fixture: capability_valid_stp_provider.yaml
+    document_type: stp_config
+    repository_fixture: valid_minimal_runtime.yaml
+    capabilities_fixture: valid_capabilities.yaml
+    expected_schema_result: valid
+    expected_validator_result: valid
+    expected_policy_validation: passed
+    expected_capability_validation: passed
+  - fixture: capability_unknown_stp_provider.yaml
+    document_type: stp_config
+    repository_fixture: valid_minimal_runtime.yaml
+    capabilities_fixture: valid_capabilities.yaml
+    expected_schema_result: valid
+    expected_validator_result: valid
+    expected_policy_validation: passed
+    expected_capability_validation: failed
+    expected_capability_code: CAP_UNKNOWN_PROVIDER
 
 invocation_cases:
   - id: invalid_explicit_type_on_canonical_runtime_path

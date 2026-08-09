@@ -1,0 +1,11 @@
+version: 3
+capabilities:
+  test:
+    providers:
+      - provider_type: local_tool
+        identifier: repository_tests
+        availability: unavailable
+        authority: repository
+        deterministic: true
+        command: test-command
+        network_requirement: none

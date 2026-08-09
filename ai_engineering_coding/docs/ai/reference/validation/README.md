@@ -24,7 +24,13 @@ Use `--type repository_runtime_config`, `--type stp_config`, or `--type capabili
 npm --prefix docs/ai/tools run validate-config -- docs/ai/pbi/STP-XXXX/config.yaml --type stp_config --repository docs/ai/config/runtime_config.yaml
 ~~~
 
-The validator runs parsing, schema/custom checks, then a small policy stage. A policy failure returns exit code `1` with `policy_validation: failed`; malformed input skips policy interpretation. Run the fixture suite with:
+Validate provider preferences against a local capability registry with `--capabilities`:
+
+~~~text
+npm --prefix docs/ai/tools run validate-config -- docs/ai/config/runtime_config.yaml --capabilities docs/ai/config/capabilities.yaml
+~~~
+
+For STP validation, combine `--repository` and `--capabilities`. The validator runs parsing, schema/custom checks, a small policy stage, then capability-reference validation. Provider references require a supplied registry; the cross-file stage reports `CAP_REGISTRY_REQUIRED`, `CAP_UNKNOWN_CAPABILITY`, `CAP_UNKNOWN_PROVIDER`, `CAP_PROVIDER_MISMATCH`, or `CAP_PROVIDER_UNAVAILABLE` as applicable. Registry availability is declared configuration data only: validation does not probe local tools, network services, or credentials. A policy failure returns exit code `1` with `policy_validation: failed`; malformed input skips later interpretation. Run the fixture suite with:
 
 ~~~text
 npm --prefix docs/ai/tools run validate-config-fixtures
