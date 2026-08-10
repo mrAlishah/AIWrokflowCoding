@@ -8,7 +8,8 @@
     "resolve-config": "node resolve_config.mjs",
     "resolve-config-fixtures": "node effective_config_fixtures.mjs",
     "resolve-risk-fixtures": "node risk_resolution_fixtures.mjs",
-    "resolve-decision-action-policy-fixtures": "node decision_action_policy_fixtures.mjs"
+    "resolve-decision-action-policy-fixtures": "node decision_action_policy_fixtures.mjs",
+    "resolve-capability-provider-fixtures": "node capability_provider_resolution_fixtures.mjs"
   },
   "dependencies": {
     "ajv": "8.20.0",
