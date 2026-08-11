@@ -11,7 +11,8 @@
     "resolve-decision-action-policy-fixtures": "node decision_action_policy_fixtures.mjs",
     "resolve-capability-provider-fixtures": "node capability_provider_resolution_fixtures.mjs",
     "resolve-hitl-requirement-fixtures": "node hitl_requirement_resolution_fixtures.mjs",
-    "validate-runtime-state-fixtures": "node runtime_state_validation_fixtures.mjs"
+    "validate-runtime-state-fixtures": "node runtime_state_validation_fixtures.mjs",
+    "persist-runtime-state-fixtures": "node runtime_state_persistence_fixtures.mjs"
   },
   "dependencies": {
     "ajv": "8.20.0",
