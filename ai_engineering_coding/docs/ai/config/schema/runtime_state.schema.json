@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "V3 Runtime State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "workspace", "lifecycle", "human_decision", "technical_block", "policy_projection", "ownership", "revision"],
+  "properties": {
+    "version": { "const": 1 },
+    "workspace": {
+      "type": "object", "additionalProperties": false, "required": ["id", "operation_id"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "operation_id": { "$ref": "#/$defs/identifier" }
+      }
+    },
+    "lifecycle": {
+      "type": "object", "additionalProperties": false, "required": ["state"],
+      "properties": { "state": { "enum": ["OPEN", "WAITING_FOR_HUMAN", "TERMINAL"] } }
+    },
+    "human_decision": {
+      "type": "object", "additionalProperties": false,
+      "required": ["required", "request_status", "decision_id", "request_identity", "request_fingerprint", "response_status"],
+      "properties": {
+        "required": { "type": "boolean" },
+        "request_status": { "enum": ["none", "pending", "superseded", "terminal"] },
+        "decision_id": { "anyOf": [{ "type": "null" }, { "$ref": "#/$defs/identifier" }] },
+        "request_identity": { "anyOf": [{ "type": "null" }, { "$ref": "#/$defs/fingerprint" }] },
+        "request_fingerprint": { "anyOf": [{ "type": "null" }, { "$ref": "#/$defs/fingerprint" }] },
+        "response_status": { "enum": ["none", "recorded", "validated", "consumed", "rejected_stale", "conflicting"] }
+      }
+    },
+    "technical_block": {
+      "type": "object", "additionalProperties": false, "required": ["blocked", "missing_capabilities"],
+      "properties": {
+        "blocked": { "type": "boolean" },
+        "missing_capabilities": { "type": "array", "uniqueItems": true, "items": { "$ref": "#/$defs/identifier" } }
+      }
+    },
+    "policy_projection": {
+      "type": "object", "additionalProperties": false, "required": ["status", "terminal_reason"],
+      "properties": {
+        "status": { "enum": ["resolved", "blocked", "invalid_input", "invalid_policy", "unresolved"] },
+        "terminal_reason": { "anyOf": [{ "type": "null" }, { "enum": ["POLICY_PROHIBITED", "HUMAN_REJECTED", "HUMAN_CANCELLED", "INVALID_UPSTREAM", "UNRECOVERABLE_FAILURE"] }] }
+      }
+    },
+    "ownership": {
+      "type": "object", "additionalProperties": false, "required": ["active_owner"],
+      "properties": { "active_owner": { "$ref": "#/$defs/identifier" } }
+    },
+    "revision": {
+      "type": "object", "additionalProperties": false, "required": ["state_revision", "expected_revision"],
+      "properties": { "state_revision": { "$ref": "#/$defs/fingerprint" }, "expected_revision": { "$ref": "#/$defs/fingerprint" } }
+    }
+  },
+  "$defs": {
+    "identifier": { "type": "string", "pattern": "^[A-Za-z][A-Za-z0-9_.:-]{0,127}$" },
+    "fingerprint": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+  }
+}
