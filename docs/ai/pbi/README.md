@@ -1,55 +1,41 @@
-# PBI Workflow Guide
+# PBI Workflow
 
-Use this workflow for implementing an approved Product Backlog Item.
+Task-specific implementation workspaces live under:
 
-## Flow
+```text
+docs/ai/pbi/STP-XXXX/
+```
 
-1. ChatGPT creates the Approved PBI.
-   - The approved PBI defines the requested outcome, acceptance criteria, and constraints.
+## Read Next
 
-2. Run `pbi-workspace-create`.
-   - Creates `docs/ai/pbi/STP-XXXX/`.
-   - Records the approved PBI.
-   - Creates placeholders only.
-   - Does not plan or inspect source code.
+Use `docs/ai/skills/README.md` to select the current PBI skill.
 
-3. Run `pbi-plan-create`.
-   - Reads repo-context first.
-   - Creates task context, implementation plan, codebase index, and phase files.
-   - May inspect source code only when repo-context is missing or insufficient.
-   - Does not update repo-context.
+Common sequence:
 
-4. Run `implementation-phase`.
-   - Executes one selected phase.
-   - Reads only the implementation plan, selected phase file, and source files listed in that phase.
-   - Updates the selected phase file after execution.
+```text
+pbi_clarification -> pbi_workspace_create -> pbi_plan_create -> pbi_implementation_phase -> pbi_review_phase -> pbi_fix_phase -> pbi_final_handoff
+```
 
-5. Run `review-phase`.
-   - Reviews the implementation diff for correctness, scope, architecture, standards, comments, and tests.
-   - Does not apply fixes unless explicitly requested.
+## Workspace Files
 
-6. Run `fix-phase`.
-   - Applies only review findings.
-   - Avoids unrelated cleanup or refactor.
+```text
+00-approved-pbi.md
+01-context.md
+02-implementation-plan.md
+03-codebase-index.md
+04-decision_log.md
+05-validation.md
+06-handoff.md
+99-metrics.md
+phases/
+knowledge/
+```
 
-7. Run `pbi-final-handoff`.
-   - Updates `06-handoff.md`.
-   - Summarizes changed files, validation, risks, PR summary, and review focus.
+Read only the active `STP-XXXX` workspace required by the selected skill.
 
-## Rules
+## Governance
 
-- Keep changes scoped to the PBI.
-- Follow repo conventions.
-- Prefer minimal files and minimal lines.
-- Report markdown changes under `Markdown Files Changed`.
-
-## Workspace File Rules
-
-- `00-approved-pbi.md` is the source of truth for the approved PBI.
-- `01-context.md` is PBI-specific context. It must not be a copy of repo-context. It should contain only the repo-context excerpts, files, risks, constraints, and validation notes relevant to the active PBI.
-- `02-implementation-plan.md` is a short roadmap. It must contain phase names, goals, status, and high-level sequencing only. It must not contain detailed technical implementation plans. Detailed plans belong in `phases/*.md`.
-- `03-codebase-index.md` routes phases, source files, knowledge files, relevant modules, created or updated files, created or updated functions, function purpose, usage, related flow, validation focus, and review focus.
-- `04-decision_log.md` is only for architecture, domain, and design decisions. It must not be used for phase execution notes, review comments, todos, or temporary planning notes.
-- Slot `05` is intentionally reserved and unused.
-- `knowledge/` is the official folder name for reusable PBI-level knowledge. It is optional for simple PBIs. Create it only when the PBI has reusable PBI-level technical knowledge, overlapping use cases, contracts, mappings, flows, validation rules, or multi-phase concepts. Do not create unnecessary knowledge files for simple PBIs.
-- `phases/*.md` files are plan plus execution memory.
+- Common rules: [../skills/governance/common-rules.md](../skills/governance/common-rules.md)
+- Read order: [../skills/governance/read-order.md](../skills/governance/read-order.md)
+- Markdown reporting: [../skills/governance/markdown-change-reporting.md](../skills/governance/markdown-change-reporting.md)
+- Observability: [../skills/governance/observability.md](../skills/governance/observability.md)

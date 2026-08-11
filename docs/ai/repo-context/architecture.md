@@ -4,7 +4,7 @@ Reusable architecture knowledge for this repository.
 
 ## System Shape
 
-Document the stable high-level application shape here after explicit `repo-context-update` inspection.
+Document the stable high-level application shape here after explicit `tools_repo_context_update` inspection.
 
 ## Architecture Boundaries
 

@@ -4,7 +4,7 @@ Reusable module knowledge for this repository.
 
 ## Major Modules
 
-Add stable module responsibilities here after explicit `repo-context-update` inspection.
+Add stable module responsibilities here after explicit `tools_repo_context_update` inspection.
 
 | Module | Responsibility | Notes |
 | --- | --- | --- |

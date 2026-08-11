@@ -11,7 +11,7 @@ Reusable workflow knowledge for this repository.
 
 ## Repo Context Update Workflow
 
-1. Invoke `repo-context-update` explicitly.
+1. Invoke `tools_repo_context_update` explicitly.
 2. Inspect only the repository areas needed to refresh reusable knowledge.
 3. Update only `docs/ai/repo-context/*`.
 4. Keep context concise and stable.
