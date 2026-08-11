@@ -16,6 +16,7 @@ Place decision notes and approved baseline references here when they are not run
 - [V3 Risk and Capability Resolution Contract](v3_risk_and_capability_resolution_contract.md): proposed risk and provider-selection specification; non-runtime until explicitly integrated.
 - [V3 Runtime Configuration and Capability Registry Contract](v3_runtime_configuration_and_capability_registry_contract.md): proposed configuration and provider-registry specification; non-runtime until explicitly integrated.
 - [V3 HITL and Human Decision Contract](v3_hitl_and_human_decision_contract.md): proposed human-decision requirement and artifact specification; no HITL runtime or persistence.
+- [V3 Runtime State and Human Decision Persistence Contract](v3_runtime_state_and_human_decision_persistence_contract.md): proposed per-workspace operational-state, HDR persistence, replay, and recovery specification; no runtime implementation.
 - [V3 Configuration Schema and Validation Contract](v3_configuration_schema_and_validation_contract.md): proposed machine-readable schema and validation specification; non-runtime until explicitly integrated.
 
 ## Usage Rule
