@@ -292,6 +292,22 @@ The system also intentionally avoids exact token tracking, external telemetry, r
 - [Reference guides and prompts](docs/ai/reference/README.md)
 - [Developer and AI engineer guide](docs/ai/reference/guides/ai-engineer/developer-ai-engineer-guide.md)
 
+## Comparison with popular AI coding projects
+
+Star counts below are approximate and can change quickly. The comparison focuses on positioning, not on claiming that one project replaces another.
+
+| Project | Approx. stars | Main focus | Similarity | Main difference | Where this project fits |
+|---|---:|---|---|---|---|
+| [OpenAI Codex](https://github.com/openai/codex) | 90k+ | Lightweight coding agent in the terminal | Helps developers inspect, edit, and run code | Codex is an agent runtime; this project is a repository-level workflow and memory system | Adds shared workflow, governance, repo-context, and handoff structure around coding agents |
+| [OpenHands](https://github.com/All-Hands-AI/OpenHands) | 75k+ | Autonomous software agent platform with CLI, GUI, SDK, and cloud options | Automates software engineering work with agents | OpenHands is a heavier execution platform; this project is Markdown-first and copy-into-repo | Gives teams a portable operating layer for project memory and delivery process |
+| [Cline](https://github.com/cline/cline) | 65k+ | Coding agent for IDE, CLI, and SDK use | Agent-based coding, transparency, and tool use | Cline is primarily an agent surface/runtime; this project defines durable memory, PBI flow, review flow, and governance | Works as a persistent team memory and process layer for Cline or similar agents |
+| [CrewAI](https://github.com/crewAIInc/crewAI) | 50k+ | Python framework for orchestrating role-based agents | Multi-agent collaboration and task delegation | CrewAI is used to build agent applications; this project organizes real repository work through Markdown workspaces | Better suited for lightweight engineering workflows that do not require building a new agent app |
+| [Aider](https://github.com/aider-ai/aider) | 45k+ | AI pair programming in the terminal | Works directly with existing codebases | Aider focuses on code changes; this project focuses on lifecycle, planning, handoff, review, and reusable context | Extends pair-programming workflows with durable project memory and governance |
+| [LangGraph](https://github.com/langchain-ai/langgraph) | 35k+ | Framework for stateful, long-running agents | State, workflow, and multi-agent patterns | LangGraph requires software implementation; this project is a ready-to-copy Markdown operating system | Useful when a team needs process and memory before custom agent infrastructure |
+| [Continue](https://github.com/continuedev/continue) | 35k+ | Open-source coding agent for IDE and CLI workflows | Helps developers work with code through AI assistance | Continue focuses on assistant experience; this project focuses on shared context, standards, and token-aware workflow | Can provide governance, repo-context, and PBI structure for Continue-style tools |
+
+The key positioning is simple: this repository is not trying to be another agent runtime. It is an **AI engineering operating system inside your repository**. Agent tools execute work; this system keeps the durable project knowledge, PBI workspaces, phase handoffs, review evidence, and global team rules that make multi-agent work repeatable.
+
 ## License
 
 No license file is currently included in this repository. Add an explicit license before distributing or reusing it publicly.

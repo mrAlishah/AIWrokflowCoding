@@ -292,6 +292,22 @@ Create an implementation plan for this PBI. Do not modify source code.
 - [راهنماها و promptهای مرجع](docs/ai/reference/README.md)
 - [راهنمای Developer و AI Engineer](docs/ai/reference/guides/ai-engineer/developer-ai-engineer-guide.md)
 
+## مقایسه با پروژه‌های محبوب AI coding
+
+عدد starها تقریبی است و می‌تواند سریع تغییر کند. این جدول برای جایگاه‌یابی پروژه است، نه برای ادعای جایگزینی کامل پروژه‌های دیگر.
+
+| پروژه | star تقریبی | تمرکز اصلی | شباهت | تفاوت اصلی | جایگاه این پروژه |
+|---|---:|---|---|---|---|
+| [OpenAI Codex](https://github.com/openai/codex) | 90k+ | coding agent سبک در terminal | کمک به خواندن، تغییر و اجرای code | Codex یک agent runtime است؛ این پروژه سیستم workflow و memory در سطح repository است | به coding agentها workflow مشترک، governance، repo-context و ساختار handoff اضافه می‌کند |
+| [OpenHands](https://github.com/All-Hands-AI/OpenHands) | 75k+ | پلتفرم autonomous software agent با CLI، GUI، SDK و cloud | automation کارهای software engineering با agentها | OpenHands پلتفرم اجرایی سنگین‌تری است؛ این پروژه Markdown-first و قابل کپی مستقیم داخل repo است | برای تیم‌ها یک لایهٔ قابل‌حمل برای project memory و delivery process می‌سازد |
+| [Cline](https://github.com/cline/cline) | 65k+ | coding agent برای IDE، CLI و SDK | agent-based coding، transparency و tool use | Cline بیشتر agent surface/runtime است؛ این پروژه durable memory، PBI flow، review flow و governance تعریف می‌کند | به‌عنوان لایهٔ persistent team memory و process برای Cline یا ابزارهای مشابه عمل می‌کند |
+| [CrewAI](https://github.com/crewAIInc/crewAI) | 50k+ | framework پایتون برای orchestration agentهای نقش‌محور | همکاری چند-agentی و تقسیم task | CrewAI برای ساخت agent application است؛ این پروژه کار واقعی repository را با Markdown workspaceها سازمان‌دهی می‌کند | برای workflowهای مهندسی سبک که نیاز به ساخت agent app ندارند مناسب‌تر است |
+| [Aider](https://github.com/aider-ai/aider) | 45k+ | AI pair programming در terminal | کار مستقیم با codebase موجود | Aider روی code change تمرکز دارد؛ این پروژه روی lifecycle، planning، handoff، review و reusable context تمرکز دارد | pair programming را با project memory و governance پایدار تکمیل می‌کند |
+| [LangGraph](https://github.com/langchain-ai/langgraph) | 35k+ | framework برای agentهای stateful و long-running | state، workflow و multi-agent pattern | LangGraph نیاز به پیاده‌سازی نرم‌افزاری دارد؛ این پروژه یک Markdown operating system آمادهٔ کپی است | وقتی تیم قبل از ساخت agent infrastructure به process و memory نیاز دارد، کاربردی‌تر است |
+| [Continue](https://github.com/continuedev/continue) | 35k+ | open-source coding agent برای IDE و CLI | کمک به توسعه‌دهنده برای کار با code از طریق AI | Continue روی تجربهٔ assistant تمرکز دارد؛ این پروژه روی shared context، استانداردها و workflow کم‌هزینه از نظر token تمرکز دارد | می‌تواند governance، repo-context و ساختار PBI را برای ابزارهایی مثل Continue فراهم کند |
+
+جایگاه اصلی پروژه روشن است: این repository نمی‌خواهد یک agent runtime دیگر باشد. این پروژه یک **AI engineering operating system داخل خود repository** است. ابزارهای agent کار را اجرا می‌کنند؛ این سیستم دانش پایدار پروژه، PBI workspaceها، phase handoffها، evidenceهای review و قوانین global تیم را نگه می‌دارد تا کار چند-agentی تکرارپذیر شود.
+
 ## مجوز
 
 در حال حاضر فایل license در این repository وجود ندارد. پیش از انتشار عمومی یا استفادهٔ مجدد، یک license مشخص به پروژه اضافه کنید.
