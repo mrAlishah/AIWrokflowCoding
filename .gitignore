@@ -1,2 +1,5 @@
 # AI Docs and Agents and related files
 AI Preinit
+tmp
+.DS_Store
+node_modules/
