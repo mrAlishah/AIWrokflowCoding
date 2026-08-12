@@ -13,7 +13,8 @@
     "resolve-hitl-requirement-fixtures": "node hitl_requirement_resolution_fixtures.mjs",
     "validate-runtime-state-fixtures": "node runtime_state_validation_fixtures.mjs",
     "persist-runtime-state-fixtures": "node runtime_state_persistence_fixtures.mjs",
-    "resolve-runtime-state-transition-fixtures": "node runtime_state_transition_fixtures.mjs"
+    "resolve-runtime-state-transition-fixtures": "node runtime_state_transition_fixtures.mjs",
+    "resolve-workflow-routing-fixtures": "node workflow_routing_fixtures.mjs"
   },
   "dependencies": {
     "ajv": "8.20.0",
