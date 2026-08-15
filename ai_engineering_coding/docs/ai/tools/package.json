@@ -18,7 +18,8 @@
     "resolve-review-requirement-fixtures": "node review_requirement_fixtures.mjs",
     "resolve-verification-fixtures": "node verification_resolution_fixtures.mjs",
     "resolve-review-result-fixtures": "node review_result_resolution_fixtures.mjs",
-    "resolve-handoff-completion-fixtures": "node handoff_completion_resolution_fixtures.mjs"
+    "resolve-handoff-completion-fixtures": "node handoff_completion_resolution_fixtures.mjs",
+    "resolve-coordinator-fixtures": "node coordinator_resolution_fixtures.mjs"
   },
   "dependencies": {
     "ajv": "8.20.0",

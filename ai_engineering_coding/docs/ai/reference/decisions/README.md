@@ -19,6 +19,7 @@ Place decision notes and approved baseline references here when they are not run
 - [V3 Runtime State and Human Decision Persistence Contract](v3_runtime_state_and_human_decision_persistence_contract.md): proposed per-workspace operational-state, HDR persistence, replay, and recovery specification; no runtime implementation.
 - [V3 Workflow Routing Contract](v3_workflow_routing_contract.md): proposed deterministic next-stage selection from normalized runtime and downstream aggregate facts; no workflow runtime or execution.
 - [V3 Handoff and Completion Resolution Contract](v3_handoff_and_completion_resolution_contract.md): proposed bounded current handoff-completion projection; no handoff execution or publication authority.
+- [V3 Coordinator and End-to-End Integration Contract](v3_coordinator_and_end_to_end_integration_contract.md): proposed pure single-snapshot composition of canonical V3 resolvers; no execution, persistence, or publication.
 - [V3 Configuration Schema and Validation Contract](v3_configuration_schema_and_validation_contract.md): proposed machine-readable schema and validation specification; non-runtime until explicitly integrated.
 
 ## Usage Rule
