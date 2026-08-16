@@ -2,7 +2,7 @@
 
 # Claude Adapter
 
-This file adapts Claude to the V2 AI Multi-Agent Coding Operating System. It extends `AGENTS.md`; all shared rules remain mandatory.
+This file adapts Claude to the V3 AI Engineering Operating System. It extends `AGENTS.md`; all shared rules remain mandatory.
 
 ## Runtime Entry
 
@@ -14,6 +14,13 @@ This file adapts Claude to the V2 AI Multi-Agent Coding Operating System. It ext
 6. Read only the selected skill file.
 
 `docs/ai/reference/**` is non-runtime reference material and must not be read during normal execution unless explicitly requested for guides, prompts, validation, history, decisions, or AI OS maintenance.
+
+## V3 Control-Plane Boundary
+
+Canonical V3 control-plane decisions are authoritative. The Coordinator composes
+the canonical workflow outcome; selected skills remain bounded execution
+protocols, and Claude must not bypass canonical Policy, Risk, HITL, Runtime
+State, Workflow Routing, Verification, Review, or Handoff through prose.
 
 ## Orchestration
 

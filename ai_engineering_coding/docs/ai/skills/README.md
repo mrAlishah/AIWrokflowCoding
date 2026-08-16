@@ -6,6 +6,10 @@ Read this file to select one skill. Then read only the selected skill file.
 
 Global rules live in `docs/ai/skills/governance/`.
 
+Skills are bounded execution protocols. They follow the authoritative V3
+control-plane outcome and do not replace canonical resolver, Coordinator, or
+Workflow Routing decisions.
+
 System health policy lives in `docs/ai/skills/governance/system-health-policy.md`.
 
 `docs/ai/reference/` is non-runtime material. Do not read it during normal skill execution unless the user explicitly asks for guides, prompts, validation, history, decisions, or AI OS maintenance.
@@ -55,7 +59,7 @@ Lower-level review skills remain available for follow-up, debugging, specialized
 
 ## Compatibility
 
-Existing old invocation names are mapped to the new V2 names. Use new names for new work.
+Existing legacy invocation names are mapped to the current names. Use current names for new work.
 
 | Old Invocation | New Invocation | New Skill Path |
 |---|---|---|

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-`runtime-config.yaml` stores optional runtime preferences for the V2 AI Operating System.
+`runtime-config.yaml` stores optional runtime preferences for the V3 AI Engineering Operating System.
 
 It helps agents reduce context cost, control terminal output, and enable or disable observability without changing skills or prompts.
 
