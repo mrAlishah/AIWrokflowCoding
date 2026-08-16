@@ -1,10 +1,10 @@
 # AGENTS.md
 
-# AI Multi-Agent Coding Operating System (V2)
+# AI Engineering Operating System (V3)
 
 ## Mission
 
-This repository uses markdown files as shared memory for a V2 AI Operating System.
+This repository uses markdown files as shared memory for the V3 AI Engineering Operating System.
 
 Primary goals:
 
@@ -25,6 +25,15 @@ Primary goals:
 7. Exact source files only if needed
 
 `docs/ai/reference/**` is non-runtime reference material and must not be read during normal execution unless explicitly requested for guides, prompts, validation, history, decisions, or AI OS maintenance.
+
+## V3 Control-Plane Boundary
+
+Canonical V3 control-plane decisions are authoritative. The Coordinator composes
+canonical resolver outputs to determine the bounded workflow outcome; it does
+not execute work, persist state, select agents, or replace domain resolvers.
+Skills define the bounded execution procedure for that outcome, and the agent
+performs only that bounded work. Prose must not bypass Policy, Risk, HITL,
+Runtime State, Workflow Routing, Verification, Review, or Handoff.
 
 ## Canonical Governance
 
@@ -48,7 +57,7 @@ Primary goals:
 - Do not read all docs, all skills, all workspaces, or the whole repository by default.
 - Do not modify source code unless the selected skill explicitly allows it and the task requires it.
 - Do not modify `docs/ai/reference/history/foundation/**` unless the user explicitly authorizes archive or history work.
-- Do not introduce V3 concepts.
+- Do not introduce V3.1+ features or change canonical V3 ownership or semantics without explicit authorization and evidence.
 - Preserve knowledge separation between repo-context, PBI workspaces, review workspaces, execution memory, and architecture decisions.
 
 ## repo-context Ownership
@@ -81,4 +90,4 @@ docs/ai/skills/governance/markdown-change-reporting.md
 
 ## Validation Note
 
-After changing skills, naming, workflow, reference material, `START_HERE.md`, common rules, or agent files, re-run the V2 validation checklist without editing `docs/ai/reference/history/foundation/**`.
+After changing skills, naming, workflow, reference material, `START_HERE.md`, common rules, or agent files, run the relevant validation while preserving the canonical V3 regression baseline; do not edit `docs/ai/reference/history/foundation/**`.

@@ -1,6 +1,6 @@
 # AI Coding System Documentation
 
-Shared markdown memory for the V2 AI Multi-Agent Coding Operating System.
+Shared markdown memory for the V3 AI Engineering Operating System.
 
 ## Daily Runtime
 

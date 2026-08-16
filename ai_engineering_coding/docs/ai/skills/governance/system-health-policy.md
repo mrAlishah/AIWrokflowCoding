@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Ensure `tools_system_health_check` remains aligned with the current V2 AI Operating System after structural, workflow, governance, skill, naming, routing, policy, reference, or historical foundation changes.
+Ensure `tools_system_health_check` remains aligned with the current V3 AI Engineering Operating System after structural, workflow, governance, skill, naming, routing, policy, reference, or historical foundation changes.
 
 ## Trigger Conditions
 

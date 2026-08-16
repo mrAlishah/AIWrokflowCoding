@@ -13,6 +13,7 @@ Canonical shared rules for the AI Multi-Agent Coding Operating System.
 - Preserve backward compatibility.
 - Do not duplicate global rules inside skills, README files, or workspace templates. Reference the canonical governance file instead.
 - Reference boundary and runtime read-order rules live in `docs/ai/skills/governance/read-order.md`.
+- Canonical V3 control-plane decisions are authoritative; skills define bounded execution procedures and agents must not bypass canonical resolver or Workflow Routing outcomes through prose.
 
 ## Safety Rules
 
@@ -20,7 +21,7 @@ Canonical shared rules for the AI Multi-Agent Coding Operating System.
 - Review-only work must not modify source code.
 - Do not perform broad refactors unless explicitly requested.
 - Do not introduce new workflow semantics from documentation cleanup.
-- Do not introduce V3 Harness Engineering features.
+- Do not introduce V3.1+ features or workflow semantics without explicit authorization.
 
 ## Ownership Rules
 

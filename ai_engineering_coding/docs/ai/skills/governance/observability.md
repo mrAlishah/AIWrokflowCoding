@@ -31,14 +31,14 @@ observability:
 
 | Setting | Allowed Values | Meaning |
 |---|---|---|
-| `observability.enabled` | `true`, `false` | Master switch for all V2 observability behavior. When `false`, do not write metrics records, dashboards, metrics final-response status, or optional tool observability summaries. |
+| `observability.enabled` | `true`, `false` | Master switch for observability behavior. When `false`, do not write metrics records, dashboards, metrics final-response status, or optional tool observability summaries. |
 | `observability.metrics.enabled` | `true`, `false` | Master switch for metrics behavior. When `false`, all metrics sub-settings are treated as disabled. |
 | `observability.metrics.workspace_records` | `true`, `false` | Controls whether workspace-based PBI and Review skills append local `99-metrics.md` execution records. |
 | `observability.metrics.central_dashboards` | `true`, `false` | Controls whether matching central dashboards are updated after local metrics change. |
 | `observability.metrics.final_response_status` | `true`, `false` | Controls whether PBI, Review, and PR workflow final responses must include `Metrics Updated`. |
 | `observability.metrics.tool_reports` | `true`, `false` | Controls whether tool skills include observability summaries in their own reports or final responses. |
-| `observability.metrics.exact_token_tracking` | `false` | Exact token tracking is not allowed in V2. |
-| `observability.metrics.external_telemetry` | `false` | External telemetry is not allowed in V2. |
+| `observability.metrics.exact_token_tracking` | `false` | Exact token tracking is not allowed. |
+| `observability.metrics.external_telemetry` | `false` | External telemetry is not allowed. |
 
 ## Local Metrics
 

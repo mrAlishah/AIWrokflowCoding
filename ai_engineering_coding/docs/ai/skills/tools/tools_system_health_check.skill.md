@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Audit the V2 AI Operating System for system health, cohesion, runtime efficiency, documentation quality, skill quality, workflow consistency, governance ownership, heuristic context efficiency, backward compatibility, and maintainability.
+Audit the V3 AI Engineering Operating System for system health, cohesion, runtime efficiency, documentation quality, skill quality, workflow consistency, governance ownership, heuristic context efficiency, backward compatibility, and maintainability.
 
 Generate actionable recommendations without changing runtime workflow behavior.
 

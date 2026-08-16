@@ -1,6 +1,6 @@
 # Skill Template
 
-Use this structure for V2 skill files:
+Use this structure for V3 skill files:
 
 ```markdown
 # Skill: skill-name

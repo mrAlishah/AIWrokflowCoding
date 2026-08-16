@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Keep user-facing reference documentation synchronized with the current V2 AI Operating System.
+Keep user-facing reference documentation synchronized with the current V3 AI Engineering Operating System.
 
 This skill owns maintenance of `docs/ai/reference/`, including guides, prompts, `README.md`, and `help-index.md`.
 
